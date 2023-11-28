@@ -1,0 +1,50 @@
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: white;
+    
+}
+
+h5{
+    font-size: x-large;
+}
+
+textarea {
+    resize: none;
+    height: 218px;
+    border: 2px solid #000; /* Cambia el grosor (2px) y el color (#000) según tus preferencias */
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, auto) minmax(0, auto);
+    grid-template-rows: minmax(0, auto);
+    grid-gap: 0 1rem;
+}
+
+.button-container{
+    display: flex;
+    align-items: flex-end;
+}
+
+
+label {
+    font-weight:  bold;
+}
+
+span{
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+/* Estilos adicionales para hacer la tabla responsive */
+@media (max-width: 1080px) {
+    .table-wrapper {
+        overflow-x: auto; /* Agrega una barra de desplazamiento horizontal */
+    }
+    .table-wrapper table {
+        width: 100%; /* Establece el ancho de la tabla al 100% del contenedor */
+    }
+
+}

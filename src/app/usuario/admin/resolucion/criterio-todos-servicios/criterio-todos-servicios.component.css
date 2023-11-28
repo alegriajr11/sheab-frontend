@@ -1,0 +1,98 @@
+.table-wrapper {
+    background: #fff;
+    padding: 20px 25px;
+    margin: 30px 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {        
+    padding-bottom: 15px;
+    background: #343a40;
+    color: #fff;
+    padding: 16px 30px;
+    margin: -20px -25px 10px;
+    border-radius: 3px 3px 0 0;
+}
+.table-title h2 {
+    margin: 5px 0 0;
+    font-size: 24px;
+}
+
+.table-title .btn {
+    color: #fff;
+    float: right;
+    font-size: 13px;
+    border: none;
+    min-width: 50px;
+    border-radius: 2px;
+    border: none;
+    outline: none !important;
+    margin-left: 10px;
+}
+.table-title .btn i {
+    float: left;
+    font-size: 21px;
+    margin-right: 5px;
+}
+.table-title .btn span {
+    float: left;
+    margin-top: 2px;
+}
+
+#tod_nombre_estandar{
+    font-size: 21px;
+    font-weight: bold;
+}
+
+table.table tr th:first-child {
+    width: 60px;
+}
+table.table tr th:last-child {
+    width: 100px;
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+    background: #f5f5f5;
+}
+
+
+table td {
+    text-align: left;
+}
+
+table th {
+    text-align: center;
+}
+
+
+label {
+    color: white;
+    font-size: 25px;
+}
+
+h1, h5 {
+    color: white;
+}
+hr{
+    background-color: white;
+}
+
+.size{
+    max-width: 1598px;
+}
+
+.container_head {
+    display: flex;
+    width: 100%;
+    padding-top: 30px;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-bottom: 60px;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+}
+
+

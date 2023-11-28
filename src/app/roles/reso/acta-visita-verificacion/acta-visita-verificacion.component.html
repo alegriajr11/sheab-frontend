@@ -1,0 +1,318 @@
+<app-menu></app-menu>
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+            <h1 class="text-center">Visita Resolución 3100 - 2019</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">ACTA DE VISITA DE VERIFICACION DE CUMPLIMIENTO DE LAS CONDICIONES DE
+                HABILITACION</h2>
+            <hr class="up">
+            <form novalidate class="row g-3" name="ps" (ngSubmit)="onRegister()" id="form">
+                <div class="col-md-2">
+                    <label for="inputN_Acta" class="form-label text-center">N°ACTA</label>
+                    <input type="number" min="0" class="form-control" id="acta" readonly name="act_id"
+                        [(ngModel)]="act_id">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="previa" class="form-label">VISITA PREVIA</label>
+                    <label class="switch">
+                        <input type="checkbox" id="previa" onclick="unsoloCheckbox()" name="act_visita_previa"
+                            [(ngModel)]="act_visita_previa_bool">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="segumiento" class="form-label">VISITA DE CERTIFICACION</label>
+                    <label class="switch">
+                        <input type="checkbox" id="segumiento" onclick="unsoloCheckbox()" name="act_visita_seguimiento"
+                            [(ngModel)]="act_visita_seguimiento_bool">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="reactivacion" class="form-label">VISITA DE REACTIVACION</label>
+                    <label class="switch">
+                        <input type="checkbox" id="reactivacion" onclick="unsoloCheckbox()"
+                            name="act_visita_reactivacion" [(ngModel)]="act_visita_reactivacion_bool">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-3">
+                    <label class="form-label">FECHA INICIAL</label>
+                    <input type="date" class="form-control" id="fecha-inicial" pattern="dd/MM/yyyy"
+                        name="act_fecha_inicial" [(ngModel)]="act_fecha_inicio" [ngModelOptions]="{standalone: true}"
+                        ngDefaultControl (change)="habilitarFechaFinal()">
+                </div>
+                <div class="col-3">
+                    <label class="form-label">FECHA FINAL</label>
+                    <input type="date" class="form-control" id="fecha-final" pattern="dd/MM/yyyy" name="act_fecha_final"
+                        [(ngModel)]="act_fecha_final" [ngModelOptions]="{standalone: true}" ngDefaultControl
+                        [disabled]="!habilitarfechaFin" [min]="act_fecha_inicio">
+                </div>
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3>DATOS GENERALES REPORTADOS EN EL REGISTRO ESPECIAL DE PRESTADORES DE SERVICOS DE SALUD</h3>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="habilitado" class="form-label">Municipio:</label>
+                    <select id="mun_id" name="mun_id" class="form-select form-control"
+                        (change)="cargarPrestadoresByMun();" [(ngModel)]="act_municipioId" ngDefaultControl>
+                        <option value="" disabled selected hidden>Selecciona un Municipio...</option>
+                        <option *ngFor="let municipio of municipio" [value]="municipio.mun_id">
+                            {{ municipio.mun_nombre }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputAddress" class="form-label">Prestador:</label>
+                    <select id="prestador" name="prestador" class="form-select form-control" (change)="llenarCampos()"
+                        [(ngModel)]="act_prestadorId" ngDefaultControl
+                        (change)="cargarSedesByPrestador()">
+                        <option value="" disabled selected hidden>Selecciona un Prestador...</option>
+                        <option *ngFor="let prest of prestador" [value]="prest.pre_cod_habilitacion">
+                            {{ prest.pre_nombre }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label for="principal" class="form-label">Sede:</label>
+
+                    <select id="sedep" class="form-select form-control" [(ngModel)]="act_sede_principalId"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl (change)="sedeSeleccionada()"
+                        [disabled]="!habilitarSelectSede">
+                        <option value="" disabled selected hidden>Selecciona una Sede...</option>
+                        <option value=""></option>
+                        <option *ngFor="let list_sede of sede" [value]="list_sede.sede_id">
+                            {{ list_sede.sede_nombre }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Tipo de Prestador:</label>
+                    <input type="text" class="form-control" id="clasificacionPrestador" placeholder="Tipo de Prestador"
+                        readonly>
+                    <input type="hidden" name="act_tipo_prestador" [(ngModel)]="act_tipo_prestador">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Código Habilitación:</label>
+                    <input type="text" class="form-control" id="codhabilitacion" placeholder="Código Prestador"
+                        readonly>
+                    <input type="hidden" name="act_cod_prestador" [(ngModel)]="act_cod_habilitacion">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="codsede" class="form-label">Código Habilitación Sede:</label>
+                    <input type="text" class="form-control" id="codhabsede" placeholder="Código Sede" readonly>
+                    <input type="hidden" name="act_cod_sede" [(ngModel)]="act_cod_sede">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="telefono" class="form-label">Telefono:</label>
+                    <input type="tel" class="form-control" id="telefono" placeholder="Telefono" readonly>
+                    <input type="hidden" name="act_telefono" [(ngModel)]="act_telefono">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="nit" class="form-label">Nit:</label>
+                    <input type="text" class="form-control" id="nit" placeholder="Nit" readonly name="act_nit"
+                        [(ngModel)]="act_nit">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="direccion" class="form-label">Dirección:</label>
+                    <input type="text" class="form-control" id="direccion" placeholder="Dirección Prestador" readonly>
+                    <input type="hidden" name="act_direccion" [(ngModel)]="act_direccion">
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Representante Legal:</label>
+                    <input type="text" class="form-control" id="repleg" placeholder="Representante Legal" readonly>
+                    <input type="hidden" name="act_representante" [(ngModel)]="act_representante">
+                </div>
+
+                <div class="col-md-12">
+                    <label for="" class="form-label">Gerente - Director:</label>
+                    <input type="text" class="form-control" id="gerente" placeholder="Gerente - Director" readonly>
+                    <input type="hidden" name="act_gerente" [(ngModel)]="act_gerente">
+                </div>
+
+                <div class="col-12">
+                    <label for="email" class="form-label">Correo Electrónico:</label>
+                    <input type="email" class="form-control" id="email" placeholder="E-mail" readonly>
+                    <input type="hidden" name="act_correo" [(ngModel)]="act_correo">
+                </div>
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3>DATOS ENCONTRADOS EN LA VISITA</h3>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Teléfono:</label>
+                    <input type="tel" class="form-control" name="dato_encontrado_telefono" id="encontrado_telefono" placeholder="Teléfono..."
+                        [(ngModel)]="dat_encontrado_telefono">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Dirección:</label>
+                    <input type="text" class="form-control" name="dato_encontrado_direccion" id="encontrado_direccion" placeholder="Dirección..."
+                        [(ngModel)]="dat_encontrado_direccion">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Correo Electrónico:</label>
+                    <input type="text" class="form-control" name="dato_encontrado_correo" id="encontrado_correo" placeholder="E-mail..."
+                        [(ngModel)]="dat_encontrado_correo">
+                </div>
+
+                <div class="col-md-12">
+                    <label for="" class="form-label">Observaciones:</label>
+                    <input type="text" class="form-control" name="act_observaciones" [(ngModel)]="act_observaciones">
+                </div>
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3>MIEMBROS DE LA COMISIÓN TÉCNICA DE VERIFICADORES</h3>
+                </div>
+
+                <div *ngFor="let selectedUser of selectedUsersContador; let i = index">
+                    <div class="col-12">
+                        <label for="" class="form-label">Usuario Contabilidad:</label>
+                        <select class="form-select form-control" [(ngModel)]="selectedUser.userId"
+                            [ngModelOptions]="{standalone: true}" ngDefaultControl
+                            (ngModelChange)="updateSelectedUserId(selectedUser, $event)">
+                            <option hidden>Selecciona el Nombre...</option>
+                            <option *ngFor="let usuarioContador of usuariosContador" [value]="usuarioContador.usu_id">
+                                {{ usuarioContador.usu_nombre }} {{ usuarioContador.usu_apellido }}
+                            </option>
+                        </select>
+                    </div>
+                    <!-- Agregar botón para eliminar este select duplicado -->
+                    <div class="col-12">
+                        <span class="button-like btn-span" (click)="removeSelectContador(selectedUser.userId)">X</span>
+                    </div>
+                </div>
+
+                <!--Habilitar Select User-->
+                <div class="col-12" *ngIf="!userContador">
+                    <span class="button-like btn-span" (click)="addSelectContador()">Agregar Contador</span>
+                </div>
+
+                <div class="col-12">
+                    <hr>
+                </div>
+
+                <div *ngFor="let selectedUser of selectedUsersVerificadores; let i = index">
+                    <!-- Aquí va el select duplicado -->
+                    <div class="col-12">
+                        <label for="" class="form-label">Verificador SOGCS:</label>
+                        <select class="form-select form-control" [(ngModel)]="selectedUser.userId"
+                            [ngModelOptions]="{standalone: true}" ngDefaultControl
+                            (ngModelChange)="updateSelectedUserId(selectedUser, $event)">
+                            <option hidden>Selecciona el Nombre...</option>
+                            <option *ngFor="let usuario of usuarios" [value]="usuario.usu_id">
+                                {{ usuario.usu_nombre }} {{ usuario.usu_apellido }}
+                            </option>
+                        </select>
+                    </div>
+                    <!-- Agregar botón para eliminar este select duplicado -->
+                    <div class="col-12">
+                        <span class="button-like btn-span"
+                            (click)="removeSelectVerificador(selectedUser.userId)">X</span>
+                    </div>
+                </div>
+
+                <!--Habilitar Select User-->
+                <div class="col-md-12">
+                    <span class="button-like btn-span" (click)="addSelectVerificador()">Agregar Verificador SOGCS</span>
+                </div>
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3>PROFESIONALES DE APOYO DE LA SECRETARIA DE SALUD PUTUMAYO</h3>
+                </div>
+
+                <div *ngFor="let selectedUser of selectedUsersProfesionales; let i = index">
+                    <!-- Aquí va el select duplicado -->
+                    <div class="col-12">
+                        <label for="" class="form-label">Profesional Apoyo SOGCS:</label>
+                        <select class="form-select form-control" [(ngModel)]="selectedUser.userId"
+                            [ngModelOptions]="{standalone: true}" ngDefaultControl
+                            (ngModelChange)="updateSelectedUserId(selectedUser, $event)">
+                            <option hidden>Selecciona el Nombre...</option>
+                            <option *ngFor="let usuario of usuariosApoyo" [value]="usuario.usu_id">{{ usuario.usu_nombre }}
+                                {{ usuario.usu_apellido }}</option>
+                        </select>
+                    </div>
+                    <!-- Agregar botón para eliminar este select duplicado -->
+                    <div class="col-12">
+                        <span class="button-like btn-span"
+                            (click)="removeSelectProfesional(selectedUser.userId)">X</span>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <span class="button-like btn-span" (click)="addSelectProfesional()">Agregar Profesional</span>
+                </div>
+
+                <div class="col-12 sizeh3"></div>
+
+                <div class="col-12 bg-h3 contenedor-form">
+                    <h3 class="text-center sizeh3">PRESTADOR DE SERVICIOS DE SALUD</h3>
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Funcionario Recibe Visita:</label>
+                    <input type="text" class="form-control" id="nombreFuncionarioPrestador" name="act_nombre_prestador"
+                        placeholder="Funcionario Visita..." [(ngModel)]="act_funcionario_prestador">
+                </div>
+
+                <div class="col-12">
+                    <button id="boton-acta-sic" class="btn btn-dark esp btn-circle btn-xl" title="Guardar"
+                        type="submit" >
+                        <i class='fa fa-save fa-lg'></i>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--Fin Div Container-->
+
+<app-footer></app-footer>

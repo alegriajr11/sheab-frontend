@@ -1,0 +1,151 @@
+<app-menu></app-menu>
+
+<ng-template #modalTemplate>
+    <app-modal-firma-rol [dataFromParent]="modalRef"></app-modal-firma-rol>
+</ng-template>
+
+<div class="grid-container">
+    <button class="btn btn-light esp btn-circle btn-xl" routerLink="/usuarios/nuevo">
+        <i class="fa fa-reply fa-lg"></i>
+    </button>
+    <div class="card">
+        <div class="card-body">
+            <div class="container bg-h3">
+                <h2 class="card-title text-center">RESGISTRAR USUARIO ROL</h2>
+            </div>
+
+            <form #f="ngForm" novalidate (ngSubmit)="onRegister()">
+
+                <div class="form-group">
+                    <label for="nombre">Cédula de Ciudadania:</label>
+                    <input type="number" class="form-control" name="usu_cedula" id="usu_cedula" autocomplete="off"
+                        [(ngModel)]="usu_cedula">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" name="usu_nombre" id="usu_nombre" autocomplete="off"
+                        [(ngModel)]="usu_nombre" (input)="usu_nombre =  usu_nombre.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Apellido:</label>
+                    <input type="text" class="form-control" name="usu_apellido" id="usu_apellido" autocomplete="off"
+                        [(ngModel)]="usu_apellido" (input)="usu_apellido = usu_apellido.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Cargo Área SOGCS:</label>
+                    <input type="text" class="form-control" name="usu_cargo" id="usu_cargo" autocomplete="off"
+                        [(ngModel)]="usu_cargo" (input)="usu_cargo = usu_cargo.toUpperCase()">
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Cargo Área Profesional:</label>
+                    <input type="text" class="form-control" name="usu_area_profesional" id="usu_area_profesional"
+                        autocomplete="off" [(ngModel)]="usu_area_profesional">
+                </div>
+
+                <div class="form-group">
+                    <label for="nombreUsuario">Nombre de Usuario:</label>
+                    <input type="text" class="form-control" name="usu_nombreUsuario" id="usu_nombreUsuario"
+                        autocomplete="off" required [(ngModel)]="usu_nombreUsuario">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" name="usu_email" id="usu_email" autocomplete="off" required
+                        [(ngModel)]="usu_email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control" name="usu_password" id="usu_password" required
+                        [(ngModel)]="usu_password">
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <select class="form-select form-control" [(ngModel)]="usu_estado" name="usu_estado"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl>
+                        <option value="" disabled selected>Selecciona Estado..</option>
+                        <option value="true">Activo</option>
+                        <option value="false">Inactivo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Seleciona Perfiles:</label>
+                </div>
+
+
+                <div class="form-group roles">
+                    <div class="switch">
+                        <input type="checkbox" id="rol2" name="rol2" [(ngModel)]="rolesSeleccionados['rol2']">
+                        <div class="slider round" (click)="toggleRole('rol2', 2)"></div>
+                    </div>
+                    <label for="rol2">SIC - Sistema Información de Calidad</label>
+                </div>
+
+
+                <div class="form-group roles">
+                    <div class="switch">
+                        <input type="checkbox" id="rol3" name="rol3" [(ngModel)]="rolesSeleccionados['rol3']">
+                        <div class="slider round" (click)="toggleRole('rol3', 3)"></div>
+                    </div>
+                    <label for="rol3">SP - Seguridad del Paciente</label>
+                </div>
+
+
+                <div class="form-group roles">
+                    <div class="switch">
+                        <input type="checkbox" id="rol4" name="rol4" [(ngModel)]="rolesSeleccionados['rol4']">
+                        <div class="slider round" (click)="toggleRole('rol4', 4)"></div>
+                    </div>
+                    <label for="rol4">PAMEC</label>
+                </div>
+
+                <div class="form-group roles">
+                    <div class="switch">
+                        <input type="checkbox" id="rol5" name="rol5" [(ngModel)]="rolesSeleccionados['rol5']">
+                        <div class="slider round" (click)="toggleRole('rol5', 5)"></div>
+                    </div>
+                    <label for="rol5">RES - Resolución 3100</label>
+                </div>
+
+
+                <div class="form-group roles">
+                    <div class="switch">
+                        <input type="checkbox" id="rol6" name="rol6" [(ngModel)]="rolesSeleccionados['rol6']">
+                        <div class="slider round" (click)="toggleRole('rol6', 6)"></div>
+                    </div>
+                    <label for="rol6">Contador</label>
+                </div>
+
+                <div class="form-group roles">
+                    <div class="switch">
+                        <input type="checkbox" id="rol7" name="rol7" [(ngModel)]="rolesSeleccionados['rol7']">
+                        <div class="slider round" (click)="toggleRole('rol7', 7)"></div>
+                    </div>
+                    <label for="rol7">Coordinador</label>
+                </div>
+
+                <!--BOTON MODAL FIRMA-->
+                <div class="mt-4">
+                    <span class="button-like btn-span" (click)="openModal(modalTemplate)">Agregar Firma</span>
+                </div>
+
+                <hr>
+
+                <div class="form-group">
+                    <button class="btn btn-dark btn-block" type="submit">
+                        <i class='fa fa-user-plus'></i> Crear Cuenta
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

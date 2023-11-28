@@ -1,0 +1,39 @@
+<app-menu></app-menu>
+
+<div class="grid-container">
+    <button class="btn btn-light esp btn-circle btn-xl" routerLink="/criteriosic/estandar">
+        <i class="fa fa-reply fa-lg"></i>
+    </button>
+    <h1>AGREGAR CRITERIOS ESTANDAR - SISTEMA DE INFORMACION DE CALIDAD</h1>
+</div>
+
+
+
+<div class="container">
+    <div class="table-wrapper">
+
+        <form #f="ngForm" novalidate (ngSubmit)="onRegister()">
+            <div>
+                <h4>Criterio:</h4>
+            </div>
+            <div class="">
+                <textarea type="text" class="form-control" name="cri_nombre" id="cri_nombre" [(ngModel)]="crie_nombre"
+                required autocomplete="off"></textarea>
+            </div>
+            <div><hr></div>
+            <div class="form-group">
+                <button class="btn btn-dark btn-block col-sm-2" type="submit" [disabled]="!f.valid">
+                    <i class='fa fa-user-plus'></i> Crear Criterio
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- <div class="container" *ngIf="listaVacia">
+    <div class="p-3 mb-2 bg-dark text-white text-center">
+        <h2>{{ listaVacia }}</h2>
+    </div>
+</div> -->
+
+<app-footer></app-footer>

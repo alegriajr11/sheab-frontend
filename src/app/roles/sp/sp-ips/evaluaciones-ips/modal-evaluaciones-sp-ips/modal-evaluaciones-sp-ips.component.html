@@ -1,0 +1,102 @@
+<div class="container">
+	<div class="col-md-1 ml-auto">
+		<button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+			<span aria-hidden="true" class="visually-hidden">&times;</span>
+		</button>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row justify-content-between">
+		<div class="col-md-12">
+			<h4 class="modal-title pull-left text-center">{{nombre_prestador}}</h4>
+		</div>
+	</div>
+</div>
+
+<hr class="my-4">
+
+<div class="container">
+	<div class="row justify-content-between">
+		<div class="col-md-12 text-center">
+			<span>Verificador Responsable:</span>
+		</div>
+		<div class="col-md-12">
+			<h5 class="modal-title text-center underlined">{{nombre_funcionario}}</h5>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div>
+		<hr class="my-4">
+		<h2 class="display-4 text-center">DESCARGAR REPORTE</h2>
+		<hr class="my-4">
+
+
+		<div class="row">
+			<div [ngClass]="{'col-md-6': isAdmin, 'col-md-9': !isAdmin}">
+				<button class="btn btn-dark esp btn-circle btn-xl" title="Descargar Acta" (click)="generarPdfActa()">
+					<i class='fas fa-file-download fa-lg'></i>
+				</button>
+				<span class="tittle-button">ACTA</span>
+			</div>
+
+			<div class="col-md-3" *ngIf="estado_acta === '1'">
+				<button class="btn btn-dark esp btn-circle btn-xl" title="Editar Acta"
+					routerLink="/sp-ips/acta/editar/{{id_acta}}" (click)="modalRef.hide(); habilitarRutaEditar()">
+					<i class='fa fa-edit fa-lg'></i>
+				</button>
+			</div>
+
+			<div class="col-md-3" *ngIf="isAdmin && estado_acta === '1'">
+				<button class="btn btn-dark esp btn-circle btn-xl" (mouseover)="changeIcon()" title="Cerrar Acta"
+					(click)="cerrarActa()" (mouseout)="restoreIcon()">
+					<i [class]="iconClass"></i>
+				</button>
+			</div>
+
+			<div class="col-md-12">
+				<hr class="my-4">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-9 mx-auto">
+				<div class="text-center">
+					<span class="tittle-button">Evaluación:</span>
+				</div>
+
+				<select id="evips_id" name="evips_id" class="form-select form-control" style="margin-bottom: 10px;"
+					[(ngModel)]="eva_ips_id" ngDefaultControl (change)="capturarIdEvaluacion();">
+					<option disabled selected>Selecciona una Evaluación...</option>
+					<option *ngFor="let evaluacion of evaluacionesIps" [value]="evaluacion.evips_id">
+						{{ evaluacion.evips_nombre }}
+					</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row">
+			<!-- Segunda Columna -->
+			<div class="col-3 mx-auto">
+				<button id="boton-evaluacion-sic" class="btn btn-dark esp btn-circle btn-xl"
+					title="Descargar Evaluación" *ngIf="eva_ips_id" (click)="descargarEvaluacionIps()">
+					<i class='fas fa-file-download fa-lg'></i>
+				</button>
+			</div>
+
+			<div class="col-3 mx-auto" *ngIf="estado_acta === '1' && eva_ips_id">
+				<button class="btn btn-dark esp btn-circle btn-xl" title="Editar Evaluación"
+				routerLink="/sp/evaluacion-ips/editar" (click)="enviarIdEvaluacion(this.selectedEvaluacion); modalRef.hide();">
+					<i class='fa fa-edit fa-lg'></i>
+				</button>
+			</div>
+		</div>
+
+
+
+	</div>
+
+</div>

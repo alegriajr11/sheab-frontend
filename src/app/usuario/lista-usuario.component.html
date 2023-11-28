@@ -1,0 +1,82 @@
+<app-menu></app-menu>
+
+<div class="container" *ngIf="!listaVacia">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="">
+          <h2><b>Usuarios</b></h2>
+        </div>
+        <div class="">
+          <button class="btn btn-secondary" routerLink="/usuarios/nuevo" title="Nuevo Usuario">
+            <i class="material-icons">&#xE147;</i>
+            <span>Agregar Nuevo Usuario</span></button>
+
+          <button class="btn btn-secondary" title="Exportar Pdf" (click)="crearPDF()">
+            <i class="material-icons">&#xE24D;</i>
+            <span>Exportar a Pdf</span></button>
+
+          <button class="btn btn-secondary" title="Backup Base de Datos" (click)="downloadBackup()">
+            <i class="fas fa-database"></i>
+            <span>Backup</span></button>
+
+        </div>
+      </div>
+    </div>
+    <table class="table table-wrapper table-hover" id="usuarios">
+      <thead>
+        <tr>
+          <th scope="col">Cod</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col" style="text-align: center;">Usuario</th>
+          <th scope="col" style="text-align: center;">Rol</th>
+          <th scope="col" style="text-align: center;">Estado</th>
+          <th scope="col" style="text-align: center;">Fecha de Creación</th>
+          <th scope="col" *ngIf="isAdmin" style="text-align: center;">Editar</th>
+          <th scope="col" *ngIf="isAdmin" style="text-align: center;">Restablecer Contraseña</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let usuario of this.usuarios; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ usuario.usu_nombre }}</td>
+          <td>{{ usuario.usu_apellido }}</td>
+          <td class="usu" style="text-align: center;">{{ usuario.usu_nombreUsuario }}</td>
+          <!-- <td>Rol</td> -->
+          <td *ngFor="let rol of usuario.roles" style="display: block; text-align: center;">
+            <ng-container *ngIf="rol.rol_nombre === 'res'">RESOLUCIÓN 3100</ng-container>
+            <ng-container *ngIf="rol.rol_nombre !== 'res'">{{ rol.rol_nombre | uppercase }}</ng-container>
+          </td>
+
+          <td *ngIf="usuario.usu_estado == 'true'" style="text-align: center;"><span class="active">ACTIVO</span></td>
+          <td *ngIf="usuario.usu_estado == 'false'" style="text-align: center;"><span class="inactive">INACTIVO</span>
+          </td>
+          <td style="text-align: center;">{{usuario.usu_creado | date: 'dd/MM/yyyy' }}</td>
+          <td *ngIf="isAdmin" style="text-align: center;">
+            <button class="btn btn-outline-warning" [routerLink]="['/usuarios/editar']"
+              [queryParams]="{ id: usuario.usu_id }">
+              <i class="far fa-edit"></i>
+            </button>
+          </td>
+          <td *ngIf="isAdmin" style="text-align: center;">
+            <button class="btn btn-outline-primary" [routerLink]="['/usuarios/restablecer']"
+              [queryParams]="{ id: usuario.usu_id }"
+              (click)="restablecer(usuario.usu_id, usuario.usu_nombre, usuario.usu_apellido)">
+              <i class='fa fa-key'></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="container" *ngIf="listaVacia">
+  <div class="p-3 mb-2 bg-dark text-white text-center">
+    <h2>{{ listaVacia }}</h2>
+  </div>
+</div>
+
+<app-footer></app-footer>

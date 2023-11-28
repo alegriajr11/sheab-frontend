@@ -1,0 +1,10 @@
+span {
+    color: black;
+    font-weight: bold;
+}
+
+textarea {
+    resize: none;
+    height: 6em;
+    width: 410px;
+}

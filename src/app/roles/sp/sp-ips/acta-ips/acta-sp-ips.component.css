@@ -1,0 +1,311 @@
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    color: black;
+}
+
+h3 {
+    color: black;
+}
+
+.sizeh3 {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 0.19rem;
+    margin-bottom: 0.19rem;
+}
+
+label {
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+}
+
+hr.up {
+    border: 0.13rem solid;
+}
+
+hr.medio {
+    border: 0.02rem solid;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.col-12 {
+    margin-top: 0.06rem;
+    margin-bottom: 1rem;
+}
+
+.col-md-6 {
+    margin-bottom: 1rem;
+}
+
+/* Personaliza el diseño para invertir la posición del input y el label */
+.col-md-6 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    margin-bottom: 20px;
+    /* Espacio entre los pares de columnas */
+}
+
+/*LINEA DIVISORA HORIZONTAL*/
+.with-divider-horizontal {
+    border-bottom: 1px solid #ccc; /* Línea divisoria horizontal debajo de cada par de columnas */
+}
+
+.switch {
+    margin-bottom: 10px;
+    /* Espacio entre el input y el label */
+}
+
+/*ESTILOS CARGAR IMAGEN REPS*/
+/* Cambiar el texto "Browse" */
+
+/* Estilo para el contenedor del input personalizado */
+.custom-file-label {
+    display: inline-block;
+    background-color: #3d4347;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/* Cambiar el texto "Browse" */
+.custom-file-label::after {
+    content: "Seleccionar archivo";
+}
+
+.disabled-span {
+    pointer-events: none;
+    opacity: 0.6; /* Opcional: Cambiar la opacidad para indicar deshabilitado */
+    /* Otros estilos de deshabilitado que desees agregar */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, auto) minmax(0, auto);
+    grid-template-rows: minmax(0, auto);
+    grid-gap: 0 1rem;
+}
+
+.grid-form {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(6, 1fr);
+    align-content: center;
+}
+
+/*Contenedor*/
+.contenedor {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.bg-h3 {
+    background-color: #e5e5e8;
+}
+
+.contenedor-grid {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    column-gap: 2rem;
+}
+
+.contenedor-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #4e4e4e;
+}
+
+
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+textarea {
+    resize: none;
+}
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.btn-dark:hover {
+    transform: scale(1.3);
+    transition-duration: 0.2s;
+}
+
+
+/*BOTON FIRMA*/
+.button-like {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #343a40;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-like:hover {
+    background-color: #3d4347;
+}
+
+.btn-span:hover {
+    transform: scale(1.1);
+    transition-duration: 0.2s;
+}
+
+/*LISTA ORDEN DEL DÍA*/
+.elemento-lista {
+    margin-bottom: 10px;
+    /* padding-bottom: 10px; */
+}
+
+/* Estilos para el textarea de descripción */
+.descripcion-textarea {
+    width: 100%;
+    /* Ancho del 100% para ocupar todo el contenedor */
+    height: 200px;
+    /* Altura deseada, ajusta según tus necesidades */
+    padding: 10px;
+    /* Relleno interno para espacio adicional dentro del textarea */
+    font-size: 16px;
+    /* Tamaño de fuente */
+    border: 1px solid #ccc;
+    /* Borde */
+    border-radius: 5px;
+    /* Borde redondeado */
+    resize: none;
+    /* Permitir redimensionar verticalmente */
+}
+
+
+
+/*CONTROLAR MENSAJE DE VALIDACIÓN*/
+.validation-message {
+    position: absolute;
+    background-color: #f85448;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin-left: 14px;
+    font-size: 14px;
+    top: -25px;
+    left: 0;
+    z-index: 1;
+}
+
+.validation-message-visita {
+    position: absolute;
+    background-color: #f85448;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    top: 107px;
+    left: 160px;
+    z-index: 1;
+}
+
+.validation-message-barrio {
+    position: absolute;
+    background-color: #f85448;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin-left: 14px;
+    font-size: 14px;
+    top: 2px;
+    left: 62px;
+    z-index: 1;
+}
+
+.validation-message-ovpc {
+    position: absolute;
+    background-color: #f85448;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin-left: 14px;
+    font-size: 14px;
+    top: -3px;
+    left: 154px;
+    z-index: 1;
+}
+
+/*MEDIA QUERIES*/
+@media (max-width: 1040px) {
+    .validation-message-visita {
+        top: 144px; /* Cambio de estilo cuando la pantalla es menor o igual a 1040px */
+    }
+}

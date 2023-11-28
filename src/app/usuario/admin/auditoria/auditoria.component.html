@@ -1,0 +1,113 @@
+<app-menu></app-menu>
+
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+            <h1 class="text-center">AUDITORIA - CONTROL DE REGISTROS</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper">
+
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h2><b>ACCIONES REALIZADAS</b></h2>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-secondary" title="Exportar Excel">
+                            <i class='fa fa-file-excel-o'></i>
+                            <span class="id-excel">Exportar Excel</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <label class="label" for="">Fecha Inicio:</label>
+                    <input type="date" class="form-control" id="fecha-auditoria-inicio" pattern="dd/MM/yyyy"
+                        name="fecha-auditoria-inicio" [(ngModel)]="fechaInicio"
+                        ngDefaultControl (change)="habilitarFechaFinal()" (change)="limpiarFechaFinal()" [max]="obtenerFechaActual()"
+                        (change)="actualizarFechaMinima()">
+                </div>
+
+                <div class="col-md-3">
+                    <label class="label" for="">Fecha Final:</label>
+                    <input type="date" class="form-control" id="fecha-auditoria-final" pattern="dd/MM/yyyy"
+                        name="fecha-auditoria-final" [(ngModel)]="fechaFin"
+                        ngDefaultControl [disabled]="!habilitarfechaFin" (change)="cargarAuditorias()" [min]="fechaInicio" [max]="obtenerFechaActual()">
+                </div>
+                
+                <div class="col-md-3">
+                    <label class="label" for="">Acción Realizada:</label>
+                    <select id="objVisita" class="form-select form-control" [(ngModel)]="accion" [ngModelOptions]="{standalone: true}" 
+                    ngDefaultControl (change)="cargarAuditorias()">
+                        <option hidden disabled selected>Acción...</option>
+                        <option value=""></option>
+                        <option value="Inicio de Sesión">Inicio de Sesión</option>
+                        <option value="Creación">Creación</option>
+                        <option value="Calificacion Sp Independientes">Calificacion Sp Independientes</option>
+                        <option value="Cumplimiento Sic">Cumplimiento Sic</option>
+                        <option value="Eliminación">Eliminación</option>
+                        <option value="Actualización">Actualización</option>
+                        <option value="Cierre">Cierre</option>
+                    </select>
+                </div>
+
+
+                <div class="col-md-3">
+                    <label class="label" for="">Nombre Funcionario:</label>
+                    <input type="text" class="form-control" [(ngModel)]="nombre_usuario" placeholder="Ingresa Nombre y Apellido..." (input)="cargarAuditoriaUsuario()">
+                </div>
+            </div>
+
+
+
+            <table class="table table-wrapper text-center table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="1">N°</th>
+                        <th scope="col" colspan="1" class="funcionario-cell">FUNCIONARIO</th>
+                        <th scope="col" colspan="1">FECHA ACCIÓN</th>
+                        <th scope="col" colspan="1" >ACCIÓN</th>
+                        <th scope="col" colspan="2">DETALLES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let auditoria of this.auditoria | paginate: { itemsPerPage: 10, currentPage: page}; let i = index" >
+                        <td style="text-align: center;">{{calcularIDGlobal(i, page, 10)}}</td>
+                        <td style="text-align: center;">{{auditoria.usu_nombre + ' ' + auditoria.usu_apellido}}</td>
+                        <td style="text-align: center;">{{auditoria.creadoEn | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                        <td style="text-align: center;">{{auditoria.accion}}</td>
+                        <td>{{auditoria.detalles}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="container" *ngIf="listaVacia">
+                <div class="p-3 mb-2 bg-dark text-white text-center">
+                    <h2>{{ listaVacia }}</h2>
+                </div>
+            </div>
+
+            <pagination-controls
+            (pageChange) ="page =$event"
+            previousLabel="Anterior"
+            nextLabel="Siguiente">
+            </pagination-controls>
+        </div>
+    </div>
+
+
+
+    <app-footer></app-footer>

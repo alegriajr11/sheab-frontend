@@ -1,0 +1,101 @@
+<app-menu></app-menu>
+<div class="col">
+    <div class="row">
+        <div class="col-md-1">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso/lista-verificacion">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-10">
+            <h1>Resolución 3100 de 2019 - Servicios Verificados y Capacidad Instalada</h1>
+        </div>
+    </div>
+    <div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5><b>Prestador:</b></h5>
+                    <span>{{nombre_prestador}}</span>
+                </div>
+                <div class="col-sm-6">
+                    <h5><b>Municipio:</b></h5>
+                    <span>{{nombre_municipio}}</span>
+                </div>
+
+                <div class="col-sm-12" style="padding-top: 2rem;">
+                    <h2><b>1. Servicios Verificados:</b></h2>
+                    <span id="eta_nombre"></span>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-wrapper table-hover">
+            <thead>
+                <th>No.</th>
+                <th>CODIGO</th>
+                <th>GRUPO</th>
+                <th>NOMBRE DE SERVICIO</th>
+                <th>MODALIDAD</th>
+                <th>COMPLEJIDAD</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let servicios of servicios_verificados; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{servicios.ser_codigo}}</td>
+                    <td>{{servicios.grup_evaluacion.nombre}}</td>
+                    <td>{{servicios.ser_nombre}}</td>
+                    <!-- DETERMINAR LA MODALIDAD -->
+                    <td>
+                        {{
+                        separarConComas(servicios.ambulatorio === 'SI' ? 'AMBULATORIO' : '') +
+                        separarConComas(servicios.hospitalario === 'SI' ? 'HOSPITALARIO' : '') +
+                        separarConComas(servicios.unidad_movil === 'SI' ? 'UNIDAD MOVIL' : '') +
+                        separarConComas(servicios.domiciliario === 'SI' ? 'DOMICILIARIO' : '') +
+                        separarConComas(servicios.otras_extramural === 'SI' ? 'EXTRAMURAL' : '') +
+                        separarConComas(servicios.centro_referencia === 'SI' ? 'CENTRO DE REFERENCIA' : '') +
+                        separarConComas(servicios.institucion_remisora === 'SI' ? 'INSTITUCIÓN REMISORA' : '')
+                        }}
+                    </td>
+
+                    <!-- DETERMINAR SI LA MODALIDAD SE ENCUNTRA SIN ESPECIFICAR -->
+                    <td *ngIf="servicios.ambulatorio === 'SD' && servicios.hospitalario === 'SD' 
+                        && servicios.unidad_movil === 'SD' && servicios.domiciliario === 'SD' && servicios.otras_extramural === 'SD'
+                        && servicios.centro_referencia === 'SD' && servicios.institucion_remisora === 'SD'">SIN
+                        ESPECIFICAR
+                    </td>
+
+                    <!-- DETERMINAR SI LA COMPLEJIDAD ES SI -->
+                    <td style="text-align: center;" *ngIf="servicios.complejidad_baja === 'SI'">BAJA</td>
+                    <td style="text-align: center;" *ngIf="servicios.complejidad_media === 'SI'">MEDIA</td>
+                    <td style="text-align: center;" *ngIf="servicios.complejidad_alta === 'SI'">ALTA</td>
+                    <!-- DETERMINAR SI LA COMPLEJIDAD ES SD - SIN DETERMINAR -->
+                    <td *ngIf="servicios.complejidad_baja === 'SD' && servicios.complejidad_media === 'SD' 
+                        && servicios.complejidad_alta === 'SD'">
+                        SIN ESPECIFICAR</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="table-title">
+            <div class="col-sm-12">
+                <h2><b>2. Capacidad Instalada:</b></h2>
+                <span id="eta_nombre"></span>
+            </div>
+        </div>
+
+
+        <hr>
+
+
+    </div>
+</div>
+
+
+<app-footer></app-footer>

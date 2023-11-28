@@ -1,0 +1,83 @@
+<app-menu></app-menu>
+
+
+    <div class="grid-container">
+        <button class="btn btn-light esp btn-circle btn-xl" routerLink="/criterioips">
+            <i class="fa fa-reply fa-lg"></i>
+        </button>
+        <h1>AGREGAR CRITERIOS - SEGURIDAD DEL PACIENTE - IPS</h1>
+    </div>
+
+
+<div class="container_head">
+    <div class="col">
+        <label for="">Evaluación:</label>
+        <select class="form-control" name="" id="">
+            <option hidden value="">Evaluación...</option>
+            <option value="">EVALUACION DE HERRAMIENTAS PARA LA IDENTIFICACIÓN Y GESTIÓN DE EVENTOS ADVERSO</option>
+            <option value="">MONITORIZACIÓN DE ASPECTOS RELACIONADOS CON LA SEGURIDAD DEL PACIENTE</option>
+            <option value="">DETECCIÓN, PREVENCIÓN Y CONTROL DE INFECCIONES ASOCIADAS AL CUIDADO</option>
+            <option value="">USO SEGURO DE  MEDICAMENTOS</option>
+            <option value="">ASEGURAR LA CORRECTA IDENTIFICACIÓN DE PACIENTES</option>
+            <option value="">GARANTIZAR LA ATENCIÓN SEGURA DE LA MADRE Y EL RECIEN NACIDO</option>
+            <option value="">MEJORAR LA SEGURIDAD EN LOS PROCEDIMIENTOS QUIRURGICOS</option>
+            <option value="">PREVENCIÓN DE ULCERAS POR PRESIÓN</option>
+            <option value="">PROCESOS PARA LA PREVENCIÓN Y REDUCCIÓN DE LA FRECUENCIA DE CAÍDA</option>
+        </select>
+    </div>
+
+    <div class="col">
+        <label for="">Item:</label>
+        <select class="form-control" name="" id="">
+            <option hidden value="">Item...</option>
+            <option value="">PLANEACIÓN</option>
+            <option value="">IMPLEMENTACIÓN</option>
+            <option value="">VERIFICACIÓN</option>
+            <option value="">AJUSTE</option>
+        </select>
+    </div>
+
+</div>
+
+
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5><b>Evaluación:</b></h5>
+                    <span></span>
+                </div>
+                <div class="col-sm-9">
+                    <h5><b>Item:</b></h5>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <form #f="ngForm" novalidate (ngSubmit)="onRegister()">
+            <div>
+                <h4>Criterio:</h4>
+            </div>
+            <div class="">
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <hr>
+            <div class="form-group">
+                <button class="btn btn-dark btn-block col-sm-2" type="submit" [disabled]="!f.valid">
+                    <i class='fa fa-user-plus'></i> Crear Criterio
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!-- <div class="container" *ngIf="listaVacia">
+    <div class="p-3 mb-2 bg-dark text-white text-center">
+        <h2>{{ listaVacia }}</h2>
+    </div>
+</div> -->
+
+<app-footer></app-footer>
+

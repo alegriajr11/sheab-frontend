@@ -1,0 +1,76 @@
+<app-menu></app-menu>
+
+
+    <div class="grid-container">
+        <button class="btn btn-light esp btn-circle btn-xl" routerLink="/criterioind">
+            <i class="fa fa-reply fa-lg"></i>
+        </button>
+        <h1>AGREGAR CRITERIOS - SEGURIDAD DEL PACIENTE - PROFESIONALES INDEPENDIENTES</h1>
+    </div>
+    <div class="text-center">
+        <h5>Selecciona el item para agregar el criterio</h5>
+    </div>
+
+
+    
+
+
+    <div class="container_head">
+        <div class="col-md-6">
+            <label for="">Item:</label>
+            <select class="form-control" name="etapa_id" id="etapa_id" (click)="llenarSpan()">
+                <option hidden selected value="">Selecciona el Item...</option>
+                <option *ngFor="let etapa of etapas" value="{{etapa.eta_id}}">{{etapa.eta_nombre}}</option>
+            </select>
+        </div>
+    </div>
+    
+
+
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-9">
+                    <h5><b>Item:</b></h5>
+                    <span id="eta_nombre"></span>
+                </div>
+            </div>
+        </div>
+        <form #f="ngForm" novalidate (ngSubmit)="onRegister()">
+            <div>
+                <h4>CRITERIO:</h4>
+            </div>
+            <div class="">
+                <textarea type="text" class="form-control" name="cri_nombre" id="cri_nombre" [(ngModel)]="cri_nombre"
+                required autocomplete="off"></textarea>
+            </div>
+
+            <div>
+                <h4>VERIFICACIÓN:</h4>
+            </div>
+            <div class="">
+                <textarea type="text" class="form-control" name="cri_nombre" id="cri_nombre" [(ngModel)]="cri_verificacion"
+                required autocomplete="off"></textarea>
+            </div>
+            <hr>
+            <div class="form-group">
+                <button class="btn btn-dark btn-block" type="submit" [disabled]="!f.valid">
+                    <i class='fa fa-plus-square'></i> Crear Criterio
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!-- <div class="container" *ngIf="listaVacia">
+    <div class="p-3 mb-2 bg-dark text-white text-center">
+        <h2>{{ listaVacia }}</h2>
+    </div>
+</div> -->
+
+<app-footer></app-footer>
+
+

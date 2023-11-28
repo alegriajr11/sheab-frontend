@@ -1,0 +1,109 @@
+<app-menu></app-menu>
+<div class="grid-container">
+    <button class="btn btn-light esp btn-circle btn-xl" routerLink="/prestadores">
+        <i class="fa fa-reply fa-lg"></i>
+    </button>
+    <div class="card">
+        <div class="card-body">
+            <div class="container bg-h3">
+                <h2 class="card-title text-center">NUEVO PRESTADOR</h2>
+            </div>
+
+            <form #f="ngForm" novalidate (ngSubmit)="onRegister()">
+                <div class="form-group">
+                    <label for="habilitacion">Código de Habilitación:</label>
+                    <input type="text" class="form-control" name="pre_cod_habilitacion" id="pre_cod_habilitacion" autocomplete="off" required
+                        [(ngModel)]="pre_cod_habilitacion">
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" name="pre_nombre" id="pre_nombre" autocomplete="off" required
+                        [(ngModel)]="pre_nombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="nit">Nit:</label>
+                    <input type="text" class="form-control" name="pre_nit" id="pre_nit" autocomplete="off" required
+                        required [(ngModel)]="pre_nit">
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" class="form-control" name="pre_direccion" id="pre_direccion" autocomplete="off" required
+                        [(ngModel)]="pre_direccion">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Telefonos:</label>
+                    <input type="text" class="form-control" name="pre_telefono" id="pre_telefono" autocomplete="off" required
+                        [(ngModel)]="pre_telefono">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" name="pre_email" id="pre_email" autocomplete="off" required
+                        [(ngModel)]="pre_email">
+                </div>
+
+                <div class="form-group">
+                    <label for="habilitado" class="form-label">Habilitado:</label>
+                    <select class="form-select form-control" [(ngModel)]="pre_habilitado" [ngModelOptions]="{standalone: true}" ngDefaultControl required>
+                        <option value="" disabled selected>Habilitado...</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="habilitado" class="form-label">Clasificación:</label>
+                    <select class="form-select form-control" [(ngModel)]="pre_clasificacion_id" [ngModelOptions]="{standalone: true}" ngDefaultControl required>
+                        <option value="" disabled selected>Clasificacion...</option>
+                        <option *ngFor="let clasificacion of clasificacion" value="{{clasificacion.cla_id}}">{{clasificacion.cla_nombre}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="representante">Representante:</label>
+                    <input type="text" class="form-control" name="pre_representante" id="pre_representante" autocomplete="off"
+                        [(ngModel)]="pre_representante">
+                </div>
+
+                <div class="form-group">
+                    <label for="habilitado" class="form-label">Clase:</label>
+                    <select class="form-select form-control" [(ngModel)]="pre_clase_id" [ngModelOptions]="{standalone: true}" ngDefaultControl required>
+                        <option value="" disabled selected>Clase...</option>
+                        <option *ngFor="let clase of clase" value="{{clase.clas_id}}">{{clase.clas_nombre}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="habilitado" class="form-label">Tipo:</label>
+                    <select class="form-select form-control" [(ngModel)]="pre_tipo_id" [ngModelOptions]="{standalone: true}" ngDefaultControl required>
+                        <option value="" disabled selected>Tipo...</option>
+                        <option *ngFor="let tipo of tipo" value="{{tipo.tip_id}}" >{{tipo.tip_nombre}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="habilitado" class="form-label">Municipio:</label>
+                    <select class="form-select form-control" [(ngModel)]="pre_municipio_id" [ngModelOptions]="{standalone: true}" ngDefaultControl required>
+                        <option selected disabled>Municipio...</option>
+                        <option *ngFor="let municipio of municipio" value="{{municipio.mun_id}}">{{municipio.mun_nombre}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-dark btn-block" type="submit" [disabled]="!f.valid">
+                        <i class='fa fa-user-plus'></i> Crear Prestador
+                    </button>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+

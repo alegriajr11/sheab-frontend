@@ -1,0 +1,38 @@
+h2 {
+    font-weight: bold;
+}
+
+h4 {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+span{
+    font-weight: bold;
+}
+
+/*NOMBRE FUNCIONARIO SUBRAYADO*/
+.underlined {
+    text-decoration: underline;
+}
+
+
+.btn-dark:hover {
+    transform: scale(1.1);
+    transition-duration: 0.2s;
+    background-color: rgb(87, 86, 86);
+    border-color: rgb(87, 86, 86);
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    /* Centrar horizontalmente */
+    align-items: center;
+    /* Centrar verticalmente */
+}
+
+.tittle-button {
+    font-size: xx-large;
+}

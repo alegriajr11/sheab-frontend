@@ -1,0 +1,156 @@
+<app-menu></app-menu>
+
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" (click)="volver()">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+
+            <h2 class="text-center">PROGRAMA DE SEGURIDAD DEL PACIENTE
+                ACTA DE VERIFICACIÓN Y SEGUIMIENTO
+            </h2>
+        </div>
+    </div>
+</div>
+<div class="t2 text-center">
+    <span class="text-center" style="text-decoration: underline;">{{numero_evaluacion}}. {{nombre_evaluacion}}</span>
+</div>
+
+<ng-template #modalTemplate>
+    <app-modal-editar-calificacion-sp-ips [dataFromParent]="modalRef"></app-modal-editar-calificacion-sp-ips>
+</ng-template>
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h5><b>Prestador:</b></h5>
+                    <span>{{nombrePrestador}}</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="table-title-sub">
+            <span class="title-item">AJUSTE</span>
+        </div>
+
+        <table class="table table-wrapper table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Cod</th>
+                    <th scope="col">Criterio</th>
+                    <th scope="col">Calificacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let criterio_ajuste of criteriosAjuste; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{criterio_ajuste.cri_aju_nombre}}</td>
+                    <td>
+                        <button class="btn" [ngClass]="getClassForCriterio(criterio_ajuste, 'ajuste')"
+                            (click)="openModal(modalTemplate, criterio_ajuste.cri_aju_id, id_evaluacion_ips, 'ajuste', id_acta)">
+                            <i class="fa fa-check"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        
+
+        <div class="table-title-sub">
+            <span class="title-item">IMPLEMENTACIÓN</span>
+        </div>
+
+        <table class="table table-wrapper table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Cod</th>
+                    <th scope="col">Criterio</th>
+                    <th scope="col">Calificacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let criterio_implementacion of criteriosImplementacion; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{criterio_implementacion.cri_imp_nombre}}</td>
+                    <td>
+                        <button class="btn" [ngClass]="getClassForCriterio(criterio_implementacion, 'implementacion')"
+                            (click)="openModal(modalTemplate, criterio_implementacion.cri_imp_id, id_evaluacion_ips, 'implementacion', id_acta)">
+                            <i class="fa fa-check"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <div class="table-title-sub">
+            <span class="title-item">PLANEACIÓN</span>
+        </div>
+
+        <table class="table table-wrapper table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Cod</th>
+                    <th scope="col">Criterio</th>
+                    <th scope="col">Calificacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let criterio_planeacion of criteriosPlaneacion; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{criterio_planeacion.cri_pla_nombre}}</td>
+                    <td>
+                        <button class="btn" [ngClass]="getClassForCriterio(criterio_planeacion, 'planeacion')"
+                            (click)="openModal(modalTemplate, criterio_planeacion.cri_pla_id, this.id_evaluacion_ips, 'planeacion', id_acta)">
+                            <i class="fa fa-check"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <div class="table-title-sub">
+            <span class="title-item">VERIFICACIÓN</span>
+        </div>
+
+        <table class="table table-wrapper table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Cod</th>
+                    <th scope="col">Criterio</th>
+                    <th scope="col">Calificacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let criterio_verificacion of criteriosVerificacion; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{criterio_verificacion.cri_ver_nombre}}</td>
+                    <td>
+                        <button class="btn" [ngClass]="getClassForCriterio(criterio_verificacion, 'verificacion')"
+                            (click)="openModal(modalTemplate, criterio_verificacion.cri_ver_id, id_evaluacion_ips, 'verificacion', id_acta)">
+                            <i class="fa fa-check"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <button id="boton-acta-sp-ips" class="btn btn-dark esp btn-circle btn-xl" title="Guardar" type="submit">
+            <i class='fa fa-file'></i>
+        </button>
+
+    </div>
+</div>
+
+<app-footer></app-footer>

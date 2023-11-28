@@ -1,0 +1,56 @@
+<app-menu></app-menu>
+<div class="col">
+    <div class="row">
+        <div class="col-md-1">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso/lista-verificacion">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-10">
+            <h1>CONCLUSIONES Y RECOMENDACIONES</h1>
+        </div>
+    </div>
+    <div>
+    </div>
+
+</div>
+
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5>{{nombre_prestador}}</h5>
+            <hr>
+            <form novalidate class="row g-3" name="ps" id="form">
+                <div class="col-md-12">
+                    <span for="">Conclusiones:</span>
+                </div>
+                <div class="col-md-12">
+                    <textarea type="text" class="form-control non-resizable-textarea" name="cal_observaciones" #calObservaciones
+                        required autocomplete="off"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+
+                <div class="col-md-12">
+                    <span for="">Recomendaciones:</span>
+                </div>
+                <div class="col-md-12">
+                    <textarea type="text" class="form-control non-resizable-textarea" name="cal_observaciones" #calObservaciones
+                        required autocomplete="off"></textarea>
+                </div>
+
+                <div class="col-12">
+                    <button id="" class="btn btn-dark esp btn-circle btn-xl" title="Guardar" type="submit">
+                        <i class='fa fa-save fa-lg'></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

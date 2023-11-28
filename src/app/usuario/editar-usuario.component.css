@@ -1,0 +1,189 @@
+/* Estilos para encabezados h1 */
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+}
+
+/* Estilos para encabezados h2 */
+h2 {
+    color: black;
+    font-weight: bold;
+}
+
+/* Estilos para encabezados h3 */
+h3 {
+    color: black;
+}
+
+/* Estilos para encabezados h3 con clase .sizeh3 */
+.sizeh3 {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 0.19rem;
+    margin-bottom: 0.19rem;
+}
+
+/* Estilos para etiquetas label */
+label {
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+}
+
+/* Estilos para líneas horizontales con clase .up */
+hr.up {
+    border: 0.13rem solid;
+}
+
+/* Estilos para líneas horizontales con clase .medio */
+hr.medio {
+    border: 0.02rem solid;
+}
+
+/* Estilos para un contenedor con clase .wrapper */
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 12fr;
+    align-content: center;
+    justify-content: center;
+}
+
+/* Estilos para columnas con clase .col-12 */
+.col-12 {
+    margin-top: 0.06rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilos para columnas medianas con clase .col-md-6 */
+.col-md-6 {
+    margin-bottom: 1rem;
+}
+
+/* Estilos para contenedor de rejilla con clase .grid-container */
+.grid-container {
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, auto) minmax(0, auto);
+    grid-template-rows: minmax(0, auto);
+    grid-gap: 0 1rem;
+}
+
+/* Estilos para contenedor de formulario de rejilla con clase .grid-form */
+.grid-form {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(6, 1fr);
+    align-content: center;
+}
+
+/* Estilos para un contenedor con clase .contenedor */
+.contenedor {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* Estilos para fondos de encabezados h3 con clase .bg-h3 */
+.bg-h3 {
+    background-color: #e5e5e8;
+}
+
+/* Estilos para un contenedor de rejilla con clase .contenedor-grid */
+.contenedor-grid {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    column-gap: 2rem;
+}
+
+/* Estilos para un contenedor de formulario con clase .contenedor-form */
+.contenedor-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para tarjetas con clase .card */
+.card {
+    width: 100%;
+}
+
+/* Estilos para un interruptor (slider) */
+/* El interruptor */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Ocultar el checkbox HTML predeterminado */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Estilo para el slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+/* Estilo para el punto deslizante del slider */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+/* Estilo para el slider cuando está activado */
+input:checked + .slider {
+    background-color: #4e4e4e;
+}
+
+/* Estilo para el punto deslizante cuando el slider está activado */
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Estilos para sliders redondos */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Media queries para estilos responsivos */
+/* Estilos para pantallas grandes */
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 4rem;
+    }
+}
+
+/* Estilos para pantallas medianas */
+@media (max-width: 1199px) and (min-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 767px) {
+    h1 {
+        font-size: 2rem;
+    }
+}

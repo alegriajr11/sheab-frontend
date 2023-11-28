@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">CALIFICACIÓN</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+</div>
+
+
+<form #f="ngForm" novalidate (ngSubmit)="onRegister()">
+    <div class="modal-body">
+        <div class="col">
+            <div class="col-md-2">
+                <span for="">Calificación</span>
+            </div>
+            <div class="col-md-12">
+                <select class="form-select form-control" [(ngModel)]="cal_nota" [ngModelOptions]="{ standalone: true }"
+                    ngDefaultControl>
+                    <option value="" disabled selected>Selecciona..</option>
+                    <option [value]="5">5</option>
+                    <option [value]="3">3</option>
+                    <option [value]="1">1</option>
+                </select>
+            </div>
+            <hr />
+            <div class="col-md-2">
+                <span for="">Observaciones</span>
+            </div>
+            <div class="col-md-12">
+                <textarea type="text" class="form-control" name="cal_observaciones" id="cal_observaciones"
+                    [(ngModel)]="cal_observaciones" required autocomplete="off"></textarea>
+            </div>
+            <div>
+                <span id="cod-pres"></span>
+            </div>
+            <hr />
+            <div class="col-md-12">
+                <button class="btn btn-dark btn-block col-md-5" type="submit">
+                    <i class="fa fa-save"></i> Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

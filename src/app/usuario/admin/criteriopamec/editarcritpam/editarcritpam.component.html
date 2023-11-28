@@ -1,0 +1,45 @@
+<app-menu></app-menu>
+
+<div class="grid-container">
+    <button class="btn btn-light esp btn-circle btn-xl" routerLink="/criteriopam">
+        <i class="fa fa-reply fa-lg"></i>
+    </button>
+    <div class="card">
+        <div class="card-body">
+            <div class="container bg-h3">
+                <h2 class="card-title text-center">EDITAR CRITERIO PAMEC</h2>
+            </div>
+
+            <div class="form-group">
+                <label id="label-actividad">{{labelActividad}}</label>
+                <span><strong id="actividad-nombre" style="color: white; background-color: #343a40; border-radius: 8px;"></strong></span>
+            </div>
+
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="nombre">CRITERIO:</label>
+                    <textarea type="text" class="form-control" name="cri_nombre" id="cri_nombre" [(ngModel)]="criterio.crip_nombre"
+                    required autocomplete="off"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">DESARROLLO ETAPA:</label>
+                    <textarea type="text" class="form-control" name="crip_desarrollo_etapas" id="crip_desarrollo_etapas" [(ngModel)]="criterio.crip_desarrollo_etapas"
+                    required autocomplete="off"></textarea>
+                </div>
+                <hr>
+
+                <div class="form-group">
+                    <button class="btn btn-dark btn-block" type="submit" [disabled]="!f.valid">
+                        <i class="fa fa-refresh" aria-hidden="true"></i> Actualizar
+                    </button>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+

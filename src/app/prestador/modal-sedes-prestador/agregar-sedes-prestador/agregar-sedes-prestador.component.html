@@ -1,0 +1,106 @@
+<app-menu></app-menu>
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/prestadores">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+
+            <h1 class="text-center">AGREGAR SEDE - PRESTADOR</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+			<form #f="ngForm" novalidate (ngSubmit)="onRegister()">
+				<div class="form-group">
+					<label for="habilitado" class="form-label">Municipio:</label>
+					<select class="form-select form-control" [(ngModel)]="municipio_id" (change)="cargarPrestadoresByMun()"
+						[ngModelOptions]="{standalone: true}" ngDefaultControl required>
+						<option value="" selected disabled>Selecciona un Municipio:</option>
+						<option *ngFor="let municipio of municipio" value="{{municipio.mun_id}}">
+							{{municipio.mun_nombre}}</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="inputAddress" class="form-label">Prestador:</label>
+					<select id="prestador" name="prestador" class="form-select form-control"
+						[(ngModel)]="prestador_id" ngDefaultControl (change)="sedeSeleccionada()">
+						<option value="" selected disabled>Selecciona un Prestador:</option>
+						<option *ngFor="let prest of prestadores" [value]="prest.pre_cod_habilitacion">
+							{{ prest.pre_nombre }}
+						</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="habilitacion">Número de Sede:</label>
+					<input type="text" class="form-control" name="sede_numero" id="sede_numero" autocomplete="off"
+						required [(ngModel)]="sede_numero">
+				</div>
+
+				<div class="form-group">
+					<label for="habilitacion">Nombre de Sede:</label>
+					<input type="text" class="form-control" name="sede_nombre" id="sede_nombre" autocomplete="off"
+						required [(ngModel)]="sede_nombre">
+				</div>
+
+				<div class="form-group">
+					<label for="habilitacion">Gerente de la Sede:</label>
+					<input type="text" class="form-control" name="sede_gerente" id="sede_gerente" autocomplete="off"
+						required [(ngModel)]="sede_gerente">
+				</div>
+
+
+				<div class="form-group">
+					<label for="habilitacion">Número de Sede Principal:</label>
+					<input type="text" class="form-control" name="sede_numero_principal" id="sede_numero_principal"
+						autocomplete="off" required [(ngModel)]="sede_numero_principal">
+				</div>
+
+				<div class="form-group">
+					<label for="nit">Dirección de Sede:</label>
+					<input type="text" class="form-control" name="sede_direccion" id="sede_direccion" autocomplete="off"
+						required required [(ngModel)]="sede_direccion">
+				</div>
+
+				<div class="form-group">
+					<label for="direccion">Barrio de Sede:</label>
+					<input type="text" class="form-control" name="sede_barrio" id="sede_barrio" autocomplete="off"
+						required [(ngModel)]="sede_barrio">
+				</div>
+
+				<div class="form-group">
+					<label for="direccion">Telefono de Sede:</label>
+					<input type="text" class="form-control" name="sede_telefono" id="sede_telefono" autocomplete="off"
+						required [(ngModel)]="sede_telefono">
+				</div>
+
+				<div class="form-group">
+					<label for="direccion">Correo Electrónico de Sede:</label>
+					<input type="text" class="form-control" name="sede_email" id="sede_email" autocomplete="off"
+						required [(ngModel)]="sede_email">
+				</div>
+
+
+
+				<div class="form-group">
+					<button class="btn btn-dark btn-block" type="submit">
+						<i class='fa fa-user-plus'></i> Crear Sede
+					</button>
+
+				</div>
+			</form>
+
+        </div>
+    </div>
+</div>
+<!--Fin Div Container-->
+
+<app-footer></app-footer>

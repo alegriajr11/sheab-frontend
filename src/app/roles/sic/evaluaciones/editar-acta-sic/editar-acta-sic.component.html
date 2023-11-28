@@ -1,0 +1,239 @@
+<app-menu></app-menu>
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" (click)="volver()">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+
+            <h1 class="text-center">Sistema de Información para la Cálidad</h1>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalTemplate>
+    <app-modal-editar-firma-sic [dataFromParent]="modalRef"></app-modal-editar-firma-sic>
+</ng-template>
+
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">INDICADORES PARA EL MONITOREO DE LA CALIDAD/PRESTADORES DE SERVICIOS
+                ACTA DE VERIFICACION Y SEGUIMIENTO</h2>
+            <hr class="up">
+            <form novalidate class="row g-3" name="ps" (ngSubmit)="onUpdate()" id="form">
+                <div class="col-md-1">
+                    <label for="inputN_Acta" class="form-label text-center">N°ACTA</label>
+                    <input type="number" min="0" class="form-control" id="acta" readonly name="act_id"
+                        [(ngModel)]="actaSic.act_id">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="inicial" class="form-label">VISITA INICIAL</label>
+                    <label class="switch">
+                        <input type="checkbox" id="inicial" onclick="unsoloCheckbox()" name="act_visita_inicial"
+                            [(ngModel)]="actaSic.act_visita_inicial">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="segumiento" class="form-label">VISITA DE SEGUIMIENTO</label>
+                    <label class="switch">
+                        <input type="checkbox" id="segumiento" onclick="unsoloCheckbox()" name="act_visita_seguimiento"
+                            [(ngModel)]="actaSic.act_visita_seguimiento">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label">FECHA INICIAL</label>
+                    <input type="date" class="form-control" id="fecha-inicial" pattern="dd/MM/yyyy"
+                        name="act_fecha_inicial" [(ngModel)]="actaSic.act_fecha_inicial"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl (change)="habilitarFechaFinal()">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">FECHA FINAL</label>
+                    <input type="date" class="form-control" id="fecha-final" pattern="dd/MM/yyyy" name="act_fecha_final"
+                        [(ngModel)]="actaSic.act_fecha_final" [ngModelOptions]="{standalone: true}" ngDefaultControl
+                        [disabled]="!habilitarfechaFin" [min]="actaSic.act_fecha_inicial">
+                </div>
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3>INFORMACIÓN DEL PRESTADOR</h3>
+                </div>
+
+                <div class="col-12">
+                    <label for="mun_id" class="form-label">Municipio:</label>
+                    <input type="text" class="form-control" id="mun_id" placeholder="Municipio..." readonly
+                        name="mun_id" [(ngModel)]="actaSic.act_municipio">
+                </div>
+
+                <div class="col-12">
+                    <label for="mun_id" class="form-label">Prestador:</label>
+                    <input type="text" class="form-control" id="prestador" placeholder="Prestador..." readonly
+                        name="prestador" [(ngModel)]="actaSic.act_prestador">
+                </div>
+
+                <div class="col-6">
+                    <label for="nit" class="form-label">Nit:</label>
+                    <input type="text" class="form-control" id="nit" placeholder="Nit" readonly name="act_nit"
+                        [(ngModel)]="actaSic.act_nit">
+                </div>
+
+
+                <div class="col-6">
+                    <label for="direccion" class="form-label">Dirección:</label>
+                    <input type="text" class="form-control" id="act_direccion" placeholder="Dirección Prestador"
+                        readonly name="act_direccion" [(ngModel)]="actaSic.act_direccion">
+                </div>
+
+                <div class="col-6">
+                    <label for="barrio" class="form-label">Barrio:</label>
+                    <input type="text" class="form-control" id="barrio" name="act_barrio" placeholder="Barrio Prestador"
+                        required [(ngModel)]="actaSic.act_barrio">
+                </div>
+
+                <div class="col-6">
+                    <label for="telefono" class="form-label">Telefono:</label>
+                    <input type="tel" class="form-control" id="telefono" placeholder="Telefono" readonly
+                        name="act_telefono" [(ngModel)]="actaSic.act_telefono">
+                </div>
+
+                <div class="col-12">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="E-mail" readonly name="act_email"
+                        [(ngModel)]="actaSic.act_email">
+                </div>
+
+
+                <div class="col-12">
+                    <label for="sede_principal" class="form-label">Sede:</label>
+                    <input type="text" class="form-control" id="act_sede_principal" readonly name="act_sede_principal"
+                        [(ngModel)]="actaSic.act_sede_principal">
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="inputAddress2" class="form-label">Localidad:</label>
+                    <input type="text" class="form-control" id="localidad" name="act_sede_localidad"
+                        placeholder="Localidad" disabled [(ngModel)]="actaSic.act_sede_localidad">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputAddress2" class="form-label">Dirección:</label>
+                    <input type="text" class="form-control" id="dirubic" name="act_sede_direccion"
+                        placeholder="Dirección" disabled [(ngModel)]="actaSic.act_sede_direccion">
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Representante Legal:</label>
+                    <input type="text" class="form-control" id="repleg" placeholder="Representante Legal" readonly
+                        name="act_representante" [(ngModel)]="actaSic.act_representante">
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Código Prestador:</label>
+                    <input type="text" class="form-control" id="codpres" placeholder="Código Prestador" readonly
+                        name="act_cod_prestador" [(ngModel)]="actaSic.act_cod_prestador">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="codsede" class="form-label">Codigo Sede Visitada:</label>
+                    <input type="text" class="form-control" id="codsede" name="act_cod_sede"
+                        placeholder="Código sede visitada..." [(ngModel)]="actaSic.act_cod_sede" readonly>
+                </div>
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Objeto de la Visita:</label>
+                    <input type="text" class="form-control" id="objVisita" readonly name="objVisita"
+                        [(ngModel)]="actaSic.act_obj_visita">
+                </div>
+
+
+                <div class="col-12">
+                    <h3 class="text-center sizeh3">FIRMAS</h3>
+                </div>
+
+                <div class="col-12 bg-h3 contenedor-form">
+                    <h3 class="text-center sizeh3">POR SECRETARIA DE SALUD DEPARTAMENTAL</h3>
+                </div>
+
+
+                <div class="col-12" hidden>
+                    <label for="" class="form-label">ID Verificador SOGCS:</label>
+                    <input type="text" class="form-control" id="usu_id_secretaria" placeholder="Verificador SOGCS..."
+                        readonly name="usu_id_secretaria" [(ngModel)]="actaSic.act_id_funcionario">
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Verificador SOGCS:</label>
+                    <input type="text" class="form-control" id="usu_secretaria" placeholder="Verificador SOGCS..."
+                        readonly name="usu_secretaria" [(ngModel)]="actaSic.act_nombre_funcionario">
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control" id="cargoSecre" placeholder="Cargo Verificador..." readonly
+                        name="act_cargo_funcionario" [(ngModel)]="actaSic.act_cargo_funcionario">
+                </div>
+
+                <div class="col-3" style="margin-bottom: 20px;" *ngIf="!actaSic.act_firma_funcionario">
+                    <span class="button-like btn-span" (click)="obtenerFirmaFuncionario()">FIRMAR</span>
+                </div>
+
+                <div class="col-12 bg-h3 contenedor-form">
+                    <h3 class="text-center sizeh3">PRESTADOR DE SERVICIOS DE SALUD</h3>
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Prestador:</label>
+                    <input type="text" class="form-control" id="nombrePrestador" name="act_nombre_prestador"
+                        placeholder="Prestador..." [(ngModel)]="actaSic.act_nombre_prestador">
+                </div>
+
+
+                <div class="col-12">
+                    <label for="" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control" id="cargoPres" name="act_cargo_prestador"
+                        placeholder="Cargo..." [(ngModel)]="actaSic.act_cargo_prestador">
+                </div>
+
+
+                <!--BOTON MODAL FIRMA-->
+                <div class="col-3">
+                    <span class="button-like btn-span" *ngIf="noFirmaActa === 'false' && !firma && act_recibe_visita === 'true'" (click)="openModal(modalTemplate)">Firma Prestador</span>
+                </div>
+
+                <!--BOTON NO FIRMA-->
+                <div class="col-3">
+                    <span class="button-like btn-span" *ngIf="noFirmaActa === 'false' && !firma && act_recibe_visita === 'true'" (click)="noFirmaPrestador()">No
+                        Firma Prestador</span>
+                </div>
+
+                <div class="col-12">
+                    <button id="boton-acta-sic" class="btn btn-dark esp btn-circle btn-xl" title="Guardar"
+                        type="submit">
+                        <i class='fa fa-save fa-lg'></i>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--Fin Div Container-->
+
+<app-footer></app-footer>

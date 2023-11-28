@@ -1,0 +1,72 @@
+<app-menu></app-menu>
+
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/criteriopam">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+            <h1 class="text-center">AGREGAR CRITERIOS - PROGRAMA DE AUDITORIA PARA EL MEJORAMIENTO DE LA CALIDAD (PAMEC)</h1>
+        </div>
+    </div>
+</div>
+    <div class="text-center">
+        <h5>Selecciona la actividad para agregar el criterio</h5>
+    </div>
+
+
+
+<div class="container_head">
+    <div class="col-md-6">
+        <label for="">Actividad:</label>
+        <select class="form-control" name="act_id" id="act_id" (change)="llenarSpan()">
+            <option hidden selected value="">Selecciona la Actividad...</option>
+            <option *ngFor="let actividad of actividad" value="{{actividad.act_id}}">{{actividad.act_nombre}}</option>
+        </select>
+    </div>
+
+</div>
+
+
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h5><b>Actividad:</b></h5>
+                    <span id="act_nombre"></span>
+                </div>
+            </div>
+        </div>
+        <form #f="ngForm" novalidate (ngSubmit)="onRegister()">
+            <div>
+                <h4>Criterio:</h4>
+            </div>
+            <div class="">
+                <textarea type="text" class="form-control" name="cri_nombre" id="cri_nombre" [(ngModel)]="crip_nombre"
+                required autocomplete="off"></textarea>
+            </div>
+            <div>
+                <h4>Desarrollo Etapas:</h4>
+            </div>
+            <div class="">
+                <textarea type="text" class="form-control" name="crip_desarrollo_etapas" id="crip_desarrollo_etapas" [(ngModel)]="crip_desarrollo_etapas"
+                required autocomplete="off"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-dark btn-block" type="submit" [disabled]="!f.valid">
+                    <i class='fa fa-plus-square'></i> Crear Criterio
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<app-footer></app-footer>
+
+

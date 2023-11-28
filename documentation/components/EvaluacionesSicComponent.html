@@ -1,0 +1,1234 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  EvaluacionesSicComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-evaluaciones-sic</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./evaluaciones-sic.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./evaluaciones-sic.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#evaluaciones" >evaluaciones</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#fechaSeleccionada" >fechaSeleccionada</a>
+                            </li>
+                            <li>
+                                <a href="#listaVacia" >listaVacia</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modalRef" >modalRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#page" >page</a>
+                            </li>
+                            <li>
+                                <a href="#searchText" >searchText</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sharedService" >sharedService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cargarActas" >cargarActas</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#obtenerFecha" >obtenerFecha</a>
+                            </li>
+                            <li>
+                                <a href="#openModal" >openModal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(modalService: BsModalService, sharedService: <a href="../injectables/SharedServiceService.html" target="_self">SharedServiceService</a>, actapdfService: <a href="../injectables/ActapdfService.html" target="_self">ActapdfService</a>, tokenService: <a href="../injectables/TokenService.html" target="_self">TokenService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>modalService</td>
+                                                  
+                                                        <td>
+                                                                    <code>BsModalService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sharedService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SharedServiceService.html" target="_self" >SharedServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>actapdfService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ActapdfService.html" target="_self" >ActapdfService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>tokenService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TokenService.html" target="_self" >TokenService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarActas"></a>
+                    <span class="name">
+                        <span ><b>cargarActas</b></span>
+                        <a href="#cargarActas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarActas()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:41</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:37</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="obtenerFecha"></a>
+                    <span class="name">
+                        <span ><b>obtenerFecha</b></span>
+                        <a href="#obtenerFecha"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>obtenerFecha(fecha: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fecha</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openModal"></a>
+                    <span class="name">
+                        <span ><b>openModal</b></span>
+                        <a href="#openModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openModal(modalTemplate: TemplateRef<any>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>modalTemplate</td>
+                                    <td>
+                                            <code>TemplateRef&lt;any&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="evaluaciones"></a>
+                    <span class="name">
+                        <span ><b>evaluaciones</b></span>
+                        <a href="#evaluaciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fechaSeleccionada"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>fechaSeleccionada</b></span>
+                        <a href="#fechaSeleccionada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="listaVacia"></a>
+                    <span class="name">
+                        <span ><b>listaVacia</b></span>
+                        <a href="#listaVacia"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>undefined</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalRef"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>modalRef</b></span>
+                        <a href="#modalRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BsModalRef</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="page"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>page</b></span>
+                        <a href="#page"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchText"></a>
+                    <span class="name">
+                        <span ><b>searchText</b></span>
+                        <a href="#searchText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sharedService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sharedService</b></span>
+                        <a href="#sharedService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/SharedServiceService.html" target="_self" >SharedServiceService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/roles/sic/evaluaciones/evaluaciones-sic.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, TemplateRef } from &#x27;@angular/core&#x27;;
+import { BsModalRef, BsModalService } from &#x27;ngx-bootstrap/modal&#x27;;
+import { Usuario } from &#x27;src/app/models/usuario&#x27;;
+import { ActapdfService } from &#x27;src/app/services/Sic/actapdf.service&#x27;;
+import { SharedServiceService } from &#x27;src/app/services/Sic/shared-service.service&#x27;;
+import { TokenService } from &#x27;src/app/services/token.service&#x27;;
+
+
+@Component({
+  selector: &#x27;app-evaluaciones-sic&#x27;,
+  templateUrl: &#x27;./evaluaciones-sic.component.html&#x27;,
+  styleUrls: [&#x27;./evaluaciones-sic.component.css&#x27;]
+})
+export class EvaluacionesSicComponent implements OnInit {
+
+  // evaluaciones: Usuario[] &#x3D; [];
+
+  evaluaciones: any[] &#x3D; [];
+
+  listaVacia: any &#x3D; undefined;
+
+  searchText: any;
+
+  public modalRef: BsModalRef;
+
+  public fechaSeleccionada: string;
+
+  public page!: number;
+
+  constructor(
+    private modalService: BsModalService,
+    public sharedService: SharedServiceService,
+    private actapdfService: ActapdfService,
+    private tokenService: TokenService,
+  ) { }
+
+  ngOnInit(): void {
+    this.cargarActas();
+  }
+
+  cargarActas(): void {
+    this.actapdfService.lista().subscribe(
+      data &#x3D;&gt; {
+        this.evaluaciones &#x3D; data;
+        this.listaVacia &#x3D; undefined;
+      },
+      err &#x3D;&gt; {
+        this.listaVacia &#x3D; err.error.message;
+      }
+    );
+  }
+
+
+  openModal(modalTemplate: TemplateRef&lt;any&gt;, id: number, name: string) {
+    this.sharedService.setId(id)
+    this.sharedService.setNombrePrestador(name)
+    this.modalRef &#x3D; this.modalService.show(modalTemplate,
+      {
+        class: &#x27;modal-dialogue-centered modal-md&#x27;,
+        backdrop: &#x27;static&#x27;,
+        keyboard: true
+      }
+
+    );
+
+  }
+
+
+  obtenerFecha(fecha: string){
+    console.log(fecha)
+  }
+
+
+
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-menu&gt;&lt;/app-menu&gt;
+
+&lt;div class&#x3D;&quot;col&quot;&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col-md-2&quot;&gt;
+            &lt;button class&#x3D;&quot;btn btn-light esp btn-circle btn-xl&quot; routerLink&#x3D;&quot;/sic&quot;&gt;
+                &lt;i class&#x3D;&quot;fa fa-reply fa-lg&quot;&gt;&lt;/i&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col-md-8&quot;&gt;
+            &lt;h1 class&#x3D;&quot;text-center&quot;&gt;Sistema de Información para la Cálidad&lt;/h1&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ng-template #modalTemplate&gt;
+    &lt;app-modal-evaluaciones [dataFromParent]&#x3D;&quot;modalRef&quot;&gt;&lt;/app-modal-evaluaciones&gt;
+&lt;/ng-template&gt;
+
+&lt;div class&#x3D;&quot;wrapper&quot;&gt;
+
+    &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;table-wrapper&quot;&gt;
+            &lt;div class&#x3D;&quot;table-title&quot;&gt;
+                &lt;div class&#x3D;&quot;row&quot;&gt;
+                    &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
+                        &lt;h2&gt;&lt;b&gt;Evaluaciones Realizadas&lt;/b&gt;&lt;/h2&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;search-hero&quot;&gt;
+                &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; name&#x3D;&quot;search&quot; [(ngModel)]&#x3D;&quot;searchText&quot;
+                    placeholder&#x3D;&quot;Buscar Prestador&quot;&gt;
+            &lt;/div&gt;
+
+            &lt;input type&#x3D;&quot;date&quot; [(ngModel)]&#x3D;&quot;fechaSeleccionada&quot;&gt;
+            &lt;button (click)&#x3D;&quot;obtenerFecha(fechaSeleccionada)&quot;&gt;Buscar&lt;/button&gt;
+
+            &lt;table class&#x3D;&quot;table table-wrapper table-hover&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th scope&#x3D;&quot;col&quot;&gt;N°ACTA&lt;/th&gt;
+                        &lt;th scope&#x3D;&quot;col&quot;&gt;PRESTADOR&lt;/th&gt;
+                        &lt;th scope&#x3D;&quot;col&quot;&gt;NIT&lt;/th&gt;
+                        &lt;th scope&#x3D;&quot;col&quot;&gt;MUNICIPIO&lt;/th&gt;
+                        &lt;th scope&#x3D;&quot;col&quot;&gt;FECHA DE CREACIÓN&lt;/th&gt;
+                        &lt;th scope&#x3D;&quot;col&quot;&gt;&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr
+                        *ngFor&#x3D;&quot;let evaluacion of evaluaciones | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}&quot;&gt;
+                        &lt;td class&#x3D;&quot;text-center&quot;&gt;{{evaluacion.act_id}}&lt;/td&gt;
+                        &lt;td&gt;{{evaluacion.act_prestador}}&lt;/td&gt;
+                        &lt;td&gt;{{evaluacion.act_nit}}&lt;/td&gt;
+                        &lt;td class&#x3D;&quot;text-center&quot;&gt;{{evaluacion.act_municipio}}&lt;/td&gt;
+                        &lt;td&gt;{{evaluacion.act_creado | date: &#x27;dd/MM/yyyy&#x27; }}&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class&#x3D;&quot;btn btn-outline-dark&quot;
+                                (click)&#x3D;&quot;openModal(modalTemplate, evaluacion.id, evaluacion.act_prestador)&quot;&gt;
+                                &lt;span class&#x3D;&quot;fas fa-clipboard-check&quot;&gt;&lt;/span&gt;
+                            &lt;/button&gt;
+
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+
+                &lt;div class&#x3D;&quot;container&quot; *ngIf&#x3D;&quot;listaVacia&quot;&gt;
+                    &lt;div class&#x3D;&quot;p-3 mb-2 bg-dark text-white text-center&quot;&gt;
+                        &lt;h2&gt;{{ listaVacia }}&lt;/h2&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/table&gt;
+            &lt;pagination-controls (pageChange)&#x3D;&quot;page &#x3D;$event&quot; previousLabel&#x3D;&quot;Anterior&quot; nextLabel&#x3D;&quot;Siguiente&quot;&gt;
+            &lt;/pagination-controls&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+
+
+    &lt;app-footer&gt;&lt;/app-footer&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./evaluaciones-sic.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+    
+}
+
+
+.table-wrapper {
+    background: #fff;
+    padding: 20px 25px;
+    margin: 30px 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {        
+    padding-bottom: 15px;
+    background: #343a40;
+    color: #fff;
+    padding: 16px 30px;
+    margin: -20px -25px 10px;
+    border-radius: 3px 3px 0 0;
+}
+.table-title h2 {
+    margin: 5px 0 0;
+    font-size: 24px;
+}
+.table-title .btn-group {
+    float: right;
+}
+.table-title .btn {
+    color: #fff;
+    float: right;
+    font-size: 13px;
+    border: none;
+    min-width: 50px;
+    border-radius: 2px;
+    border: none;
+    outline: none !important;
+    margin-left: 40px;
+}
+.table-title .btn i {
+    float: left;
+    font-size: 21px;
+    margin-right: 5px;
+}
+.table-title .btn span {
+    float: left;
+    margin-top: 2px;
+}
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+    padding: 12px 15px;
+    vertical-align: middle;
+}
+
+
+
+table.table td.usu {
+    color: #b40000;
+    font-weight: bold;
+}
+
+table.table tr th:first-child {
+    width: 60px;
+}
+table.table tr th:last-child {
+    width: 100px;
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+    background: #f5f5f5;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}	
+table.table td:last-child i {
+    opacity: 0.9;
+    font-size: 22px;
+    margin: 0 5px;
+}
+table.table td a {
+    font-weight: bold;
+    color: #566787;
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+}
+table.table td a:hover {
+    color: #2196F3;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #F44336;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table .avatar {
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.hint-text {
+    float: left;
+    margin-top: 10px;
+    font-size: 13px;
+}    
+/* Custom checkbox */
+.custom-checkbox {
+    position: relative;
+}
+.custom-checkbox input[type&#x3D;&quot;checkbox&quot;] {    
+    opacity: 0;
+    position: absolute;
+    margin: 5px 0 0 3px;
+    z-index: 9;
+}
+.custom-checkbox label:before{
+    width: 18px;
+    height: 18px;
+}
+.custom-checkbox label:before {
+    content: &#x27;&#x27;;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    background: white;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+.custom-checkbox input[type&#x3D;&quot;checkbox&quot;]:checked + label:after {
+    content: &#x27;&#x27;;
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    transform: inherit;
+    z-index: 3;
+    transform: rotateZ(45deg);
+}
+.custom-checkbox input[type&#x3D;&quot;checkbox&quot;]:checked + label:before {
+    border-color: #03A9F4;
+    background: #03A9F4;
+}
+.custom-checkbox input[type&#x3D;&quot;checkbox&quot;]:checked + label:after {
+    border-color: #fff;
+}
+.custom-checkbox input[type&#x3D;&quot;checkbox&quot;]:disabled + label:before {
+    color: #b8b8b8;
+    cursor: auto;
+    box-shadow: none;
+    background: #ddd;
+}
+/* Modal styles */
+.modal .modal-dialog {
+    max-width: 400px;
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+    padding: 20px 30px;
+}
+.modal .modal-content {
+    border-radius: 3px;
+}
+.modal .modal-footer {
+    background: #ecf0f1;
+    border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+    display: inline-block;
+}
+.modal .form-control {
+    border-radius: 2px;
+    box-shadow: none;
+    border-color: #dddddd;
+}
+.modal textarea.form-control {
+    resize: vertical;
+}
+.modal .btn {
+    border-radius: 2px;
+    min-width: 100px;
+}	
+.modal form label {
+    font-weight: normal;
+}
+
+.curs{
+    cursor: pointer;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, auto) minmax(0, auto);
+    grid-template-rows: minmax(0, auto);
+    grid-gap: 0 1rem;
+}
+
+span{
+    font-size: xx-large;
+}
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-menu></app-menu><div class="col">    <div class="row">        <div class="col-md-2">            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/sic">                <i class="fa fa-reply fa-lg"></i>            </button>        </div>        <div class="col-md-8">            <h1 class="text-center">Sistema de Información para la Cálidad</h1>        </div>    </div></div><ng-template #modalTemplate>    <app-modal-evaluaciones [dataFromParent]="modalRef"></app-modal-evaluaciones></ng-template><div class="wrapper">    <div class="container">        <div class="table-wrapper">            <div class="table-title">                <div class="row">                    <div class="col-sm-10">                        <h2><b>Evaluaciones Realizadas</b></h2>                    </div>                </div>            </div>            <div class="search-hero">                <input class="form-control" type="text" name="search" [(ngModel)]="searchText"                    placeholder="Buscar Prestador">            </div>            <input type="date" [(ngModel)]="fechaSeleccionada">            <button (click)="obtenerFecha(fechaSeleccionada)">Buscar</button>            <table class="table table-wrapper table-hover">                <thead>                    <tr>                        <th scope="col">N°ACTA</th>                        <th scope="col">PRESTADOR</th>                        <th scope="col">NIT</th>                        <th scope="col">MUNICIPIO</th>                        <th scope="col">FECHA DE CREACIÓN</th>                        <th scope="col"></th>                    </tr>                </thead>                <tbody>                    <tr                        *ngFor="let evaluacion of evaluaciones | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}">                        <td class="text-center">{{evaluacion.act_id}}</td>                        <td>{{evaluacion.act_prestador}}</td>                        <td>{{evaluacion.act_nit}}</td>                        <td class="text-center">{{evaluacion.act_municipio}}</td>                        <td>{{evaluacion.act_creado | date: \'dd/MM/yyyy\' }}</td>                        <td>                            <button class="btn btn-outline-dark"                                (click)="openModal(modalTemplate, evaluacion.id, evaluacion.act_prestador)">                                <span class="fas fa-clipboard-check"></span>                            </button>                        </td>                    </tr>                </tbody>                <div class="container" *ngIf="listaVacia">                    <div class="p-3 mb-2 bg-dark text-white text-center">                        <h2>{{ listaVacia }}</h2>                    </div>                </div>            </table>            <pagination-controls (pageChange)="page =$event" previousLabel="Anterior" nextLabel="Siguiente">            </pagination-controls>        </div>    </div>    <app-footer></app-footer></div>'
+    var COMPONENTS = [{'name': 'ActaPamecComponent', 'selector': 'app-acta-pamec'},{'name': 'ActaSicComponent', 'selector': 'app-acta-sic'},{'name': 'ActaSpComponent', 'selector': 'app-acta-sp'},{'name': 'ActaSpProComponent', 'selector': 'app-acta-sp-pro'},{'name': 'AgregarcriIpsComponent', 'selector': 'app-agregarcri-ips'},{'name': 'AgregarcripamComponent', 'selector': 'app-agregarcripam'},{'name': 'AgregarcrisicComponent', 'selector': 'app-agregarcrisic'},{'name': 'AgregarcriterioestandarComponent', 'selector': 'app-agregarcriterioestandar'},{'name': 'AgregarIndComponent', 'selector': 'app-agregar-ind'},{'name': 'ApoyoDiagnosticoComponent', 'selector': 'app-apoyo-diagnostico'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AtencionInmediataComponent', 'selector': 'app-atencion-inmediata'},{'name': 'CapacidadInstaladaComponent', 'selector': 'app-capacidad-instalada'},{'name': 'ConsultaExternaComponent', 'selector': 'app-consulta-externa'},{'name': 'CriterioestandarComponent', 'selector': 'app-criterioestandar'},{'name': 'CriteriopamecComponent', 'selector': 'app-criteriopamec'},{'name': 'CriteriosicComponent', 'selector': 'app-criteriosic'},{'name': 'CriterioSpIndComponent', 'selector': 'app-criterio-sp-ind'},{'name': 'CriterioSpIpsComponent', 'selector': 'app-criterio-sp-ips'},{'name': 'CriterioTodosServiciosComponent', 'selector': 'app-criterio-todos-servicios'},{'name': 'EditarcriteindComponent', 'selector': 'app-editarcriteind'},{'name': 'EditarcriteipsComponent', 'selector': 'app-editarcriteips'},{'name': 'EditarcriteipsimplComponent', 'selector': 'app-editarcriteipsimpl'},{'name': 'EditarcriteipsplanComponent', 'selector': 'app-editarcriteipsplan'},{'name': 'EditarcriteipsverifComponent', 'selector': 'app-editarcriteipsverif'},{'name': 'EditarcriteriosicComponent', 'selector': 'app-editarcriteriosic'},{'name': 'EditarcritpamComponent', 'selector': 'app-editarcritpam'},{'name': 'EditarPrestadorComponent', 'selector': 'app-editar-prestador'},{'name': 'EditarUsuarioComponent', 'selector': 'app-editar-usuario'},{'name': 'EvaluacionesPamecComponent', 'selector': 'app-evaluaciones-pamec'},{'name': 'EvaluacionesSicComponent', 'selector': 'app-evaluaciones-sic'},{'name': 'EvaluacionesSpIpsComponent', 'selector': 'app-evaluaciones-sp-ips'},{'name': 'EvaluacionesSpProComponent', 'selector': 'app-evaluaciones-sp-pro'},{'name': 'EvaluacionPamecComponent', 'selector': 'app-evaluacion-pamec'},{'name': 'EvaluacionSicComponent', 'selector': 'app-evaluacion-sic'},{'name': 'EvaluacionSpIpsComponent', 'selector': 'app-evaluacion-sp-ips'},{'name': 'EvaluacionSpProComponent', 'selector': 'app-evaluacion-sp-pro'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeCriteriosComponent', 'selector': 'app-home-criterios'},{'name': 'HomeEstandarComponent', 'selector': 'app-home-estandar'},{'name': 'HomePamecComponent', 'selector': 'app-home-pamec'},{'name': 'HomeResoComponent', 'selector': 'app-home-reso'},{'name': 'HomeSicComponent', 'selector': 'app-home-sic'},{'name': 'HomeSpComponent', 'selector': 'app-home-sp'},{'name': 'InternacionComponent', 'selector': 'app-internacion'},{'name': 'ListaPrestadorComponent', 'selector': 'app-lista-prestador'},{'name': 'ListaUsuarioComponent', 'selector': 'app-lista-usuario'},{'name': 'ListaVerificacionComponent', 'selector': 'app-lista-verificacion'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MenuComponent', 'selector': 'app-menu'},{'name': 'ModalEvaluacionesComponent', 'selector': 'app-modal-evaluaciones'},{'name': 'Modalsic2Component', 'selector': 'app-modalsic2'},{'name': 'ModalsicComponent', 'selector': 'app-modalsic'},{'name': 'NuevoPrestadorComponent', 'selector': 'app-nuevo-prestador'},{'name': 'NuevoUsuarioAdminComponent', 'selector': 'app-nuevo-usuario-admin'},{'name': 'NuevoUsuarioComponent', 'selector': 'app-nuevo-usuario'},{'name': 'NuevoUsuarioPamecComponent', 'selector': 'app-nuevo-usuario-pamec'},{'name': 'NuevoUsuarioResoComponent', 'selector': 'app-nuevo-usuario-reso'},{'name': 'NuevoUsuarioSicComponent', 'selector': 'app-nuevo-usuario-sic'},{'name': 'NuevoUsuarioSpComponent', 'selector': 'app-nuevo-usuario-sp'},{'name': 'PasswordcComponent', 'selector': 'app-passwordc'},{'name': 'QuirurgicoComponent', 'selector': 'app-quirurgico'},{'name': 'ResetpasswordComponent', 'selector': 'app-resetpassword'},{'name': 'TodosServiciosComponent', 'selector': 'app-todos-servicios'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EvaluacionesSicComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EvaluacionesSicComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

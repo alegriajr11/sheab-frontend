@@ -1,0 +1,28 @@
+.vineta {
+    margin-top: 10px;
+}
+
+/* Estilos para el textarea no redimensionable */
+.non-resizable-textarea {
+    resize: none; /* Evita la redimensión */
+    height: 200px;
+}
+
+.button-like {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #343a40;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-like:hover {
+    background-color: #3d4347;
+}
+
+.btn-span:hover {
+    transform: scale(1.1);
+    transition-duration: 0.2s;
+}

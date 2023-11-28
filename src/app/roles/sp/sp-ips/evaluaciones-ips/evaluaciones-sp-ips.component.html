@@ -1,0 +1,112 @@
+<app-menu></app-menu>
+
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/sp">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+            <h1 class="text-center">Seguridad del Paciente - IPS</h1>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalTemplate>
+    <app-modal-evaluaciones-sp-ips [dataFromParent]="modalRef"></app-modal-evaluaciones-sp-ips>
+</ng-template>
+
+<div class="wrapper">
+
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h2><b>Evaluaciones Realizadas</b></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-2">
+                    <label for="">No Acta:</label>
+                    <input type="number" min="0" class="form-control" id="acta" name="act_id" [(ngModel)]="act_id"
+                        placeholder="Número de Acta..." (input)="cargarActasFilter()">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="">Año:</label>
+                    <select name="select-anio" id="select-year" class="form-select form-control" [(ngModel)]="year" 
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl (change)="cargarActasFilter()">
+                        <option value="" disabled selected hidden>Año...</option>
+                    </select>
+                </div>
+
+
+
+                <div class="col-md-4">
+                    <label for="">Nombre de Prestador:</label>
+                    <input class="form-control" type="text" name="search" [(ngModel)]="act_prestador"
+                        placeholder="Buscar Prestador" (input)="cargarActasFilter()">
+                </div>
+
+                <div class="col-md-4">
+                    <label for="">Nit de Prestador:</label>
+                    <input class="form-control" type="number" name="search" [(ngModel)]="act_nit"
+                        placeholder="Buscar Nit Prestador" (input)="cargarActasFilter()">
+                </div>
+
+            </div>
+
+
+
+            <table class="table table-wrapper table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">N°ACTA</th>
+                        <th scope="col">PRESTADOR</th>
+                        <th scope="col">NIT</th>
+                        <th scope="col">MUNICIPIO</th>
+                        <th scope="col">FECHA DE CREACIÓN</th>
+                        <th scope="col">ESTADO</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let evaluacion of evaluaciones | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}">
+                        <td class="text-center">{{evaluacion.act_id}}</td>
+                        <td>{{evaluacion.act_prestador}}</td>
+                        <td>{{evaluacion.act_nit}}</td>
+                        <td class="text-center">{{evaluacion.act_municipio}}</td>
+                        <td>{{evaluacion.act_creado | date: 'dd/MM/yyyy' }}</td>
+                        <td *ngIf="evaluacion.act_estado === '1'" style="text-align: center;"><span class="fas fa-door-open" style="color: rgb(0, 128, 0);"></span></td>
+                        <td *ngIf="evaluacion.act_estado === '0'" style="text-align: center;"><span class="fas fa-door-closed" style="color: rgb(204, 0, 0);"></span></td>
+                        <td>
+                            <button class="btn btn-outline-dark"
+                                (click)="openModal(modalTemplate, evaluacion.id, evaluacion.act_prestador, evaluacion.act_nombre_funcionario, evaluacion.act_cod_prestador)">
+                                <span class="fas fa-clipboard-check"></span>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="container" *ngIf="listaVacia">
+                <div class="p-3 mb-2 bg-dark text-white text-center">
+                    <h2>{{ listaVacia }}</h2>
+                </div>
+            </div>
+
+            <pagination-controls (pageChange)="page =$event" previousLabel="Anterior" nextLabel="Siguiente">
+            </pagination-controls>
+        </div>
+    </div>
+
+
+
+    <app-footer></app-footer>

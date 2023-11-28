@@ -1,0 +1,56 @@
+<app-menu></app-menu>
+
+<div class="grid-container">
+    <button class="btn btn-light esp btn-circle btn-xl" routerLink="/criteriosic">
+        <i class="fa fa-reply fa-lg"></i>
+    </button>
+    <h1 class="text-center">CRITERIOS ESTANDAR - SISTEMA DE INFORMACION DE CALIDAD</h1>
+</div>
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div>
+                    <button class="btn btn-secondary" routerLink="/criteriosic/estandar/agregar" title="Nuevo Criterio Estandar">
+                        <i class="material-icons">&#xE147;</i>
+                        <span>Agregar Criterio Estandar</span></button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-wrapper table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Cod</th>
+                    <th scope="col">Criterio</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let criterio of criterioSicEstandar">
+                    <td>{{criterio.crie_id}}</td>
+                    <td>{{criterio.crie_nombre}}</td>
+                    <td>
+                        <button class="btn btn-outline-warning" routerLink="">
+                        <i class="far fa-edit"></i>
+                        </button>
+                    </td>
+                    <td >
+                        <button class="btn btn-outline-danger" (click)="borrar(criterio.crie_id)">
+                        <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container" *ngIf="listaVacia">
+    <div class="p-3 mb-2 bg-dark text-white text-center">
+        <h2>{{ listaVacia }}</h2>
+    </div>
+</div>
+
+<app-footer></app-footer>

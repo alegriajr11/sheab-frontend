@@ -1,0 +1,118 @@
+<app-menu></app-menu>
+
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+            <h1 class="text-center">Informes Visitas - Resolución 3100</h1>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalTemplate>
+    <app-modal-informe-resolucion [dataFromParent]="modalRef"></app-modal-informe-resolucion>
+</ng-template>
+
+<div class="wrapper">
+
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h2><b>Visitas Pendientes - Completadas</b></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-2">
+                    <label for="">No Acta:</label>
+                    <input type="number" min="0" class="form-control" id="acta" name="act_id"
+                        placeholder="Número de Acta...">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="">Año:</label>
+                    <select name="select-anio" id="select-anio" class="form-select form-control">
+                        <option hidden selected>Año...</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="">Tipo de Visita:</label>
+                    <select name="select-anio" id="select-anio" class="form-select form-control">
+                        <option hidden selected>Tipo Visita...</option>
+                        <option value=""></option>
+                        <option value="">Visita Previa</option>
+                        <option value="">Visita Certificación</option>
+                        <option value="">Visita Reactivación</option>
+                        <option value="">Visita IVC</option>
+                    </select>
+                </div>
+
+                <div class="col-md-5">
+                    <label for="">Nombre de Prestador o NIT:</label>
+                    <input class="form-control" type="text" name="search" placeholder="Buscar Prestador">
+                </div>
+
+            </div>
+
+
+            <table class="table table-wrapper table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">N°ACTA</th>
+                        <th scope="col">PRESTADOR</th>
+                        <th scope="col">TIPO DE VISITA</th>
+                        <th scope="col">MUNICIPIO</th>
+                        <th scope="col">FECHA</th>
+                        <th scope="col">ESTADO</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let actaVerificacion of actasVerificacion | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}">
+                        <td class="text-center">{{actaVerificacion.act_id}}</td>
+                        <td>{{actaVerificacion.act_prestador}}</td>
+                        <td class="underlined" *ngIf="actaVerificacion.act_visita_previa === 'X' ">Visita Previa</td>
+                        <td class="underlined" *ngIf="actaVerificacion.act_visita_seguimiento === 'X' ">Visita Certificación</td>
+                        <td class="underlined" *ngIf="actaVerificacion.act_visita_reactivacion === 'X' ">Visita Reactivación</td>
+                        <td class="text-center">{{actaVerificacion.act_municipio}}</td>
+                        <td>{{actaVerificacion.act_creado | date: 'dd/MM/yyyy' }}</td>
+                        <td *ngIf="actaVerificacion.act_estado === '1'" style="text-align: center;"><span
+                                class="fas fa-door-open" style="color: rgb(0, 128, 0);"></span></td>
+                        <td *ngIf="actaVerificacion.act_estado === '0'" style="text-align: center;"><span
+                                class="fas fa-door-closed" style="color: rgb(204, 0, 0);"></span></td>
+                        <td>
+                            <button class="btn btn-outline-dark" (click)="openModal(modalTemplate)">
+                                <span class="fas fa-clipboard-check"></span>
+                            </button>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="container" *ngIf="listaVacia">
+                <div class="p-3 mb-2 bg-dark text-white text-center">
+                    <h2>{{ listaVacia }}</h2>
+
+                </div>
+            </div>
+
+            <pagination-controls (pageChange)="page =$event" previousLabel="Anterior" nextLabel="Siguiente">
+            </pagination-controls>
+        </div>
+    </div>
+
+
+
+    <app-footer></app-footer>

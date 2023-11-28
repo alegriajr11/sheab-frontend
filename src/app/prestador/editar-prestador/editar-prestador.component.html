@@ -1,0 +1,85 @@
+<app-menu></app-menu>
+
+<div class="grid-container">
+    <button class="btn btn-light esp btn-circle btn-xl" routerLink="/prestadores">
+        <i class="fa fa-reply fa-lg"></i>
+    </button>
+    <div class="card">
+        <div class="card-body">
+            <div class="container bg-h3">
+                <h2 class="card-title text-center">EDITAR PRESTADOR</h2>
+            </div>
+
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="habilitacion">Código de Habilitación:</label>
+                    <input type="text" class="form-control" name="pre_cod_habilitacion" id="pre_cod_habilitacion" autocomplete="off"
+                        [(ngModel)]="prestador.pre_cod_habilitacion" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" name="pre_nombre" id="pre_nombre" autocomplete="off"
+                        [(ngModel)]="prestador.pre_nombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="nit">Nit:</label>
+                    <input type="text" class="form-control" name="pre_nit" id="pre_nit" autocomplete="off"
+                        required [(ngModel)]="prestador.pre_nit">
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" class="form-control" name="pre_direccion" id="pre_direccion" autocomplete="off"
+                        [(ngModel)]="prestador.pre_direccion">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="telefono">Telefonos:</label>
+                    <input type="text" class="form-control" name="pre_telefono" id="pre_telefono" autocomplete="off" required
+                        [(ngModel)]="prestador.pre_telefono">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" name="pre_email" id="pre_email" autocomplete="off"
+                        [(ngModel)]="prestador.pre_email">
+                </div>
+
+
+
+                <div>
+                    <label for="estado">habilitado:</label>
+                    <Select class="form-select form-control" [(ngModel)]="prestador.pre_habilitado" [ngModelOptions]="{standalone: true}" ngDefaultControl>
+                        <option value="SI" [selected]="prestador.pre_habilitado === 'SI'">SI</option>
+                        <option value="NO" [selected]="prestador.pre_habilitado === 'NO'">NO</option>
+                    </Select>
+                    
+                </div>
+
+
+                <div class="form-group">
+                    <label for="representante">Representante:</label>
+                    <input type="text" class="form-control" name="pre_representante" id="pre_representante" autocomplete="off"
+                        [(ngModel)]="prestador.pre_representante">
+                </div>
+
+
+                <hr>
+
+                <div class="form-group">
+                    <button class="btn btn-dark btn-block" type="submit" [disabled]="!f.valid">
+                        <i class="fa fa-refresh" aria-hidden="true"></i> Actualizar
+                    </button>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+

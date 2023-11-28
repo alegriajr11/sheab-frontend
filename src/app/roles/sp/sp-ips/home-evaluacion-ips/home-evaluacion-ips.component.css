@@ -1,0 +1,42 @@
+.btn-dark:hover {
+    transform: scale(1.03);
+    transition-duration: 0.2s;
+}
+
+.botones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+button {
+    text-align: left;
+}
+
+.jumbotron {
+    padding: 4rem 0rem;
+}
+
+.grid-prestador {
+    display: grid;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    justify-content: center;
+    justify-items: center;
+}
+
+span {
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+
+/*ESTILOS DE LA TABLA EVALUACIONES*/
+td {
+    font-weight: bold;
+}
+
+span{
+    font-size: xx-large;
+}
+

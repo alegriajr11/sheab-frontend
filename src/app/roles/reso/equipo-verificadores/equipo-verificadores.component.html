@@ -1,0 +1,72 @@
+<app-menu></app-menu>
+<div class="col">
+    <div class="row">
+        <div class="col-md-1">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso/lista-verificacion">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-10">
+            <h1>EQUIPO DE VERIFICADORES</h1>
+        </div>
+    </div>
+    <div>
+    </div>
+
+</div>
+
+
+
+<div class="wrapper">
+
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h5><b>VERIFICADORES</b></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <h5>ACTA: <strong class="underlined">{{numero_acta}}</strong></h5>
+                </div>
+                <div class="col-sm-10">
+                    <h5>PRESTADOR: <strong class="underlined">{{nombre_prestador}}</strong></h5>
+                </div>
+            </div>
+            <table class="table table-wrapper table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Cod</th>
+                        <th scope="col">Nombres</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col" style="text-align: center;">Usuario</th>
+                        <th scope="col" style="text-align: center;">Cargo</th>
+                        <th scope="col" style="text-align: center;">Profesional</th>
+                        <th scope="col" style="text-align: center;">Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let usuarios of usuarios_verificadores | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page} let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{usuarios.usu_nombre}}</td>
+                        <td>{{usuarios.usu_apellido}}</td>
+                        <td>{{usuarios.usu_nombreUsuario}}</td>
+                        <td>{{usuarios.usu_cargo}}</td>
+                        <td>{{usuarios.usu_area_profesional}}</td>
+                        <td>
+                            <button class="btn btn-outline-warning">
+                                <i class="far fa-edit"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <app-footer></app-footer>

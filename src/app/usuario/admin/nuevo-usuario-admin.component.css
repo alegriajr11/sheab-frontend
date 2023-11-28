@@ -1,0 +1,93 @@
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    color: black;
+    font-weight: bold;
+}
+
+h3 {
+    color: black;
+}
+
+.sizeh3 {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 0.19rem;
+    margin-bottom: 0.19rem;
+}
+
+label {
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+}
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 12fr;
+    align-content: center;
+    justify-content: center;
+}
+
+.col-12 {
+    margin-top: 0.06rem;
+    margin-bottom: 1rem;
+}
+
+.col-md-6 {
+    margin-bottom: 1rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, auto) minmax(0, auto);
+    grid-template-rows: minmax(0, auto);
+    grid-gap: 0 1rem;
+}
+
+.grid-form {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(6, 1fr);
+    align-content: center;
+}
+
+/*Contenedor*/
+.contenedor {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.bg-h3 {
+    background-color: #e5e5e8;
+}
+
+.contenedor-grid {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    column-gap: 2rem;
+}
+
+.contenedor-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+}
+
+
+/*ELIMINAR APARIENCIA NUMBER EN INPUT*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

@@ -1,0 +1,237 @@
+<app-menu></app-menu>
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" (click)="volver()">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+
+            <h1 class="text-center">Programa de auditoria para el mejoramiento de la calidad (PAMEC)</h1>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalTemplate>
+    <app-modal-firma-pamec-prestador [dataFromParent]="modalRef"></app-modal-firma-pamec-prestador>
+</ng-template>
+
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">ACTA DE VERIFICACIÓN AL PAMEC DE LAS INSTITUCIONES PRESTADORAS DE SERVICIOS DE SALUD - IPS</h2>
+            <hr class="up">
+            <form novalidate class="row g-3" name="ps" (ngSubmit)="onUpdate()" id="form">
+
+                <div class="col-md-1">
+                    <label for="inputN_Acta" class="form-label text-center">N°ACTA</label>
+                    <input type="number" min="0" class="form-control" id="acta" readonly name="act_id"
+                        [(ngModel)]="actaPamec.act_id">
+                </div>
+
+
+                <div class="col-md-3">
+                    <label class="form-label">FECHA VISITA</label>
+                    <input type="date" class="form-control" id="fecha-inicial" pattern="dd/MM/yyyy"
+                        name="act_fecha_inicial" [(ngModel)]="actaPamec.act_fecha_visita"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl>
+                </div>
+
+                <div class="col-md-8">
+                    <label for="inputAddress" class="form-label">TIPO DE VISITA:</label>
+                    <select id="tipoVisita" class="form-select form-control" [(ngModel)]="actaPamec.act_tipo_visita" name="act_tipo_visita"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl (change)="tipoVisita()">
+                        <option hidden selected>Tipo de Visita...</option>
+                        <option value="PRIMERA VEZ">PRIMERA VEZ</option>
+                        <option value="SEGUIMIENTO A IPS CRITICA">SEGUIMIENTO A IPS CRITICA</option>
+                        <option value="SEGUIMIENTO A IPS VISITADA EN LOS ÚLTIMOS 4 AÑOS">SEGUIMIENTO A IPS VISITADA EN LOS ÚLTIMOS 4 AÑOS</option>
+                        <option value="AÑO DE FORMULACION DEL PAMEC">AÑO DE FORMULACION DEL PAMEC</option>
+                        <option value="CICLO DE MEJORAMIENTO">CICLO DE MEJORAMIENTO</option>
+                    </select>
+                </div>
+
+                <div class="col-3" *ngIf="formulacion || this.act_tipo_visita === 'AÑO DE FORMULACION DEL PAMEC'">
+                    <label for="" class="form-label text-center">AÑO DE FORMULACION:</label>
+                    <input type="number" class="form-control" onkeypress="if(this.value.length==4) return false;" name="act_ano_formulacion"
+                        id="ano_formulacion" placeholder="Año de formulación..." [(ngModel)]="actaPamec.act_ano_formulacion"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl>
+                </div>
+
+                <div class="col-4" *ngIf="mejoramiento || this.act_tipo_visita === 'CICLO DE MEJORAMIENTO'">
+                    <label for="" class="form-label text-center">CICLO DE MEJORAMIENTO</label>
+                    <select id="id_mejoramiento" class="form-select form-control">
+                        <option hidden selected>Selecciona el Ciclo...</option>
+                        <option value="1">1°</option>
+                        <option value="2">2°</option>
+                        <option value="3">3°</option>
+                    </select>
+                </div>
+
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3>INFORMACIÓN DEL PRESTADOR</h3>
+                </div>
+
+                <div class="col-12">
+                    <label for="mun_id" class="form-label">Municipio:</label>
+                    <input type="text" class="form-control" id="mun_id" placeholder="Municipio..." readonly
+                        name="mun_id" [(ngModel)]="actaPamec.act_municipio">
+                </div>
+
+                <div class="col-12">
+                    <label for="mun_id" class="form-label">Prestador:</label>
+                    <input type="text" class="form-control" id="prestador" placeholder="Prestador..." readonly
+                        name="prestador" [(ngModel)]="actaPamec.act_prestador">
+                </div>
+
+                <div class="col-6">
+                    <label for="nit" class="form-label">Nit:</label>
+                    <input type="text" class="form-control" id="nit" placeholder="Nit" readonly name="act_nit"
+                        [(ngModel)]="actaPamec.act_nit">
+                </div>
+
+
+                <div class="col-6">
+                    <label for="direccion" class="form-label">Dirección:</label>
+                    <input type="text" class="form-control" id="act_direccion" placeholder="Dirección Prestador"
+                        readonly name="act_direccion" [(ngModel)]="actaPamec.act_direccion">
+                </div>
+
+                <div class="col-6">
+                    <label for="barrio" class="form-label">Barrio:</label>
+                    <input type="text" class="form-control" id="barrio" name="act_barrio" placeholder="Barrio Prestador"
+                        required [(ngModel)]="actaPamec.act_barrio">
+                </div>
+
+                <div class="col-6">
+                    <label for="telefono" class="form-label">Telefono:</label>
+                    <input type="tel" class="form-control" id="telefono" placeholder="Telefono" readonly
+                        name="act_telefono" [(ngModel)]="actaPamec.act_telefono">
+                </div>
+
+                <div class="col-12">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="E-mail" readonly name="act_email"
+                        [(ngModel)]="actaPamec.act_email">
+                </div>
+
+
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Representante Legal:</label>
+                    <input type="text" class="form-control" id="repleg" placeholder="Representante Legal" readonly
+                        name="act_representante" [(ngModel)]="actaPamec.act_representante">
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Código Prestador:</label>
+                    <input type="text" class="form-control" id="codpres" placeholder="Código Prestador" readonly
+                        name="act_cod_prestador" [(ngModel)]="actaPamec.act_cod_prestador">
+                </div>
+
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Objeto de la Visita:</label>
+                    <input type="text" class="form-control" id="objVisita" readonly name="objVisita"
+                        [(ngModel)]="actaPamec.act_obj_visita">
+                </div>
+
+
+                <div class="col-12">
+                    <h3 class="text-center sizeh3">FIRMAS</h3>
+                </div>
+
+                <div class="col-12 bg-h3 contenedor-form">
+                    <h3 class="text-center sizeh3">POR SECRETARIA DE SALUD DEPARTAMENTAL</h3>
+                </div>
+
+
+                <div class="col-12">
+                    <label for="" class="form-label">Verificador SOGCS:</label>
+                    <input type="text" class="form-control" id="usu_secretaria" placeholder="Verificador SOGCS..."
+                        readonly name="usu_secretaria" [(ngModel)]="actaPamec.act_nombre_funcionario1">
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control" id="cargoSecre" placeholder="Cargo Verificador..." readonly
+                        name="act_cargo_funcionario" [(ngModel)]="actaPamec.act_cargo_funcionario1">
+                </div>
+
+                <div class="col-3" style="margin-bottom: 20px;" *ngIf="!actaPamec.act_firma_funcionario1">
+                    <span class="button-like btn-span" (click)="obtenerFirmaFuncionario1()">FIRMAR</span>
+                </div>
+
+                <div class="col-12" *ngIf="actaPamec.act_nombre_funcionario2">
+                    <label for="" class="form-label">Verificador SOGCS:</label>
+                    <input type="text" class="form-control" id="usu_secretaria" placeholder="Verificador SOGCS..."
+                        readonly name="usu_secretaria" [(ngModel)]="actaPamec.act_nombre_funcionario2">
+                </div>
+
+                <div class="col-12" *ngIf="actaPamec.act_nombre_funcionario2">
+                    <label for="" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control" id="cargoSecre" placeholder="Cargo Verificador..." readonly
+                        name="act_cargo_funcionario" [(ngModel)]="actaPamec.act_cargo_funcionario2">
+                </div>
+
+                <div class="col-3" style="margin-bottom: 20px;"
+                    *ngIf="!actaPamec.act_firma_funcionario2 && actaPamec.act_nombre_funcionario2">
+                    <span class="button-like btn-span" (click)="obtenerFirmaFuncionario2()">FIRMAR</span>
+                </div>
+
+                <div class="col-12 bg-h3 contenedor-form">
+                    <h3 class="text-center sizeh3">PRESTADOR DE SERVICIOS DE SALUD</h3>
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Prestador:</label>
+                    <input type="text" class="form-control" id="nombrePrestador" name="act_nombre_prestador"
+                        placeholder="Prestador..." [(ngModel)]="actaPamec.act_nombre_prestador">
+                </div>
+
+
+                <div class="col-12">
+                    <label for="" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control" id="cargoPres" name="act_cargo_prestador"
+                        placeholder="Cargo..." [(ngModel)]="actaPamec.act_cargo_prestador">
+                </div>
+
+
+                <!--BOTON MODAL FIRMA-->
+                <div class="col-3">
+                    <span class="button-like btn-span" *ngIf="noFirmaActa === 'false'"
+                        (click)="openModal(modalTemplate)">Firma Prestador</span>
+                </div>
+
+                <!--BOTON NO FIRMA-->
+                <div class="col-3">
+                    <span class="button-like btn-span" *ngIf="noFirmaActa === 'false'" (click)="noFirmaPrestador()">No
+                        Firma Prestador</span>
+                </div>
+
+
+                <div class="col-12">
+                    <button id="boton-acta-sic" class="btn btn-dark esp btn-circle btn-xl" title="Guardar"
+                        type="submit">
+                        <i class='fa fa-save fa-lg'></i>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--Fin Div Container-->
+
+<app-footer></app-footer>

@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+
+<div class="wrapper">
+    <div class="col">
+        <div class="row">
+            <div class="col-md-2">
+                <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso/lista-verificacion"><i
+                        class='fa fa-reply fa-lg'></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="jumbotron">
+            <hr class="my-4">
+            <h1 class="display-4 text-center">AUTOEVALUACIÓN CONDICIONES DE HABILITACIÓN RESOLUCIÓN 3100/2019 </h1>
+            <h5 class="text-center">{{nombre_prestador}}</h5>
+            <hr class="my-4">
+            <div class="botones-grid">
+                <button class="btn btn-dark esp btn-xl" title="Todos Servicios" routerLink="/todos-servicios">
+                    TODOS SERVICIOS</button>
+                <button class="btn btn-dark esp btn-xl" title="Consulta Externa" routerLink="/consulta-externa">
+                    GRUPO: CONSULTA EXTERNA</button>
+                <button class="btn btn-dark esp btn-xl" title="Apoyo Diagnostico" routerLink="/apoyo-diagnostico">
+                    GRUPO: APOYO DIAGNOSTICO</button>
+                <button class="btn btn-dark esp btn-xl" title="Internación" routerLink="/internacion">
+                    GRUPO: INTERNACIÓN</button>
+                <button class="btn btn-dark esp btn-xl" title="Quirúrgico" routerLink="/quirurgico">
+                    GRUPO: QUIRÚRGICO</button>
+                <button class="btn btn-dark esp btn-xl" title="Atención Inmediata" routerLink="/atencion-inmediata">
+                    GRUPO: ATENCIÓN INMEDIATA</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin Div Container-->
+
+<app-footer></app-footer>

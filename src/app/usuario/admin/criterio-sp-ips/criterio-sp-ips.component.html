@@ -1,0 +1,133 @@
+<app-menu></app-menu>
+
+<div class="container">
+    <div class="text-center">
+        <h1>CRITERIOS - SEGURIDAD DEL PACIENTE - IPS</h1>
+        <h5>Selecciona la Evaluación y el Item</h5>
+    </div>
+    <hr>
+</div>
+
+<div class="container_head">
+    <div class="col">
+        <label for="">Evaluación:</label>
+        <select class="form-control" name="eva_id" id="eva_id" (change)="cargarItems()">
+            <option hidden selected value="">Seleccione la Evaluación...</option>
+            <option *ngFor="let evaluacion of evaluacion" value="{{evaluacion.evips_id}}">{{evaluacion.evips_nombre}}</option>
+        </select>
+    </div>
+    <div class="col">
+        <label for="">Item:</label>
+        <select class="form-control" name="item_id" id="item_id" (change)="cargarCriterios()" (change)="llenarSpan()">
+            <option hidden selected value="">Seleccione el Item...</option>
+            <option *ngFor="let item of item" value="{{item.ite_id}}">{{item.ite_nombre}}</option>
+        </select>
+    </div>
+
+</div>
+
+
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5><b>Evaluación:</b></h5>
+                    <span id="eva_nombre"></span>
+                </div>
+                <div class="col-sm-3">
+                    <h5><b>Item:</b></h5>
+                    <span id="item_nombre"></span>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-secondary" routerLink="/criterioips/agregar" title="Nuevo Criterio">
+                        <i class="material-icons">&#xE147;</i>
+                        <span>Agregar Nuevo Criterio</span></button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-wrapper table-hover">
+            <thead>
+                <tr *ngIf="controlCriterio && !listaVacia">
+                    <th scope="col">Cod</th>
+                    <th scope="col">Criterios</th>
+                    <th scope="col">Verificacion</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let criterios of criteriosPlaneacion; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{criterios.cri_pla_nombre}}</td>
+                    <td>{{criterios.cri_pla_verificacion}}</td>
+                    <td>
+                        <button class="btn btn-outline-warning" routerLink="/criterioips/editarplan/{{criterios.cri_pla_id}}" (click)="obtenerNombreItem()" (click)="obtenerNombreEvaluacion()">
+                        <i class="far fa-edit"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="borrarPlaneacion(criterios.cri_pla_id)">
+                        <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngFor="let criterios of criteriosVerificacion; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{criterios.cri_ver_nombre}}</td>
+                    <td>{{criterios.cri_ver_verificacion}}</td>
+                    <td>
+                        <button class="btn btn-outline-warning" routerLink="/criterioips/editarverf/{{criterios.cri_ver_id}}" (click)="obtenerNombreItem()" (click)="obtenerNombreEvaluacion()">
+                        <i class="far fa-edit"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="borrarVerificacion(criterios.cri_ver_id)">
+                        <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngFor="let criterios of criteriosImplementacion; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{criterios.cri_imp_nombre}}</td>
+                    <td>{{criterios.cri_imp_verificacion}}</td>
+                    <td>
+                        <button class="btn btn-outline-warning" routerLink="/criterioips/editarimp/{{criterios.cri_imp_id}}" (click)="obtenerNombreItem()" (click)="obtenerNombreEvaluacion()">
+                        <i class="far fa-edit"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="borrarImplementacion(criterios.cri_imp_id)">
+                        <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngFor="let criterios of criteriosAjuste; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{criterios.cri_aju_nombre}}</td>
+                    <td>{{criterios.cri_aju_verificacion}}</td>
+                    <td>
+                        <button class="btn btn-outline-warning" routerLink="/criterioips/editarajuste/{{criterios.cri_aju_id}}" (click)="obtenerNombreItem()" (click)="obtenerNombreEvaluacion()">
+                        <i class="far fa-edit"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="borrarAjuste(criterios.cri_aju_id)">
+                        <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="container" *ngIf="listaVacia">
+            <div class="p-3 mb-2 bg-dark text-white text-center">
+                <h2>{{ listaVacia }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<app-footer></app-footer>

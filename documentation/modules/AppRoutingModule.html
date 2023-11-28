@@ -1,0 +1,330 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content module">
+                   <div class="content-data">
+
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Modules</li>
+    <li class="breadcrumb-item" >AppRoutingModule</li>
+</ol>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+        <a href="#info" 
+            class="nav-link"
+            class="nav-link active"
+            role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+    </li>
+    <li class="nav-item">
+        <a href="#source" 
+            class="nav-link"
+            
+            role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/app-routing.module.ts</code>
+        </p>
+
+
+
+
+
+        <div class="container-fluid module">
+            <div class="row">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
+import { LoginComponent } from &#x27;./auth/login.component&#x27;;
+import { PasswordcComponent } from &#x27;./auth/passwordc.component&#x27;;
+import { ResetpasswordComponent } from &#x27;./auth/resetpassword/resetpassword.component&#x27;;
+import { ButtonGuard } from &#x27;./guards/button.guard&#x27;;
+import { LoginGuard } from &#x27;./guards/login.guard&#x27;;
+import { UsuarioGuard } from &#x27;./guards/usuario.guard&#x27;;
+import { HomeComponent } from &#x27;./home/home.component&#x27;;
+import { CriterioSicEstandarDto } from &#x27;./models/Sic/criterioSicEstandar.dto&#x27;;
+import { ListaPrestadorComponent } from &#x27;./prestador/lista-prestador.component&#x27;;
+import { NuevoPrestadorComponent } from &#x27;./prestador/nuevo-prestador.component&#x27;;
+import { ActaPamecComponent } from &#x27;./roles/pamec/acta/acta-pamec.component&#x27;;
+import { EvaluacionPamecComponent } from &#x27;./roles/pamec/evaluacion-pamec/evaluacion-pamec.component&#x27;;
+import { EvaluacionesPamecComponent } from &#x27;./roles/pamec/evaluaciones/evaluaciones-pamec.component&#x27;;
+import { HomePamecComponent } from &#x27;./roles/pamec/home-pamec.component&#x27;;
+import { CapacidadInstaladaComponent } from &#x27;./roles/reso/capacidad-instalada/capacidad-instalada.component&#x27;;
+import { HomeResoComponent } from &#x27;./roles/reso/home-reso.component&#x27;;
+import { ListaVerificacionComponent } from &#x27;./roles/reso/lista-verificacion/lista-verificacion.component&#x27;;
+import { ActaSicComponent } from &#x27;./roles/sic/acta/acta-sic.component&#x27;;
+import { EvaluacionSicComponent } from &#x27;./roles/sic/evaluacion/evaluacion-sic.component&#x27;;
+import { ModalsicComponent } from &#x27;./roles/sic/evaluacion/modalsic/modalsic.component&#x27;;
+import { EvaluacionesSicComponent } from &#x27;./roles/sic/evaluaciones/evaluaciones-sic.component&#x27;;
+import { HomeSicComponent } from &#x27;./roles/sic/home-sic.component&#x27;;
+import { ActaSpComponent } from &#x27;./roles/sp/acta-ips/acta-sp-ips.component&#x27;;
+import { ActaSpProComponent } from &#x27;./roles/sp/acta-pro/acta-sp-pro.component&#x27;;
+import { EvaluacionesSpIpsComponent } from &#x27;./roles/sp/eva-ips/evaluaciones-sp-ips.component&#x27;;
+import { EvaluacionesSpProComponent } from &#x27;./roles/sp/eva-pro/evaluaciones-sp-pro.component&#x27;;
+import { EvaluacionSpIpsComponent } from &#x27;./roles/sp/evaluacion-sp-ips/evaluacion-sp-ips.component&#x27;;
+import { EvaluacionSpProComponent } from &#x27;./roles/sp/evaluacion-sp-pro/evaluacion-sp-pro.component&#x27;;
+import { HomeSpComponent } from &#x27;./roles/sp/home-sp.component&#x27;;
+import { AgregarIndComponent } from &#x27;./usuario/admin/criterio-sp-ind/agregar-ind/agregar-ind.component&#x27;;
+import { CriterioSpIndComponent } from &#x27;./usuario/admin/criterio-sp-ind/criterio-sp-ind.component&#x27;;
+import { EditarcriteindComponent } from &#x27;./usuario/admin/criterio-sp-ind/editarcriteind/editarcriteind.component&#x27;;
+import { AgregarcriIpsComponent } from &#x27;./usuario/admin/criterio-sp-ips/agregarcri-ips/agregarcri-ips.component&#x27;;
+import { CriterioSpIpsComponent } from &#x27;./usuario/admin/criterio-sp-ips/criterio-sp-ips.component&#x27;;
+import { EditarcriteipsComponent } from &#x27;./usuario/admin/criterio-sp-ips/editarcriteipsaju/editarcriteips.component&#x27;;
+import { EditarcriteipsimplComponent } from &#x27;./usuario/admin/criterio-sp-ips/editarcriteipsimpl/editarcriteipsimpl.component&#x27;;
+import { EditarcriteipsplanComponent } from &#x27;./usuario/admin/criterio-sp-ips/editarcriteipsplan/editarcriteipsplan.component&#x27;;
+import { EditarcriteipsverifComponent } from &#x27;./usuario/admin/criterio-sp-ips/editarcriteipsverif/editarcriteipsverif.component&#x27;;
+import { AgregarcripamComponent } from &#x27;./usuario/admin/criteriopamec/agregarcripam/agregarcripam.component&#x27;;
+import { CriteriopamecComponent } from &#x27;./usuario/admin/criteriopamec/criteriopamec.component&#x27;;
+import { EditarcritpamComponent } from &#x27;./usuario/admin/criteriopamec/editarcritpam/editarcritpam.component&#x27;;
+import { AgregarcrisicComponent } from &#x27;./usuario/admin/criteriosic/agregarcrisic/agregarcrisic.component&#x27;;
+import { AgregarcriterioestandarComponent } from &#x27;./usuario/admin/criteriosic/agregarcriterioestandar/agregarcriterioestandar.component&#x27;;
+import { CriterioestandarComponent } from &#x27;./usuario/admin/criteriosic/criterioestandar/criterioestandar.component&#x27;;
+import { CriteriosicComponent } from &#x27;./usuario/admin/criteriosic/criteriosic.component&#x27;;
+import { EditarcriteriosicComponent } from &#x27;./usuario/admin/criteriosic/editarcriteriosic/editarcriteriosic.component&#x27;;
+import { NuevoUsuarioAdminComponent } from &#x27;./usuario/admin/nuevo-usuario-admin.component&#x27;;
+import { EditarUsuarioComponent } from &#x27;./usuario/editar-usuario.component&#x27;;
+import { ListaUsuarioComponent } from &#x27;./usuario/lista-usuario.component&#x27;;
+import { NuevoUsuarioComponent } from &#x27;./usuario/nuevo-usuario.component&#x27;;
+import { NuevoUsuarioPamecComponent } from &#x27;./usuario/pamec/nuevo-usuario-pamec.component&#x27;;
+import { NuevoUsuarioResoComponent } from &#x27;./usuario/reso/nuevo-usuario-reso.component&#x27;;
+import { NuevoUsuarioSicComponent } from &#x27;./usuario/sic/nuevo-usuario-sic.component&#x27;;
+import { NuevoUsuarioSpComponent } from &#x27;./usuario/sp/nuevo-usuario-sp.component&#x27;;
+import { HomeEstandarComponent } from &#x27;./roles/reso/home-estandar/home-estandar.component&#x27;;
+import { TodosServiciosComponent } from &#x27;./roles/reso/home-estandar/todos-servicios/todos-servicios.component&#x27;;
+import { AtencionInmediataComponent } from &#x27;./roles/reso/home-estandar/atencion-inmediata/atencion-inmediata.component&#x27;;
+import { ConsultaExternaComponent } from &#x27;./roles/reso/home-estandar/consulta-externa/consulta-externa.component&#x27;;
+import { ApoyoDiagnosticoComponent } from &#x27;./roles/reso/home-estandar/apoyo-diagnostico/apoyo-diagnostico.component&#x27;;
+import { InternacionComponent } from &#x27;./roles/reso/home-estandar/internacion/internacion.component&#x27;;
+import { QuirurgicoComponent } from &#x27;./roles/reso/home-estandar/quirurgico/quirurgico.component&#x27;;
+import { EditarPrestadorComponent } from &#x27;./prestador/editar-prestador/editar-prestador.component&#x27;;
+import { HomeCriteriosComponent } from &#x27;./usuario/admin/resolucion/home-criterios/home-criterios.component&#x27;;
+import { CriterioTodosServiciosComponent } from &#x27;./usuario/admin/resolucion/criterio-todos-servicios/criterio-todos-servicios.component&#x27;;
+
+const routes: Routes &#x3D; [
+  { path: &#x27;&#x27;, component: HomeComponent },
+
+  //Rutas ADMIN - SIC
+  { path: &#x27;criteriosic&#x27;, component: CriteriosicComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sic&#x27;] } },
+  { path: &#x27;criteriosic/estandar&#x27;, component: CriterioestandarComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sic&#x27;] } },
+  { path: &#x27;criteriosic/estandar/agregar&#x27;, component: AgregarcriterioestandarComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sic&#x27;] } },
+  { path: &#x27;criteriosic/agregar&#x27;, component: AgregarcrisicComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sic&#x27;] } },
+  { path: &#x27;criteriosic/editarsic/:id&#x27;, component: EditarcriteriosicComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sic&#x27;] } },
+
+  //Rutas ADMIN - PAM
+  { path: &#x27;criteriopam&#x27;, component: CriteriopamecComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;pamec&#x27;] } },
+  { path: &#x27;criteriopam/agregar&#x27;, component: AgregarcripamComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;pamec&#x27;] } },
+  { path: &#x27;criteriopam/editar/:id&#x27;, component: EditarcritpamComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;pamec&#x27;] } },
+
+  //Rutas ADMIN -SP - IPS
+  { path: &#x27;criterioips&#x27;, component: CriterioSpIpsComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;criterioips/agregar&#x27;, component: AgregarcriIpsComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;criterioips/editarajuste/:id&#x27;, component: EditarcriteipsComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;criterioips/editarimp/:id&#x27;, component: EditarcriteipsimplComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;criterioips/editarverf/:id&#x27;, component: EditarcriteipsverifComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;criterioips/editarplan/:id&#x27;, component: EditarcriteipsplanComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+
+  //Rutas ADMIN &amp; SP- PROFESIONALES INDEPENDIENTES
+  { path: &#x27;criterioind&#x27;, component: CriterioSpIndComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;criterioind/agregar&#x27;, component: AgregarIndComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;criterioind/editar/:id&#x27;, component: EditarcriteindComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+
+
+  //Rutas Usuario
+  { path: &#x27;usuarios&#x27;, component: ListaUsuarioComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+  { path: &#x27;usuarios/nuevo&#x27;, component: NuevoUsuarioComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+  { path: &#x27;usuarios/nuevo/sic&#x27;, component: NuevoUsuarioSicComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+  { path: &#x27;usuarios/nuevo/sp&#x27;, component: NuevoUsuarioSpComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+  { path: &#x27;usuarios/nuevo/pamec&#x27;, component: NuevoUsuarioPamecComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+  { path: &#x27;usuarios/nuevo/reso&#x27;, component: NuevoUsuarioResoComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+  { path: &#x27;usuarios/nuevo/admin&#x27;, component: NuevoUsuarioAdminComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+  { path: &#x27;usuarios/editar/:id&#x27;, component: EditarUsuarioComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+
+  { path: &#x27;usuarios/restablecer/:id&#x27;, component: ResetpasswordComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+
+  { path: &#x27;usuario/cambiar-contraseña&#x27;, component: PasswordcComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sic&#x27;, &#x27;sp&#x27;, &#x27;pamec&#x27;, &#x27;res&#x27;] } },
+
+  //Rutas SIC
+  { path: &#x27;sic&#x27;, component: HomeSicComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sic&#x27;] } },
+  { path: &#x27;sic/acta&#x27;, component: ActaSicComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sic&#x27;] } },
+  { path: &#x27;sic/evaluaciones&#x27;, component: EvaluacionesSicComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sic&#x27;] } },
+  { path: &#x27;sic/evaluacion&#x27;, component: EvaluacionSicComponent, canActivate: [UsuarioGuard, ButtonGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sic&#x27;] } }, 
+
+  //Rutas SP
+  { path: &#x27;sp&#x27;, component: HomeSpComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;sp/acta-ips&#x27;, component: ActaSpComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;sp/acta-pro&#x27;, component: ActaSpProComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;sp/evaluaciones-pro&#x27;, component: EvaluacionesSpProComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;sp/evaluaciones-ips&#x27;, component: EvaluacionesSpIpsComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;sp/evaluacion-ips&#x27;, component: EvaluacionSpIpsComponent, canActivate: [UsuarioGuard, ButtonGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+  { path: &#x27;sp/evaluacion-pro&#x27;, component: EvaluacionSpProComponent, canActivate: [UsuarioGuard, ButtonGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;sp&#x27;] } },
+
+  //Rutas PAMEC
+  { path: &#x27;pamec&#x27;, component: HomePamecComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;pamec&#x27;] } },
+  { path: &#x27;pamec/acta&#x27;, component: ActaPamecComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;pamec&#x27;] } },
+  { path: &#x27;pamec/evaluaciones&#x27;, component: EvaluacionesPamecComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;pamec&#x27;] } },
+  { path: &#x27;pamec/evaluacion&#x27;, component: EvaluacionPamecComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;pamec&#x27;] } },
+
+
+  //Rutas RESOLUCIÓN
+  { path: &#x27;reso&#x27;, component: HomeResoComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;lista-verificacion&#x27;, component: ListaVerificacionComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;servicios-capacidad&#x27;, component: CapacidadInstaladaComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  //ESTANDARES - RESOLUCION
+  { path: &#x27;home-estandar&#x27;, component: HomeEstandarComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;todos-servicios&#x27;, component: TodosServiciosComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;atencion-inmediata&#x27;, component: AtencionInmediataComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;consulta-externa&#x27;, component: ConsultaExternaComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;apoyo-diagnostico&#x27;, component: ApoyoDiagnosticoComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;internacion&#x27;, component: InternacionComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;quirurgico&#x27;, component: QuirurgicoComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+
+  //HOME CRITERIOS RESOLUCIÓN 3100
+  { path: &#x27;home-res-criterios&#x27;, component: HomeCriteriosComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;criterio-todos-servicios&#x27;, component: CriterioTodosServiciosComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  
+  { path: &#x27;atencion-inmediata&#x27;, component: AtencionInmediataComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;consulta-externa&#x27;, component: ConsultaExternaComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;apoyo-diagnostico&#x27;, component: ApoyoDiagnosticoComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;internacion&#x27;, component: InternacionComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+  { path: &#x27;quirurgico&#x27;, component: QuirurgicoComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;, &#x27;res&#x27;] } },
+
+
+  { path: &#x27;login&#x27;, component: LoginComponent, canActivate: [LoginGuard] },
+
+  //PRESTADORES
+  { path: &#x27;prestadores&#x27;, component: ListaPrestadorComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+  { path: &#x27;prestadores/editar/:id&#x27;, component: EditarPrestadorComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+  { path: &#x27;prestadores/nuevo&#x27;, component: NuevoPrestadorComponent, canActivate: [UsuarioGuard], data: { expectedRol: [&#x27;admin&#x27;] } },
+
+  { path: &#x27;**&#x27;, redirectTo: &#x27;&#x27;, pathMatch: &#x27;full&#x27; }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
+            var COMPODOC_CURRENT_PAGE_URL = 'AppRoutingModule.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

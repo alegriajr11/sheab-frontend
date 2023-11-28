@@ -1,0 +1,6 @@
+  /* Estilo para separar las listas */
+.elemento-editable {
+    margin-bottom: 20px; /* Ajusta el valor según el espacio deseado entre las listas */
+    padding-bottom: 10px; /* Puedes agregar espacio adicional debajo de los elementos si es necesario */
+    border-bottom: 1px solid #ccc; /* Agrega un borde inferior para separar visualmente las listas */
+}

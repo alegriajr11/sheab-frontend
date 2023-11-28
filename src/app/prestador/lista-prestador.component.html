@@ -1,0 +1,80 @@
+<app-menu></app-menu>
+
+
+<ng-template #modalTemplate>
+    <app-modal-sedes-prestador [dataFromParent]="modalRef"></app-modal-sedes-prestador>
+</ng-template>
+
+<div class="size" *ngIf="!listaVacia">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h2><b>Prestadores</b></h2>
+                </div>
+
+                <div class="col-sm-3">
+                    <button class="btn btn-info" routerLink="/prestadores/sede/nueva">
+                        <i class='fas fa-clinic-medical'></i> Agregar Sede</button>
+                </div>
+
+                <div class="col-sm-4">
+                    <button class="btn btn-secondary centered-icon" routerLink="/prestadores/nuevo" title="Nuevo Prestador">
+                        <i class='fa fa-plus-circle'></i>
+                        <span>Agregar Nuevo Prestador</span></button>
+                </div>
+            </div>
+        </div>
+        <div class="search-hero">
+            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" placeholder="Buscar Prestador...">
+        </div>
+        
+        <table class="table table-wrapper text-center table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Cod Habilitación</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Nit</th>
+                    <th scope="col">Habilitado</th>
+                    <th scope="col">Municipio</th>
+                    <th scope="col" *ngIf="isAdmin">Editar</th>
+                    <th scope="col" *ngIf="isAdmin">Sedes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prestadores of this.prestador | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page} ">
+                    <td>{{ prestadores.pre_cod_habilitacion }}</td>
+                    <td>{{ prestadores.pre_nombre }}</td>
+                    <td>{{ prestadores.pre_nit }}</td>
+                    <td>{{ prestadores.pre_habilitado }}</td>
+                    <td *ngFor="let municipio of this.prestadores.pre_municipio | keyvalue">{{municipio.value}}</td>
+                    <td *ngIf="isAdmin">
+                        <button class="btn btn-outline-warning" [routerLink]="['/prestadores/editar']" [queryParams]="{ id: prestadores.pre_cod_habilitacion }">
+                            <i class="far fa-edit"></i>
+                        </button>
+                    </td>
+                    <td *ngIf="isAdmin">
+                        <button class="btn btn-outline-info"
+                        (click)="openModal(modalTemplate, prestadores.pre_cod_habilitacion, prestadores.pre_nombre)">
+                            <i class='fas fa-clinic-medical'></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls
+        (pageChange) ="page =$event"
+        previousLabel="Anterior"
+        nextLabel="Siguiente">
+        </pagination-controls>
+    </div>
+</div>
+
+<div class="container" *ngIf="listaVacia">
+    <div class="p-3 mb-2 bg-dark text-white text-center">
+        <h2>{{ listaVacia }}</h2>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

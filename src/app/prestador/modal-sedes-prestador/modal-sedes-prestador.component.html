@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="col-md-1 ml-auto">
+		<button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+			<span aria-hidden="true" class="visually-hidden">&times;</span>
+		</button>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row justify-content-between">
+		<div class="col-md-12">
+			<h4 class="modal-title pull-left text-center">{{nombre_prestador}}</h4>
+		</div>
+	</div>
+	<hr>
+</div>
+
+
+
+<!-- Ejemplo de un elemento editable -->
+<div class="container">
+	<div *ngFor="let sede of sedesPrestador" class="elemento-editable">
+		<p><strong>No. Sede:</strong> {{ sede.sede_numero }}</p>
+		<p><strong>Nombre Sede:</strong> {{ sede.sede_nombre }}</p>
+		<p><strong>Gerente:</strong> {{ sede.sede_gerente }}</p>
+		<p><strong>Sede Principal: </strong> <b style="border-bottom: 4px solid;">{{ sede.sede_principal }}</b></p>
+		<p><strong>No. Sede Principal:</strong> {{ sede.sede_numero_principal }}</p>
+		<p><strong>Dirección Sede:</strong> {{ sede.sede_direccion }}</p>
+		<p><strong>Barrio Sede:</strong> {{ sede.sede_barrio }}</p>
+		<p><strong>Municipio: </strong><label  *ngFor="let municipio of sede.sede_municipio | keyvalue">{{ municipio.value }}</label></p>
+		<button class="btn btn-warning" routerLink="/prestadores/sede/editar/{{sede.sede_id}}">
+			<i class="far fa-edit"></i>Editar
+		</button>
+	</div>
+</div>

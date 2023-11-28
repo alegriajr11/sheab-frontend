@@ -1,0 +1,274 @@
+<app-menu></app-menu>
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" (click)="volver()">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+
+            <h1 class="text-center">Evaluación de Seguridad del Paciente - Instituciones Prestadoras de Servicios de
+                Salud</h1>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalTemplatePrestador>
+    <app-modal-editar-firma-sp-ips [dataFromParent]="modalRef"></app-modal-editar-firma-sp-ips>
+</ng-template>
+
+<ng-template #modalTemplateAcompanante>
+    <app-modal-editar-firma-acompanante-sp-ips [dataFromParent]="modalRef"></app-modal-editar-firma-acompanante-sp-ips>
+</ng-template>
+
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">ACTA DE VISITA DE VERIFICACIÓN DEL CUMPLIMIENTO DEL PROGRAMA DE SEGURIDAD
+                DEL PACIENTE INSTITUCIONES PRESTADORAS DE SERVICIOS DE SALUD (IPS)</h2>
+            <hr class="up">
+            <form novalidate class="row g-3" name="ps" (ngSubmit)="onUpdate()" id="form">
+                <div class="col-md-2">
+                    <label for="inputN_Acta" class="form-label text-center">N°ACTA</label>
+                    <input type="number" min="0" class="form-control" id="acta" readonly name="act_id"
+                        [(ngModel)]="actaSp.act_id">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="inicial" class="form-label">VISITA INICIAL</label>
+                    <label class="switch">
+                        <input type="checkbox" id="inicial" onclick="unsoloCheckbox()" name="act_visita_inicial"
+                            [(ngModel)]="actaSp.act_visita_inicial">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="segumiento" class="form-label">VISITA DE SEGUIMIENTO</label>
+                    <label class="switch">
+                        <input type="checkbox" id="segumiento" onclick="unsoloCheckbox()" name="act_visita_seguimiento"
+                            [(ngModel)]="actaSp.act_visita_seguimiento">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label">FECHA INICIAL</label>
+                    <input type="date" class="form-control" id="fecha-inicial" pattern="dd/MM/yyyy"
+                        name="act_fecha_inicial" [(ngModel)]="actaSp.act_fecha_inicial"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl (change)="habilitarFechaFinal()">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">FECHA FINAL</label>
+                    <input type="date" class="form-control" id="fecha-final" pattern="dd/MM/yyyy" name="act_fecha_final"
+                        [(ngModel)]="actaSp.act_fecha_final" [ngModelOptions]="{standalone: true}" ngDefaultControl
+                        [disabled]="!habilitarfechaFin" [min]="actaSp.act_fecha_inicial">
+                </div>
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3>INFORMACIÓN DEL PRESTADOR</h3>
+                </div>
+
+                <div class="col-12">
+                    <label for="mun_id" class="form-label">Municipio:</label>
+                    <input type="text" class="form-control" id="mun_id" placeholder="Municipio..." readonly
+                        name="mun_id" [(ngModel)]="actaSp.act_municipio">
+                </div>
+
+                <div class="col-12">
+                    <label for="mun_id" class="form-label">Prestador:</label>
+                    <input type="text" class="form-control" id="prestador" placeholder="Prestador..." readonly
+                        name="prestador" [(ngModel)]="actaSp.act_prestador">
+                </div>
+
+                <div class="col-6">
+                    <label for="nit" class="form-label">Nit:</label>
+                    <input type="text" class="form-control" id="nit" placeholder="Nit" readonly name="act_nit"
+                        [(ngModel)]="actaSp.act_nit">
+                </div>
+
+
+                <div class="col-6">
+                    <label for="direccion" class="form-label">Dirección:</label>
+                    <input type="text" class="form-control" id="act_direccion" placeholder="Dirección Prestador"
+                        readonly name="act_direccion" [(ngModel)]="actaSp.act_direccion">
+                </div>
+
+                <div class="col-6">
+                    <label for="barrio" class="form-label">Barrio:</label>
+                    <input type="text" class="form-control" id="barrio" name="act_barrio" placeholder="Barrio Prestador"
+                        required [(ngModel)]="actaSp.act_barrio">
+                </div>
+
+                <div class="col-6">
+                    <label for="telefono" class="form-label">Telefono:</label>
+                    <input type="tel" class="form-control" id="telefono" placeholder="Telefono" readonly
+                        name="act_telefono" [(ngModel)]="actaSp.act_telefono">
+                </div>
+
+                <div class="col-12">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="E-mail" readonly name="act_email"
+                        [(ngModel)]="actaSp.act_email">
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Representante Legal:</label>
+                    <input type="text" class="form-control" id="repleg" placeholder="Representante Legal" readonly
+                        name="act_representante" [(ngModel)]="actaSp.act_representante">
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Código Prestador:</label>
+                    <input type="text" class="form-control" id="codpres" placeholder="Código Prestador" readonly
+                        name="act_cod_prestador" [(ngModel)]="actaSp.act_cod_prestador">
+                </div>
+
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Objeto de la Visita:</label>
+                    <input type="text" class="form-control" id="objVisita" readonly name="objVisita"
+                        [(ngModel)]="actaSp.act_obj_visita">
+                </div>
+
+                <!--LINEA-->
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3 class="text-center sizeh3">COMPROMISOS:</h3>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="compromiso_actividad" class="form-label">Actividad:</label>
+                    <br>
+                    <textarea name="act_compromiso_actividad" id="compromiso_actividad" cols="55" rows="4"
+                        [(ngModel)]="actaSp.act_compromiso_actividad" maxlength="255"></textarea>
+                    <p>Caracteres restantes: {{ 255 - (actaSp.act_compromiso_actividad ? actaSp.act_compromiso_actividad.length : 0) }}</p>
+                </div>
+                
+
+                <div class="col-md-3">
+                    <label for="fecha_compromiso" class="form-label">Fecha Compromiso:</label>
+                    <input type="date" class="form-control" id="fecha_compromiso" name="act_compromiso_fecha"
+                        [(ngModel)]="actaSp.act_compromiso_fecha">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="responsable" class="form-label">Responsables:</label>
+                    <input type="text" class="form-control" id="responsable" name="act_compromiso_responsable"
+                        [(ngModel)]="actaSp.act_compromiso_responsable">
+                </div>
+
+                <!--LINEA-->
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3 class="text-center sizeh3">FIRMAS</h3>
+                </div>
+
+                <div class="col-12 bg-h3 contenedor-form">
+                    <h3 class="text-center sizeh3">POR SECRETARIA DE SALUD DEPARTAMENTAL</h3>
+                </div>
+
+
+                <div class="col-12">
+                    <label for="" class="form-label">Verificador SOGCS:</label>
+                    <input type="text" class="form-control" id="usu_secretaria" placeholder="Verificador SOGCS..."
+                        readonly name="usu_secretaria" [(ngModel)]="actaSp.act_nombre_funcionario">
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control" id="cargoSecre" placeholder="Cargo Verificador..." readonly
+                        name="act_cargo_funcionario" [(ngModel)]="actaSp.act_cargo_funcionario">
+                </div>
+
+                <div class="col-3" style="margin-bottom: 20px;" *ngIf="!actaSp.act_firma_funcionario">
+                    <span class="button-like btn-span" (click)="obtenerFirmaFuncionario()">FIRMAR</span>
+                </div>
+
+                <div class="col-12 bg-h3 contenedor-form">
+                    <h3 class="text-center sizeh3">PRESTADOR DE SERVICIOS DE SALUD</h3>
+                </div>
+
+                <div class="col-6">
+                    <label for="" class="form-label">Representante:</label>
+                    <input type="text" class="form-control" name="act_nombre_prestador"
+                        [(ngModel)]="actaSp.act_nombre_prestador"
+                        (input)="actaSp.act_nombre_prestador = actaSp.act_nombre_prestador.toUpperCase()">
+                </div>
+
+
+                <div class="col-6">
+                    <label for="" class="form-label">Cargo Representante:</label>
+                    <input type="text" class="form-control" id="cargoPres" name="act_cargo_prestador"
+                        placeholder="Cargo..." [(ngModel)]="actaSp.act_cargo_prestador"
+                        (input)="actaSp.act_cargo_prestador = actaSp.act_cargo_prestador.toUpperCase()">
+                </div>
+
+                <!--BOTON MODAL FIRMA REPRESENTANTE-->
+                <div class="col-12" *ngIf="!actaSp.act_firma_prestador && noFirmaActa === 'false'">
+                    <span class="button-like btn-span" (click)="openModalFirmPrestador(modalTemplatePrestador)">Firma
+                        Representante</span>
+                </div>
+
+                <div class="col-6">
+                    <label for="" class="form-label">Acompañante de Visita:</label>
+                    <input type="text" class="form-control" id="nombrePrestadorAcom"
+                        name="act_nombre_prestador_acompanante" placeholder="Prestador..."
+                        [(ngModel)]="actaSp.act_nombre_prestador_acompanante"
+                        (input)="actaSp.act_nombre_prestador_acompanante = actaSp.act_nombre_prestador_acompanante.toUpperCase()">
+                </div>
+
+
+                <div class="col-6">
+                    <label for="" class="form-label">Cargo Acompañante:</label>
+                    <input type="text" class="form-control" id="cargoPresAcom" name="act_cargo_prestador_acompanante"
+                        placeholder="Cargo..." [(ngModel)]="actaSp.act_cargo_prestador_acompanante"
+                        (input)="actaSp.act_cargo_prestador_acompanante = actaSp.act_cargo_prestador_acompanante.toUpperCase()">
+                </div>
+
+                <!--BOTON MODAL FIRMA ACOMPAÑANTE-->
+                <div class="col-6" *ngIf="!actaSp.act_firma_prestador_acompanante && noFirmaActa === 'false'">
+                    <span class="button-like btn-span" (click)="openModalAcompanante(modalTemplateAcompanante)">Firma
+                        Acompañante</span>
+                </div>
+
+                <!--BOTON NO FIRMA-->
+                <div class="col-6">
+                    <span class="button-like btn-span" *ngIf="noFirmaActa === 'false' && !actaSp.act_firma_prestador && 
+                    !actaSp.act_firma_prestador_acompanante" (click)="noFirmaPrestador()">No
+                        Firma Prestador</span>
+                </div>
+
+
+                <div class="col-12">
+                    <button id="boton-acta-sic" class="btn btn-dark esp btn-circle btn-xl" title="Guardar"
+                        type="submit">
+                        <i class='fa fa-save fa-lg'></i>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--Fin Div Container-->
+
+<app-footer></app-footer>

@@ -1,0 +1,237 @@
+<app-menu></app-menu>
+
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/sp">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+
+            <h1 class="text-center">Evaluación de Seguridad del Paciente - Profesionales Independientes</h1>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalTemplate>
+    <app-modal-firma-acta-sp-pro [dataFromParent]="modalRef"></app-modal-firma-acta-sp-pro>
+</ng-template>
+
+
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">ACTA DE VISITA DE VERIFICACIÓN DEL CUMPLIMIENTO DEL PROGRAMA DE SEGURIDAD
+                DEL PACIENTE PROFESIONALES INDEPENDIENTES</h2>
+            <hr class="up">
+            <form #f="ngForm" novalidate class="row g-3" name="ps" (ngSubmit)="onRegister()" id="form">
+                <div class="col-md-2">
+                    <label for="inputN_Acta" class="form-label text-center">N°ACTA</label>
+                    <input type="number" min="0" class="form-control" id="acta" readonly name="act_id"
+                        [(ngModel)]="act_id">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="inicial" class="form-label">VISITA INICIAL</label>
+                    <label class="switch">
+                        <input type="checkbox" id="inicial" onclick="unsoloCheckbox()" name="act_visita_inicial"
+                            [(ngModel)]="act_visita_inicial" (change)="ocultarMensajes()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="segumiento" class="form-label">VISITA DE SEGUIMIENTO</label>
+                    <label class="switch">
+                        <input type="checkbox" id="segumiento" onclick="unsoloCheckbox()" name="act_visita_seguimiento"
+                            [(ngModel)]="act_visita_seguimiento" (change)="ocultarMensajes()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div *ngIf="showTipoVisitaMessage" class="validation-message-visita">Seleccione un Tipo de
+                    Visita.</div>
+
+                <div class="col-md-3">
+                    <label class="form-label">FECHA INICIAL</label>
+                    <input type="date" class="form-control" id="fecha-inicial" pattern="dd/MM/yyyy"
+                        name="act_fecha_inicial" [(ngModel)]="act_fecha_inicial" [ngModelOptions]="{standalone: true}"
+                        ngDefaultControl (change)="habilitarFechaFinal(); ocultarMensajes()">
+                    <div *ngIf="showFechaInicialMessage" class="validation-message">Seleccione la Fecha
+                        Inicial.</div>
+                </div>
+
+                <div class="col-3">
+                    <label class="form-label">FECHA FINAL</label>
+                    <input type="date" class="form-control" id="fecha-final" pattern="dd/MM/yyyy" name="act_fecha_final"
+                        [(ngModel)]="act_fecha_final" [ngModelOptions]="{standalone: true}" ngDefaultControl
+                        [disabled]="!habilitarfechaFin" [min]="act_fecha_inicial" (change)="ocultarMensajes()">
+                    <div *ngIf="showFechaFinalMessage" class="validation-message">Seleccione la Fecha
+                        Final.</div>
+                </div>
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3>INFORMACIÓN DEL PRESTADOR</h3>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="habilitado" class="form-label">Municipio:</label>
+                    <select id="mun_id" name="mun_id" class="form-select form-control"
+                        (change)="cargarPrestadoresByMun(); ocultarMensajes()" [(ngModel)]="act_municipioId"
+                        ngDefaultControl>
+                        <option value="" disabled selected hidden>Selecciona un Municipio...</option>
+                        <option *ngFor="let municipio of municipio" [value]="municipio.mun_id">
+                            {{ municipio.mun_nombre }}
+                        </option>
+                    </select>
+                    <div *ngIf="showMunicipioMessage" class="validation-message">Seleccione el Municipio.
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputAddress" class="form-label">Prestador:</label>
+                    <select id="prestador" name="prestador" class="form-select form-control" (change)="llenarCampos()"
+                        [(ngModel)]="act_prestadorId" ngDefaultControl (change)="ocultarMensajes()">
+                        <option value="" disabled selected hidden>Selecciona un Prestador...</option>
+                        <option *ngFor="let prest of prestador" [value]="prest.pre_cod_habilitacion">
+                            {{ prest.pre_nombre }}
+                        </option>
+                    </select>
+                    <div *ngIf="showPrestadorMessage" class="validation-message">Seleccione el Prestador.
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <label for="nit" class="form-label">Nit:</label>
+                    <input type="text" class="form-control" id="nit" placeholder="Nit" readonly name="act_nit"
+                        [(ngModel)]="act_nit">
+                </div>
+
+                <div class="col-6">
+                    <label for="direccion" class="form-label">Dirección:</label>
+                    <input type="text" class="form-control" id="direccion" placeholder="Dirección Prestador" readonly>
+                    <input type="hidden" name="act_direccion" [(ngModel)]="act_direccion">
+                </div>
+
+                <div class="col-6">
+                    <label for="barrio" class="form-label">Barrio:</label>
+                    <input type="text" class="form-control" id="barrio" name="act_barrio" placeholder="Barrio Prestador"
+                        required [(ngModel)]="act_barrio" (input)="ocultarMensajes()">
+                    <div *ngIf="showBarrioMessage" class="validation-message-barrio">Ingresa el Barrio.</div>
+                </div>
+
+                <div class="col-6">
+                    <label for="telefono" class="form-label">Telefono:</label>
+                    <input type="tel" class="form-control" id="telefono" placeholder="Telefono" readonly>
+                    <input type="hidden" name="act_telefono" [(ngModel)]="act_telefono">
+                </div>
+
+                <div class="col-12">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="E-mail" readonly>
+                    <input type="hidden" name="act_email" [(ngModel)]="act_email">
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Representante Legal:</label>
+                    <input type="text" class="form-control" id="rep_legal" name="act_representante" [(ngModel)]="act_representante" placeholder="Representante Legal">
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="" class="form-label">Código Prestador:</label>
+                    <input type="text" class="form-control" id="codpres" placeholder="Código Prestador" readonly>
+                    <input type="hidden" name="act_cod_prestador" [(ngModel)]="act_cod_prestador">
+                </div>
+
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Objeto de la Visita:</label>
+                    <select id="objVisita" class="form-select form-control" [(ngModel)]="act_obj_visita"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl (change)="ocultarMensajes()">
+                        <option hidden selected>Objeto de visita...</option>
+                        <option>Realizar seguimiento a la implementación del programa de seguridad del paciente para
+                            profesionales independientes.</option>
+                    </select>
+                    <div *ngIf="showObjVisitaMessage" class="validation-message-ovpc">Seleccione el Objeto.</div>
+                </div>
+
+                <div class="col-12">
+                    <h3 class="text-center sizeh3">FIRMAS</h3>
+                </div>
+
+                <div class="col-12 bg-h3 contenedor-form">
+                    <h3 class="text-center sizeh3">POR SECRETARIA DE SALUD DEPARTAMENTAL</h3>
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Verificador SOGCS:</label>
+                    <select id="usu_secretaria" class="form-select form-control" [(ngModel)]="act_funcionarioId"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl
+                        (change)="cargoUsuario(); ocultarMensajes()">
+                        <option value="" disabled selected hidden>Selecciona el Verificador...</option>
+                        <option *ngFor="let usuario of usuario" value="{{usuario.usu_id}}">{{usuario.usu_nombre}}
+                            {{usuario.usu_apellido}}</option>
+                    </select>
+                    <div *ngIf="showVerificadorMessage" class="validation-message-ovpc">Seleccione el Verificador.
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control" id="cargoSecre" name="act_cargo_funcionario"
+                        placeholder="Cargo..." [(ngModel)]="act_cargo_funcionario" readonly>
+                </div>
+
+                <div class="col-12 bg-h3 contenedor-form">
+                    <h3 class="text-center sizeh3">PRESTADOR DE SERVICIOS DE SALUD</h3>
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Prestador:</label>
+                    <input type="text" class="form-control" id="nombrePrestador" name="act_nombre_prestador"
+                        placeholder="Prestador..." [(ngModel)]="act_nombre_prestador" (input)="ocultarMensajes()">
+                    <div *ngIf="showPresadorNombreMessage" class="validation-message-ovpc">Ingresa el Nombre Prestador a
+                        cargo.
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control" id="cargoPres" name="act_cargo_prestador"
+                        placeholder="Cargo..." [(ngModel)]="act_cargo_prestador" (input)="ocultarMensajes()">
+                    <div *ngIf="showPrestadorCargoMessage" class="validation-message-ovpc">Ingresa el Cargo del
+                        Prestador.
+                    </div>
+                </div>
+
+                <!--BOTON RECIBE VISITA-->
+                <div class="col-4">
+                    <span class="button-like btn-span" >No Recibe Visita</span>
+                </div>
+
+                <div class="col-12">
+                    <button id="boton-acta-sp-ind" class="btn btn-dark esp btn-circle btn-xl" title="Guardar"
+                        type="submit" (click)="obtenerNombres()">
+                        <i class='fa fa-save fa-lg'></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<!--Fin Div Container-->
+
+<app-footer></app-footer>

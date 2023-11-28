@@ -1,0 +1,135 @@
+<app-menu></app-menu>
+
+<div class="grid-container">
+    <button class="btn btn-light esp btn-circle btn-xl" routerLink="/usuarios">
+        <i class="fa fa-reply fa-lg"></i>
+    </button>
+    <div class="card">
+        <div class="card-body">
+            <div class="container bg-h3">
+                <h2 class="card-title text-center">EDITAR USUARIO</h2>
+            </div>
+
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+
+                <div class="form-group">
+                    <label for="nombre">Cédula:</label>
+                    <input type="text" class="form-control" name="usu_cedula" id="usu_cedula"
+                        [(ngModel)]="usuario.usu_cedula" required autocomplete="off" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" name="usu_nombre" id="usu_nombre"
+                        [(ngModel)]="usuario.usu_nombre" (input)="usuario.usu_nombre =  usuario.usu_nombre.toUpperCase()" required autocomplete="off">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="nombre">Apellido:</label>
+                    <input type="text" class="form-control" name="usu_apellido" id="usu_apellido"
+                        [(ngModel)]="usuario.usu_apellido" (input)="usuario.usu_apellido = usuario.usu_apellido.toUpperCase()" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Cargo:</label>
+                    <input type="text" class="form-control" name="usu_cargo" id="usu_cargo"
+                        [(ngModel)]="usuario.usu_cargo" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Área Profesional:</label>
+                    <input type="text" class="form-control" name="usu_area_profesional" id="usu_area_profesional"
+                        [(ngModel)]="usuario.usu_area_profesional" required autocomplete="off">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="nombreUsuario">Nombre de Usuario:</label>
+                    <input type="text" class="form-control" name="usu_nombreUsuario" id="usu_nombreUsuario"
+                        [(ngModel)]="usuario.usu_nombreUsuario" required autocomplete="off">
+                </div>
+
+
+                <div class="form-group roles">
+                    <label for="estado">Estado:</label>
+                    <Select class="form-select form-control" [(ngModel)]="usuario.usu_estado"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl>
+                        <option value="true">Activo</option>
+                        <option value="false">Inactivo</option>
+                    </Select>
+                </div>
+
+                <div class="form-group" *ngIf="!isAdmin">
+                    <label for="">Seleciona Perfiles:</label>
+                </div>
+
+
+                <div class="form-group roles" *ngIf="!isAdmin">
+                    <div class="switch">
+                        <input type="checkbox" id="rol2" name="rol2" [(ngModel)]="rolesSeleccionados['rol2']">
+                        <div class="slider round" (click)="toggleRole('rol2', 2)"></div>
+                    </div>
+                    <label for="rol2">SIC - Sistema Información de Calidad</label>
+                </div>
+
+
+                <div class="form-group roles" *ngIf="!isAdmin">
+                    <div class="switch">
+                        <input type="checkbox" id="rol3" name="rol3" [(ngModel)]="rolesSeleccionados['rol3']">
+                        <div class="slider round" (click)="toggleRole('rol3', 3)"></div>
+                    </div>
+                    <label for="rol3">SP - Seguridad del Paciente</label>
+                </div>
+
+
+                <div class="form-group roles" *ngIf="!isAdmin">
+                    <div class="switch">
+                        <input type="checkbox" id="rol4" name="rol4" [(ngModel)]="rolesSeleccionados['rol4']">
+                        <div class="slider round" (click)="toggleRole('rol4', 4)"></div>
+                    </div>
+                    <label for="rol4">PAMEC</label>
+                </div>
+
+                <div class="form-group roles" *ngIf="!isAdmin">
+                    <div class="switch">
+                        <input type="checkbox" id="rol5" name="rol5" [(ngModel)]="rolesSeleccionados['rol5']">
+                        <div class="slider round" (click)="toggleRole('rol5', 5)"></div>
+                    </div>
+                    <label for="rol5">RES - Resolución 3100</label>
+                </div>
+
+
+                <div class="form-group roles" *ngIf="!isAdmin">
+                    <div class="switch">
+                        <input type="checkbox" id="rol6" name="rol6" [(ngModel)]="rolesSeleccionados['rol6']">
+                        <div class="slider round" (click)="toggleRole('rol6', 6)"></div>
+                    </div>
+                    <label for="rol6">Contador</label>
+                </div>
+
+                <div class="form-group roles" *ngIf="!isAdmin">
+                    <div class="switch">
+                        <input type="checkbox" id="rol7" name="rol7" [(ngModel)]="rolesSeleccionados['rol7']">
+                        <div class="slider round" (click)="toggleRole('rol7', 7)"></div>
+                    </div>
+                    <label for="rol7">Coordinador</label>
+                </div>
+
+
+
+                <hr>
+
+                <div class="form-group">
+                    <button class="btn btn-dark btn-block" type="submit" [disabled]="!f.valid">
+                        <i class="fa fa-refresh" aria-hidden="true"></i> Actualizar
+                    </button>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

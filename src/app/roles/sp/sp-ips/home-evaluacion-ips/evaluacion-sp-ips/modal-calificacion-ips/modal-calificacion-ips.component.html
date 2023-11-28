@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{ isEditing ? 'Editar Calificación' : 'Crear Calificación' }}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+</div>
+
+
+<form #f="ngForm" novalidate (ngSubmit)="onUpdate()">
+    <div class="modal-body">
+        <div class="col">
+            <div class="col-md-2">
+                <span for="">Calificación:</span>
+            </div>
+            <div class="col-md-12">
+                <select class="form-select form-control" [(ngModel)]="cal_nota" [ngModelOptions]="{ standalone: true }"
+                    ngDefaultControl>
+                    <option value="" disabled selected>Selecciona..</option>
+                    <option [value]="5">5</option>
+                    <option [value]="3">3</option>
+                    <option [value]="1">1</option>
+                </select>
+            </div>
+            <hr />
+            <div class="col-md-2">
+                <span for="">Observaciones:</span>
+            </div>
+
+            <div class="col-md-12">
+                <textarea type="text" class="form-control non-resizable-textarea" name="cal_observaciones" #calObservaciones
+                    [(ngModel)]="cal_observaciones" required autocomplete="off"
+                    (keydown)="agregarItemOnEnter($event)"></textarea>
+            </div>
+
+            <div class="col-md-12 vineta" *ngIf="cal_observaciones">
+                <button class="btn-dark" (click)="agregarItem()"><i class='fa fa-circle'></i></button>
+            </div>
+
+            <div>
+                <span id="cod-pres"></span>
+            </div>
+            <hr />
+            <div class="col-md-12">
+                <button class="btn btn-dark btn-block col-md-5" type="submit">
+                    <i class="fa fa-save"></i> {{ isEditing ? 'Editar Calificación' : 'Crear Calificación' }}
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

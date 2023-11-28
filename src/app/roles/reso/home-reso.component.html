@@ -1,0 +1,51 @@
+<app-menu></app-menu>
+
+    <div class="wrapper">
+        <div class="col">
+            <div class="row">
+                <div class="col-md-2">
+                    <button class="btn btn-light esp btn-circle btn-xl" routerLink="/">
+                        <i class="fa fa-reply fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="jumbotron">
+                <hr class="my-4">
+                <h1 class="display-4 text-center">Visita Resolución 3100 - 2019</h1>
+                <hr class="my-4">
+                <div class="abs-center">
+                    <div class="button-container">
+                        <button class="btn btn-dark esp btn-circle btn-xl" title="Visitas Realizadas" routerLink="/reso/informe">
+                            <i class='fa fa-files-o'></i></button>
+                            <label class="tittle-label">Visitas Realizadas</label>
+                    </div>
+
+                    <div class="button-container">
+                        <button *ngIf="isAdmin || isCoordinador" class="btn btn-dark esp btn-circle btn-xl" title="Visita IVC" routerLink="/reso/visita-ivc">
+                            <i class="bi bi-file-earmark-break-fill fa-lg"></i></button>
+                            <label class="tittle-label">Visita IVC</label>
+                    </div>
+
+                    <div class="button-container">
+                        <button *ngIf="isAdmin || isCoordinador" class="btn btn-dark esp btn-circle btn-xl" title="Visita Verificación" routerLink="/reso/visita-verificacion">
+                            <i class="bi bi-journal-check fa-lg"></i></button>
+                            <label class="tittle-label">Visita Verificación</label>
+                    </div>
+
+                    <div class="button-container">
+                        <button *ngIf="isAdmin || isContador" class="btn btn-dark esp btn-circle btn-xl" title="Contador" routerLink="/resolucion/contador">
+                            <i class='fas fa-file-invoice-dollar fa-lg'></i></button>
+                            <label class="tittle-label">Contador</label>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Fin Div Container-->
+
+<app-footer></app-footer>

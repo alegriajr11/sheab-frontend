@@ -1,0 +1,9 @@
+.vineta {
+    margin-top: 10px;
+}
+
+/* Estilos para el textarea no redimensionable */
+.non-resizable-textarea {
+    resize: none; /* Evita la redimensión */
+    height: 200px;
+}

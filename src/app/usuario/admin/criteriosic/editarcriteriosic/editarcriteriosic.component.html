@@ -1,0 +1,35 @@
+<app-menu></app-menu>
+
+<div class="grid-container">
+    <button class="btn btn-light esp btn-circle btn-xl" routerLink="/criteriosic">
+        <i class="fa fa-reply fa-lg"></i>
+    </button>
+    <div class="card">
+        <div class="card-body">
+            <div class="container bg-h3">
+                <h2 class="card-title text-center">EDITAR CRITERIO - SISTEMA DE INFORMACION DE CALIDAD</h2>
+            </div>
+
+
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="nombre">CRITERIO:</label>
+                    <textarea type="text" class="form-control" name="cri_nombre" id="cri_nombre" [(ngModel)]="criterioSic.cri_nombre"
+                    required autocomplete="off"></textarea>
+                </div>
+                <hr>
+
+                <div class="form-group">
+                    <button class="btn btn-dark btn-block" type="submit" [disabled]="!f.valid">
+                        <i class="fa fa-refresh" aria-hidden="true"></i> Actualizar
+                    </button>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+

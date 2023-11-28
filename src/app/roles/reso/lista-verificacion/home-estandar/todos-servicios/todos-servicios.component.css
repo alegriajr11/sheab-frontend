@@ -1,0 +1,74 @@
+h1, h2 {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+
+.table-wrapper {
+    background: #fff;
+    padding: 20px 25px;
+    margin: 30px 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+
+table.table tr th:first-child {
+    width: 60px;
+}
+table.table tr th:last-child {
+    width: 100px;
+}
+
+/*ASIGNACION BAKCGRAOUND A AL DIV LISTA CRITERIOS*/
+.custom-background {
+    background-color: #eeeeee; /* Cambia esto al color deseado */
+    padding: 20px; /* Añade espaciado para mejorar la apariencia */
+    margin-bottom: 20px; /* Espacio entre los divs de criterios */
+}
+
+.criterio-guardado {
+    background-color: rgb(125, 189, 125); /* Cambia el fondo a verde para criterios guardados */
+}
+
+/*BORDES REDONDEADOS LISTA CRITERIOS*/
+.rounded {
+    border: 1px solid #d1d1d1; /* Añade un borde */
+    border-radius: 10px; /* Ajusta el valor de border-radius según tus preferencias */
+    padding: 10px; /* Añade un espacio de relleno para que los elementos internos no toquen los bordes redondeados */
+}
+
+/*HEADER*/
+.title-header{
+    color: white;
+}
+
+.header-section {
+    padding-bottom: 15px;
+    background: #343a40;
+    color: #fff;
+    padding: 16px 30px;
+    margin: -20px -25px 10px;
+    border-radius: 3px 3px 0 0;
+}
+
+/*SUBRAYADO AL NOMBRE DEL ESTANDAR SELECCIONADO*/
+.underlined {
+    text-decoration: underline;
+}
+
+/*LABELS*/
+label{
+    font-size: medium;
+    font-weight: bold;
+}
+
+/*TEXTAREA NO REDIMENSIONABLE*/
+textarea{
+    height: 100px; /* Altura deseada */
+    resize: none; /* Desactiva el redimensionamiento */
+    /* Otros estilos opcionales */
+}
+
+
+
