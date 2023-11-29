@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {  LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -129,6 +129,8 @@ import { ListaProcesosIvcComponent } from './roles/reso/lista-procesos-ivc/lista
 import { ModalCumplimientoRequisitosComponent } from './roles/reso/cumplimiento-requisitos/modal-cumplimiento-requisitos/modal-cumplimiento-requisitos.component';
 import { ModalCalificacionIpsComponent } from './roles/sp/sp-ips/home-evaluacion-ips/evaluacion-sp-ips/modal-calificacion-ips/modal-calificacion-ips.component';
 import { ModalEditarCalificacionPamecComponent } from './roles/pamec/evaluaciones/editar-evaluacion-pamec/modal-editar-calificacion-pamec/modal-editar-calificacion-pamec.component';
+import { LoadingInterceptor } from './interceptors/loading.interceptors';
+import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 
 
 
@@ -245,7 +247,8 @@ import { ModalEditarCalificacionPamecComponent } from './roles/pamec/evaluacione
     ListaProcesosIvcComponent,
     ModalCumplimientoRequisitosComponent,
     ModalCalificacionIpsComponent,
-    ModalEditarCalificacionPamecComponent
+    ModalEditarCalificacionPamecComponent,
+    LoadingIndicatorComponent
 
   ],
   imports: [
@@ -267,7 +270,12 @@ import { ModalEditarCalificacionPamecComponent } from './roles/pamec/evaluacione
     
 
   ],
-  providers: [interceptorProvider, BsModalService],
+  providers: [interceptorProvider, BsModalService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
