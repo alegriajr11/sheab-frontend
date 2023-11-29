@@ -45,6 +45,9 @@ export class EvaluacionPamecComponent {
     { value: 1, nota: 1 },
   ];
 
+  // Objeto Deshabilitar Boton
+  botonDeshabilitado: { [key: number]: boolean } = {};
+
 
   public modalRef: BsModalRef;
 
@@ -57,7 +60,24 @@ export class EvaluacionPamecComponent {
 
   ngOnInit(): void {
     this.capturarNombrePrestador()
+    this.capturarIdEvaluacion()
     this.cargarActividad()
+    this.calificacionesAsignadas()
+  }
+
+  //OBTENER LAS CALIFICACIONES ASIGNADAS
+  calificacionesAsignadas(): void {
+    //GUARDAR LOS CRITERIOS CON CUMPLIMIENTO ASIGNADO
+    const storedCriteriosPamecGuardados = localStorage.getItem('criteriosPamecGuardados');
+    console.log(storedCriteriosPamecGuardados)
+
+    if (storedCriteriosPamecGuardados) {
+      this.sharedService.criteriosPamecGuardados = JSON.parse(storedCriteriosPamecGuardados);
+      // Configura botonDeshabilitado según los criterios con cumplimientos asignados
+      for (const cri_id of this.sharedService.criteriosPamecGuardados) {
+        this.botonDeshabilitado[cri_id] = true;
+      }
+    }
   }
 
   cargarActividad(): void {
@@ -90,11 +110,30 @@ export class EvaluacionPamecComponent {
     this.controlCriterio = true;
   }
 
+  //OBTENER EL ID DEL ACTA - EVALUACION
+  capturarIdEvaluacion(): void {
+    const acta_pamec_id = localStorage.getItem('id_acta_pamec')
+    this.eva_pam_id = parseInt(acta_pamec_id, 10)
+  }
+
+  //DESTRUIR LAS VARIABLES AL SALIR DEL COMPONENTE EDITAR ACTA
+  ngOnDestroy() {
+    localStorage.removeItem('boton-acta-pamec');
+    localStorage.removeItem('nombre-pres-pamec');
+    localStorage.removeItem('criteriosPamecGuardados');
+    localStorage.removeItem('id_acta_pamec');
+    this.sharedService.criteriosPamecGuardados = [];
+    this.cri_pam_id = null
+    this.eva_pam_id = null
+  }
+
+
   //PROTEGER LA RUTA AL SALIR DEL EDITAR
   async deshabilitarRutaEditar() {
     localStorage.removeItem('boton-acta-pamec');
     localStorage.removeItem('nombre-pres-pamec');
-    //localStorage.removeItem('id_acta_pamec');
+    localStorage.removeItem('criteriosPamecGuardados');
+    localStorage.removeItem('id_acta_pamec');
     this.sharedService.criteriosPamecGuardados = [];
     this.cri_pam_id = null
     this.eva_pam_id = null
@@ -102,7 +141,8 @@ export class EvaluacionPamecComponent {
 
   //ESTABLECER LOS COLORES POR CUMPLIMIENTO
   getClassForCriterio(criterio: any): string {
-    if (this.sharedService.criteriosIndGuardados.includes(criterio.cri_id)) {
+
+    if (this.sharedService.criteriosPamecGuardados.includes(criterio.crip_id)) {
       return 'btn-success';
     }
     return 'btn-outline-dark';
@@ -119,10 +159,7 @@ export class EvaluacionPamecComponent {
 
   openModal(modalTemplate: TemplateRef<any>, id: number, eva_pamec_id: number) {
     this.sharedService.setIdPamecEvaluacion(eva_pamec_id)
-    this.eva_pam_id = eva_pamec_id
     this.sharedService.setIdCriterioPamec(id)
-    this.cri_pam_id = id
-    console.log(this.cri_pam_id)
     this.modalRef = this.modalService.show(modalTemplate,
       {
         class: 'modal-dialogue-centered modal-md',

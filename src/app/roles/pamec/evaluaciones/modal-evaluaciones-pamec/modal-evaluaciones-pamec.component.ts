@@ -75,7 +75,8 @@ export class ModalEvaluacionesPamecComponent {
   }
 
   async habilitarRutaEditar() {
-    localStorage.setItem('boton-editar-acta-pamec', 'true')
+    localStorage.setItem('boton-editar-evaluacion-pamec', 'true')
+    localStorage.setItem('nombre-pres-pamec', this.nombre_prestador)
   }
 
   async estadoActa() {

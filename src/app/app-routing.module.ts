@@ -89,6 +89,7 @@ import { ConclusionesRecomendacionesComponent } from './roles/reso/conclusiones-
 import { EquipoVerificadoresComponent } from './roles/reso/equipo-verificadores/equipo-verificadores.component';
 import { EditarActaPamecComponent } from './roles/pamec/evaluaciones/editar-acta-pamec/editar-acta-pamec.component';
 import { EditarActaPamecGuard } from './guards/editar-acta-pamec.guard';
+import { EditarEvaluacionPamecComponent } from './roles/pamec/evaluaciones/editar-evaluacion-pamec/editar-evaluacion-pamec.component';
 
 
 const routes: Routes = [
@@ -168,7 +169,8 @@ const routes: Routes = [
   { path: 'pamec/evaluaciones', component: EvaluacionesPamecComponent, canActivate: [UsuarioGuard], data: { expectedRol: ['admin', 'pamec'] } },
   { path: 'pamec/evaluacion', component: EvaluacionPamecComponent, canActivate: [UsuarioGuard, ButtonGuard], data: { expectedRol: ['admin', 'pamec'] } },
   //RUTAS PAMEC EDITAR-ACTA
-  { path: 'pamec/acta/editar/:id', component: EditarActaPamecComponent, canActivate: [UsuarioGuard, EditarActaPamecGuard, ButtonGuard], data: { expectedRol: ['admin', 'sp'] } },
+  { path: 'pamec/acta/editar/:id', component: EditarActaPamecComponent, canActivate: [UsuarioGuard, EditarActaPamecGuard, ButtonGuard], data: { expectedRol: ['admin', 'pamec'] } },
+  { path: 'pamec/evaluacion/editar/:id', component: EditarEvaluacionPamecComponent, canActivate: [UsuarioGuard, ButtonGuard], data: { expectedRol: ['admin', 'pamec'] } },
 
 
   //Rutas RESOLUCIÓN

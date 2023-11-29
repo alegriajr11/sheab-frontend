@@ -72,7 +72,7 @@
 
 			<div class="col-md-3" *ngIf="estado_acta === '1'">
 				<button class="btn btn-dark esp btn-circle btn-xl" title="Editar Evaluación"
-				>
+				routerLink="/pamec/evaluacion/editar/{{id_evaluacion}}" (click)="modalRef.hide(); habilitarRutaEditar()">
 					<i class='fa fa-edit fa-lg'></i>
 				</button>
 			</div>

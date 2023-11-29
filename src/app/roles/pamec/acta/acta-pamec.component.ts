@@ -774,7 +774,7 @@ export class ActaPamecComponent implements OnInit {
         data => {
           if (!data.error) {
             localStorage.setItem('boton-acta-pamec', 'true')
-            if(this.act_sede){
+            if (this.act_sede) {
               localStorage.setItem('nombre-pres-pamec', this.act_sede)
             } else {
               localStorage.setItem('nombre-pres-pamec', this.act_prestador)
@@ -786,7 +786,8 @@ export class ActaPamecComponent implements OnInit {
                 //VERIFICA QUE EXISTA EL ACTA REGISTRADA
                 if (ultimaActa && ultimaActa.id) {
                   this.id_acta = ultimaActa.id;
-
+                  //ENVIAR EL ID DEL ACTA AL LOCAL STORAGE PARA LA EVALUACIÓN
+                  localStorage.setItem('id_acta_pamec', this.id_acta.toString());
                   Swal.fire({
                     title: '¿Desea descargar el acta?',
                     showCancelButton: true,

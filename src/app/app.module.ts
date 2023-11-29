@@ -128,6 +128,7 @@ import { ModalFirmaPamecPrestadorComponent } from './roles/pamec/evaluaciones/ed
 import { ListaProcesosIvcComponent } from './roles/reso/lista-procesos-ivc/lista-procesos-ivc.component';
 import { ModalCumplimientoRequisitosComponent } from './roles/reso/cumplimiento-requisitos/modal-cumplimiento-requisitos/modal-cumplimiento-requisitos.component';
 import { ModalCalificacionIpsComponent } from './roles/sp/sp-ips/home-evaluacion-ips/evaluacion-sp-ips/modal-calificacion-ips/modal-calificacion-ips.component';
+import { ModalEditarCalificacionPamecComponent } from './roles/pamec/evaluaciones/editar-evaluacion-pamec/modal-editar-calificacion-pamec/modal-editar-calificacion-pamec.component';
 
 
 
@@ -243,7 +244,8 @@ import { ModalCalificacionIpsComponent } from './roles/sp/sp-ips/home-evaluacion
     ModalFirmaPamecPrestadorComponent,
     ListaProcesosIvcComponent,
     ModalCumplimientoRequisitosComponent,
-    ModalCalificacionIpsComponent
+    ModalCalificacionIpsComponent,
+    ModalEditarCalificacionPamecComponent
 
   ],
   imports: [

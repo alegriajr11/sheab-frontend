@@ -53,6 +53,7 @@ export class GenerarPdfActaService {
   act_estado: string
 
   noFirmaActa: string = ''
+  recibeVisita: string = ''
 
   constructor(
     private actapdfService: ActapdfService
@@ -94,6 +95,8 @@ export class GenerarPdfActaService {
         this.act_cargo_prestador = this.actaPdf.act_cargo_prestador
         this.act_firma_prestador = this.actaPdf.act_firma_prestador
         this.act_estado = this.actaPdf.act_estado
+        this.noFirmaActa = this.actaPdf.noFirmaActa
+        this.recibeVisita = this.actaPdf.act_recibe_visita
 
         //GENERACIÓN ACTA PDF
         const doc = new jsPDF()
@@ -129,6 +132,10 @@ export class GenerarPdfActaService {
             fillColor: [255, 255, 255],
             textColor: [0, 0, 0]
           },
+          bodyStyles: {
+            fillColor: [248, 248, 248],
+            textColor: [0, 0, 0],
+          },
           styles: {
             fontSize: 10
           }
@@ -149,6 +156,10 @@ export class GenerarPdfActaService {
           headStyles: {
             fillColor: [255, 255, 255],
             textColor: [0, 0, 0]
+          },
+          bodyStyles: {
+            fillColor: [248, 248, 248],
+            textColor: [0, 0, 0],
           },
           styles: {
             fontSize: 10
@@ -171,6 +182,10 @@ export class GenerarPdfActaService {
             fillColor: [255, 255, 255],
             textColor: [0, 0, 0]
           },
+          bodyStyles: {
+            fillColor: [248, 248, 248],
+            textColor: [0, 0, 0],
+          },
           styles: {
             fontSize: 10
           }
@@ -191,6 +206,10 @@ export class GenerarPdfActaService {
           headStyles: {
             fillColor: [255, 255, 255],
             textColor: [0, 0, 0]
+          },
+          bodyStyles: {
+            fillColor: [248, 248, 248],
+            textColor: [0, 0, 0],
           },
           styles: {
             fontSize: 10
@@ -213,6 +232,10 @@ export class GenerarPdfActaService {
             fillColor: [255, 255, 255],
             textColor: [0, 0, 0]
           },
+          bodyStyles: {
+            fillColor: [248, 248, 248],
+            textColor: [0, 0, 0],
+          },
           styles: {
             fontSize: 10
           }
@@ -233,6 +256,10 @@ export class GenerarPdfActaService {
           headStyles: {
             fillColor: [255, 255, 255],
             textColor: [0, 0, 0]
+          },
+          bodyStyles: {
+            fillColor: [248, 248, 248],
+            textColor: [0, 0, 0],
           },
           styles: {
             fontSize: 10
@@ -257,6 +284,10 @@ export class GenerarPdfActaService {
             fillColor: [255, 255, 255],
             textColor: [0, 0, 0]
           },
+          bodyStyles: {
+            fillColor: [248, 248, 248],
+            textColor: [0, 0, 0],
+          },
           styles: {
             fontSize: 10
           }
@@ -276,6 +307,10 @@ export class GenerarPdfActaService {
           headStyles: {
             fillColor: [255, 255, 255],
             textColor: [0, 0, 0]
+          },
+          bodyStyles: {
+            fillColor: [248, 248, 248],
+            textColor: [0, 0, 0],
           },
           styles: {
             fontSize: 10
@@ -315,6 +350,10 @@ export class GenerarPdfActaService {
             fillColor: [255, 255, 255],
             textColor: [0, 0, 0]
           },
+          bodyStyles: {
+            fillColor: [248, 248, 248],
+            textColor: [0, 0, 0],
+          },
           styles: {
             fontSize: 10
           }
@@ -334,9 +373,16 @@ export class GenerarPdfActaService {
           tableWidth: 'auto',
         })
 
+        console.log(this.noFirmaActa)
 
-        if(this.act_estado === '0'){
+        if(this.noFirmaActa === 'true'){
           this.noFirmaActa = 'Declara no firmar el acta.'
+        } else{
+          this.noFirmaActa = ''
+        }
+
+        if(this.recibeVisita === 'false'){
+          this.recibeVisita = 'Declara no recibir la visita'
         }
 
         //NOMBRE PRESTADOR 1 Y 2, CARGO PRESTADOR 1 Y 2 Y FIRMA1 Y 2
@@ -345,7 +391,7 @@ export class GenerarPdfActaService {
           columnStyles: { sede: { halign: 'left' } },
 
           body: [
-            { nombre: this.act_nombre_prestador, cargo: this.act_cargo_prestador, firma: this.noFirmaActa },
+            { nombre: this.act_nombre_prestador, cargo: this.act_cargo_prestador, firma: this.noFirmaActa || this.recibeVisita},
           ],
           columns: [
             { header: 'Nombre:', dataKey: 'nombre' },
@@ -356,6 +402,10 @@ export class GenerarPdfActaService {
           headStyles: {
             fillColor: [255, 255, 255],
             textColor: [0, 0, 0]
+          },
+          bodyStyles: {
+            fillColor: [248, 248, 248],
+            textColor: [0, 0, 0],
           },
           styles: {
             fontSize: 10

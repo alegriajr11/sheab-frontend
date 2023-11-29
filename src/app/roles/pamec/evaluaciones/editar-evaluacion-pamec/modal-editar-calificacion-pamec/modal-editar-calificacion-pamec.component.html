@@ -13,7 +13,7 @@
                 <span for="">Calificación</span>
             </div>
             <div class="col-md-12">
-                <select id="select-calificacion-pamec" class="form-select form-control" [(ngModel)]="cal_nota" [ngModelOptions]="{ standalone: true }"
+                <select class="form-select form-control" [(ngModel)]="cal_nota" [ngModelOptions]="{ standalone: true }"
                     ngDefaultControl>
                     <option value="" disabled selected>Selecciona..</option>
                     <option [value]="5">5</option>
@@ -21,7 +21,6 @@
                     <option [value]="1">1</option>
                 </select>
             </div>
-
             <hr />
             <div class="col-md-2">
                 <span for="">Observaciones</span>
@@ -30,11 +29,9 @@
                 <textarea type="text" class="form-control" name="cal_observaciones" id="cal_observaciones"
                     [(ngModel)]="cal_observaciones" required autocomplete="off"></textarea>
             </div>
-            <hr />
-            <div class="col-md-12">
-                <span id="boton-aplica" class="button-like btn-span" (click)="calificacionNoAplica()">No Aplica</span>
+            <div>
+                <span id="cod-pres"></span>
             </div>
-
             <hr />
             <div class="col-md-12">
                 <button class="btn btn-dark btn-block col-md-5" type="submit">

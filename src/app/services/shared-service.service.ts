@@ -47,7 +47,7 @@ export class SharedServiceService {
   criteriosIpsPlaneacionGuardados: any[] = [];
   criteriosIpsVerificacionGuardados: any[] = [];
 
-  //ARRAY CRITERIOS SP-IND
+  //ARRAY CRITERIOS PAMEC
   criteriosPamecGuardados: any[] = [];
 
   //ARRAY CRITERIOS SP-IND
