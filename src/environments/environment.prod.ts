@@ -38,6 +38,7 @@ export const environment = {
   actividadURL: 'https://backend-sehab-84c88c9662e1.herokuapp.com/actividad/',
   criteriopamURL: 'https://backend-sehab-84c88c9662e1.herokuapp.com/criteriopam/',
   criteriopam1URL: 'https://backend-sehab-84c88c9662e1.herokuapp.com/criteriopam/criterio/',
+  calificacionPamecURL: 'https://backend-sehab-84c88c9662e1.herokuapp.com/calificacionpamec/',
 
   //PAMEC-PDF
   actaPamec_pdf_url: 'https://backend-sehab-84c88c9662e1.herokuapp.com/pamec-acta/',
