@@ -64,7 +64,7 @@ export class MenuComponent implements OnInit {
 
     // Método que muestra el indicador de carga
     mostrarCarga() {
-      //return this.loadingService.isLoading;
+      return this.loadingService.isLoading;
     }
 
 
