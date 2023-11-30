@@ -383,6 +383,8 @@ export class GenerarPdfActaService {
 
         if(this.recibeVisita === 'false'){
           this.recibeVisita = 'Declara no recibir la visita'
+        } else {
+          this.recibeVisita = ''
         }
 
         //NOMBRE PRESTADOR 1 Y 2, CARGO PRESTADOR 1 Y 2 Y FIRMA1 Y 2
