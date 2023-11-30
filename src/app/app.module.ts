@@ -129,7 +129,8 @@ import { ListaProcesosIvcComponent } from './roles/reso/lista-procesos-ivc/lista
 import { ModalCumplimientoRequisitosComponent } from './roles/reso/cumplimiento-requisitos/modal-cumplimiento-requisitos/modal-cumplimiento-requisitos.component';
 import { ModalCalificacionIpsComponent } from './roles/sp/sp-ips/home-evaluacion-ips/evaluacion-sp-ips/modal-calificacion-ips/modal-calificacion-ips.component';
 import { ModalEditarCalificacionPamecComponent } from './roles/pamec/evaluaciones/editar-evaluacion-pamec/modal-editar-calificacion-pamec/modal-editar-calificacion-pamec.component';
-
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 
 @NgModule({
@@ -263,11 +264,11 @@ import { ModalEditarCalificacionPamecComponent } from './roles/pamec/evaluacione
     ActaModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatFormFieldModule
-    
+    MatFormFieldModule,
+    NgxUiLoaderModule
 
   ],
-  providers: [interceptorProvider, BsModalService],
+  providers: [interceptorProvider, BsModalService, { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
