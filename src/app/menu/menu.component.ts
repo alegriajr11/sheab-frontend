@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { TokenService } from '../services/token.service';
 import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
-import { LoadingService } from '../services/loading.service';
 
 
 @Component({
@@ -36,7 +35,6 @@ export class MenuComponent implements OnInit {
     private tokenService: TokenService,
     private router: Router,
     private renderer: Renderer2,
-    private loadingService: LoadingService,
     private el: ElementRef
   ) { }
 
@@ -61,11 +59,6 @@ export class MenuComponent implements OnInit {
   mostrarNotificaciones(){
 
   }
-
-    // Método que muestra el indicador de carga
-    mostrarCarga() {
-      return this.loadingService.isLoading;
-    }
 
 
 }

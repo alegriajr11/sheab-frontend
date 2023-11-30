@@ -129,8 +129,6 @@ import { ListaProcesosIvcComponent } from './roles/reso/lista-procesos-ivc/lista
 import { ModalCumplimientoRequisitosComponent } from './roles/reso/cumplimiento-requisitos/modal-cumplimiento-requisitos/modal-cumplimiento-requisitos.component';
 import { ModalCalificacionIpsComponent } from './roles/sp/sp-ips/home-evaluacion-ips/evaluacion-sp-ips/modal-calificacion-ips/modal-calificacion-ips.component';
 import { ModalEditarCalificacionPamecComponent } from './roles/pamec/evaluaciones/editar-evaluacion-pamec/modal-editar-calificacion-pamec/modal-editar-calificacion-pamec.component';
-import { LoadingInterceptor } from './interceptors/loading.interceptors';
-import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 
 
 
@@ -247,8 +245,7 @@ import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator
     ListaProcesosIvcComponent,
     ModalCumplimientoRequisitosComponent,
     ModalCalificacionIpsComponent,
-    ModalEditarCalificacionPamecComponent,
-    LoadingIndicatorComponent
+    ModalEditarCalificacionPamecComponent
 
   ],
   imports: [
@@ -270,12 +267,7 @@ import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator
     
 
   ],
-  providers: [interceptorProvider, BsModalService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingInterceptor,
-      multi: true,
-    },],
+  providers: [interceptorProvider, BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
