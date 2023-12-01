@@ -50,6 +50,7 @@
       <app-modalsic [dataFromParent]="modalRef"></app-modalsic>
     </ng-template>
 
+
     <!-- CRITERIOS SIC -->
     <div class="original-div" *ngFor="let i of range(numeroDeClones)">
       <div *ngIf="clondiv" [attr.id]="'divClonado' + i">
@@ -80,7 +81,8 @@
                 <td>{{ i + 1 }}</td>
                 <td>{{ criterio.cri_nombre }}</td>
                 <td>
-                  <button class="btn btn-outline-dark" (click)="openModal(modalTemplate2, criterio.cri_id, eva_id)">
+                  <button class="btn btn-outline-dark"
+                    (click)="openModal2(modalTemplate2, criterio.cri_id, eva_id, numeroDeClones)">
                     <i class="fa fa-check"></i>
                   </button>
                 </td>
@@ -95,6 +97,55 @@
       </div>
     </div>
 
+
+    <!-- Sección para los divs clonados recuperados del localStorage -->
+    <div *ngFor="let divInfo of clonedDivs">
+      <!-- Aquí estaría tu estructura HTML para cada div clonado -->
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h5><b>Dominio:</b></h5>
+            <span [attr.id]="'nombre-dominio' + divInfo.numeroDeClones">{{ divInfo.dominio }}</span>
+          </div>
+          <div class="col-sm-6">
+            <h5><b>Indicador:</b></h5>
+            <span [attr.id]="'nombre-indicador' + divInfo.numeroDeClones">{{ divInfo.indicador }}</span>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Ejemplo de bucle para el contenido del div clonado -->
+      <table class="table table-wrapper table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Cod</th>
+            <th scope="col">Criterio</th>
+            <th scope="col">Cumplimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let criterio of criterioSic; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ criterio.cri_nombre }}</td>
+            <td>
+              <button class="btn btn-outline-dark" (click)="openModal2(modalTemplate2, criterio.cri_id, eva_id, divInfo.numeroDeClones)">
+                <i class="fa fa-check"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #modalTemplate2>
+        <app-modalsic2 [dataFromParent]="modalRef"></app-modalsic2>
+      </ng-template>
+      <!-- Otros elementos o contenido según tu estructura -->
+    </div>
+    
+
+
+
+
+    <!-- SELECTS DOMINIO E INDICADOR -->
     <div class="row" style="padding-bottom: 2rem" *ngIf="habilitarDiv">
       <div class="col-md-5">
         <span for="" class="span">Dominio:</span>

@@ -26,6 +26,8 @@ export const environment = {
   criterios_URL: 'https://backend-sehab-84c88c9662e1.herokuapp.com/criterio/',
   criterioURL: 'https://backend-sehab-84c88c9662e1.herokuapp.com/criteriosic/criterio/',
   cumplimientoEstandarURL: 'https://backend-sehab-84c88c9662e1.herokuapp.com/criteriosic-cumplimiento/',
+  divCreadoURL: 'https://backend-sehab-84c88c9662e1.herokuapp.com/divs-creados-sic/',
+
 
   //EVALUACION-SIC
   evaluacionSicUrl: 'https://backend-sehab-84c88c9662e1.herokuapp.com/evaluacion-sic/',

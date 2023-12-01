@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 import { CriterioSic } from 'src/app/models/Sic/criterio.dto';
 import { CriterioSicEstandarDto } from 'src/app/models/Sic/criterioSicEstandar.dto';
 import { CumplimientoSicEstandarDto } from 'src/app/models/Sic/cumplimientoEstandar.dto';
@@ -12,6 +12,8 @@ import { SharedServiceService } from 'src/app/services/shared-service.service';
 import { CumplimientoEstandarService } from 'src/app/services/Sic/cumplimiento-estandar.service';
 import { ToastrService } from 'ngx-toastr';
 import { EvaluacionSicService } from 'src/app/services/Sic/evaluacionSic.service';
+import { DivCreadoService } from 'src/app/services/Sic/div-creado.service';
+import { DivCreadoDto } from 'src/app/models/Sic/divCreado.dto';
 
 
 
@@ -29,10 +31,21 @@ export class EvaluacionSicComponent implements OnInit {
   criterioEstandar: CriterioSicEstandarDto[];
   cumplimientoEstandar: CumplimientoSicEstandarDto[] = [];
 
+  divCreado: DivCreadoDto
 
+
+  //DOMINO E INDICADOR
+  nombre_dominio: string
+  nombre_indicador: string
+  id_dominio: number
+  id_indicador: number
+  /**/
+
+
+  //VARIABLE EVALUACION
+  eva_id: number
 
   cumple: CumplimientoSicEstandarDto;
-
 
   numeroDeClones: number = 0;
 
@@ -44,7 +57,7 @@ export class EvaluacionSicComponent implements OnInit {
   cumpl_observaciones: string;
   cumplimiento_asignado: string = '';
   crie_id: number;
-  eva_id: number;
+
 
 
 
@@ -58,6 +71,9 @@ export class EvaluacionSicComponent implements OnInit {
 
   listaVacia: any = undefined;
 
+  //ARRAY ALMACENAR LOS DIVS CLONADOS
+  clonedDivs: any[] = [];
+
   // Objeto Deshabilitar Boton
   botonDeshabilitado: { [key: number]: boolean } = {};
 
@@ -70,8 +86,8 @@ export class EvaluacionSicComponent implements OnInit {
     private criterioSicService: CriterioSicService,
     private modalService: BsModalService,
     public sharedService: SharedServiceService,
-    private cumplimientoEstandarService: CumplimientoEstandarService,
     private evaluacionSicService: EvaluacionSicService,
+    private divCreadoService: DivCreadoService,
     private toastrService: ToastrService
 
   ) { }
@@ -85,6 +101,8 @@ export class EvaluacionSicComponent implements OnInit {
     this.cargarCriteriosSic();
     this.cargarCriteriosEstandar();
     this.ultimaEvaluacionRegistrada();
+    this.mantenerDivsCreados();
+
 
     //GUARDAR LOS CRITERIOS CON CUMPLIMIENTO ASIGNADO
     const storedCriteriosSicGuardados = localStorage.getItem('criteriosSicGuardados');
@@ -102,7 +120,6 @@ export class EvaluacionSicComponent implements OnInit {
     this.originalDiv = this.el.nativeElement.querySelector('.original-div');
   }
 
-
   ultimaEvaluacionRegistrada() {
     this.evaluacionSicService.ultimaEvaluacionSic().subscribe(
       (data) => {
@@ -112,88 +129,44 @@ export class EvaluacionSicComponent implements OnInit {
   }
 
   //ESTABLECER LOS COLORES POR CUMPLIMIENTO
-  getClassForCriterio(criterio: any): string{
+  getClassForCriterio(criterio: any): string {
     if (this.sharedService.criteriosSicGuardados.includes(criterio.crie_id)) {
       return 'btn-success';
     }
     return 'btn-outline-dark';
   }
 
-  clonarDiv() {
+
+  async clonarDiv() {
     const idDomino = document.getElementById('dom_id') as HTMLSelectElement;
     const selDominio = idDomino.selectedIndex;
-    const optDominio = idDomino.options[selDominio];
-    const valorDominio = optDominio.textContent;
+    const valorDominio = idDomino.options[selDominio].textContent.trim();
 
     const idIndicador = document.getElementById('ind_id') as HTMLSelectElement;
     const selIndicador = idIndicador.selectedIndex;
-    const optIndicador = idIndicador.options[selIndicador];
-    const valorIndicador = optIndicador.textContent;
+    const valorIndicador = idIndicador.options[selIndicador].textContent.trim();
 
-    console.log(valorDominio)
-    console.log(valorIndicador)
+    //ALMACENAR LOS NOMBRES DE INDICADOR Y DOMINIO PARA USAR EN OTRO METODO
+    this.nombre_indicador = valorIndicador
+    this.nombre_dominio = valorDominio
 
-    if (selDominio && selIndicador) {
-      this.numeroDeClones++;
-      this.clondiv = true;
-      this.habilitarDiv = false;
+    //ALMACENAR IDS DE DOMINIO E INDICADOR
+    this.id_dominio = selDominio
+    this.id_indicador = selIndicador
 
-      const nuevoDiv = document.createElement('div');
-      nuevoDiv.id = 'divClonado' + this.numeroDeClones;
+    //CONSTRUIR EL DTO DE DIV-CLONES
+    this.divCreado = new DivCreadoDto(
+      this.numeroDeClones,
+      this.nombre_dominio,
+      this.nombre_indicador,
+      this.id_dominio,
+      this.id_indicador,
+      {
+        eva_id: this.eva_id
+      }
+    )
 
-      const divTitulos = document.createElement('div');
-      divTitulos.id = 'div-titulos';
-
-      const nombreDominio = document.createElement('h5');
-      nombreDominio.innerHTML = '<b>Dominio:</b>';
-
-      const spanDominio = document.createElement('span');
-      spanDominio.id = 'nombre-dominio' + this.numeroDeClones;
-      spanDominio.textContent = valorDominio;
-
-      const nombreIndicador = document.createElement('h5');
-      nombreIndicador.innerHTML = '<b>Indicador:</b>';
-
-      const spanIndicador = document.createElement('span');
-      spanIndicador.id = 'nombre-indicador' + this.numeroDeClones;
-      spanIndicador.textContent = valorIndicador;
-
-      const colSm6 = document.createElement('div');
-      colSm6.className = 'col-sm-6';
-      colSm6.appendChild(nombreDominio);
-      colSm6.appendChild(spanDominio);
-
-      const colSm6_2 = document.createElement('div');
-      colSm6_2.className = 'col-sm-6';
-      colSm6_2.appendChild(nombreIndicador);
-      colSm6_2.appendChild(spanIndicador);
-
-      const colSm7 = document.createElement('div');
-      colSm7.className = 'col-sm-7';
-
-      const row = document.createElement('div');
-      row.className = 'row';
-      row.appendChild(colSm6);
-      row.appendChild(colSm6_2);
-      row.appendChild(colSm7);
-
-      const tableTitle = document.createElement('div');
-      tableTitle.className = 'table-title';
-      tableTitle.appendChild(row);
-
-      divTitulos.appendChild(tableTitle);
-      nuevoDiv.appendChild(divTitulos);
-
-      // Guardar información en el LocalStorage
-      const clonInfo = {
-        dominio: selDominio,
-        indicador: selIndicador,
-        numeroDeClones: this.numeroDeClones,
-      };
-
-      localStorage.setItem('clonInfo' + this.numeroDeClones, JSON.stringify(clonInfo));
-
-    } else if (!selDominio) {
+    if (!selDominio) {
       this.toastrService.error('Selecciona un Dominio', 'Error', {
         timeOut: 3000,
         positionClass: 'toast-top-center',
@@ -203,7 +176,77 @@ export class EvaluacionSicComponent implements OnInit {
         timeOut: 3000,
         positionClass: 'toast-top-center',
       });
+    } else {
+      //REALIZAR SOLICITUD DE REGISTRO DE DIV A LA BASE DE DATOS
+      this.divCreadoService.createDivSic(this.divCreado).subscribe(
+        data => {
+          if (!data.error) {
+            if (selDominio !== -1 && selIndicador !== -1) {
+              this.numeroDeClones++;
+              this.clondiv = true;
+              this.habilitarDiv = false;
+
+              setTimeout(() => {
+                const divClonado = document.getElementById(`divClonado${this.numeroDeClones}`) as HTMLElement;
+
+                if (divClonado) {
+                  const spanDominio = divClonado.querySelector(`#nombre-dominio${this.numeroDeClones}`) as HTMLSpanElement;
+                  const spanIndicador = divClonado.querySelector(`#nombre-indicador${this.numeroDeClones}`) as HTMLSpanElement;
+
+                  if (spanDominio && spanIndicador) {
+                    spanDominio.textContent = valorDominio;
+                    spanIndicador.textContent = valorIndicador;
+
+                    // Guardar información en el LocalStorage del div clonado
+                    // const clonInfo = {
+                    //   dominio: selDominio,
+                    //   indicador: selIndicador,
+                    //   numeroDeClones: this.numeroDeClones,
+                    // };
+
+                    //localStorage.setItem('clonInfo' + this.numeroDeClones, JSON.stringify(clonInfo));
+                  }
+                }
+              }, 100)
+            }
+          }
+        },
+        err => {
+          //MANEJAR EL ERROR DEL SUSCRIBE DATA
+          err.error.message
+        }
+      )
     }
+
+  }
+
+
+  mantenerDivsCreados() {
+    // Iterar sobre las claves del localStorage
+    Object.keys(localStorage).forEach((key) => {
+      if (key.startsWith('clonInfo')) {
+        const storedInfo = localStorage.getItem(key);
+        if (storedInfo) {
+          const divInfo = JSON.parse(storedInfo);
+          this.clonedDivs.push(divInfo);
+        }
+      }
+    });
+
+    // Agregar los divs clonados al DOM
+    this.clonedDivs.forEach((divInfo) => {
+      const numeroDeClones = divInfo.numeroDeClones;
+
+      // Crear un div clonado y configurar su contenido
+      const divClonado = document.createElement('div');
+      divClonado.className = `divClonado${numeroDeClones}`;
+
+      // Agregar el div clonado al contenedor en tu HTML
+      const contenedorDivs = document.getElementById('contenedorDivs');
+      if (contenedorDivs) {
+        contenedorDivs.appendChild(divClonado);
+      }
+    });
   }
 
 
@@ -227,6 +270,33 @@ export class EvaluacionSicComponent implements OnInit {
     );
   }
 
+  openModal2(modalTemplate: TemplateRef<any>, id: number, eva_id: number, numeroDeClones: number) {
+    this.sharedService.setIdEvaluacionSic(eva_id)
+    this.sharedService.setIdCriterioSic(id)
+    if (numeroDeClones) {
+      //ACCEDEMOS A LOS DIVS CLONADOS EN EL LOCAL STORAGE
+      const infoClonadaString = localStorage.getItem('clonInfo' + numeroDeClones)
+
+      if (infoClonadaString) {
+        const infoClonadaObjeto = JSON.parse(infoClonadaString);
+        const dominio = infoClonadaObjeto.dominio;
+        const indicador = infoClonadaObjeto.indicador;
+
+        this.sharedService.setIdsDominioIndicador(dominio, indicador)
+      }
+    }
+
+    this.modalRef = this.modalService.show(modalTemplate,
+      {
+        class: 'modal-dialogue-centered modal-md',
+        backdrop: true,
+        keyboard: true
+      }
+
+    );
+  }
+
+
   cargarDominio(): void {
     this.dominioService.lista().subscribe(
       data => {
@@ -237,13 +307,6 @@ export class EvaluacionSicComponent implements OnInit {
         this.listaVacia = err.error.message;
       }
     )
-  }
-
-
-
-
-  onRegister(): void {
-
   }
 
 

@@ -86,7 +86,7 @@ export class ActaSicComponent implements OnInit {
   act_funcionarioId: string
   act_sede_principalId: string
 
-  act_recibe_visita: string = 'false';
+  act_recibe_visita: string = 'true';
   noFirmaActa: string = 'false';
 
   estado_recibe_visita: string
@@ -791,6 +791,7 @@ export class ActaSicComponent implements OnInit {
                       //SI EL ESTADO DE RECIBE VISITA ES TRUE PUEDE ACCEDER A EVALUAR AL PRESTADOR
                       if (this.estado_recibe_visita === 'true') {
                         localStorage.setItem('boton-acta-sic', 'true'); //HABILITAR LA RUTA RESTRINGIDA - EVALUACIÓN_SIC
+                        localStorage.setItem('nombre-pres-sic', this.actaPdf.act_prestador)
                         this.router.navigate(['/sic/evaluacion']);
                         window.scrollTo(0, 0);
                       } else {
@@ -802,6 +803,7 @@ export class ActaSicComponent implements OnInit {
                       //SI EL ESTADO DE RECIBE VISITA ES FALSE PUEDE RESTRINGIR EL ACCESO A LA EVALUACIÓN
                       if (this.estado_recibe_visita === 'true') {
                         localStorage.setItem('boton-acta-sic', 'true'); //HABILITAR LA RUTA RESTRINGIDA - EVALUACIÓN_SIC
+                        localStorage.setItem('nombre-pres-sic', this.actaPdf.act_prestador)
                         this.router.navigate(['/sic/evaluacion']);
                         window.scrollTo(0, 0);
                       } else {

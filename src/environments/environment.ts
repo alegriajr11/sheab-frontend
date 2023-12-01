@@ -31,6 +31,7 @@ export const environment = {
   criterios_URL: 'http://localhost:8080/criterio/',
   criterioURL: 'http://localhost:8080/criteriosic/criterio/',
   cumplimientoEstandarURL: 'http://localhost:8080/criteriosic-cumplimiento/',
+  divCreadoURL: 'http://localhost:8080/divs-creados-sic/',
 
   //EVALUACION-SIC
   evaluacionSicUrl: 'http://localhost:8080/evaluacion-sic/',

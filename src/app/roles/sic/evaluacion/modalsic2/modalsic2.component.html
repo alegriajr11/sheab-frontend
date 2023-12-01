@@ -4,26 +4,43 @@
         <span aria-hidden="true" class="visually-hidden">&times;</span>
     </button>
 </div>
-<form  #f="ngForm" novalidate (ngSubmit)="onRegister()">
+
+<form #f="ngForm" novalidate (ngSubmit)="onRegister()">
     <div class="modal-body">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h5><b>Dominio:</b></h5>
+                <span>{{id_dominio}}</span>
+            </div>
+            <div class="col-sm-6">
+                <h5><b>Indicador:</b></h5>
+                <span>{{id_indicador}}</span>
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+
+        <hr>
+
         <div class="col">
             <div class="col-md-2">
                 <span for="">Cumple</span>
             </div>
             <div class="col-md-12">
-                <Select class="form-select form-control" [(ngModel)]="cumpl_cumple" [ngModelOptions]="{standalone: true}" ngDefaultControl>
-                    <option value="" disabled selected >Selecciona..</option>
+                <Select class="form-select form-control" [(ngModel)]="cumpl_cumple"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl>
+                    <option value="" disabled selected>Selecciona..</option>
                     <option value="Si Cumple">Si Cumple</option>
                     <option value="No Cumple">No Cumple</option>
                 </Select>
             </div>
-            <hr>
+            <br>
             <div class="col-md-2">
                 <span for="">Observaciones</span>
             </div>
             <div class="col-md-12">
-                <textarea type="text" class="form-control" name="cumpl_observaciones" id="cumpl_observaciones" [(ngModel)]="cumpl_observaciones"
-                required autocomplete="off"></textarea>
+                <textarea type="text" class="form-control" name="cumpl_observaciones" id="cumpl_observaciones"
+                    [(ngModel)]="cumpl_observaciones" required autocomplete="off"></textarea>
             </div>
             <div>
                 <span id="cod-pres"></span>
@@ -33,7 +50,6 @@
                 <button class="btn btn-dark btn-block col-md-5" type="submit">
                     <i class='fa fa-save'></i> Guardar
                 </button>
-                <span>Estoy en el modal2</span>
             </div>
         </div>
     </div>

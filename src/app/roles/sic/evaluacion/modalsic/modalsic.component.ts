@@ -64,9 +64,9 @@ export class ModalsicComponent {
           timeOut: 3000,
           positionClass: 'toast-top-center',
         });
-        this.sharedService.criteriosSicGuardados.push(this.crie_id, this.cumpl_cumple)
+        this.sharedService.criteriosSicGuardados.push(this.crie_id)
         // Almacena la información en localStorage
-        localStorage.setItem('criteriosGuardados', JSON.stringify(this.sharedService.criteriosSicGuardados));
+        localStorage.setItem('criteriosSicGuardados', JSON.stringify(this.sharedService.criteriosSicGuardados));
 
         this.modalRef.hide();
       },

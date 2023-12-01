@@ -13,12 +13,26 @@ export class Modalsic2Component {
   pre_cod_habilitacion: string;
   cumpl_cumple: string;
   cumpl_observaciones: string;
+
+  nombre_dominio: string;
+  nombre_indicador: string;
+  id_dominio: number
+  id_indicador: number
+
   @Input('dataFromParent') public modalRef: BsModalRef;
 
   constructor(private sharedService: SharedServiceService,){}
 
-  onRegister(){
+  ngOnInit(){
     this.cri_id = this.sharedService.id_evaluacion_sic;
     this.pre_cod_habilitacion = sessionStorage.getItem("cod-pres-sic")
+
+    //IDS DOMINIO E INDICADOR
+    this.id_dominio =  this.sharedService.id_dominio
+    this.id_indicador = this.sharedService.id_indicador
+  }
+
+  onRegister(){
+
   }
 }

@@ -22,6 +22,13 @@ export class SharedServiceService {
   cumpl_asignado: string
   /**FIN ATRIBUTOS ROL SIC */
 
+  //DOMINIO E INDICADOR ROL SIC
+  nombre_dominio: string
+  nombre_indicador: string
+  //IDS DOMINIO E INDICADOR ROL SIC
+  id_dominio: number
+  id_indicador: number
+
   /**ID_CRITERIO - CALIFICACION ROL SP-INDEPENDIENTES */
   cri_ind_id: number
   /**FIN ATRIBUTOS SP-INDEPENDIENTES */
@@ -159,6 +166,11 @@ export class SharedServiceService {
   //METODOS SET EVALUACIONES Y CRITERIOS
   setIdEvaluacionSic(id: number) {
     this.id_evaluacion_sic = id;
+  }
+
+  setIdsDominioIndicador(idDominio: number, idIndicador: number){
+    this.id_dominio = idDominio
+    this.id_indicador = idIndicador
   }
 
   setIdActaSic(id: number) {
