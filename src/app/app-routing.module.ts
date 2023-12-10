@@ -90,6 +90,8 @@ import { EquipoVerificadoresComponent } from './roles/reso/equipo-verificadores/
 import { EditarActaPamecComponent } from './roles/pamec/evaluaciones/editar-acta-pamec/editar-acta-pamec.component';
 import { EditarActaPamecGuard } from './guards/editar-acta-pamec.guard';
 import { EditarEvaluacionPamecComponent } from './roles/pamec/evaluaciones/editar-evaluacion-pamec/editar-evaluacion-pamec.component';
+import { CriteriosGrupoConsultaExternaComponent } from './usuario/admin/resolucion/criterios-grupo-consulta-externa/criterios-grupo-consulta-externa.component';
+import { CriteriosGrupoApoyoDiagnosticoComponent } from './usuario/admin/resolucion/criterios-grupo-apoyo-diagnostico/criterios-grupo-apoyo-diagnostico.component';
 
 
 const routes: Routes = [
@@ -207,6 +209,9 @@ const routes: Routes = [
   //HOME CRITERIOS RESOLUCIÓN 3100
   { path: 'home-res-criterios', component: HomeCriteriosComponent, canActivate: [UsuarioGuard], data: { expectedRol: ['admin', 'res'] } },
   { path: 'criterio-todos-servicios', component: CriterioTodosServiciosComponent, canActivate: [UsuarioGuard], data: { expectedRol: ['admin', 'res'] } },
+  { path: 'criterio-consulta-externa', component: CriteriosGrupoConsultaExternaComponent, canActivate: [UsuarioGuard], data: { expectedRol: ['admin', 'res'] } },
+  { path: 'criterio-apoyo-diagnostico', component: CriteriosGrupoApoyoDiagnosticoComponent, canActivate: [UsuarioGuard], data: { expectedRol: ['admin', 'res'] } },
+
 
   { path: 'atencion-inmediata', component: AtencionInmediataComponent, canActivate: [UsuarioGuard], data: { expectedRol: ['admin', 'res'] } },
   { path: 'consulta-externa', component: ConsultaExternaComponent, canActivate: [UsuarioGuard], data: { expectedRol: ['admin', 'res'] } },

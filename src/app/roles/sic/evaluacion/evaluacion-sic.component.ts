@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { EvaluacionSicService } from 'src/app/services/Sic/evaluacionSic.service';
 import { DivCreadoService } from 'src/app/services/Sic/div-creado.service';
 import { DivCreadoDto } from 'src/app/models/Sic/divCreado.dto';
+import Swal from 'sweetalert2';
 
 
 
@@ -177,6 +178,7 @@ export class EvaluacionSicComponent implements OnInit {
         positionClass: 'toast-top-center',
       });
     } else {
+      console.log(this.divCreado)
       //REALIZAR SOLICITUD DE REGISTRO DE DIV A LA BASE DE DATOS
       this.divCreadoService.createDivSic(this.divCreado).subscribe(
         data => {
@@ -209,11 +211,19 @@ export class EvaluacionSicComponent implements OnInit {
                 }
               }, 100)
             }
+            //MENSAJE DE EXITO AL AGREGAR EL DOMINIO E INDICADOR
+            this.toastrService.success(data.message, 'Éxito', {
+              timeOut: 3000,
+              positionClass: 'toast-top-center',
+            });
           }
         },
         err => {
           //MANEJAR EL ERROR DEL SUSCRIBE DATA
-          err.error.message
+          this.toastrService.error(err.error.message, 'Error', {
+            timeOut: 4000,
+            positionClass: 'toast-top-center',
+          });
         }
       )
     }

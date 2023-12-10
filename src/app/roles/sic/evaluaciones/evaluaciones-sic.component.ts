@@ -54,6 +54,7 @@ export class EvaluacionesSicComponent implements OnInit {
     this.obtenerAnios();
   }
 
+  //LISTAR LAS ACTAS DEL ROL DE SIC
   cargarActas(): void {
     const token = this.tokenService.getToken()
     this.actapdfService.listaSic(token).subscribe(
@@ -68,7 +69,7 @@ export class EvaluacionesSicComponent implements OnInit {
     this.page = 1;
   }
 
-
+//ABRIR MODAL PARA ASIGNAR CUMPLIMIENTO
   openModal(modalTemplate: TemplateRef<any>, id: number, name: string, name_funcionario: string, codigo_prestador: string) {
     this.sharedService.setIdEvaluacionSic(id)
     this.sharedService.setNombrePrestador(name)
@@ -88,7 +89,7 @@ export class EvaluacionesSicComponent implements OnInit {
     });
   }
 
-
+//OBTENER LOS AÑOS PARA PODER FILTRAR LAS ACTAS
   obtenerAnios(): void {
     const selectAnio = document.getElementById("select-year") as HTMLSelectElement;
     const fechaActual = new Date();

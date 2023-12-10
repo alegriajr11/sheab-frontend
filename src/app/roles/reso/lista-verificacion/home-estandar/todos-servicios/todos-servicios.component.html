@@ -18,7 +18,7 @@
     <div class="table-wrapper">
         <div class="header-section">
             <h5 class="title-header"><b>Prestador:</b></h5>
-            <span id="pre_nombre">NOMBRE DEL PRESTADOR DEL ACTA ASIGNADA</span>
+            <span id="pre_nombre">{{nombre_prestador}}</span>
         </div>
         <div class="form-group">
             <label for="standardSelect">Selecciona un Estándar:</label>
@@ -32,7 +32,34 @@
 
         <div *ngIf="selectedStandard">
             <h3 class="underlined">ESTANDAR DE {{ nombre_estadar }}</h3>
-            <div class="criteria-list rounded">
+
+            <table class="table table-wrapper table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Cod</th>
+                        <th scope="col">Criterio</th>
+                        <th scope="col">Cumplimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let criterio of criterio_servicios; let i = index">
+                        <td>{{ criterio.todos_servi_aparto.apa_codigo }}</td>
+                        <td style="text-align: justify;">{{ criterio.cris_nombre_criterio }}</td>
+                        <td style="vertical-align: middle; text-align: center;">
+                            <button class="btn btn-outline-dark">
+                                <i class="fa fa-check"></i>
+                            </button>
+                            <!-- <button class="btn" [ngClass]="getClassForCriterio(criterio)"
+                                [disabled]="sharedService.criteriosSicGuardados.includes(criterio.crie_id)"
+                                (click)="openModal(modalTemplate, criterio.crie_id, eva_id)">
+                                <i class="fa fa-check"></i>
+                            </button> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- <div class="criteria-list rounded">
                 <div class="criteria custom-background rounded"
                     *ngFor="let criterio of criterio_servicios; let i = index">
                     <h4>{{criterio.todos_servi_aparto.apa_codigo + ')'}} {{ criterio.cris_nombre_criterio }}</h4>
@@ -52,7 +79,7 @@
                     </div>
                     <button class="btn btn-dark esp btn-circle">Asignar</button>
                 </div>
-            </div>
+            </div> -->
             <hr>
             <div class="form-group rounded">
                 <h4>Estado del Estandar:</h4>

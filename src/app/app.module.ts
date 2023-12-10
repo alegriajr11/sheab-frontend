@@ -131,6 +131,12 @@ import { ModalCalificacionIpsComponent } from './roles/sp/sp-ips/home-evaluacion
 import { ModalEditarCalificacionPamecComponent } from './roles/pamec/evaluaciones/editar-evaluacion-pamec/modal-editar-calificacion-pamec/modal-editar-calificacion-pamec.component';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { ModalCumplimientoTodosServiciosComponent } from './roles/reso/lista-verificacion/home-estandar/todos-servicios/modal-cumplimiento-todos-servicios/modal-cumplimiento-todos-servicios.component';
+import { CriteriosGrupoConsultaExternaComponent } from './usuario/admin/resolucion/criterios-grupo-consulta-externa/criterios-grupo-consulta-externa.component';
+import { CriteriosGrupoApoyoDiagnosticoComponent } from './usuario/admin/resolucion/criterios-grupo-apoyo-diagnostico/criterios-grupo-apoyo-diagnostico.component';
+import { CriteriosGrupoInternacionComponent } from './usuario/admin/resolucion/criterios-grupo-internacion/criterios-grupo-internacion.component';
+import { CriteriosGrupoQuirurgicoComponent } from './usuario/admin/resolucion/criterios-grupo-quirurgico/criterios-grupo-quirurgico.component';
+import { CriteriosGrupoAtencionInmediataComponent } from './usuario/admin/resolucion/criterios-grupo-atencion-inmediata/criterios-grupo-atencion-inmediata.component';
 
 
 @NgModule({
@@ -246,7 +252,13 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     ListaProcesosIvcComponent,
     ModalCumplimientoRequisitosComponent,
     ModalCalificacionIpsComponent,
-    ModalEditarCalificacionPamecComponent
+    ModalEditarCalificacionPamecComponent,
+    ModalCumplimientoTodosServiciosComponent,
+    CriteriosGrupoConsultaExternaComponent,
+    CriteriosGrupoApoyoDiagnosticoComponent,
+    CriteriosGrupoInternacionComponent,
+    CriteriosGrupoQuirurgicoComponent,
+    CriteriosGrupoAtencionInmediataComponent
 
   ],
   imports: [

@@ -9,9 +9,9 @@
                 </button>
             </div>
             <div class="col-md-11 text-center">
-                <h1>CRITERIOS - CONDICIONES DE HABILITACIÓN</h1>
-                <h1 class="underlined"><b>TODOS LOS SERVICIOS</b></h1>
-                <h5>Selecciona el Estandar</h5>
+                <h1>CRITERIOS - CONDICIONES DE HABILITACIÓN RESOLUCIÓN 3100</h1>
+                <h1 class="underlined"><b>APOYO DIAGNOSTICO</b></h1>
+                <h5>Selecciona el Servicio y el Estandar</h5>
                 <hr>
             </div>
             <hr>
@@ -22,17 +22,24 @@
 
 <div class="container_head">
     <div class="col-md-6">
-        <label for="">Estandar Todos Servicios:</label>
+        <label for="">Servicio:</label>
         <select class="form-control" name="tod_id" id="tod_id" (change)="cargarCriterios()" (change)="llenarSpan()">
-            <option hidden selected value="">Selecciona el Estandar...</option>
-            <option *ngFor="let estandar_servicios of estandar_servicios" value="{{estandar_servicios.tod_id}}">
-                {{estandar_servicios.tod_nombre_estandar}}</option>
+            <option hidden selected value="">Selecciona el Servicio...</option>
+            <option *ngFor="let servicios_apoyo_diagnostico of servicios_apoyo_diagnostico"
+                value="{{servicios_apoyo_diagnostico.serv_id}}">
+                {{servicios_apoyo_diagnostico.serv_nombre_estandar}}</option>
         </select>
     </div>
-
+    <div class="col-md-6">
+        <label for="">Estandar:</label>
+        <select class="form-control" name="tod_id" id="tod_id" (change)="cargarCriterios()" (change)="llenarSpan()">
+            <option hidden selected value="">Selecciona el Estandar...</option>
+            <option *ngFor="let estandar_apoyo_diagnostico of estandar_apoyo_diagnostico"
+                value="{{estandar_apoyo_diagnostico.apoyo_id}}">
+                {{estandar_apoyo_diagnostico.apoyo_nombre_estandar}}</option>
+        </select>
+    </div>
 </div>
-
-
 
 <div class="container size">
     <div class="table-wrapper">
@@ -49,10 +56,10 @@
                 </div>
             </div>
         </div>
-        <div class="search-hero">
+        <!-- <div class="search-hero">
             <input class="form-control" type="text" name="search" [(ngModel)]="searchText"
                 placeholder="Buscar Criterio">
-        </div>
+        </div> -->
         <table class="table table-wrapper table-hover">
             <thead>
                 <tr>
@@ -67,7 +74,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr
+                <!-- <tr
                     *ngFor="let criterio of criterio_servicios | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}; let i = index">
                     <td>{{calcularIDGlobal(i, page, 10)}}</td>
                     <td>{{criterio.cris_modalidad}}</td>
@@ -85,16 +92,16 @@
                             <i class="far fa-trash-alt"></i>
                         </button>
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
-            <div class="container" *ngIf="listaVacia">
+            <!-- <div class="container" *ngIf="listaVacia">
                 <div class="p-3 mb-2 bg-dark text-white text-center">
                     <h2>{{ listaVacia }}</h2>
                 </div>
-            </div>
+            </div> -->
         </table>
-        <pagination-controls (pageChange)="page =$event" previousLabel="Anterior" nextLabel="Siguiente">
-        </pagination-controls>
+        <!-- <pagination-controls (pageChange)="page =$event" previousLabel="Anterior" nextLabel="Siguiente">
+        </pagination-controls> -->
     </div>
 </div>
 

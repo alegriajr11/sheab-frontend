@@ -21,6 +21,8 @@ export class TodosServiciosComponent {
 
   nombre_estadar: string
 
+  nombre_prestador: string
+
 
   selectedStandard: string = '';
 
@@ -32,8 +34,12 @@ export class TodosServiciosComponent {
 
   ngOnInit(): void {
     this.cargarEstandar();
+    this.capturarNombrePrestador()
   }
 
+  capturarNombrePrestador(){
+    this.nombre_prestador = localStorage.getItem('nombre-pres-verificacion')
+  }
 
   cargarEstandar(): void {
     this.todosServices.lista().subscribe(
