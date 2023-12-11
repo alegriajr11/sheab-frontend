@@ -17,7 +17,7 @@ export class CapacidadInstaladaComponent {
   id_acta_verificacion: number
   pre_cod_habilitacion: string
 
-  lista_vacia: undefined
+  listaVacia: any = undefined;
 
   constructor(
     private actaVerificacionService: ActaVerificacionService,
@@ -55,7 +55,8 @@ export class CapacidadInstaladaComponent {
         this.servicios_verificados = data;
       },
       err => {
-        err.error.message
+        this.listaVacia = err.error.message;
+
       }
     )
   }

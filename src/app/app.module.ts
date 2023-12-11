@@ -137,6 +137,9 @@ import { CriteriosGrupoApoyoDiagnosticoComponent } from './usuario/admin/resoluc
 import { CriteriosGrupoInternacionComponent } from './usuario/admin/resolucion/criterios-grupo-internacion/criterios-grupo-internacion.component';
 import { CriteriosGrupoQuirurgicoComponent } from './usuario/admin/resolucion/criterios-grupo-quirurgico/criterios-grupo-quirurgico.component';
 import { CriteriosGrupoAtencionInmediataComponent } from './usuario/admin/resolucion/criterios-grupo-atencion-inmediata/criterios-grupo-atencion-inmediata.component';
+import { ModalCumplimientoConsultaExternaComponent } from './roles/reso/lista-verificacion/home-estandar/consulta-externa/modal-cumplimiento-consulta-externa/modal-cumplimiento-consulta-externa.component';
+import { EditarActaVerificacionComponent } from './roles/reso/informe-resolucion/editar-acta-verificacion/editar-acta-verificacion.component';
+import { EditarEquipoVerificadoresComponent } from './roles/reso/equipo-verificadores/editar-equipo-verificadores/editar-equipo-verificadores.component';
 
 
 @NgModule({
@@ -258,7 +261,10 @@ import { CriteriosGrupoAtencionInmediataComponent } from './usuario/admin/resolu
     CriteriosGrupoApoyoDiagnosticoComponent,
     CriteriosGrupoInternacionComponent,
     CriteriosGrupoQuirurgicoComponent,
-    CriteriosGrupoAtencionInmediataComponent
+    CriteriosGrupoAtencionInmediataComponent,
+    ModalCumplimientoConsultaExternaComponent,
+    EditarActaVerificacionComponent,
+    EditarEquipoVerificadoresComponent
 
   ],
   imports: [

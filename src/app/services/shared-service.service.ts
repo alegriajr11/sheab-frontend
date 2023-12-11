@@ -12,6 +12,11 @@ export class SharedServiceService {
   id_evaluacion_sp_ind: number;
   id_evaluacion_sp_ips: number;
   id_evaluacion_pamec: number;
+  //MODULO RESOLUCION 3100
+  id_evaluacion_verificacion: number;
+  id_acta_verificacion: number;
+
+  //CODIGO PRESTADOR
   pre_cod_habilitacion: string;
 
   id_acta_sic: number
@@ -21,6 +26,10 @@ export class SharedServiceService {
   crie_id: number
   cumpl_asignado: string
   /**FIN ATRIBUTOS ROL SIC */
+
+  /**CUMPLIMIENTO ROL RESOLUCIÓN 3100 - TODOS LOS SERVICIOS */
+  cris_id: number
+  /**FIN ATRIBUTOS  RESOLUCIÓN 3100 - TODOS LOS SERVICIOS */
 
   //DOMINIO E INDICADOR ROL SIC
   nombre_dominio: string
@@ -48,6 +57,12 @@ export class SharedServiceService {
   //ARRAY CRITERIOS SP-IND
   criteriosIndGuardados: any[] = [];
 
+  //CRITERIOS MODULO RESOLUCION 3100
+  //ARRAY CRITERIOS TODOS LOS SERVICIOS
+  criteriosTodosServiciosGuardados: any[] = [];
+  //ARRAY CRITERIOS CONSULTA EXTERNA
+  criteriosConsultaExternaGuardados: any[] = [];
+
   //ARRAY CRITERIOS SP-IPS
   criteriosIpsAjusteGuardados: any[] = [];
   criteriosIpsImplementacionGuardados: any[] = [];
@@ -61,6 +76,8 @@ export class SharedServiceService {
   condicionesHabilitacionGuardados: any[] = [];
 
   nombreUsuario: string;
+
+  id_usuario: number;
 
   //CONDICIONES DE HABILITACIÓN
   nombre_condicion_habilitacion: string //Almacenar el nombre de la condicion de habilitacion para el modal
@@ -168,7 +185,12 @@ export class SharedServiceService {
     this.id_evaluacion_sic = id;
   }
 
-  setIdsDominioIndicador(idDominio: number, idIndicador: number){
+  //METODO SET PARA OBTENER EL ID DE EVALUACION DEL ACTA DE VERIFICACION - MODULO RESOLUCION 3100
+  setIdEvaluacionVerificacion(id: number) {
+    this.id_evaluacion_verificacion = id;
+  }
+
+  setIdsDominioIndicador(idDominio: number, idIndicador: number) {
     this.id_dominio = idDominio
     this.id_indicador = idIndicador
   }
@@ -181,6 +203,7 @@ export class SharedServiceService {
     this.id_acta_ips = id
   }
 
+  //OBTENER EL ID DEL CRITERIO DEL MODULO SIC
   setIdCriterioSic(id: number) {
     this.crie_id = id;
   }
@@ -195,6 +218,11 @@ export class SharedServiceService {
 
   setIdCriterioSpIps(id: number) {
     this.cri_ips_id = id;
+  }
+
+  //OBTENER EL ID DEL CRITERIO DEL GRUPO TODOS LOS SERVICIOS DEL MODULO RESOLUCION 3100
+  setIdCriterioTodosServicios(id: number) {
+    this.cris_id = id;
   }
 
 
@@ -233,12 +261,21 @@ export class SharedServiceService {
 
 
   //CONDICIONES REQUISITOS DE HABILITACION:
-  setNombreCondicionHabilitacion(nombre_condicion: string){
-    this.nombre_condicion_habilitacion= nombre_condicion;
+  setNombreCondicionHabilitacion(nombre_condicion: string) {
+    this.nombre_condicion_habilitacion = nombre_condicion;
   }
 
-  setIdCodicionHabilitacion(id: number){
-    this.id_condicion_hablitacion= id;
+  setIdCodicionHabilitacion(id: number) {
+    this.id_condicion_hablitacion = id;
   }
 
+
+  //ALMACENAR EL ID DEL USUARIO
+  setIdUsuario(id_usuario: number){
+    this.id_usuario = id_usuario
+  }
+  //ALMACENAR EL NUMERO DE ACTA - VERIFICACION
+  setIdActaVerificacion(id_acta: number){
+    this.id_acta_verificacion = id_acta
+  }
 }

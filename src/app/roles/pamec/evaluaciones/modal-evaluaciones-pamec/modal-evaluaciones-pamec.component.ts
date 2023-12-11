@@ -51,10 +51,15 @@ export class ModalEvaluacionesPamecComponent {
     this.nombre_funcionario = this.sharedService.funcionario_nombre
     this.cod_prestador = this.sharedService.pre_cod_habilitacion
     this.isAdmin = this.tokenService.isAdmin();
-    this.estadoActa();
-    console.log(this.id_evaluacion)
+    setTimeout(() => {
+      this.inicializarMetodos();
+    });
+
   }
 
+  inicializarMetodos(){
+    this.estadoActa();
+  }
 
   changeIcon() {
     this.iconClass = 'fas fa-door-closed fa-lg'; // Icono al pasar el mouse

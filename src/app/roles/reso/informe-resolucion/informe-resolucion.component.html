@@ -91,7 +91,7 @@
                         <td *ngIf="actaVerificacion.act_estado === '0'" style="text-align: center;"><span
                                 class="fas fa-door-closed" style="color: rgb(204, 0, 0);"></span></td>
                         <td>
-                            <button class="btn btn-outline-dark" (click)="openModal(modalTemplate)">
+                            <button class="btn btn-outline-dark" (click)="openModal(modalTemplate, actaVerificacion.id, actaVerificacion.act_prestador)">
                                 <span class="fas fa-clipboard-check"></span>
                             </button>
 

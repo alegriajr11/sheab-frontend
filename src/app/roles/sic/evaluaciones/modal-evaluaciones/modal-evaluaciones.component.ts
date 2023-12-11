@@ -54,7 +54,9 @@ export class ModalEvaluacionesComponent {
     this.nombre_funcionario = this.sharedService.funcionario_nombre
     this.cod_prestador = this.sharedService.pre_cod_habilitacion
     this.isAdmin = this.tokenService.isAdmin();
-    this.incializarMetodos();
+    setTimeout(() => {
+      this.incializarMetodos();
+    });
   }
 
 

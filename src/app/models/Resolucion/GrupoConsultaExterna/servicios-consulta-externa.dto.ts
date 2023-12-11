@@ -1,10 +1,10 @@
 export class ServicioConsultaExternaDto {
     serv_id?: number;
-    serv_nombre_estandar: string;
+    serv_nombre_servicio: string;
     
 
-    constructor(serv_id: number, serv_nombre_estandar: string){
+    constructor(serv_id: number, serv_nombre_servicio: string){
         this.serv_id = serv_id;
-        this.serv_nombre_estandar = serv_nombre_estandar;
+        this.serv_nombre_servicio = serv_nombre_servicio;
     }
 }

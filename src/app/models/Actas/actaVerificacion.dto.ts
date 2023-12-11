@@ -27,6 +27,10 @@ export class ActaVerificacionDto {
 
     act_estado: string;
 
+    act_recibe_visita: string;
+
+    noFirmaActa: string;
+    
     verificacion_usuario: Usuario
 
     constructor(

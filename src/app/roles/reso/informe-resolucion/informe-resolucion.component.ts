@@ -54,14 +54,15 @@ export class InformeResolucionComponent {
   }
 
 
-  openModal(modalTemplate: TemplateRef<any>) {
+  openModal(modalTemplate: TemplateRef<any>, id_verificacion: number, nombre_prestador: string) {
+    this.sharedService.setIdEvaluacionVerificacion(id_verificacion)
+    this.sharedService.setNombrePrestador(nombre_prestador)
     this.modalRef = this.modalService.show(modalTemplate,
       {
         class: 'modal-dialogue-centered modal-md',
         backdrop: true,
         keyboard: true
       }
-
     );
 
   }

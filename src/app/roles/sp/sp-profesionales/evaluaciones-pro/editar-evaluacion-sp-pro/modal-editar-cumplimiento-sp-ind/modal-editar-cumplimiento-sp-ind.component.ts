@@ -40,7 +40,9 @@ export class ModalEditarCumplimientoSpIndComponent {
     //CAPTURAR LOS ID DEL CRITERIO Y EVALUACION DEL SERVICIO COMPARTIDO
     this.cri_ind_id = this.sharedService.cri_ind_id;
     this.eva_ind_id = this.sharedService.id_evaluacion_sp_ind
-    //SOLICITUD PARA OBTENER LA CALIFICACIÓN QUE LE PERTENECE A LA EVALUACIÓN Y AL CRITERIO CON SU ID
+    
+    setTimeout(() => {
+      //SOLICITUD PARA OBTENER LA CALIFICACIÓN QUE LE PERTENECE A LA EVALUACIÓN Y AL CRITERIO CON SU ID
     this.calificacionIndService.getCriterioByEvaluacion(this.cri_ind_id, this.eva_ind_id).subscribe(
       async data => {
         this.calificacionInd = data
@@ -62,6 +64,7 @@ export class ModalEditarCumplimientoSpIndComponent {
         });
       }
     )
+    });
   }
 
 

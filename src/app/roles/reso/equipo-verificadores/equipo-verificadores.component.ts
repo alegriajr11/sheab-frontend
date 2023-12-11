@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ActaVerificacionDto } from 'src/app/models/Actas/actaVerificacion.dto';
 import { Usuario } from 'src/app/models/usuario';
 import { ActaVerificacionService } from 'src/app/services/Resolucion/acta-verificacion.service';
+import { SharedServiceService } from 'src/app/services/shared-service.service';
 
 @Component({
   selector: 'app-equipo-verificadores',
@@ -24,8 +26,14 @@ export class EquipoVerificadoresComponent {
   searchText: any;
   public page!: number;
 
+  //Variable modal
+  public modalRef: BsModalRef;
+
+
   constructor(
     private actaVerificacionService: ActaVerificacionService,
+    private modalService: BsModalService,
+    public sharedService: SharedServiceService,
   ) { }
 
   ngOnInit(): void {
@@ -57,7 +65,18 @@ export class EquipoVerificadoresComponent {
       err => {
         this.listaVacia = err.error.message;
       }
-
     )
+  }
+
+  openModalEditar(modalTemplate: TemplateRef<any>, id_usuario: number){
+    this.sharedService.setIdUsuario(id_usuario)
+    this.sharedService.setIdActaVerificacion(this.numero_acta)
+    this.modalRef = this.modalService.show(modalTemplate,
+      {
+        class: 'modal-dialogue-centered modal-md',
+        backdrop: true,
+        keyboard: true
+      }
+    );
   }
 }

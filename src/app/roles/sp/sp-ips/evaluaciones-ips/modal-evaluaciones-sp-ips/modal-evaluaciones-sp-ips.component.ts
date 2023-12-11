@@ -64,11 +64,15 @@ export class ModalEvaluacionesSpIpsComponent {
     this.cod_prestador = this.sharedService.pre_cod_habilitacion
     this.isAdmin = this.tokenService.isAdmin();
 
+    setTimeout(() => {
+      this.incializarMetodos();
+    });
+  }
 
+  incializarMetodos(){
     this.estadoActa();
     this.cargarEvaluacions();
   }
-
 
   changeIcon() {
     this.iconClass = 'fas fa-door-closed fa-lg'; // Icono al pasar el mouse

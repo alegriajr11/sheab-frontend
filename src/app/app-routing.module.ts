@@ -92,6 +92,8 @@ import { EditarActaPamecGuard } from './guards/editar-acta-pamec.guard';
 import { EditarEvaluacionPamecComponent } from './roles/pamec/evaluaciones/editar-evaluacion-pamec/editar-evaluacion-pamec.component';
 import { CriteriosGrupoConsultaExternaComponent } from './usuario/admin/resolucion/criterios-grupo-consulta-externa/criterios-grupo-consulta-externa.component';
 import { CriteriosGrupoApoyoDiagnosticoComponent } from './usuario/admin/resolucion/criterios-grupo-apoyo-diagnostico/criterios-grupo-apoyo-diagnostico.component';
+import { EditarActaVerificacionComponent } from './roles/reso/informe-resolucion/editar-acta-verificacion/editar-acta-verificacion.component';
+import { EditarActaVerificacionGuard } from './guards/editar-acta-verificacion.guard';
 
 
 const routes: Routes = [
@@ -179,6 +181,8 @@ const routes: Routes = [
   { path: 'reso', component: HomeResoComponent, canActivate: [UsuarioGuard], data: { expectedRol: ['admin', 'res', 'contador'] } },
   { path: 'reso/lista-verificacion', component: ListaVerificacionComponent, canActivate: [UsuarioGuard, ButtonGuard], data: { expectedRol: ['admin', 'res'] } },
   { path: 'servicios-capacidad', component: CapacidadInstaladaComponent, canActivate: [UsuarioGuard], data: { expectedRol: ['admin', 'res'] } },
+  { path: 'reso-verificacion/acta/editar/:id', component: EditarActaVerificacionComponent, canActivate: [UsuarioGuard, EditarActaVerificacionGuard, ButtonGuard], data: { expectedRol: ['admin', 'sic'] } },
+
 
   //RUTA CUMPLIMIENTO DE REQUISITOS DE LAS CONDICIONES DE HABILITACIÓN
   { path: 'cumplimiento-requisitos', component: CumplimientoRequisitosComponent, canActivate: [UsuarioGuard], data: { expectedRol: ['admin', 'res'] } },

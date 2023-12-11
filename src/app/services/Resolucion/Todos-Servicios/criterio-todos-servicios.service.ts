@@ -16,7 +16,6 @@ export class CriterioTodosServiciosService {
   constructor(private httpClient: HttpClient,) { }
 
   public listForEstandar(est: string): Observable<CriterioTodosServiciosDto[]>{
-    console.log(est)
     return this.httpClient.get<CriterioTodosServiciosDto[]>(this.todos_serviciosURL + est)
   }
 

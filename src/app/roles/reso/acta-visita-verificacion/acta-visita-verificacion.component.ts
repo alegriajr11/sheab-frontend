@@ -527,11 +527,13 @@ export class ActaVisitaVerificacionComponent {
       this.act_visita_seguimiento = ''
       this.act_visita_reactivacion = ''
     }
+    
     if (this.act_visita_seguimiento_bool === true) {
       this.act_visita_seguimiento = 'X'
       this.act_visita_reactivacion = ''
       this.act_visita_previa = ''
     }
+    
     if (this.act_visita_reactivacion_bool === true) {
       this.act_visita_reactivacion = 'X'
       this.act_visita_seguimiento = ''

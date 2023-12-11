@@ -1,0 +1,134 @@
+<app-menu></app-menu>
+<div class="col">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso/informe">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-8">
+            <h1 class="text-center">Visita Resolución 3100 - 2019</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">ACTA VISITA DE VERIFICACION DE CUMPLIMIENTO DE LAS CONDICIONES DE
+                HABILITACION</h2>
+            <hr class="up">
+
+            <form novalidate class="row g-3" name="ps" (ngSubmit)="onUpdate()" id="form">
+                <div class="col-md-2">
+                    <label for="inputN_Acta" class="form-label text-center">N°ACTA</label>
+                    <input type="number" min="0" class="form-control" id="acta" readonly name="act_id"
+                        [(ngModel)]="actaVerificacion.act_id">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="previa" class="form-label">VISITA PREVIA</label>
+                    <label class="switch">
+                        <input type="checkbox" id="previa" onclick="unsoloCheckbox()" name="act_visita_previa"
+                            [(ngModel)]="actaVerificacion.act_visita_previa">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="segumiento" class="form-label">VISITA DE CERTIFICACION</label>
+                    <label class="switch">
+                        <input type="checkbox" id="segumiento" onclick="unsoloCheckbox()" name="act_visita_seguimiento"
+                            [(ngModel)]="actaVerificacion.act_visita_seguimiento">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="reactivacion" class="form-label">VISITA DE REACTIVACION</label>
+                    <label class="switch">
+                        <input type="checkbox" id="reactivacion" onclick="unsoloCheckbox()"
+                            name="act_visita_reactivacion" [(ngModel)]="actaVerificacion.act_visita_reactivacion">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="col-3">
+                    <label class="form-label">FECHA INICIAL</label>
+                    <input type="date" class="form-control" id="fecha-inicial" pattern="dd/MM/yyyy"
+                        name="act_fecha_inicial" [(ngModel)]="actaVerificacion.act_fecha_inicio"
+                        [ngModelOptions]="{standalone: true}" ngDefaultControl>
+                </div>
+                <div class="col-3">
+                    <label class="form-label">FECHA FINAL</label>
+                    <input type="date" class="form-control" id="fecha-final" pattern="dd/MM/yyyy" name="act_fecha_final"
+                        [(ngModel)]="actaVerificacion.act_fecha_final" [ngModelOptions]="{standalone: true}"
+                        ngDefaultControl [min]="actaVerificacion.act_fecha_inicio">
+                </div>
+
+                <div class="col-12">
+                    <hr class="medio">
+                </div>
+
+                <div class="col-12">
+                    <h3>DATOS GENERALES REPORTADOS EN EL REGISTRO ESPECIAL DE PRESTADORES DE SERVICOS DE SALUD</h3>
+                </div>
+
+                <div class="col-12">
+                    <label for="mun_id" class="form-label">Municipio:</label>
+                    <input type="text" class="form-control" id="mun_id" placeholder="Municipio..." readonly
+                        name="mun_id" [(ngModel)]="actaVerificacion.act_municipio">
+                </div>
+
+                <div class="col-12">
+                    <label for="mun_id" class="form-label">Prestador:</label>
+                    <input type="text" class="form-control" id="prestador" placeholder="Prestador..." readonly
+                        name="prestador" [(ngModel)]="actaVerificacion.act_prestador">
+                </div>
+
+
+                <div class="col-6">
+                    <label for="nit" class="form-label">Nit:</label>
+                    <input type="text" class="form-control" id="nit" placeholder="Nit" readonly name="act_nit"
+                        [(ngModel)]="actaVerificacion.act_nit">
+                </div>
+
+                <div class="col-6">
+                    <label for="direccion" class="form-label">Dirección:</label>
+                    <input type="text" class="form-control" id="act_direccion" placeholder="Dirección Prestador"
+                        readonly name="act_direccion" [(ngModel)]="actaVerificacion.act_direccion">
+                </div>
+
+                <div class="col-6">
+                    <label for="repleg" class="form-label">Representante Legal:</label>
+                    <input type="text" class="form-control" id="act_representante" readonly name="act_representante"
+                        [(ngModel)]="actaVerificacion.act_representante">
+                </div>
+
+                <div class="col-6">
+                    <label for="act_gerente" class="form-label">Gerente - Director:</label>
+                    <input type="text" class="form-control" id="act_gerente" readonly name="act_gerente"
+                        [(ngModel)]="actaVerificacion.act_gerente">
+                </div>
+
+                <div class="col-12">
+                    <label for="email" class="form-label">Gerente - Director:</label>
+                    <input type="text" class="form-control" id="email" readonly name="act_correo"
+                        [(ngModel)]="actaVerificacion.act_correo">
+                </div>
+
+                <div class="col-12">
+                    <button id="boton-acta-sic" class="btn btn-dark esp btn-circle btn-xl" title="Guardar"
+                        type="submit">
+                        <i class='fa fa-save fa-lg'></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

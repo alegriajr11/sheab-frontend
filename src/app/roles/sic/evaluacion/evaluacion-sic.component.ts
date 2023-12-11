@@ -265,6 +265,7 @@ export class EvaluacionSicComponent implements OnInit {
     return Array.from({ length: num }, (_, i) => i + 1);
   }
 
+   //ABRIR MODAL PARA ASIGNAR CUMPLIMIENTO
   openModal(modalTemplate: TemplateRef<any>, id: number, eva_id: number) {
     this.sharedService.setIdEvaluacionSic(eva_id)
     this.eva_id = eva_id

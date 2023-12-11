@@ -43,6 +43,7 @@ export class ListaVerificacionComponent implements OnInit {
     localStorage.removeItem('nombre-pres-verificacion')
     localStorage.removeItem('boton-acta-verificacion')
     localStorage.removeItem('id_acta_verificacion')
+    localStorage.removeItem('boton-editar-informe-verificacion')
   }
 
   capturarActa() {

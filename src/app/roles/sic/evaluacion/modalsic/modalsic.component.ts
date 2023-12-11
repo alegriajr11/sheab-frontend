@@ -39,8 +39,6 @@ export class ModalsicComponent {
   ngOnInit(): void {
     this.crie_id = this.sharedService.crie_id;
     this.eva_id = this.sharedService.id_evaluacion_sic
-    console.log(this.eva_id)
-    console.log(this.crie_id)
   }
 
 

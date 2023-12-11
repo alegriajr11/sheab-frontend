@@ -11,8 +11,11 @@
             <h1 style="color: white;">Selección de Estándar - Todos los Servicios</h1>
         </div>
     </div>
-
 </div>
+
+<ng-template #modalTemplate>
+    <app-modal-cumplimiento-todos-servicios [dataFromParent]="modalRef"></app-modal-cumplimiento-todos-servicios>
+</ng-template>
 
 <div class="container">
     <div class="table-wrapper">
@@ -46,14 +49,11 @@
                         <td>{{ criterio.todos_servi_aparto.apa_codigo }}</td>
                         <td style="text-align: justify;">{{ criterio.cris_nombre_criterio }}</td>
                         <td style="vertical-align: middle; text-align: center;">
-                            <button class="btn btn-outline-dark">
+                            <button class="btn" [ngClass]="getClassForCriterio(criterio)"
+                                [disabled]="sharedService.criteriosTodosServiciosGuardados.includes(criterio.cris_id)"
+                                (click)="openModal(modalTemplate, criterio.cris_id, eva_id)">
                                 <i class="fa fa-check"></i>
                             </button>
-                            <!-- <button class="btn" [ngClass]="getClassForCriterio(criterio)"
-                                [disabled]="sharedService.criteriosSicGuardados.includes(criterio.crie_id)"
-                                (click)="openModal(modalTemplate, criterio.crie_id, eva_id)">
-                                <i class="fa fa-check"></i>
-                            </button> -->
                         </td>
                     </tr>
                 </tbody>

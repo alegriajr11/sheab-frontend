@@ -40,6 +40,12 @@ export class ButtonGuard implements CanActivate {
         if(localStorage.getItem('boton-editar-acta-pamec') === 'true'){
             return true
         }
+        if(localStorage.getItem('boton-editar-acta-verificacion') === 'true'){
+            return true
+        }
+        if(localStorage.getItem('boton-editar-informe-verificacion') === 'true'){
+            return true
+        }
         if(localStorage.getItem('boton-editar-evaluacion-sp-ips') === 'true'){
             return true
         }

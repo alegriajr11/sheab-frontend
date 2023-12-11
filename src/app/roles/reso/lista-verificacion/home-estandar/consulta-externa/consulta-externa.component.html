@@ -2,70 +2,85 @@
 
 <div class="col">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-1">
             <button class="btn btn-light esp btn-circle btn-xl" routerLink="/home-estandar">
                 <i class="fa fa-reply fa-lg"></i>
             </button>
         </div>
-        <div class="col-md-8">
-
-            <h1 class="text-center">CONSULTA EXTERNA</h1>
-            <h2 class="text-center">CONDICIONES DE HABILITACIÓN RESOLUCIÓN 3100/2019</h2>
+        <div class="col-md-11 text-center">
+            <h1 style="color: white;">Selección de Estándar - Todos los Servicios</h1>
         </div>
     </div>
 </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción</title>
-    <!-- Agrega estilos CSS para dar formato al mensaje si lo deseas -->
-    <style>
-        body {
-            text-align: center;
-            padding: 100px;
-            font-size: 24px;
-        }
-        h1.construccion{
-            color:  black;
-        }
-        p {
-            color: black
-        }
-    </style>
-</head>
+<ng-template #modalTemplate>
+    <app-modal-cumplimiento-consulta-externa [dataFromParent]="modalRef"></app-modal-cumplimiento-consulta-externa>
+</ng-template>
 
-<body>
-    <h1 class="construccion">Sitio en Construcción</h1>
-    <p>Trabajando para mejorar la funcionalidad del sitio. ¡Gracias por tu paciencia!</p>
-</body>
+<div class="container">
+    <div class="table-wrapper">
+        <div class="header-section">
+            <h5 class="title-header"><b>Prestador:</b></h5>
+            <span id="pre_nombre">{{nombre_prestador}}</span>
+        </div>
+        <div class="form-group">
+            <label for="standardSelect">Selecciona un Servicio:</label>
+            <select name="serv_id" id="serv_id" class="form-control" [(ngModel)]="selectedServicio"
+                (change)="cargarServicios()">
+                <option hidden selected value="">Selecciona el Servicio...</option>
+                <option *ngFor="let servicio of servicios_consulta_externa" [value]="servicio.serv_id">{{
+                    servicio.serv_nombre_servicio }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="standardSelect">Selecciona un Estándar:</label>
+            <select name="ext_id" id="ext_id" class="form-control" [(ngModel)]="selectedStandard"
+                (change)="cargarCriterios(); onStandardChange()">
+                <option hidden selected value="">Selecciona el Estandar...</option>
+                <option *ngFor="let standard of estandar_consulta_externa" [value]="standard.ext_id">{{
+                    standard.ext_nombre_estandar }}</option>
+            </select>
+        </div>
+
+        <div *ngIf="selectedStandard">
+            <h3 class="underlined">ESTANDAR DE {{ nombre_estadar }}</h3>
+
+            <table class="table table-wrapper table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Cod</th>
+                        <th scope="col">Criterio</th>
+                        <th scope="col">Cumplimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let criterio of criterios_consulta_externa; let i = index">
+                        <td>{{ criterio.servi_aparto.apa_codigo }}</td>
+                        <td style="text-align: justify;">{{ criterio.criext_nombre_criterio }}</td>
+                        <td style="vertical-align: middle; text-align: center;">
+                            <button class="btn" [ngClass]="getClassForCriterio(criterio)"
+                                [disabled]="sharedService.criteriosConsultaExternaGuardados.includes(criterio.criext_id)"
+                                (click)="openModal(modalTemplate, criterio.criext_id, eva_id)">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <div class="form-group rounded">
+                <h4>Estado del Estandar:</h4>
+                <select id="standardStateSelect" class="form-control" [(ngModel)]="selectedStandardState">
+                    <option value="CUMPLE">CUMPLE</option>
+                    <option value="NO CUMPLE">NO CUMPLE</option>
+                </select>
+                <button class="btn btn-dark esp btn-circle">Asignar Estado Estandar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
-<!-- <div class="col-sm-4">
-    <table class="table table-wrapper text-center table-hover">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" style="width: 50%;"></th>
-                <th scope="col">Total Cumple</th>
-                <th scope="col">Total No Cumple</th>
-                <th scope="col">Total No Aplica</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Número de Criterios Evaluados</th>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-            </tr>
-            <tr>
-                <th scope="row">Cmplimiento del Servicio Evaluado</th>
-                <td>%</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-
-</div> -->
 <app-footer></app-footer>
