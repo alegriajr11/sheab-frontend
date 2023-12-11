@@ -11,8 +11,11 @@ import { SharedServiceService } from 'src/app/services/shared-service.service';
 })
 export class EditarEquipoVerificadoresComponent {
 
+  usu_nombre: string
+  usu_apellido: string
+
   id_usuario: number
-  numero_acta: number
+  id_acta_verificacion: number
 
   usuarios_verificadores: Usuario
 
@@ -30,17 +33,31 @@ export class EditarEquipoVerificadoresComponent {
 
   ngOnInit(): void {
     this.id_usuario = this.sharedService.id_usuario
-    this.numero_acta = this.sharedService.id_acta_verificacion
+    this.id_acta_verificacion = this.sharedService.id_acta_verificacion
+
+    setTimeout(() => {
+      this.inicializarMetodos();
+    });
   }
 
-  // verificadoresAsignado() {
-  //   this.actaVerificacionService.listarUsuarioAsignados(this.id_acta_verificacion).subscribe(
-  //     data => {
-  //       this.usuarios_verificadores = data
-  //     },
-  //     err => {
-  //       this.listaVacia = err.error.message;
-  //     }
-  //   )
-  // }
+  inicializarMetodos(){
+    this.verificadoresAsignado();
+  }
+
+  eliminarUsuarioAsignado(){
+    
+  }
+
+  verificadoresAsignado() {
+    this.actaVerificacionService.listaUsuarioAsignado(this.id_acta_verificacion, this.id_usuario).subscribe(
+      data => {
+        this.usuarios_verificadores = data
+        this.usu_nombre = this.usuarios_verificadores.usu_nombre
+        this.usu_apellido = this.usuarios_verificadores.usu_apellido
+      },
+      err => {
+        this.listaVacia = err.error.message;
+      }
+    )
+  }
 }

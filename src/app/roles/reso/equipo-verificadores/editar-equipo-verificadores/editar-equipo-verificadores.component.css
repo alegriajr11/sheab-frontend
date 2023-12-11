@@ -1,0 +1,7 @@
+/*CENTRAR LOS TD DEL TABLE*/
+.center-cell {
+    text-align: center;
+    /* Centrado horizontal */
+    vertical-align: middle;
+    /* Centrado vertical */
+}

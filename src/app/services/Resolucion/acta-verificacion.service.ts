@@ -42,6 +42,11 @@ export class ActaVerificacionService {
     return this.httpClient.get<Usuario>(this.actaVerifcacion + 'listar/acta/usuario/' + id_acta)
   }
 
+  //SOLICIUTD LISTAR UN USUARIO ASIGNADO AL ACTA POR ID DE ACTA Y ID DE USUARIO
+  public listaUsuarioAsignado(id_acta: number, id_usuario: number): Observable<Usuario> {
+    return this.httpClient.get<Usuario>(this.actaVerifcacion + 'lista/usuario/acta/verificacion?act_id=' + id_acta + "&" + 'usu_id=' + id_usuario)
+  }
+
   //SOLICITUD LISTAR LA ULTIMA ACTA QUE SE ACABA DE REGISTRAR SIN IMPORTAR EL TIPO
   public ultimoRegistroActa(): Observable<ActaVerificacionDto> {
     return this.httpClient.get<ActaVerificacionDto>(this.actaVerifcacion + 'actas/ultima')
