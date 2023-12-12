@@ -70,7 +70,7 @@ export class EquipoVerificadoresComponent {
 
   openModalEditar(modalTemplate: TemplateRef<any>, id_usuario: number){
     this.sharedService.setIdUsuario(id_usuario)
-    this.sharedService.setIdActaVerificacion(this.numero_acta)
+    this.sharedService.setIdActaVerificacion(this.id_acta_verificacion)
     this.modalRef = this.modalService.show(modalTemplate,
       {
         class: 'modal-dialogue-centered modal-md',

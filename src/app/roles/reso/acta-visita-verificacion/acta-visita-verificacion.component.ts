@@ -317,9 +317,9 @@ export class ActaVisitaVerificacionComponent {
   }
 
   //LISTAR USUARIOS
-  cargarUsuario(): void {
-    const rol_res = 'res'
-    this.usuarioService.listaUserRol(rol_res).subscribe(
+  cargarUsuario(idsSeleccionados: number[] = []): void {
+    const rol_res = 'res';
+    this.usuarioService.listaUserRol(rol_res, idsSeleccionados).subscribe(
       data => {
         this.usuarios = data;
         this.listaVacia = undefined;
@@ -327,8 +327,9 @@ export class ActaVisitaVerificacionComponent {
       err => {
         this.listaVacia = err.error.message;
       }
-    )
+    );
   }
+
 
   //LISTAR USUARIOS PROFESIONALES APOYO
   cargarUsuarioApoyo(): void {
@@ -442,6 +443,7 @@ export class ActaVisitaVerificacionComponent {
     this.selectedUsersVerificadores.push(newUser);
   }
 
+
   // REMOVER VERIFICADOR
   removeSelectVerificador(userId: number) {
     const index = this.selectedUsersVerificadores.findIndex(user => user.userId === userId);
@@ -449,15 +451,18 @@ export class ActaVisitaVerificacionComponent {
       // Encuentra el índice del usuario en el array
       this.selectedUsersVerificadores.splice(index, 1); // Elimina el select de la lista de selectores
       delete this.usuariosSeleccionados[userId]; // Elimina el ID del usuario del objeto usuariosSeleccionados
-      console.log(this.usuariosSeleccionados)
     }
   }
+
+
 
   // Actualizar ID del usuario seleccionado
   updateSelectedUserId(selectedUser: SelectedUser, selectedUserId: number) {
     selectedUser.userId = selectedUserId;
     // Actualiza el ID del usuario en el objeto usuariosSeleccionados
     this.usuariosSeleccionados[selectedUserId] = selectedUserId;
+    const idsSeleccionados = Object.values(this.usuariosSeleccionados);
+    console.log(idsSeleccionados)
   }
 
 
@@ -527,13 +532,13 @@ export class ActaVisitaVerificacionComponent {
       this.act_visita_seguimiento = ''
       this.act_visita_reactivacion = ''
     }
-    
+
     if (this.act_visita_seguimiento_bool === true) {
       this.act_visita_seguimiento = 'X'
       this.act_visita_reactivacion = ''
       this.act_visita_previa = ''
     }
-    
+
     if (this.act_visita_reactivacion_bool === true) {
       this.act_visita_reactivacion = 'X'
       this.act_visita_seguimiento = ''
@@ -673,7 +678,7 @@ export class ActaVisitaVerificacionComponent {
 
     } else {
       //ENVIAR EL NOMBRE DEL PRESTADOR A EVALUAR POR LOCAL STORAGE
-      if(this.act_sede){
+      if (this.act_sede) {
         localStorage.setItem('nombre-pres-verificacion', this.act_sede);
       } else {
         localStorage.setItem('nombre-pres-verificacion', this.act_prestador);

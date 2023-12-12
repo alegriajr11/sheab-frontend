@@ -34,12 +34,21 @@ export class ConsultaExternaComponent {
   //ESTADO DEL ESTANDAR
   selectedStandardState: string = '';
 
+
+  //ID DEL GRUPO
+  id_grupo_consulta_externa: number
+
   public modalRef: BsModalRef;
 
   constructor(
     public sharedService: SharedServiceService,
     private modalService: BsModalService,
   ) { }
+
+  ngOnInit(): void{
+    this.id_grupo_consulta_externa =  this.sharedService.id_grupo_consulta_externa
+    this.capturarNombrePrestador()
+  }
 
 
   cargarServicios() {
@@ -49,6 +58,11 @@ export class ConsultaExternaComponent {
   cargarCriterios() {
 
   }
+
+  capturarNombrePrestador() {
+    this.nombre_prestador = localStorage.getItem('nombre-pres-verificacion')
+  }
+
   // Método que se activa al cambiar la selección del estándar
   onStandardChange() {
     const selectedStandardObj = this.estandar_consulta_externa.find(standard => standard.ext_id.toString() === this.selectedStandard);

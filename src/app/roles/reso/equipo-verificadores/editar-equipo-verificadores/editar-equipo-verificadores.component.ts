@@ -45,15 +45,17 @@ export class EditarEquipoVerificadoresComponent {
   }
 
   eliminarUsuarioAsignado(){
-    
+
   }
 
   verificadoresAsignado() {
     this.actaVerificacionService.listaUsuarioAsignado(this.id_acta_verificacion, this.id_usuario).subscribe(
+
       data => {
         this.usuarios_verificadores = data
         this.usu_nombre = this.usuarios_verificadores.usu_nombre
         this.usu_apellido = this.usuarios_verificadores.usu_apellido
+
       },
       err => {
         this.listaVacia = err.error.message;

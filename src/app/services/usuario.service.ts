@@ -23,9 +23,10 @@ export class UsuarioService {
     return this.httpClient.get<Usuario[]>(`${this.usuarioURL}`);
   }
 
-  //SOLICITUD LISTAR USUARIOS ACTIVOS Y POR ROL
-  public listaUserRol(rol_nombre: string): Observable<Usuario[]> {
-    return this.httpClient.get<Usuario[]>(`${this.usuarioURL}` + 'lista/rol?rol_nombre=' + `${rol_nombre}`);
+  // SOLICITUD LISTAR USUARIOS ACTIVOS Y POR ROL
+  public listaUserRol(rol_nombre: string, usuariosSeleccionados: number[] = []): Observable<Usuario[]> {
+    const params = usuariosSeleccionados.length ? `&usuariosSeleccionados=${usuariosSeleccionados.join(',')}` : '';
+    return this.httpClient.get<Usuario[]>(`${this.usuarioURL}lista/rol?rol_nombre=${rol_nombre}${params}`);
   }
 
   //SOLICITUD LISTAR USUARIOS CONTADOR ACTIVOS

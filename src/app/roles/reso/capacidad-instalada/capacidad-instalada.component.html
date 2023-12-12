@@ -42,7 +42,6 @@
                 <th>GRUPO</th>
                 <th>NOMBRE DE SERVICIO</th>
                 <th>MODALIDAD</th>
-                <th>COMPLEJIDAD</th>
             </thead>
             <tbody>
                 <tr *ngFor="let servicios of servicios_verificados; let i = index">
@@ -62,22 +61,6 @@
                         separarConComas(servicios.institucion_remisora === 'SI' ? 'INSTITUCIÓN REMISORA' : '')
                         }}
                     </td>
-
-                    <!-- DETERMINAR SI LA MODALIDAD SE ENCUNTRA SIN ESPECIFICAR -->
-                    <td *ngIf="servicios.ambulatorio === 'SD' && servicios.hospitalario === 'SD' 
-                        && servicios.unidad_movil === 'SD' && servicios.domiciliario === 'SD' && servicios.otras_extramural === 'SD'
-                        && servicios.centro_referencia === 'SD' && servicios.institucion_remisora === 'SD'">SIN
-                        ESPECIFICAR
-                    </td>
-
-                    <!-- DETERMINAR SI LA COMPLEJIDAD ES SI -->
-                    <td style="text-align: center;" *ngIf="servicios.complejidad_baja === 'SI'">BAJA</td>
-                    <td style="text-align: center;" *ngIf="servicios.complejidad_media === 'SI'">MEDIA</td>
-                    <td style="text-align: center;" *ngIf="servicios.complejidad_alta === 'SI'">ALTA</td>
-                    <!-- DETERMINAR SI LA COMPLEJIDAD ES SD - SIN DETERMINAR -->
-                    <td *ngIf="servicios.complejidad_baja === 'SD' && servicios.complejidad_media === 'SD' 
-                        && servicios.complejidad_alta === 'SD'">
-                        SIN ESPECIFICAR</td>
                 </tr>
             </tbody>
         </table>

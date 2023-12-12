@@ -19,15 +19,15 @@
             <div class="botones-grid">
                 <button class="btn btn-dark esp btn-xl" title="Todos Servicios" routerLink="/todos-servicios">
                     TODOS SERVICIOS</button>
-                <button class="btn btn-dark esp btn-xl" title="Consulta Externa" routerLink="/consulta-externa">
+                <button class="btn btn-dark esp btn-xl" title="Consulta Externa" routerLink="/consulta-externa" (click)="enviarIdGrupoConsultaExterna(1)">
                     GRUPO: CONSULTA EXTERNA</button>
-                <button class="btn btn-dark esp btn-xl" title="Apoyo Diagnostico" routerLink="/apoyo-diagnostico">
+                <button class="btn btn-dark esp btn-xl" title="Apoyo Diagnostico" routerLink="/apoyo-diagnostico" (click)="enviarIdGrupoApoyoDiagnostico(2)">
                     GRUPO: APOYO DIAGNOSTICO</button>
-                <button class="btn btn-dark esp btn-xl" title="Internación" routerLink="/internacion">
+                <button class="btn btn-dark esp btn-xl" title="Internación" routerLink="/internacion" (click)="enviarIdGrupoInternacion(4)">
                     GRUPO: INTERNACIÓN</button>
-                <button class="btn btn-dark esp btn-xl" title="Quirúrgico" routerLink="/quirurgico">
+                <button class="btn btn-dark esp btn-xl" title="Quirúrgico" routerLink="/quirurgico" (click)="enviarIdGrupoQuirurgico(5)">
                     GRUPO: QUIRÚRGICO</button>
-                <button class="btn btn-dark esp btn-xl" title="Atención Inmediata" routerLink="/atencion-inmediata">
+                <button class="btn btn-dark esp btn-xl" title="Atención Inmediata" routerLink="/atencion-inmediata" (click)="enviarIdGrupoAtencionInmediata(3)">
                     GRUPO: ATENCIÓN INMEDIATA</button>
             </div>
         </div>

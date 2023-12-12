@@ -140,6 +140,8 @@ import { CriteriosGrupoAtencionInmediataComponent } from './usuario/admin/resolu
 import { ModalCumplimientoConsultaExternaComponent } from './roles/reso/lista-verificacion/home-estandar/consulta-externa/modal-cumplimiento-consulta-externa/modal-cumplimiento-consulta-externa.component';
 import { EditarActaVerificacionComponent } from './roles/reso/informe-resolucion/editar-acta-verificacion/editar-acta-verificacion.component';
 import { EditarEquipoVerificadoresComponent } from './roles/reso/equipo-verificadores/editar-equipo-verificadores/editar-equipo-verificadores.component';
+import { ModalCumplimientoApoyoDiagnosticoComponent } from './roles/reso/lista-verificacion/home-estandar/apoyo-diagnostico/modal-cumplimiento-apoyo-diagnostico/modal-cumplimiento-apoyo-diagnostico.component';
+import { ModalCumplimientoAtencionInmediataComponent } from './roles/reso/lista-verificacion/home-estandar/atencion-inmediata/modal-cumplimiento-atencion-inmediata/modal-cumplimiento-atencion-inmediata.component';
 
 
 @NgModule({
@@ -264,7 +266,9 @@ import { EditarEquipoVerificadoresComponent } from './roles/reso/equipo-verifica
     CriteriosGrupoAtencionInmediataComponent,
     ModalCumplimientoConsultaExternaComponent,
     EditarActaVerificacionComponent,
-    EditarEquipoVerificadoresComponent
+    EditarEquipoVerificadoresComponent,
+    ModalCumplimientoApoyoDiagnosticoComponent,
+    ModalCumplimientoAtencionInmediataComponent
 
   ],
   imports: [

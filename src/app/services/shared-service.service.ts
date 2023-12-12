@@ -83,6 +83,16 @@ export class SharedServiceService {
   nombre_condicion_habilitacion: string //Almacenar el nombre de la condicion de habilitacion para el modal
   id_condicion_hablitacion: number
 
+
+
+  //VARIABLES ID GRUPOS - MODULO RESOLUCION 3100
+  id_grupo_consulta_externa: number
+  id_grupo_apoyo_diagnostico: number
+  id_grupo_atencion_inmediata: number
+  id_grupo_internacion: number
+  id_grupo_quirugicos: number
+  id_grupo_transporte_asistencial: number
+
   private firmaActaSic: string;
   private firmaActaSpIpsPrestador: string;
   private firmaActaSpIpsAcompanante: string;
@@ -277,5 +287,13 @@ export class SharedServiceService {
   //ALMACENAR EL NUMERO DE ACTA - VERIFICACION
   setIdActaVerificacion(id_acta: number){
     this.id_acta_verificacion = id_acta
+  }
+
+
+
+
+  //ALMACENAR LOS ID DE LOS GRUPOS - MODULO RESOLUCION 3100
+  setIdGrupoConsultaExterna(id_grupo: number){
+    this.id_grupo_consulta_externa = id_grupo
   }
 }

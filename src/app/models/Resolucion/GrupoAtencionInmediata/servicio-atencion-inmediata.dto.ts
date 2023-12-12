@@ -1,4 +1,4 @@
-export class ServicioApoyoDiagnosticoDto {
+export class ServicioAtencionInmediataDto {
     serv_id?: number;
     serv_nombre_servicio: string;
     
