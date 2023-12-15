@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from '../services/token.service';
-import { MenubarModule } from 'primeng/menubar';
-import { MegaMenuItem, MenuItem } from 'primeng/api';
 
 
 @Component({
@@ -31,7 +29,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
   isDropdownOpen = false
 
-  items: MenuItem[];
+
 
   constructor(
     private tokenService: TokenService,

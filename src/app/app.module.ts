@@ -13,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MenuComponent } from './menu/menu.component';
-import { PasswordModule } from "primeng/password";
 import { DropdownComponent, DropdownModule} from '@coreui/angular';
 import { PasswordcComponent } from './auth/passwordc.component';
 import { interceptorProvider } from './interceptors/usuario.interceptor';
@@ -142,7 +141,6 @@ import { EditarActaVerificacionComponent } from './roles/reso/informe-resolucion
 import { EditarEquipoVerificadoresComponent } from './roles/reso/equipo-verificadores/editar-equipo-verificadores/editar-equipo-verificadores.component';
 import { ModalCumplimientoApoyoDiagnosticoComponent } from './roles/reso/lista-verificacion/home-estandar/apoyo-diagnostico/modal-cumplimiento-apoyo-diagnostico/modal-cumplimiento-apoyo-diagnostico.component';
 import { ModalCumplimientoAtencionInmediataComponent } from './roles/reso/lista-verificacion/home-estandar/atencion-inmediata/modal-cumplimiento-atencion-inmediata/modal-cumplimiento-atencion-inmediata.component';
-import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -275,7 +273,6 @@ import { TableModule } from 'primeng/table';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    PasswordModule,
     DropdownModule,
     ToastrModule.forRoot(),
     AppRoutingModule,
@@ -286,8 +283,7 @@ import { TableModule } from 'primeng/table';
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
-    NgxUiLoaderModule,
-    TableModule
+    NgxUiLoaderModule
     
     
   ],
