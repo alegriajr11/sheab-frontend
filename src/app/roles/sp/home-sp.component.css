@@ -5,7 +5,7 @@
 
 .wrapper {
     display: grid;
-    grid-template-columns: 7fr 6fr;
+    grid-template-columns: 1fr 12fr;
     align-content: center;
     justify-content: center;
 }
@@ -13,18 +13,6 @@
 .btn-dark:hover {
     transform: scale(1.3);
     transition-duration: 0.2s;
-}
-
-/* Estilos generales para jumbotrons */
-.jumbotron {
-    margin-bottom: 20px;
-    /* Agrega espacio entre los jumbotrons */
-}
-
-/* Estilos para pantallas mayores o iguales a 1120px */
-.container {
-    display: flex;
-    justify-content: space-between;
 }
 
 /*CONTENEDOR DE BOTONES*/
@@ -36,11 +24,30 @@
 }
 
 .button-container label {
-    margin-top: -12px; /* Espacio entre el botón y el label */
+    margin-top: -12px;
+    /* Espacio entre el botón y el label */
 }
 
-.tittle-label{
+.tittle-label {
     font-weight: bold;
+}
+
+.titulo-seccion {
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding-left: 90px
+}
+
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo {
+    padding-left: 90px
+}
+
+.sm-screen-text {
+    display: none;
 }
 
 /* Estilos para pantallas menores a 1050px */
@@ -49,4 +56,28 @@
         max-width: 865px;
         padding-left: 90px
     }
+}
+
+@media (max-width: 500px) {
+
+    /*DIV BOTONES TAMAÑO SUPERIOR A 400PX*/
+    .abs-center {
+        display: none;
+    }
+
+    /*DIV HABILITAR BOTONES TAMAÑO INFERIOR A 400PX*/
+    .sm-screen-text {
+        font-size: large;
+        display: block;
+    }
+
+}
+
+
+/*RESPONSIVE TITULO DE LA SECCION*/
+@media (max-width: 400px) {
+    .titulo-seccion {
+        font-size: x-large;
+    }
+
 }

@@ -54,6 +54,8 @@ export class ListaUsuarioComponent implements OnInit {
     this.isAdmin = this.tokenService.isAdmin();
   }
 
+
+
   cargarUsuarios(): void {
     this.usuarioService.lista().subscribe(
       data => {

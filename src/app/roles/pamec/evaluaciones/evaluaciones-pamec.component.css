@@ -275,10 +275,6 @@ span {
 /* Estilos adicionales para hacer la tabla responsive */
 @media (max-width: 1080px) {
 
-    .container {
-        padding-left: 90px;
-    }
-
     /*MEDIA PARA EL TITULO DE LA SECCION*/
     @media (max-width: 750px) {
         .titulo-seccion {

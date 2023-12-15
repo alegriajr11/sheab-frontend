@@ -1,25 +1,19 @@
 <app-menu></app-menu>
-<div class="col">
-    <div class="row">
-        <div class="col-md-2">
-            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/"><i
-                    class='fa fa-reply fa-lg'></i></button>
-        </div>
-    </div>
-</div>
 
 
-
-<div class="wrapper">
-    
-</div>
 
 <div class="container">
-    <div class="jumbotron">
-        <hr class="my-4">
-        <h1 class="display-4 text-center">Evaluación Seguridad del Paciente - Instituciones Prestadoras de Servicios
+    <!-- SEGURIDAD DEL PACIENTE IPS -->
+    <h1 class="titulo-seccion">SEGURIDAD DEL PACIENTE</h1>
+    <div class="jumbotron position-relative">
+        <div>
+            <button class="btn btn-dark btn-circle btn-xl" routerLink="/"><i class='fa fa-reply fa-lg'></i></button>
+        </div>
+
+        <h1 class="text-center">Instituciones Prestadoras de Servicios
             de Salud</h1>
-        <hr class="my-4">
+        <hr>
+
         <div class="abs-center">
             <div class="button-container">
                 <button class="btn btn-dark esp btn-circle btn-xl" routerLink="/sp/evaluaciones-ips"
@@ -32,16 +26,33 @@
                     <i class='fa fa-file-text fa-lg'></i></button>
                 <label class="tittle-label">Crear Acta</label>
             </div>
+        </div>
 
+        <div class="sm-screen-text">
+            <div class="button-container">
+                <button class="btn btn-dark esp btn-circle btn-xl" routerLink="/sp/evaluaciones-ips"
+                    title="Evaluaciónes Realizadas"><i class='fas fa-clipboard-list fa-lg'></i></button>
+                <label class="tittle-label">Evaluaciones Realizadas</label>
+            </div>
+
+            <div class="button-container">
+                <button class="btn btn-dark esp btn-circle btn-xl" title="Crear Acta" routerLink="/sp/acta-pro">
+                    <i class='fa fa-file-text fa-lg'></i></button>
+                <label class="tittle-label">Crear Acta</label>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="jumbotron">
-        <hr class="my-4">
-        <h1 class="display-4 text-center">Evaluación Seguridad del Paciente - Profesionales Independientes</h1>
-        <hr class="my-4">
+
+    <!-- SEGURIDAD DEL PACIENTE PROFESIONALES INDEPENDIENTES -->
+    <div class="jumbotron position-relative">
+        <div>
+            <button class="btn btn-dark btn-circle btn-xl" routerLink="/"><i class='fa fa-reply fa-lg'></i></button>
+        </div>
+
+        <h1 class="text-center">Profesionales Independientes</h1>
+        <hr>
+
         <div class="abs-center">
             <div class="button-container">
                 <button class="btn btn-dark esp btn-circle btn-xl" routerLink="/sp/evaluaciones-pro"
@@ -54,10 +65,24 @@
                     <i class='fa fa-file-text fa-lg'></i></button>
                 <label class="tittle-label">Crear Acta</label>
             </div>
+        </div>
 
+        <div class="sm-screen-text">
+            <div class="button-container">
+                <button class="btn btn-dark esp btn-circle btn-xl" routerLink="/sp/evaluaciones-pro"
+                    title="Evaluaciónes Realizadas"><i class='fas fa-clipboard-list fa-lg'></i></button>
+                <label class="tittle-label">Evaluaciones Realizadas</label>
+            </div>
+
+            <div class="button-container">
+                <button class="btn btn-dark esp btn-circle btn-xl" title="Crear Acta" routerLink="/sp/acta-ips">
+                    <i class='fa fa-file-text fa-lg'></i></button>
+                <label class="tittle-label">Crear Acta</label>
+            </div>
         </div>
     </div>
 </div>
+
 <!--Fin Div Container-->
 
 <app-footer></app-footer>

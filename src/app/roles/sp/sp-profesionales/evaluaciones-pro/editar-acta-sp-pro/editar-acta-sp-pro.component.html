@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-light esp btn-circle btn-xl" (click)="volver()">
@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-8">
 
-			<h1 class="text-center">Evaluación de Seguridad del Paciente - Profesionales Independientes</h1>
+			<h1 class="text-center titulo-seccion">Evaluación de Seguridad del Paciente - Profesionales Independientes</h1>
         </div>
     </div>
 </div>
@@ -185,12 +185,12 @@
 
                 
                 <!--BOTON MODAL FIRMA-->
-                <div class="col-3">
+                <div class="col-md-3 botones-firma">
                     <span class="button-like btn-span"  *ngIf="noFirmaActa === 'false'" (click)="openModal(modalTemplate)">Firma Prestador</span>
                 </div>
 
                 <!--BOTON NO FIRMA-->
-                <div class="col-3">
+                <div class="col-md-3 botones-firma">
                     <span class="button-like btn-span" *ngIf="noFirmaActa === 'false'" (click)="noFirmaPrestador()">No Firma Prestador</span>
                 </div>
 

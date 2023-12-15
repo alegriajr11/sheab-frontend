@@ -234,3 +234,20 @@ input:checked+.slider:before {
         top: 144px; /* Cambio de estilo cuando la pantalla es menor o igual a 1040px */
     }
 }
+
+/*CONTENEDOR RESPONSIVO*/
+.container{
+    padding-left: 90px
+}
+
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo{
+    padding-left: 90px
+}
+
+/*RESPONSIVE TITULO DE LA SECCION*/
+@media (max-width: 600px) {
+    .titulo-seccion {
+        font-size: xx-large;
+    }
+}

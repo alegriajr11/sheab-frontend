@@ -60,7 +60,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 /*LINEA DIVISORA HORIZONTAL*/
 .with-divider-horizontal {
-    border-bottom: 1px solid #ccc; /* Línea divisoria horizontal debajo de cada par de columnas */
+    border-bottom: 1px solid #ccc;
+    /* Línea divisoria horizontal debajo de cada par de columnas */
 }
 
 .switch {
@@ -89,7 +90,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .disabled-span {
     pointer-events: none;
-    opacity: 0.6; /* Opcional: Cambiar la opacidad para indicar deshabilitado */
+    opacity: 0.6;
+    /* Opcional: Cambiar la opacidad para indicar deshabilitado */
     /* Otros estilos de deshabilitado que desees agregar */
 }
 
@@ -190,6 +192,7 @@ input:checked+.slider:before {
 textarea {
     resize: none;
 }
+
 /* Rounded sliders */
 .slider.round {
     border-radius: 34px;
@@ -306,6 +309,25 @@ textarea {
 /*MEDIA QUERIES*/
 @media (max-width: 1040px) {
     .validation-message-visita {
-        top: 144px; /* Cambio de estilo cuando la pantalla es menor o igual a 1040px */
+        top: 144px;
+        /* Cambio de estilo cuando la pantalla es menor o igual a 1040px */
+    }
+}
+
+
+/*RESPONSIVE CONTENEDOR*/
+.container {
+    padding-left: 90px
+}
+
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo {
+    padding-left: 90px
+}
+
+/*RESPONSIVE TITULO DE LA SECCION*/
+@media (max-width: 772px) {
+    .titulo-seccion {
+        font-size: xx-large;
     }
 }

@@ -227,15 +227,36 @@ label {
 span{
     font-size: xx-large;
 }
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo {
+    padding-left: 90px
+}
+
+/*CONTENEDOR DE LAS EVALUACIONES*/
+.contenedor{
+    padding-left: 100px;
+    padding-right: 20px
+}
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo {
+    padding-left: 90px
+}
+
+/*CONTENEDOR DE LAS EVALUACIONES*/
+.contenedor{
+    padding-left: 100px;
+    padding-right: 20px
+}
+
 
 /* Estilos adicionales para hacer la tabla responsive */
 @media (max-width: 1080px) {
-    .table-wrapper {
-        overflow-x: auto; /* Agrega una barra de desplazamiento horizontal */
-    }
-    .table-wrapper table {
-        width: 100%; /* Establece el ancho de la tabla al 100% del contenedor */
-    }
 
+    /*MEDIA PARA EL TITULO DE LA SECCION*/
+    @media (max-width: 750px) {
+        .titulo-seccion {
+            font-size: xx-large;
+        }
+    }
 }
 

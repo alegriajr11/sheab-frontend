@@ -1,27 +1,34 @@
 <app-menu></app-menu>
 
-<div class="container" *ngIf="!listaVacia">
+<div class="contenedor" *ngIf="!listaVacia">
   <div class="table-wrapper">
     <div class="table-title">
-      <div class="row">
-        <div class="">
-          <h2><b>Usuarios</b></h2>
-        </div>
-        <div class="">
-          <button class="btn btn-secondary" routerLink="/usuarios/nuevo" title="Nuevo Usuario">
-            <i class="material-icons">&#xE147;</i>
-            <span>Agregar Nuevo Usuario</span></button>
 
-          <button class="btn btn-secondary" title="Exportar Pdf" (click)="crearPDF()">
-            <i class="material-icons">&#xE24D;</i>
-            <span>Exportar a Pdf</span></button>
-
-          <button class="btn btn-secondary" title="Backup Base de Datos" (click)="downloadBackup()">
-            <i class="fas fa-database"></i>
-            <span>Backup</span></button>
-
-        </div>
+      <div class="titulo">
+        <h2><b>Usuarios</b></h2>
       </div>
+
+      <div class="menu-botones">
+        <button mat-button [matMenuTriggerFor]="menu" class="custom-button">
+          <i class='fas fa-bars menu'></i>
+        </button>
+  
+        <mat-menu #menu="matMenu" class="custom-menu">
+          <button mat-menu-item (click)="downloadBackup()">
+            <i class="fas fa-database"></i>
+            <span>Backup</span>
+          </button>
+          <button mat-menu-item routerLink="/usuarios/nuevo">
+            <i class="material-icons">&#xE147;</i>
+            <span>Agregar Nuevo Usuario</span>
+          </button>
+          <button mat-menu-item (click)="crearPDF()">
+            <i class="material-icons">&#xE24D;</i>
+            <span>Exportar a Pdf</span>
+          </button>
+        </mat-menu>
+      </div>
+
     </div>
 
     <div class="table-responsive">

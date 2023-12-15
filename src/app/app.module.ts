@@ -141,6 +141,8 @@ import { EditarActaVerificacionComponent } from './roles/reso/informe-resolucion
 import { EditarEquipoVerificadoresComponent } from './roles/reso/equipo-verificadores/editar-equipo-verificadores/editar-equipo-verificadores.component';
 import { ModalCumplimientoApoyoDiagnosticoComponent } from './roles/reso/lista-verificacion/home-estandar/apoyo-diagnostico/modal-cumplimiento-apoyo-diagnostico/modal-cumplimiento-apoyo-diagnostico.component';
 import { ModalCumplimientoAtencionInmediataComponent } from './roles/reso/lista-verificacion/home-estandar/atencion-inmediata/modal-cumplimiento-atencion-inmediata/modal-cumplimiento-atencion-inmediata.component';
+import { Component } from '@angular/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -283,7 +285,8 @@ import { ModalCumplimientoAtencionInmediataComponent } from './roles/reso/lista-
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
-    NgxUiLoaderModule
+    NgxUiLoaderModule,
+    MatMenuModule
     
     
   ],
