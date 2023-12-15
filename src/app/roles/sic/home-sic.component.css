@@ -20,17 +20,22 @@
 }
 
 .button-container label {
-    margin-top: -12px; /* Espacio entre el botón y el label */
+    margin-top: -12px;
+    /* Espacio entre el botón y el label */
 }
 
-.tittle-label{
+.tittle-label {
     font-weight: bold;
 }
 
 .titulo-seccion {
     color: white;
+    text-align: center;
 }
 
+.sm-screen-text {
+    display: none;
+}
 
 /* Estilos para pantallas menores a 1050px */
 @media (max-width: 1050px) {
@@ -38,4 +43,27 @@
         max-width: 865px;
         padding-left: 90px
     }
+}
+
+@media (max-width: 500px) {
+    /*DIV BOTONES TAMAÑO SUPERIOR A 400PX*/
+    .abs-center {
+        display: none;
+    }
+
+    /*DIV HABILITAR BOTONES TAMAÑO INFERIOR A 400PX*/
+    .sm-screen-text {
+        font-size: large;
+        display: block;
+    }
+
+}
+
+
+/*RESPONSIVE TITULO DE LA SECCION*/
+@media (max-width: 400px) {
+    .titulo-seccion {
+        font-size: x-large;
+    }
+
 }

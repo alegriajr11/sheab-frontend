@@ -279,8 +279,10 @@ span {
 }
 
 
-/*ESTILOS P-TABLE - PRIME NG*/
-
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo{
+    padding-left: 90px
+}
 
 
 /*COLOR SPAN ESTADO*/
@@ -299,5 +301,15 @@ td span .cerrado {
     .table-wrapper table {
         width: 100%;
         /* Establece el ancho de la tabla al 100% del contenedor */
+    }
+
+    .container{
+        padding-left: 90px
+    }
+
+    @media (max-width: 460px) {
+        .titulo-seccion{
+            font-size: xx-large;
+        }
     }
 }

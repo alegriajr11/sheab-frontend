@@ -7,9 +7,9 @@
   <h1 *ngIf="!isLogged"></h1>
   <div class="jumbotron">
     <hr class="my-4">
-    <h1 class="display-4 text-center text-md-center" *ngIf="!usu_nombre">Bienvenido al Sistema de Evaluación para la
+    <h1 class="display-4 text-center text-md-center msj-bienvenida" *ngIf="!usu_nombre">Bienvenido al Sistema de Evaluación para la
       Habilitación</h1>
-    <h1 class="display-4 mayus text-center text-md-left" *ngIf="usu_nombre">Hola, {{usu_nombre}}</h1>
+    <h1 class="display-4 mayus text-center text-md-left sm-screen-text" *ngIf="usu_nombre">Hola, {{usu_nombre}}</h1>
     <hr class="my-4">
     <h2 class="text-center text-md-left" *ngIf="!usu_nombre"></h2>
   </div>

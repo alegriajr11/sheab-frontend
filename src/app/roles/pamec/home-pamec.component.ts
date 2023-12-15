@@ -27,7 +27,7 @@ export class HomePamecComponent implements OnInit {
       // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
       setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 300);
     }
   }
 

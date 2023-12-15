@@ -55,6 +55,7 @@ export class EvaluacionesSicComponent implements OnInit {
   incializarMetodos() {
     this.cargarActas();
     this.obtenerAnios();
+    this.refreshOne();
   }
 
   //LISTAR LAS ACTAS DEL ROL DE SIC
@@ -71,6 +72,33 @@ export class EvaluacionesSicComponent implements OnInit {
     );
     this.page = 1;
   }
+
+
+  //SLIDER FUNCIONAL EN EL COMPONENTE ACTUAL
+  refreshOne(){
+    const hasRefreshed = localStorage.getItem('hasRefreshed');
+
+    if (!hasRefreshed) {
+      // Realizar la lógica que necesitas hacer una vez aquí
+      // Por ejemplo:
+      console.log('El componente se ha refrescado una vez');
+
+      // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
+      localStorage.setItem('hasRefreshed', 'true');
+
+      // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Eliminar la variable del almacenamiento al salir del componente
+    localStorage.removeItem('hasRefreshed');
+  }
+
+
 
 //ABRIR MODAL PARA ASIGNAR CUMPLIMIENTO
   openModal(modalTemplate: TemplateRef<any>, id: number, name: string, name_funcionario: string, codigo_prestador: string) {

@@ -482,14 +482,14 @@ footer {
   position: fixed;
   top: 0;
   left: 0;
-  overflow-y: auto;
-  /* Agrega scroll vertical */
   max-height: 100vh;
   /* Limita la altura del menú al tamaño de la ventana */
 }
 
 .sidebar.open {
   width: 260px;
+  overflow-y: auto;
+  /* Agrega scroll vertical */
 }
 
 .sidebar .logo_details {
@@ -733,7 +733,3 @@ footer {
 }
 
 
-/*PADDING AL CONTAINER*/
-.container {
-  padding-left: 80px
-}
