@@ -142,7 +142,7 @@ import { EditarActaVerificacionComponent } from './roles/reso/informe-resolucion
 import { EditarEquipoVerificadoresComponent } from './roles/reso/equipo-verificadores/editar-equipo-verificadores/editar-equipo-verificadores.component';
 import { ModalCumplimientoApoyoDiagnosticoComponent } from './roles/reso/lista-verificacion/home-estandar/apoyo-diagnostico/modal-cumplimiento-apoyo-diagnostico/modal-cumplimiento-apoyo-diagnostico.component';
 import { ModalCumplimientoAtencionInmediataComponent } from './roles/reso/lista-verificacion/home-estandar/atencion-inmediata/modal-cumplimiento-atencion-inmediata/modal-cumplimiento-atencion-inmediata.component';
-
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -153,7 +153,6 @@ import { ModalCumplimientoAtencionInmediataComponent } from './roles/reso/lista-
     AppComponent,
     PasswordcComponent,
     
-
 
     //USUARIOS
     ListaUsuarioComponent,
@@ -287,8 +286,10 @@ import { ModalCumplimientoAtencionInmediataComponent } from './roles/reso/lista-
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
-    NgxUiLoaderModule
-
+    NgxUiLoaderModule,
+    TableModule
+    
+    
   ],
   providers: [interceptorProvider, BsModalService, { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }],
   bootstrap: [AppComponent]

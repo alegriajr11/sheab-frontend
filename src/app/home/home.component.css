@@ -19,3 +19,15 @@ a:hover {
     border-color: #343a40;
     border-style: groove;
 }
+
+.inicio {
+    color: white;
+}
+
+/* Estilos para pantallas menores a 1050px */
+@media (max-width: 1050px) {
+    .container {
+        max-width: 865px;
+        padding-left: 90px
+    }
+}

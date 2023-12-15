@@ -1,18 +1,19 @@
-
-  <app-menu></app-menu>
+<app-menu></app-menu>
 
 <!---->
 
-  <div class="container">
-    <div class="jumbotron">
-        <hr class="my-4" >
-        <h1 class="display-4 text-center" *ngIf="!usu_nombre">Bienvenido al Sistema de Evaluación para la Habilitación</h1>
-        <h1 class="display-4 mayus" *ngIf="usu_nombre">Hola, {{usu_nombre}}</h1>
-        <hr class="my-4">
-        <h2 class="text-center"  *ngIf="!usu_nombre"></h2>
-      </div>
+<div class="container">
+  <h1 class="inicio" *ngIf="isLogged">INICIO</h1>
+  <h1 *ngIf="!isLogged"></h1>
+  <div class="jumbotron">
+    <hr class="my-4">
+    <h1 class="display-4 text-center text-md-center" *ngIf="!usu_nombre">Bienvenido al Sistema de Evaluación para la
+      Habilitación</h1>
+    <h1 class="display-4 mayus text-center text-md-left" *ngIf="usu_nombre">Hola, {{usu_nombre}}</h1>
+    <hr class="my-4">
+    <h2 class="text-center text-md-left" *ngIf="!usu_nombre"></h2>
   </div>
+</div>
 
-  <app-footer></app-footer>
 
-
+<app-footer></app-footer>

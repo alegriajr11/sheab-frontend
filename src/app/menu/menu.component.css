@@ -1,193 +1,52 @@
-/* Estilos generales */
-h6 {
-    font-size: 1.4rem;
-    text-transform: capitalize;
-    color: rgb(2, 2, 2);
-    text-align: right;
+.logo_image {
+    width: 52px;
+    /* Ajusta el tamaño según lo necesario */
+    height: 40px;
+    /* Ajusta el tamaño según lo necesario */
+    background-image: url('../../assets/img/ssd.png');
+
+    background-size: cover;
+    /* Ajusta el tamaño de la imagen para que cubra todo el contenedor */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
 }
 
-.bg-a {
-    outline: none;
-    text-decoration: none;
-    padding: 2px 1px 0;
+/* Estilos de la lista desplegable */
+.dropdown-list {
+    display: none;
+    /* Ajusta la posición y otros estilos según tu diseño */
 }
 
-.bg-a:link {
-    color: white;
+/* Mostrar la lista desplegable cuando está activa */
+.dropdown-list.show {
+    display: block;
 }
 
-.bg-a:visited {
-    color: white;
+
+/*ESTILOS LISTA DESPLEGABLE SERVICIOS*/
+.indented {
+    padding-left: 30px;
+    /* Ajusta el valor según el nivel de sangría que desees */
 }
 
-.bg-a:focus {
-    border-bottom: 1px solid;
-    background: #5a5a5a;
-}
 
-.bg-a:hover {
-    border-bottom: 1px solid;
-    background: #4e4e4e;
-}
-
-.bg-a:active {
-    background: #8d8c8c;
-    color: #474746;
-}
-
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    padding: 6px 0px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 1.42857;
-}
-
-.white-color {
-    color: white;
-}
-
-.fa-user-circle {
-    color: rgb(255, 248, 248);
-}
-
-.fa-user-circle:hover {
-    color: rgb(177, 174, 174);
-    cursor: pointer;
-}
-
-.btn-light:hover {
-    color: white;
-    border-color: black;
-    background-color: black;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/*Bordes Redondeados al contenedor - usuario*/
-.bg {
-    border-radius: 1.4rem;
-    background-color: #4e4e4e;
-}
-
-/*MENU DESPLEGABLE*/
-.dropdown_ser {
-    display: list-item;
-    position: relative;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.dropdown_ser a {
-    color: white;
-}
-
-.dropdown-content {
+/* Estilos iniciales del elemento de cambiar contraseña */
+.change-password {
     display: none;
     position: absolute;
-    width: 150%;
-    overflow: auto;
-    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
-    border-radius: 5px;
-    font-size: 18px;
+    background-color: #fff;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    /* Estilos de posición */
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.dropdown_ser:hover .dropdown-content {
+/* Mostrar el elemento de cambiar contraseña al pasar el mouse sobre el perfil */
+.profile:hover .change-password {
     display: block;
-}
-
-.dropdown-content a {
-    display: block;
-    color: #000000;
-    padding: 5px;
-    background-color: white;
-    text-decoration: none;
-    padding-top: 1rem;
-}
-
-.dropdown-content a:hover {
-    color: white;
-    background-color: #4e4e4e;
-}
-
-
-
-/*CONTENIDO DEL LOGO IMG*/
-/*ESTILOS IMG HEADER*/
-.small-image {
-    width: 50px;
-    height: auto;
-}
-
-.centered-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 70px;
-}
-
-.centered-content a,
-.centered-content img {
-    max-width: 100%;
-    height: auto;
-}
-
-/*OCULTAR NOMBRE USUARIO DEL C-DROPDOWN*/
-.mostrar-en-pantalla-pequena {
-    display: none;
-}
-
-/* Media Query para pantallas pequeñas */
-@media(max-width: 1018px) {
-    .nav-item a span {
-        display: none;
-        /* Oculta todas las etiquetas <a> con span dentro de .nav-item */
-    }
-
-    .size-icon {
-        font-size: 40px;
-        /*Ajustar el tamaño de los Iconos*/
-        margin-left: 20px;
-    }
-
-    .dropdown_ser a span {
-        display: none;
-    }
-
-    .dropdown_ser a i {
-        font-size: 40px;
-        /*Ajustar el tamaño de los Iconos*/
-        margin-left: 20px;
-    }
-}
-
-@media (max-width: 1000px) {
-    .navbar-collapse {
-        display: none;
-    }
-
-    .navbar-collapse.show {
-        display: block;
-    }
-
-    .hide-on-small-screen {
-        display: none;
-    }
-}
-
-@media (max-width: 1120px) {
-    .ocultar-en-pantalla-pequena {
-        display: none;
-    }
-
-    .mostrar-en-pantalla-pequena {
-        display: block;
-    }
 }

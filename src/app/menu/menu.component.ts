@@ -1,8 +1,8 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from '../services/token.service';
-import {MenubarModule} from 'primeng/menubar';
-import {MenuItem} from 'primeng/api';
+import { MenubarModule } from 'primeng/menubar';
+import { MegaMenuItem, MenuItem } from 'primeng/api';
 
 
 @Component({
@@ -10,7 +10,7 @@ import {MenuItem} from 'primeng/api';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, AfterViewInit {
 
   isLogged: boolean;
   isAdmin: boolean;
@@ -24,12 +24,14 @@ export class MenuComponent implements OnInit {
   usu_nombreUsuario: string;
   usu_nombre: string;
 
+
   reload: 'reload' | undefined = undefined;
 
   numeroDeNotificaciones: number
 
   isDropdownOpen = false
 
+  items: MenuItem[];
 
   constructor(
     private tokenService: TokenService,
@@ -48,17 +50,45 @@ export class MenuComponent implements OnInit {
     this.isContador = this.tokenService.IsContador();
     this.isCoordinador = this.tokenService.IsCoordinador();
     this.usu_nombreUsuario = this.tokenService.getNombreUsuario();
+    this.usu_nombre = this.tokenService.getNombre();
 
   }
+
+  isSubMenuOpen: boolean = false;
+
+  toggleSubMenu(): void {
+    this.isSubMenuOpen = !this.isSubMenuOpen;
+  }
+
 
   logOut(): void {
     this.tokenService.logOut();
     this.router.navigate(['/login']);
   }
 
-  mostrarNotificaciones(){
 
+  ngAfterViewInit(): void {
+    const sidebar = document.querySelector(".sidebar");
+    const closeBtn = document.querySelector("#btn");
+    const searchBtn = document.querySelector(".bx-search");
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
+
+    searchBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
+
+    function menuBtnChange() {
+      if (sidebar.classList.contains("open")) {
+        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else {
+        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      }
+    }
   }
-
 
 }

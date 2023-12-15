@@ -132,9 +132,6 @@ span.inactive {
     transition-duration: 0.2s;
 }
 
-.container {
-    max-width: 100%;
-}
 
 
 /* Estilos adicionales para hacer la tabla responsive */

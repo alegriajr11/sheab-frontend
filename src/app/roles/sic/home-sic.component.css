@@ -3,17 +3,13 @@
     color: white;
 }
 
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 12fr;
-    align-content: center;
-    justify-content: center;
-}
 
 .btn-dark:hover {
     transform: scale(1.3);
     transition-duration: 0.2s;
 }
+
+
 
 /*CONTENEDOR DE BOTONES*/
 .button-container {
@@ -31,20 +27,15 @@
     font-weight: bold;
 }
 
+.titulo-seccion {
+    color: white;
+}
 
 
 /* Estilos para pantallas menores a 1050px */
 @media (max-width: 1050px) {
     .container {
         max-width: 865px;
-    }
-}
-
-/* Estilos para pantallas menores a 974px */
-@media (max-width: 974px) {
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        /* Apila los elementos uno encima del otro */
+        padding-left: 90px
     }
 }

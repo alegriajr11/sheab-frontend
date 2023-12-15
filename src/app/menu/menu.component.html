@@ -1,111 +1,124 @@
-<nav class="navbar navbar-dark bg-dark mb-3 navbar-expand">
-  <div class="image-container">
-    <div class="row">
-      <div class="col-md-12">
-        <a class="margin-a navbar-brand centered-content" href="/">SEHAB
-          <img class="small-image" src="assets/img/ssd.png" alt="">
-        </a>
-      </div>
-    </div>
+<div class="sidebar">
+  <div class="logo_details">
+    <div class="logo_image" id="logo"></div>
+    <div class="logo_name">SEHAB</div>
+    <i class="bx bx-menu" id="btn"></i>
   </div>
+  <hr>
 
+  <ul class="nav-list" *ngIf="!isLogged">
+    <li>
+      <a routerLink="/login">
+        <i class='fas fa-sign-in-alt'></i>
+        <span class="link_name">INICIAR SESIÓN</span>
+      </a>
+      <span class="tooltip">Iniciar Sesión</span>
+    </li>
+  </ul>
 
-  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
+  <ul class="nav-list" *ngIf="isLogged">
+    <li>
+      <a routerLink="/">
+        <i class="fas fa-home"></i>
+        <span class="link_name">INICIO</span>
+      </a>
+      <span class="tooltip">Inicio</span>
+    </li>
+    <hr>
+    <li>
+      <a routerLink="/sic">
+        <i class="fas fa-hospital"></i>
+        <span class="link_name">SIC</span>
+      </a>
+      <span class="tooltip">Sistema Información Para la Calidad</span>
+    </li>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <div class="d-flex p-2" *ngIf="isLogged">
+    <li>
+      <a routerLink="/sp">
+        <i class="fa fa-bed"></i>
+        <span class="link_name">SP</span>
+      </a>
+      <span class="tooltip">Seguridad del Paciente</span>
+    </li>
+    <li>
+      <a routerLink="/pamec">
+        <i class="fa fa-wpforms"></i>
+        <span class="link_name">PAMEC</span>
+      </a>
+      <span class="tooltip">Pamec</span>
+    </li>
+    <li>
+      <a routerLink="/reso">
+        <i class="fa fa-legal"></i>
+        <span class="link_name">RESOLUCIÓN 3100</span>
+      </a>
+      <span class="tooltip">Resolución 3100</span>
+    </li>
+    <li>
+      <a routerLink="/usuarios">
+        <i class="fa fa-users"></i>
+        <span class="link_name">USUARIOS</span>
+      </a>
+      <span class="tooltip">Usuarios</span>
+    </li>
 
-        <li class="nav-item">
-          <a class="nav-link bg-a" *ngIf="isAdmin || isSic" routerLink="/sic"><i
-              class="fas fa-hospital color_icono size-icon"></i> <span> SIC</span></a>
+    <li>
+      <a href="#" (click)="toggleSubMenu()">
+        <i class="fas fa-stethoscope"></i>
+        <span class="link_name">SERVICIOS <i class="bx bx-chevron-down arrow"
+            [ngClass]="{ 'arrow-rotated': isSubMenuOpen }"></i></span>
+      </a>
+      <span class="tooltip">Servicios</span>
+      <ul class="sub-menu" *ngIf="isSubMenuOpen" style="margin-left: 60px;">
+        <!-- Aquí se añaden las subsecciones -->
+        <li>
+          <a *ngIf="isAdmin" routerLink="/prestadores"><span class="link_name">PRESTADORES</span></a>
         </li>
+        <li>
+          <a *ngIf="isAdmin || isSic" routerLink="/criteriosic"><span class="link_name">CRITERIOS SIC</span></a>
+        </li>
+        <li>
+          <a *ngIf="isAdmin || isSp" routerLink="/criterioind"><span class="link_name">CRITERIOS SP IND</span></a>
+        </li>
+        <li>
+          <a *ngIf="isAdmin || isSp" routerLink="/criterioips"><span class="link_name">CRITERIOS SP IPS</span></a>
+        </li>
+        <li>
+          <a *ngIf="isAdmin || isReso" routerLink="/home-res-criterios"><span class="link_name">RESOLUCIÓN
+              3100</span></a>
+        </li>
+      </ul>
+    </li>
 
-        <li class="nav-item">
-          <a class="nav-link bg-a" *ngIf="isAdmin || isSp" routerLink="/sp"><i
-              class='fa fa-bed color_icono size-icon'></i> <span> SP</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link bg-a" *ngIf="isAdmin || isPamec" routerLink="/pamec"><i
-              class='fa fa-wpforms color_icono size-icon'></i> <span> PAMEC</span> </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link bg-a" *ngIf="isAdmin || isReso || isContador" routerLink="/reso"><i
-              class='fa fa-legal color_icono size-icon'></i>
-            <span> RESOLUCIÓN 3100</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link bg-a" *ngIf="isAdmin" routerLink="/usuarios"><i
-              class="fa fa-users color_icono size-icon"></i>
-            <span> USUARIOS</span></a>
-        </li>
+    <li>
+      <a routerLink="/auditoria">
+        <i class="fas fa-search-location"></i>
+        <span class="link_name">AUDITORÍA</span>
+      </a>
+      <span class="tooltip">Auditoria</span>
+    </li>
 
-        <div class="dropdown_ser">
-          <a *ngIf="!isContador" class="nav-link bg-a"><i class="fas fa-stethoscope color_icono size-icon"></i> <span> SERVICIOS</span></a>
-          <div class="dropdown-content ">
-            <a *ngIf="isAdmin" routerLink="/prestadores">PRESTADORES</a>
-            <a *ngIf="isAdmin || isSic" routerLink="/criteriosic">CRITERIOS SIC</a>
-            <a *ngIf="isAdmin || isPamec" routerLink="/criteriopam">CRITERIOS PAMEC</a>
-            <a *ngIf="isAdmin || isSp" routerLink="/criterioind">CRITERIOS SP IND</a>
-            <a *ngIf="isAdmin || isSp" routerLink="/criterioips">CRITERIOS SP IPS</a>
-            <a *ngIf="isAdmin || isReso" routerLink="/home-res-criterios">GRUPOS RESOLUCIÓN 3100</a>
-          </div>
+    <br>
+    <hr>
+    <li class="password">
+      <a routerLink="/usuario/cambiar-contraseña">
+        <i class="fa fa-key"></i>
+        <span class="link_name">CAMBIAR CONTRASEÑA</span>
+      </a>
+      <span class="tooltip">Cambiar Contraseña</span>
+    </li>
+    <hr>
+    
+    <li class="profile">
+      <div class="profile_details">
+        <img src="../../assets/img/profile.png" alt="profile image">
+        <div class="profile_content">
+          <div class="name" *ngIf="usu_nombre">{{usu_nombre}}</div>
+          <div class="designation">Admin</div>
         </div>
-
-        <li class="nav-item">
-          <a class="nav-link bg-a" *ngIf="isAdmin" routerLink="/auditoria">
-            <i class="fas fa-search-location color_icono size-icon"></i> <span> AUDITORIA</span>
-          </a>
-        </li>
       </div>
-    </ul>
-  </div>
+      <i class="bx bx-log-out" id="log_out" (click)="logOut()"></i>
+    </li>
+  </ul>
 
-  <form class="d-flex" role="search">
-    <button class="btn btn-light" routerLink="/login" *ngIf="!isLogged"><i class='fas fa-sign-in-alt'></i> Iniciar
-      Sesión</button>
-    <!-- <button class="btn btn-outline-danger" routerLink="/login" *ngIf="isLogged"  (click)="logOut()"><i class='fas fa-sign-out-alt'></i> Cerrar Sesión</button> -->
-
-    <div class="container bg" *ngIf="isLogged">
-      <div class="ocultar-en-pantalla-pequena">
-        <h6 class="fw-semibold py-2 text-center" style="color: white;" *ngIf="usu_nombreUsuario">{{usu_nombreUsuario}}
-          <!-- Icono de notificaciones y número de notificaciones pendientes -->
-          <a href="#" (click)="mostrarNotificaciones()">
-            <i class="fas fa-bell" style="color: white; margin-left: 3px;"></i>
-            <span class="badge badge-danger">{{ numeroDeNotificaciones }}</span>
-          </a>
-        </h6>
-      </div>
-
-      <c-dropdown alignment="end" variant="nav-item" *ngIf="isLogged">
-        <span [caret]="true" cDropdownToggle class="fa fa-user-circle white-color" style="font-size:30px;"></span>
-        <ul cDropdownMenu class="pt-0 pr-0 w-auto">
-          <li class="mostrar-en-pantalla-pequena">
-            <div class="d-flex justify-content-center align-items-center">
-              <h6 class="fw-semibold py-2 text-center" *ngIf="usu_nombreUsuario">{{usu_nombreUsuario}}</h6>
-              <!-- Icono de notificaciones y número de notificaciones pendientes
-              <a href="#" (click)="mostrarNotificaciones()" style="color: rgb(0, 0, 0); margin-left: 5px;">
-                <i class="fas fa-bell fa-lg"></i>
-                <span class="badge badge-danger">{{ numeroDeNotificaciones }}</span>
-              </a> -->
-            </div>
-          </li>
-          <li>
-            <a routerLink="/usuario/cambiar-contraseña" cDropdownItem><i class='fa fa-key'></i> Cambiar Contraseña</a>
-          </li>
-          <li>
-            <hr cDropdownDivider />
-          </li>
-          <li>
-            <a routerLink="./" cDropdownItem (click)="logOut()"><i class='fas fa-sign-out-alt'></i> Cerrar Sesión</a>
-          </li>
-          <li></li>
-        </ul>
-      </c-dropdown>
-    </div>
-  </form>
-
-</nav>
+</div>

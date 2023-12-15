@@ -8,7 +8,6 @@
     grid-template-columns: 7fr 6fr;
     align-content: center;
     justify-content: center;
-
 }
 
 .btn-dark:hover {
@@ -44,11 +43,10 @@
     font-weight: bold;
 }
 
-/* Estilos para pantallas menores a 1119px */
-@media (max-width: 1119px) {
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        /* Apila los elementos uno encima del otro */
+/* Estilos para pantallas menores a 1050px */
+@media (max-width: 1050px) {
+    .container {
+        max-width: 865px;
+        padding-left: 90px
     }
 }

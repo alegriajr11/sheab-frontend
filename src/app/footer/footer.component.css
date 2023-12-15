@@ -1,0 +1,19 @@
+/* Estilos generales del span */
+#span-year {
+    display: block;
+}
+
+.sm-screen-text {
+    display: none;
+}
+
+/* Media query para pantallas menores a 452px */
+@media (max-width: 452px) {
+    #span-year {
+        display: none;
+    }
+
+    .sm-screen-text {
+        display: block;
+    }
+}

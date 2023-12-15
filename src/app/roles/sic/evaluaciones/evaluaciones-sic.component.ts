@@ -7,6 +7,7 @@ import { SharedServiceService } from 'src/app/services/shared-service.service';
 import { TokenService } from 'src/app/services/token.service';
 
 
+
 @Component({
   selector: 'app-evaluaciones-sic',
   templateUrl: './evaluaciones-sic.component.html',
@@ -32,6 +33,8 @@ export class EvaluacionesSicComponent implements OnInit {
   public fechaSeleccionada: string;
 
   public page!: number;
+
+
 
   constructor(
     private modalService: BsModalService,

@@ -60,41 +60,41 @@
             </div>
 
 
-
-            <table class="table table-wrapper table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">N°ACTA</th>
-                        <th scope="col">PRESTADOR</th>
-                        <th scope="col">NIT</th>
-                        <th scope="col">MUNICIPIO</th>
-                        <th scope="col">FECHA DE CREACIÓN</th>
-                        <th scope="col">ESTADO</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        *ngFor="let evaluacion of evaluaciones | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}">
-                        <td class="text-center">{{evaluacion.act_id}}</td>
-                        <td>{{evaluacion.act_prestador}}</td>
-                        <td>{{evaluacion.act_nit}}</td>
-                        <td class="text-center">{{evaluacion.act_municipio}}</td>
-                        <td>{{evaluacion.act_creado | date: 'dd/MM/yyyy' }}</td>
-                        <td *ngIf="evaluacion.act_estado === '1'" style="text-align: center;"><span
-                                class="fas fa-door-open" style="color: rgb(0, 128, 0);"></span></td>
-                        <td *ngIf="evaluacion.act_estado === '0'" style="text-align: center;"><span
-                                class="fas fa-door-closed" style="color: rgb(204, 0, 0);"></span></td>
-                        <td>
-                            <button class="btn btn-outline-dark"
-                                (click)="openModal(modalTemplate, evaluacion.id, evaluacion.act_prestador, evaluacion.act_nombre_funcionario, evaluacion.act_cod_prestador)">
-                                <span class="fas fa-clipboard-check"></span>
-                            </button>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-wrapper table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">N°ACTA</th>
+                            <th scope="col">PRESTADOR</th>
+                            <th scope="col">NIT</th>
+                            <th scope="col">MUNICIPIO</th>
+                            <th scope="col">FECHA DE CREACIÓN</th>
+                            <th scope="col">ESTADO</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let evaluacion of evaluaciones | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}">
+                            <td class="text-center">{{evaluacion.act_id}}</td>
+                            <td>{{evaluacion.act_prestador}}</td>
+                            <td>{{evaluacion.act_nit}}</td>
+                            <td class="text-center">{{evaluacion.act_municipio}}</td>
+                            <td>{{evaluacion.act_creado | date: 'dd/MM/yyyy' }}</td>
+                            <td *ngIf="evaluacion.act_estado === '1'" style="text-align: center;"><span
+                                    class="fas fa-door-open" style="color: rgb(0, 128, 0);"></span></td>
+                            <td *ngIf="evaluacion.act_estado === '0'" style="text-align: center;"><span
+                                    class="fas fa-door-closed" style="color: rgb(204, 0, 0);"></span></td>
+                            <td>
+                                <button class="btn btn-outline-dark"
+                                    (click)="openModal(modalTemplate, evaluacion.id, evaluacion.act_prestador, evaluacion.act_nombre_funcionario, evaluacion.act_cod_prestador)">
+                                    <span class="fas fa-clipboard-check"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="container" *ngIf="listaVacia">
                 <div class="p-3 mb-2 bg-dark text-white text-center">
