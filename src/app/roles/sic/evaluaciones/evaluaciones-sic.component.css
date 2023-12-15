@@ -284,6 +284,12 @@ span {
     padding-left: 90px
 }
 
+/*CONTENEDOR DE LAS EVALUACIONES*/
+.contenedor{
+    padding-left: 100px;
+    padding-right: 20px
+}
+
 
 /*COLOR SPAN ESTADO*/
 td span .cerrado {
@@ -303,10 +309,7 @@ td span .cerrado {
         /* Establece el ancho de la tabla al 100% del contenedor */
     }
 
-    .container{
-        padding-left: 90px
-    }
-
+    /*MEDIA PARA EL TITULO DE LA SECCION*/
     @media (max-width: 460px) {
         .titulo-seccion{
             font-size: xx-large;

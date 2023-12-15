@@ -13,6 +13,7 @@ export class HomePamecComponent implements OnInit {
     this.refreshOne()
   }
 
+  //FUNCIONALIDAD DEL SLIDER BAR
   refreshOne(){
     const hasRefreshed = localStorage.getItem('hasRefreshed');
 

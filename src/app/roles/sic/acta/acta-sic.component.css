@@ -278,9 +278,26 @@ select[aria-hidden="true"][hidden] {
 }
 
 
+.container{
+    padding-left: 90px
+}
+
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo{
+    padding-left: 90px
+}
+
+
 /*MEDIA QUERIES*/
 @media (max-width: 1040px) {
     .validation-message-visita {
         top: 144px; /* Cambio de estilo cuando la pantalla es menor o igual a 1040px */
+    }
+}
+
+/*MEDIA PARA EL TITULO DE LA SECCION*/
+@media (max-width: 460px) {
+    .titulo-seccion{
+        font-size: xx-large;
     }
 }
