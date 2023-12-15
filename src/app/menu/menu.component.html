@@ -63,7 +63,7 @@
     </li>
 
     <li>
-      <a href="#" (click)="toggleSubMenu()">
+      <a (click)="toggleSubMenu()">
         <i class="fas fa-stethoscope"></i>
         <span class="link_name">SERVICIOS <i class="bx bx-chevron-down arrow"
             [ngClass]="{ 'arrow-rotated': isSubMenuOpen }"></i></span>
@@ -98,9 +98,8 @@
       <span class="tooltip">Auditoria</span>
     </li>
 
-    <br>
     <hr>
-    <li class="password">
+    <li>
       <a routerLink="/usuario/cambiar-contraseña">
         <i class="fa fa-key"></i>
         <span class="link_name">CAMBIAR CONTRASEÑA</span>
@@ -108,7 +107,7 @@
       <span class="tooltip">Cambiar Contraseña</span>
     </li>
     <hr>
-    
+
     <li class="profile">
       <div class="profile_details">
         <img src="../../assets/img/profile.png" alt="profile image">
