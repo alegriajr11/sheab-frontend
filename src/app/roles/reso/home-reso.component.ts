@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { TokenService } from 'src/app/services/token.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class HomeResoComponent implements OnInit {
 
   constructor(
     private tokenService: TokenService,
+    private ngxLoader: NgxUiLoaderService
   ) { }
 
   ngOnInit(): void {
@@ -24,8 +26,8 @@ export class HomeResoComponent implements OnInit {
     this.refreshOne()
   }
 
-
-  refreshOne(){
+  //FUNCIONALIDAD DEL SLIDER BAR
+  refreshOne() {
     const hasRefreshed = localStorage.getItem('hasRefreshed');
 
     if (!hasRefreshed) {
@@ -35,11 +37,12 @@ export class HomeResoComponent implements OnInit {
 
       // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
       localStorage.setItem('hasRefreshed', 'true');
-
-      // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
+      
+      // Hacer un refresh manual después de un breve tiempo
       setTimeout(() => {
+        this.ngxLoader.start(); // Inicia el loader
         window.location.reload();
-      }, 1000);
+      }, 10);
     }
   }
 

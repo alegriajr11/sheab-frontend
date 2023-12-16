@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from '../services/token.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private ngxLoader: NgxUiLoaderService
   ) { }
 
   ngOnInit(): void {
@@ -33,8 +35,9 @@ export class HomeComponent implements OnInit {
   }
 
 
-  refreshOne(){
-    const hasRefreshed = localStorage.getItem('hasRefreshedHome');
+  //FUNCIONALIDAD DEL SLIDER BAR
+  refreshOne() {
+    const hasRefreshed = localStorage.getItem('hasRefreshed');
 
     if (!hasRefreshed) {
       // Realizar la lógica que necesitas hacer una vez aquí
@@ -42,17 +45,19 @@ export class HomeComponent implements OnInit {
       console.log('El componente se ha refrescado una vez');
 
       // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
-      localStorage.setItem('hasRefreshedHome', 'true');
-
-      // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
+      localStorage.setItem('hasRefreshed', 'true');
+      
+      // Hacer un refresh manual después de un breve tiempo
       setTimeout(() => {
+        this.ngxLoader.start(); // Inicia el loader
         window.location.reload();
-      }, 300);
+      }, 10);
     }
   }
 
   ngOnDestroy(): void {
     // Eliminar la variable del almacenamiento al salir del componente
-    localStorage.removeItem('hasRefreshedHome');
+    localStorage.removeItem('hasRefreshed');
   }
+
 }

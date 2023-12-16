@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-home-pamec',
@@ -7,14 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePamecComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private ngxLoader: NgxUiLoaderService
+  ) { }
 
   ngOnInit(): void {
     this.refreshOne()
   }
 
   //FUNCIONALIDAD DEL SLIDER BAR
-  refreshOne(){
+  refreshOne() {
     const hasRefreshed = localStorage.getItem('hasRefreshed');
 
     if (!hasRefreshed) {
@@ -24,11 +27,12 @@ export class HomePamecComponent implements OnInit {
 
       // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
       localStorage.setItem('hasRefreshed', 'true');
-
-      // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
+      
+      // Hacer un refresh manual después de un breve tiempo
       setTimeout(() => {
+        this.ngxLoader.start(); // Inicia el loader
         window.location.reload();
-      }, 300);
+      }, 10);
     }
   }
 

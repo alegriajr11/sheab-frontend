@@ -89,7 +89,7 @@ export class EvaluacionesSicComponent implements OnInit {
       // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
       setTimeout(() => {
         window.location.reload();
-      }, 300);
+      }, 10);
     }
   }
 
