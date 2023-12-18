@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-light esp btn-circle btn-xl" (click)="volver()">
@@ -16,14 +16,14 @@
     </div>
 </div>
 <div class="t2 text-center">
-    <span class="text-center" style="text-decoration: underline;">{{numero_evaluacion}}. {{nombre_evaluacion}}</span>
+    <span class="titulo-seccion-2" style="text-decoration: underline;">{{numero_evaluacion}}. {{nombre_evaluacion}}</span>
 </div>
 
 <ng-template #modalTemplate>
     <app-modal-calificacion-ips [dataFromParent]="modalRef"></app-modal-calificacion-ips>
 </ng-template>
 
-<div class="container">
+<div class="contenedor">
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
@@ -50,7 +50,7 @@
                 <tr *ngFor="let criterio_ajuste of criteriosAjuste; let i = index">
                     <td>{{i+1}}</td>
                     <td>{{criterio_ajuste.cri_aju_nombre}}</td>
-                    <td>
+                    <td class="boton-cumplimiento">
                         <button class="btn" [ngClass]="getClassForCriterio(criterio_ajuste, 'ajuste')"
                             (click)="openModal(modalTemplate, criterio_ajuste.cri_aju_id, id_evaluacion_ips, 'ajuste', id_acta)">
                             <i class="fa fa-check"></i>
@@ -77,7 +77,7 @@
                 <tr *ngFor="let criterio_implementacion of criteriosImplementacion; let i = index">
                     <td>{{i+1}}</td>
                     <td>{{criterio_implementacion.cri_imp_nombre}}</td>
-                    <td>
+                    <td class="boton-cumplimiento">
                         <button class="btn" [ngClass]="getClassForCriterio(criterio_implementacion, 'implementacion')"
                             (click)="openModal(modalTemplate, criterio_implementacion.cri_imp_id, id_evaluacion_ips, 'implementacion', id_acta)">
                             <i class="fa fa-check"></i>
@@ -105,7 +105,7 @@
                 <tr *ngFor="let criterio_planeacion of criteriosPlaneacion; let i = index">
                     <td>{{i+1}}</td>
                     <td>{{criterio_planeacion.cri_pla_nombre}}</td>
-                    <td>
+                    <td class="boton-cumplimiento">
                         <button class="btn" [ngClass]="getClassForCriterio(criterio_planeacion, 'planeacion')"
                             (click)="openModal(modalTemplate, criterio_planeacion.cri_pla_id, this.id_evaluacion_ips, 'planeacion', id_acta)">
                             <i class="fa fa-check"></i>
@@ -133,7 +133,7 @@
                 <tr *ngFor="let criterio_verificacion of criteriosVerificacion; let i = index">
                     <td>{{i+1}}</td>
                     <td>{{criterio_verificacion.cri_ver_nombre}}</td>
-                    <td>
+                    <td class="boton-cumplimiento">
                         <button class="btn" [ngClass]="getClassForCriterio(criterio_verificacion, 'verificacion')"
                             (click)="openModal(modalTemplate, criterio_verificacion.cri_ver_id, id_evaluacion_ips, 'verificacion', id_acta)">
                             <i class="fa fa-check"></i>

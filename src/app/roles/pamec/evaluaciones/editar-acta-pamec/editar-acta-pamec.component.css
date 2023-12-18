@@ -202,3 +202,26 @@ select[aria-hidden="true"][hidden] {
     transform: scale(1.1);
     transition-duration: 0.2s;
 }
+
+/*CONTENEDOR RESPONSIVO*/
+.container{
+    padding-left: 90px
+}
+
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo{
+    padding-left: 90px
+}
+
+/*RESPONSIVE TITULO DE LA SECCION*/
+@media (max-width: 770px) {
+    .titulo-seccion {
+        font-size: xx-large;
+    }
+}
+
+@media (max-width: 768px) {
+    .botones-firma{
+        margin-top: 5%;
+    }
+}

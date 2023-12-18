@@ -105,6 +105,10 @@ export class ActaPamecComponent implements OnInit {
   act_tipo_visitaId: string
   act_sede_principalId: string
 
+  //HORA DE INICIO DE ACTA
+  act_hora_inicio24: string
+  act_hora_inicio: string
+
 
   firma: string;
 
@@ -568,14 +572,26 @@ export class ActaPamecComponent implements OnInit {
     sessionStorage.setItem("cod-pres-sp-ind", valorCodigoPres);
   }
 
-  async onRegister(): Promise<void> {
-    //FORMULARIO
-    //TIPO DE VISITA
-    // var id = (document.getElementById('tip_visita')) as HTMLSelectElement
-    // var sel = id.selectedIndex;
-    // var opt = id.options[sel]
-    // var valorVisita = (<HTMLSelectElement><unknown>opt).textContent;
+  convertirHora12(act_hora_orden24: string): void {
+    if (this.act_hora_inicio24) {
+      const [hora, minutos] = this.act_hora_inicio24.split(":");
+      let ampm = "AM";
 
+      let horaNum = parseInt(hora, 10);
+
+      if (horaNum >= 12) {
+        ampm = "PM";
+        if (horaNum > 12) {
+          horaNum -= 12;
+        }
+      }
+
+      this.act_hora_inicio = `${horaNum}:${minutos} ${ampm}`;
+    }//FIN FORMATO DE LA HORA A 12H
+  }
+
+
+  async onRegister(): Promise<void> {
 
     if (this.formulacion) {
       var valorFormulacion = ""
@@ -637,9 +653,9 @@ export class ActaPamecComponent implements OnInit {
     //OBTENER NOMBRES DE LOS SELECTS
     await this.obtenerNombreSelects();
 
-    // //OBTENER FIRMA FUNCIONARIOS
-    // await this.obtenerFirmaFuncionario1();
-    // await this.obtenerFirmaFuncionario2();
+
+    //CONVERTIR EL FORMATO DE LA HORA A 12H
+    this.convertirHora12(this.act_hora_inicio24)
 
 
     //ASIGNANDO LOS VALORES DEL ACTA PARA ASIGNARLAS EN EL DTO
@@ -654,9 +670,6 @@ export class ActaPamecComponent implements OnInit {
     this.act_nombre_prestador = valorPresNombre
     this.act_firma_prestador = this.firma
 
-    //ORGANIZAR LA FECHA DE VISITA
-    const fecha_visita = this.convertirFecha(this.act_fecha_visita)
-    this.act_fecha_visita = fecha_visita
 
     //REGISTRO DE LA INFORMACIÓN RECOPILADA A LA CLASE DTO - ACTAPAMECDTO
     this.actaPamecPdf = new ActaPamecDto(
@@ -690,7 +703,10 @@ export class ActaPamecComponent implements OnInit {
 
       this.act_nombre_prestador,
       this.act_cargo_prestador,
-      this.act_firma_prestador
+      this.act_firma_prestador,
+
+      //HORA INICIO ACTA
+      this.act_hora_inicio
     );
 
 
@@ -699,7 +715,7 @@ export class ActaPamecComponent implements OnInit {
     //ASIGNANDO TOKEN A LA CLASE DTO - TOKENDTO
     const tokenDto: TokenDto = new TokenDto(token);
 
-    //VALIDAR QUE LOS CAMPOR NO ESTÉN VACIOS
+    //VALIDAR QUE LOS CAMPOS NO ESTÉN VACIOS
     if (
       !this.act_fecha_visita ||
       !this.act_tipo_visita ||
@@ -709,7 +725,8 @@ export class ActaPamecComponent implements OnInit {
       !this.act_nombre_funcionario1 ||
       !this.act_nombre_prestador ||
       !this.act_cargo_prestador ||
-      !this.act_obj_visita
+      !this.act_obj_visita ||
+      !this.act_hora_inicio
     ) {
       //ASIGNANDO LOS RESPECTIVOS MENSAJES EN CASO DE ENTRAR AL IF DE VALIDACIÓN
       let mensajeError = 'Por favor, complete los siguientes campos:';
@@ -758,6 +775,11 @@ export class ActaPamecComponent implements OnInit {
         mensajeError += ' Objeto de la Visita,';
         this.showPrestadorCargoMessage = true
       }
+
+      if (!this.act_hora_inicio) {
+        mensajeError += ' Hora de Inicio,';
+      }
+
 
       mensajeError = mensajeError.slice(0, -1); // VARIABLE PARA ELIMINAR LA ÚLTIMA COMA
 

@@ -53,10 +53,6 @@ export class EvaluacionesPamecComponent implements OnInit {
     const hasRefreshed = localStorage.getItem('hasRefreshed');
 
     if (!hasRefreshed) {
-      // Realizar la lógica que necesitas hacer una vez aquí
-      // Por ejemplo:
-      console.log('El componente se ha refrescado una vez');
-
       // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
       localStorage.setItem('hasRefreshed', 'true');
 

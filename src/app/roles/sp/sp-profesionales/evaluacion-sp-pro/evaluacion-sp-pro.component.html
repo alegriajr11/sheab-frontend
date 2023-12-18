@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-light esp btn-circle btn-xl" routerLink="/sp/evaluaciones-pro" (click)="deshabilitarRutaEditar()">
@@ -14,7 +14,7 @@
 </div>
 
 <div class="t2">
-    <h2>CUMPLIMIENTO DEL PROGRAMA DE SEGURIDAD DEL PACIENTE
+    <h2 class="titulo-seccion-2">CUMPLIMIENTO DEL PROGRAMA DE SEGURIDAD DEL PACIENTE
         PROFESIONALES INDEPENDIENTES</h2>
 </div>
 
@@ -22,7 +22,7 @@
     <app-modal-cumplimiento-sp-ind [dataFromParent]="modalRef"></app-modal-cumplimiento-sp-ind>
 </ng-template>
 
-<div class="container">
+<div class="contenedor">
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
@@ -50,7 +50,7 @@
                     <td>{{i+1}} </td>
                     <td>{{criterioIndEta1.cri_nombre}}</td>
                     <td>{{criterioIndEta1.cri_verificacion}}</td>
-                    <td>
+                    <td class="boton-cumplimiento">
                         <button class="btn" [ngClass]="getClassForCriterio(criterioIndEta1)"
                             [disabled]="sharedService.criteriosIndGuardados.includes(criterioIndEta1.cri_id)"
                             (click)="openModal(modalTemplate, criterioIndEta1.cri_id, eva_ind_id)">
@@ -79,7 +79,7 @@
                     <td>{{i+1}} </td>
                     <td>{{criterioIndEta2.cri_nombre}}</td>
                     <td>{{criterioIndEta2.cri_verificacion}}</td>
-                    <td>
+                    <td class="boton-cumplimiento">
                         <button class="btn" [ngClass]="getClassForCriterio(criterioIndEta2)"
                             [disabled]="sharedService.criteriosIndGuardados.includes(criterioIndEta2.cri_id)"
                             (click)="openModal(modalTemplate, criterioIndEta2.cri_id, eva_ind_id)">
@@ -108,7 +108,7 @@
                     <td>{{i+1}} </td>
                     <td>{{criterioIndEta3.cri_nombre}}</td>
                     <td>{{criterioIndEta3.cri_verificacion}}</td>
-                    <td>
+                    <td class="boton-cumplimiento">
                         <button class="btn" [ngClass]="getClassForCriterio(criterioIndEta3)"
                             [disabled]="sharedService.criteriosIndGuardados.includes(criterioIndEta3.cri_id)"
                             (click)="openModal(modalTemplate, criterioIndEta3.cri_id, eva_ind_id)">
@@ -137,7 +137,7 @@
                     <td>{{i+1}} </td>
                     <td>{{criterioIndEta4.cri_nombre}}</td>
                     <td>{{criterioIndEta4.cri_verificacion}}</td>
-                    <td>
+                    <td class="boton-cumplimiento">
                         <button class="btn" [ngClass]="getClassForCriterio(criterioIndEta4)"
                             [disabled]="sharedService.criteriosIndGuardados.includes(criterioIndEta4.cri_id)"
                             (click)="openModal(modalTemplate, criterioIndEta4.cri_id, eva_ind_id)">

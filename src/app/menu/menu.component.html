@@ -25,7 +25,7 @@
       <span class="tooltip">Inicio</span>
     </li>
     <hr>
-    <li>
+    <li *ngIf="isAdmin || isSic">
       <a routerLink="/sic">
         <i class="fas fa-hospital"></i>
         <span class="link_name">SIC</span>
@@ -33,28 +33,28 @@
       <span class="tooltip">Sistema Información Para la Calidad</span>
     </li>
 
-    <li>
+    <li *ngIf="isAdmin || isSp">
       <a routerLink="/sp">
         <i class="fa fa-bed"></i>
         <span class="link_name">SP</span>
       </a>
       <span class="tooltip">Seguridad del Paciente</span>
     </li>
-    <li>
+    <li *ngIf="isAdmin || isPamec">
       <a routerLink="/pamec">
         <i class="fa fa-wpforms"></i>
         <span class="link_name">PAMEC</span>
       </a>
       <span class="tooltip">Pamec</span>
     </li>
-    <li>
+    <li *ngIf="isAdmin || isReso">
       <a routerLink="/reso">
         <i class="fa fa-legal"></i>
         <span class="link_name">RESOLUCIÓN 3100</span>
       </a>
       <span class="tooltip">Resolución 3100</span>
     </li>
-    <li>
+    <li *ngIf="isAdmin">
       <a routerLink="/usuarios">
         <i class="fa fa-users"></i>
         <span class="link_name">USUARIOS</span>
@@ -78,6 +78,9 @@
           <a *ngIf="isAdmin || isSic" routerLink="/criteriosic"><span class="link_name">CRITERIOS SIC</span></a>
         </li>
         <li>
+          <a *ngIf="isAdmin || isPamec" routerLink="/criteriopam"><span class="link_name">CRITERIOS PAMEC</span></a>
+        </li>
+        <li>
           <a *ngIf="isAdmin || isSp" routerLink="/criterioind"><span class="link_name">CRITERIOS SP IND</span></a>
         </li>
         <li>
@@ -90,7 +93,7 @@
       </ul>
     </li>
 
-    <li>
+    <li *ngIf="isAdmin">
       <a routerLink="/auditoria">
         <i class="fas fa-search-location"></i>
         <span class="link_name">AUDITORÍA</span>
@@ -113,7 +116,7 @@
         <img src="../../assets/img/profile.png" alt="profile image">
         <div class="profile_content">
           <div class="name" *ngIf="usu_nombre">{{usu_nombre}}</div>
-          <div class="designation">Admin</div>
+          <div class="designation">{{role}}</div>
         </div>
       </div>
       <i class="bx bx-log-out" id="log_out" (click)="logOut()"></i>

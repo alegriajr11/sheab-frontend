@@ -187,7 +187,7 @@ export class ActapdfService {
 
   //FILTRAR ACTA POR FECHA - No ACTA - PRESTADOR - NIT
   public listaActasPamecFilter(year: number, act_id: number, act_prestador: string, act_nit: string, tokenDto: string): Observable<ActaPamecDto[]> {
-    let url = `${this.actasp_ips_pdfurl}busqueda/fecha/acta/prestador/nit?`;
+    let url = `${this.actaPamec_pdf_url}busqueda/fecha/acta/prestador/nit?`;
 
     if (year) {
       url += `year=${year}&`;

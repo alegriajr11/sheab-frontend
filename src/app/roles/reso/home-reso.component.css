@@ -31,19 +31,52 @@
     font-weight: bold;
 }
 
+.titulo-seccion{
+    color: white;
+}
+
+
+.container {
+    padding-left: 90px
+}
+
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo {
+    padding-left: 90px
+}
+
+.sm-screen-text {
+    display: none;
+}
 
 /* Estilos para pantallas menores a 1050px */
 @media (max-width: 1050px) {
     .container {
         max-width: 865px;
+        padding-left: 90px
     }
 }
 
-/* Estilos para pantallas menores a 974px */
-@media (max-width: 974px) {
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        /* Apila los elementos uno encima del otro */
+@media (max-width: 500px) {
+
+    /*DIV BOTONES TAMAÑO SUPERIOR A 400PX*/
+    .abs-center {
+        display: none;
     }
+
+    /*DIV HABILITAR BOTONES TAMAÑO INFERIOR A 400PX*/
+    .sm-screen-text {
+        font-size: large;
+        display: block;
+    }
+
+}
+
+
+/*RESPONSIVE TITULO DE LA SECCION*/
+@media (max-width: 400px) {
+    .titulo-seccion {
+        font-size: x-large;
+    }
+
 }

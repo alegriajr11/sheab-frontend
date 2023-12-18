@@ -30,6 +30,8 @@ export class ActaPamecDto {
     act_nombre_prestador: string
     act_cargo_prestador: string
     act_firma_prestador: string
+
+    act_hora: string
     
 
     act_estado: string;
@@ -64,7 +66,8 @@ export class ActaPamecDto {
         act_id_funcionario2: number,
         act_nombre_prestador: string,
         act_cargo_prestador: string,
-        act_firma_prestador: string
+        act_firma_prestador: string,
+        act_hora: string
 
     ) {
         this.act_id = act_id
@@ -96,5 +99,6 @@ export class ActaPamecDto {
         this.act_nombre_prestador = act_nombre_prestador
         this.act_cargo_prestador = act_cargo_prestador
         this.act_firma_prestador = act_firma_prestador
+        this.act_hora = act_hora
     }
 }

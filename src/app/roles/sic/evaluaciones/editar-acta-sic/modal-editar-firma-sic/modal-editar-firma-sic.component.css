@@ -33,6 +33,7 @@
     font-weight: bold;
     color: black;
 }
+
 /* Estilo para el contenedor del input personalizado */
 .custom-file-label {
     display: inline-block;
@@ -51,7 +52,12 @@
 
 .disabled-span {
     pointer-events: none;
-    opacity: 0.6; /* Opcional: Cambiar la opacidad para indicar deshabilitado */
+    opacity: 0.6;
+    /* Opcional: Cambiar la opacidad para indicar deshabilitado */
     /* Otros estilos de deshabilitado que desees agregar */
 }
 
+/*RESPONSIVE MODAL*/
+@media (max-width: 600px) {
+
+}

@@ -39,6 +39,32 @@ export class AuditoriaComponent {
     this.habilitarfechaFin = true;
   }
 
+  
+  //FUNCIONALIDAD DEL SLIDER BAR
+  refreshOne() {
+    const hasRefreshed = localStorage.getItem('hasRefreshed');
+
+    if (!hasRefreshed) {
+      // Realizar la lógica que necesitas hacer una vez aquí
+      // Por ejemplo:
+      console.log('El componente se ha refrescado una vez');
+
+      // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
+      localStorage.setItem('hasRefreshed', 'true');
+
+      // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Eliminar la variable del almacenamiento al salir del componente
+    localStorage.removeItem('hasRefreshed');
+  }
+
+
   obtenerFechaActual(): string {
     const fechaActual = new Date();
     const dia = fechaActual.getDate().toString().padStart(2, '0');
@@ -57,7 +83,7 @@ export class AuditoriaComponent {
 
 
   //CARGAR AUDITORIAS POR FECHAS O ACCION
-  cargarAuditorias(){
+  cargarAuditorias() {
     const fechaFinAjustada = new Date(this.fechaFin);
     fechaFinAjustada.setDate(fechaFinAjustada.getDate() + 1);
     this.auditoria_services.listAdutitoria(this.fechaInicio, fechaFinAjustada, this.accion).subscribe(
@@ -72,7 +98,7 @@ export class AuditoriaComponent {
     )
     this.page = 1;
   }
-  
+
   getAllAuditorias() {
     this.auditoria_services.listAllAuditorias().subscribe(
       data => {
@@ -99,7 +125,7 @@ export class AuditoriaComponent {
         this.auditoria = []
       }
     )
-    if(!this.nombre_usuario){
+    if (!this.nombre_usuario) {
       this.getAllAuditorias();
     }
     this.page = 1;

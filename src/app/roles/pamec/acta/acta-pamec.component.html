@@ -42,7 +42,13 @@
                         [(ngModel)]="act_fecha_visita">
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-3">
+                    <label for="hora" class="form-label">Hora de Inicio:</label>
+                    <input type="time" class="form-control" id="hora" name="act_hora" [(ngModel)]="act_hora_inicio24">
+                </div>
+
+
+                <div class="col-md-12">
                     <label for="inputAddress" class="form-label">TIPO DE VISITA:</label>
                     <select id="tipoVisita" class="form-select form-control" [(ngModel)]="act_tipo_visitaId"
                         [ngModelOptions]="{standalone: true}" ngDefaultControl
@@ -58,13 +64,13 @@
                     </div>
                 </div>
 
-                <div class="col-3" *ngIf="formulacion">
+                <div class="col-6" *ngIf="formulacion">
                     <label for="" class="form-label text-center">AÑO DE FORMULACION:</label>
                     <input type="number" class="form-control" onkeypress="if(this.value.length==4) return false;"
                         id="ano_formulacion" placeholder="Año de formulación...">
                 </div>
 
-                <div class="col-4" *ngIf="mejoramiento">
+                <div class="col-6" *ngIf="mejoramiento">
                     <label for="" class="form-label text-center">CICLO DE MEJORAMIENTO</label>
                     <select id="id_mejoramiento" class="form-select form-control">
                         <option hidden selected>Selecciona el Ciclo...</option>

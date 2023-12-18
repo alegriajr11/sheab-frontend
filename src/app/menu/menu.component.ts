@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   usu_nombreUsuario: string;
   usu_nombre: string;
 
+  role: string = '';
 
   reload: 'reload' | undefined = undefined;
 
@@ -50,6 +51,8 @@ export class MenuComponent implements OnInit, AfterViewInit {
     this.usu_nombreUsuario = this.tokenService.getNombreUsuario();
     this.usu_nombre = this.tokenService.getNombre();
 
+    //
+    this.mostrarRolMenu();
   }
 
   isSubMenuOpen: boolean = false;
@@ -64,6 +67,22 @@ export class MenuComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/login']);
   }
 
+  mostrarRolMenu(){
+    if(this.isAdmin = this.tokenService.isAdmin()){
+      this.role = 'Admin'
+    } else if (this.isSic = this.tokenService.IsSic()){
+      this.role = 'Sic'
+    }
+    else if (this.isSic = this.tokenService.IsPamec()){
+      this.role = 'Pamec'
+    }
+    else if (this.isSp = this.tokenService.IsSp()){
+      this.role = 'Seguridad del Paciente'
+    }
+    else if (this.isSic = this.tokenService.IsReso()){
+      this.role = 'Resolución 3100'
+    }
+  }
 
   ngAfterViewInit(): void {
     const sidebar = document.querySelector(".sidebar");

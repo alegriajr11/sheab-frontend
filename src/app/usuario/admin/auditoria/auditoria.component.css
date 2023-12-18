@@ -153,18 +153,25 @@ td {
     text-align: justify;
 }
 
-/* Estilos responsivos */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-    
-    .table-title h2 {
-        font-size: 20px;
-    }
-    
-    table.table tr th,
-    table.table tr td {
-        padding: 8px 10px;
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo {
+    padding-left: 90px
+}
+
+/*CONTENEDOR DE LAS EVALUACIONES*/
+.contenedor{
+    padding-left: 100px;
+    padding-right: 20px
+}
+
+
+/* Estilos adicionales para hacer la tabla responsive */
+@media (max-width: 1080px) {
+
+    /*MEDIA PARA EL TITULO DE LA SECCION*/
+    @media (max-width: 750px) {
+        .titulo-seccion {
+            font-size: xx-large;
+        }
     }
 }

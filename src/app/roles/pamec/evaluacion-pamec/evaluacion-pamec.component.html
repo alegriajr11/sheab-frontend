@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-light esp btn-circle btn-xl" routerLink="/pamec/evaluaciones"
@@ -8,20 +8,22 @@
             </button>
         </div>
         <div class="col-md-8">
-            <h1 class="text-center">Programa de auditoria para el mejoramiento de la calidad (PAMEC)</h1>
+            <h1 class="text-center titulo-seccion">Programa de auditoria para el mejoramiento de la calidad (PAMEC)</h1>
         </div>
     </div>
 </div>
 
-<div>
-    <h2>VERIFICACIÓN AL PAMEC DE LAS INSTITUCIONES PRESTADORAS DE SERVICIOS DE SALUD - IPS</h2>
+<div class="t2">
+    <h2 class="titulo-seccion-2">CUMPLIMIENTO DEL PROGRAMA DE SEGURIDAD DEL PACIENTE
+        PROFESIONALES INDEPENDIENTES</h2>
 </div>
+
 <ng-template #modalTemplate>
     <app-modal-calificacion-pamec [dataFromParent]="modalRef"></app-modal-calificacion-pamec>
 </ng-template>
 
 
-<div class="container">
+<div class="contenedor">
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">

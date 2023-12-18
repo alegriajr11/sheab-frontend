@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-light esp btn-circle btn-xl" (click)="volver()">
@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-8">
 
-            <h1 class="text-center">Evaluación de Seguridad del Paciente - Instituciones Prestadoras de Servicios de
+            <h1 class="text-center titulo-seccion">Evaluación de Seguridad del Paciente - Instituciones Prestadoras de Servicios de
                 Salud</h1>
         </div>
     </div>
@@ -155,7 +155,7 @@
                 <div class="col-md-6">
                     <label for="compromiso_actividad" class="form-label">Actividad:</label>
                     <br>
-                    <textarea name="act_compromiso_actividad" id="compromiso_actividad" cols="55" rows="4"
+                    <textarea class="form-control" name="act_compromiso_actividad" id="compromiso_actividad" cols="55" rows="4"
                         [(ngModel)]="actaSp.act_compromiso_actividad" maxlength="255"></textarea>
                     <p>Caracteres restantes: {{ 255 - (actaSp.act_compromiso_actividad ? actaSp.act_compromiso_actividad.length : 0) }}</p>
                 </div>

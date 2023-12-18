@@ -1,20 +1,21 @@
 <app-menu></app-menu>
 
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-2">
-            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/sp/evaluaciones-pro" (click)="deshabilitarRutaEditar()">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/sp/evaluaciones-pro"
+                (click)="deshabilitarRutaEditar()">
                 <i class="fa fa-reply fa-lg"></i>
             </button>
         </div>
         <div class="col-md-8">
-            <h1 class="text-center">Seguridad del Paciente - Profesionales Independientes</h1>
+            <h1 class="text-center titulo-seccion">Seguridad del Paciente - Profesionales Independientes</h1>
         </div>
     </div>
 </div>
 
 <div class="t2">
-    <h2>CUMPLIMIENTO DEL PROGRAMA DE SEGURIDAD DEL PACIENTE
+    <h2 class="titulo-seccion-2">CUMPLIMIENTO DEL PROGRAMA DE SEGURIDAD DEL PACIENTE
         PROFESIONALES INDEPENDIENTES</h2>
 </div>
 
@@ -22,7 +23,8 @@
     <app-modal-editar-cumplimiento-sp-ind [dataFromParent]="modalRef"></app-modal-editar-cumplimiento-sp-ind>
 </ng-template>
 
-<div class="container">
+<div class="contenedor">
+
     <div class="table-wrapper" id="dominio">
         <div class="table-title">
             <div class="row">
@@ -34,115 +36,119 @@
             </div>
         </div>
 
-        <h4>{{Etapa1}}</h4>
-        <table class="table table-wrapper table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Cod</th>
-                    <th scope="col">Criterio</th>
-                    <th scope="col">Verificación</th>
-                    <th scope="col">Calificación </th>
+        <div class="table-responsive">
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let criterioIndEta1 of criterioIndEtapa1; let i = index">
-                    <td>{{i+1}} </td>
-                    <td>{{criterioIndEta1.cri_nombre}}</td>
-                    <td>{{criterioIndEta1.cri_verificacion}}</td>
-                    <td>
-                        <button class="btn" [ngClass]="getClassForCriterio(criterioIndEta1)"
-                            (click)="openModal(modalTemplate, criterioIndEta1.cri_id, eva_ind_id)">
-                            <i class="fa fa-check"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <hr style="border-top: 1px solid black;">
+            <h4>{{Etapa1}}</h4>
 
-        <h4>{{Etapa2}}</h4>
+            <table class="table table-wrapper table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Cod</th>
+                        <th scope="col">Criterio</th>
+                        <th scope="col">Verificación</th>
+                        <th scope="col">Calificación </th>
 
-        <table class="table table-wrapper table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Cod</th>
-                    <th scope="col">Criterio</th>
-                    <th scope="col">Verificación</th>
-                    <th scope="col">Cumplimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let criterioIndEta1 of criterioIndEtapa1; let i = index">
+                        <td>{{i+1}} </td>
+                        <td>{{criterioIndEta1.cri_nombre}}</td>
+                        <td>{{criterioIndEta1.cri_verificacion}}</td>
+                        <td class="boton-cumplimiento">
+                            <button class="btn" [ngClass]="getClassForCriterio(criterioIndEta1)"
+                                (click)="openModal(modalTemplate, criterioIndEta1.cri_id, eva_ind_id)">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr style="border-top: 1px solid black;">
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let criterioIndEta2 of criterioIndEtapa2; let i = index">
-                    <td>{{i+1}} </td>
-                    <td>{{criterioIndEta2.cri_nombre}}</td>
-                    <td>{{criterioIndEta2.cri_verificacion}}</td>
-                    <td>
-                        <button class="btn" [ngClass]="getClassForCriterio(criterioIndEta2)"
-                            (click)="openModal(modalTemplate, criterioIndEta2.cri_id, eva_ind_id)">
-                            <i class="fa fa-check"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <hr style="border-top: 1px solid black;">
+            <h4>{{Etapa2}}</h4>
 
-        <h4>{{Etapa3}}</h4>
+            <table class="table table-wrapper table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Cod</th>
+                        <th scope="col">Criterio</th>
+                        <th scope="col">Verificación</th>
+                        <th scope="col">Cumplimiento</th>
 
-        <table class="table table-wrapper table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Cod</th>
-                    <th scope="col">Criterio</th>
-                    <th scope="col">Verificación</th>
-                    <th scope="col">Cumplimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let criterioIndEta2 of criterioIndEtapa2; let i = index">
+                        <td>{{i+1}} </td>
+                        <td>{{criterioIndEta2.cri_nombre}}</td>
+                        <td>{{criterioIndEta2.cri_verificacion}}</td>
+                        <td class="boton-cumplimiento">
+                            <button class="btn " [ngClass]="getClassForCriterio(criterioIndEta2)"
+                                (click)="openModal(modalTemplate, criterioIndEta2.cri_id, eva_ind_id)">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr style="border-top: 1px solid black;">
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let criterioIndEta3 of criterioIndEtapa3; let i = index">
-                    <td>{{i+1}} </td>
-                    <td>{{criterioIndEta3.cri_nombre}}</td>
-                    <td>{{criterioIndEta3.cri_verificacion}}</td>
-                    <td>
-                        <button class="btn" [ngClass]="getClassForCriterio(criterioIndEta3)"
-                            (click)="openModal(modalTemplate, criterioIndEta3.cri_id, eva_ind_id)">
-                            <i class="fa fa-check"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <hr style="border-top: 1px solid black;">
+            <h4>{{Etapa3}}</h4>
 
-        <h4>{{Etapa4}}</h4>
+            <table class="table table-wrapper table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Cod</th>
+                        <th scope="col">Criterio</th>
+                        <th scope="col">Verificación</th>
+                        <th scope="col">Cumplimiento</th>
 
-        <table class="table table-wrapper table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Cod</th>
-                    <th scope="col">Criterio</th>
-                    <th scope="col">Verificación</th>
-                    <th scope="col">Cumplimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let criterioIndEta3 of criterioIndEtapa3; let i = index">
+                        <td>{{i+1}} </td>
+                        <td>{{criterioIndEta3.cri_nombre}}</td>
+                        <td>{{criterioIndEta3.cri_verificacion}}</td>
+                        <td class="boton-cumplimiento">
+                            <button class="btn " [ngClass]="getClassForCriterio(criterioIndEta3)"
+                                (click)="openModal(modalTemplate, criterioIndEta3.cri_id, eva_ind_id)">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr style="border-top: 1px solid black;">
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let criterioIndEta4 of criterioIndEtapa4; let i = index">
-                    <td>{{i+1}} </td>
-                    <td>{{criterioIndEta4.cri_nombre}}</td>
-                    <td>{{criterioIndEta4.cri_verificacion}}</td>
-                    <td>
-                        <button class="btn" [ngClass]="getClassForCriterio(criterioIndEta4)"
-                            (click)="openModal(modalTemplate, criterioIndEta4.cri_id, eva_ind_id)">
-                            <i class="fa fa-check"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <h4>{{Etapa4}}</h4>
+
+            <table class="table table-wrapper table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Cod</th>
+                        <th scope="col">Criterio</th>
+                        <th scope="col">Verificación</th>
+                        <th scope="col">Cumplimiento</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let criterioIndEta4 of criterioIndEtapa4; let i = index">
+                        <td>{{i+1}} </td>
+                        <td>{{criterioIndEta4.cri_nombre}}</td>
+                        <td>{{criterioIndEta4.cri_verificacion}}</td>
+                        <td class="boton-cumplimiento">
+                            <button class="btn " [ngClass]="getClassForCriterio(criterioIndEta4)"
+                                (click)="openModal(modalTemplate, criterioIndEta4.cri_id, eva_ind_id)">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <hr style="border-top: 1px solid black;">
 
 

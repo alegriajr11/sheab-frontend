@@ -43,6 +43,9 @@ export class GenerarPdfActaPamecService {
   act_cargo_prestador: string
   act_firma_prestador: string
 
+  //HORA DE INICIO
+  act_hora: string
+
   //OBSERVACIONES
   act_observaciones: string
 
@@ -91,6 +94,8 @@ export class GenerarPdfActaPamecService {
         this.act_nombre_prestador = this.actaPamecPdf.act_nombre_prestador
         this.act_cargo_prestador = this.actaPamecPdf.act_cargo_prestador
         this.act_firma_prestador = this.actaPamecPdf.act_firma_prestador
+        //HORA DE INICIO
+        this.act_hora = this.actaPamecPdf.act_hora
 
 
         const doc = new jsPDF()
@@ -270,12 +275,11 @@ export class GenerarPdfActaPamecService {
           startY: 165,
           columnStyles: { sede: { halign: 'left' } },
           body: [
-            { representante: this.act_representante, codpres: this.act_cod_prestador, codsede: 'this.act_cod_sede' },
+            { representante: this.act_representante, codpres: this.act_cod_prestador },
           ],
           columns: [
             { header: 'Representante Legal:', dataKey: 'representante' },
             { header: 'Código Prestador:', dataKey: 'codpres' },
-            { header: 'Código Sede Visitada:', dataKey: 'codsede' },
 
           ],
           headStyles: {
@@ -388,6 +392,7 @@ export class GenerarPdfActaPamecService {
           })
         }
 
+        
         //DESCRIPCIÓN
         autoTable(doc, {
           startY: 222,
@@ -429,7 +434,7 @@ export class GenerarPdfActaPamecService {
             {
               objeto:
                 `Se deja constancia de la actividad relacionada con el Componente de Auditoria para el Mejoramiento de la Calidad realizado por parte de ` +
-                `el personal técnico de la Secretaría de Salud Departamental y se da por terminada la presente diligencia a las HORA del día ${this.act_fecha_visita} ` +
+                `el personal técnico de la Secretaría de Salud Departamental y se da por terminada la presente diligencia a las ${this.act_hora} del día ${this.act_fecha_visita} ` +
                 `\n` +
                 `\n` +
                 `La presente acta de visita se lee, se aprueba, se firma por los que en ella intervinieron y se entrega copia de esta a quien atiende la visita.`
