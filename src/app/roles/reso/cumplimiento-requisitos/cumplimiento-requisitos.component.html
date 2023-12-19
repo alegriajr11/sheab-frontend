@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-1">
             <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso/lista-verificacion">
@@ -21,7 +21,7 @@
 </ng-template>
 
 <div class="wrapper">
-    <div class="container">
+    <div class="contenedor">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -35,28 +35,31 @@
             <div class="col-sm-10">
                 <h5><b>EQUIPO VERIFICADOR DE ACUERDO A LO EVALUADO DETERMINA: </b></h5>
             </div>
-            <table class="table table-wrapper table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Cod</th>
-                        <th scope="col">Concepto</th>
-                        <th scope="col" style="text-align: center;">Cumplimiento</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        *ngFor="let condiciones of condiciones_habilitacion | filter: searchText | paginate: { itemsPerPage: 10, currentPage: page}; let i = index">
-                        <td class="text-center"><strong>{{i+1}}</strong></td>
-                        <td>{{condiciones.conc_nombre}}</td>
-                        <td class="text-center">
-                            <button class="btn" [ngClass]="getClassForCodicion(condiciones)"
-                                (click)="openModal(modalTemplate, condiciones.conc_id, condiciones.conc_nombre)">
-                                <i class="fa fa-check"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <div class="table-responsive">
+                <table class="table table-wrapper table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cod</th>
+                            <th scope="col">Concepto</th>
+                            <th scope="col" style="text-align: center;">Cumplimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let condiciones of condiciones_habilitacion | filter: searchText | paginate: { itemsPerPage: 10, currentPage: page}; let i = index">
+                            <td class="text-center"><strong>{{i+1}}</strong></td>
+                            <td>{{condiciones.conc_nombre}}</td>
+                            <td class="text-center">
+                                <button class="btn" [ngClass]="getClassForCodicion(condiciones)"
+                                    (click)="openModal(modalTemplate, condiciones.conc_id, condiciones.conc_nombre)">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

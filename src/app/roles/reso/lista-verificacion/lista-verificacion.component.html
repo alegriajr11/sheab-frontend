@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-1">
             <button class="btn btn-light esp btn-circle btn-xl" (click)="volver()">
@@ -7,7 +7,8 @@
             </button>
         </div>
         <div class="col-md-10">
-            <h1>VISITA DE VERIFICACIÓN DEL CUMPLIMIENTO DE LAS CONDICIONES DE HABILITACIÓN</h1>
+            <h1 class="text-center titulo-seccion">VISITA DE VERIFICACIÓN DEL CUMPLIMIENTO DE LAS CONDICIONES DE
+                HABILITACIÓN</h1>
         </div>
     </div>
     <div>
@@ -15,8 +16,8 @@
 
 </div>
 
-<div class="container">
-    <div class="table-title">
+<div class="contenedor">
+    <div class="seccion-prestador">
         <div class="row">
             <div class="col-sm-6">
                 <h5><b>Prestador:</b></h5>
@@ -34,7 +35,7 @@
 
 <div class="wrapper">
 
-    <div class="container">
+    <div class="contenedor">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -43,38 +44,43 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-wrapper table-hover">
-                <thead>
 
-                </thead>
-                <tbody>
-                    <tr>
-                        <td routerLink="/servicios-capacidad"><strong>1.</strong> SERVICIOS VERIFICADOS Y CAPACIDAD
-                            INSTALADA</td>
-                    </tr>
+            <div class="table-responsive">
+                <table class="table table-wrapper table-hover">
+                    <thead>
 
-                    <tr>
-                        <td routerLink="/home-estandar"><strong>2.</strong> CONDICIONES DE CAPACIDAD TECNOLOGICA Y
-                            CIENTIFICA </td>
-                    </tr>
-                    <tr>
-                        <td routerLink="/cumplimiento-requisitos"><strong>3.</strong> CUMPLIMIENTO DE REQUISITOS DE LAS
-                            CONDICIONES DE HABILITACIÓN </td>
-                    </tr>
-                    <tr>
-                        <td routerLink="/conclusiones-recomendaciones"><strong>4.</strong> CONCLUSIONES Y
-                            RECOMENDACIONES </td>
-                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td routerLink="/servicios-capacidad"><strong>1.</strong> SERVICIOS VERIFICADOS Y CAPACIDAD
+                                INSTALADA</td>
+                        </tr>
 
-                    <tr>
-                        <td routerLink="/equipo-verificadores"><strong>5.</strong> EQUIPO DE VERIFICADORES </td>
-                    </tr>
+                        <tr>
+                            <td routerLink="/home-estandar"><strong>2.</strong> CONDICIONES DE CAPACIDAD TECNOLOGICA Y
+                                CIENTIFICA </td>
+                        </tr>
+                        <tr>
+                            <td routerLink="/cumplimiento-requisitos"><strong>3.</strong> CUMPLIMIENTO DE REQUISITOS DE
+                                LAS
+                                CONDICIONES DE HABILITACIÓN </td>
+                        </tr>
+                        <tr>
+                            <td routerLink="/conclusiones-recomendaciones"><strong>4.</strong> CONCLUSIONES Y
+                                RECOMENDACIONES </td>
+                        </tr>
 
-                    <tr>
-                        <td routerLink="/equipo-verificadores"><strong>6.</strong> ANEXOS </td>
-                    </tr>
-                </tbody>
-            </table>
+                        <tr>
+                            <td routerLink="/equipo-verificadores"><strong>5.</strong> EQUIPO DE VERIFICADORES </td>
+                        </tr>
+
+                        <tr>
+                            <td routerLink="/equipo-verificadores"><strong>6.</strong> ANEXOS </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 

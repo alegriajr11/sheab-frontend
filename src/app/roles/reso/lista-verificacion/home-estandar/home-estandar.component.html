@@ -13,25 +13,44 @@
     <div class="container">
         <div class="jumbotron">
             <hr class="my-4">
-            <h1 class="display-4 text-center">AUTOEVALUACIÓN CONDICIONES DE HABILITACIÓN RESOLUCIÓN 3100/2019 </h1>
+            <h1 class="display-4 text-center titulo">AUTOEVALUACIÓN CONDICIONES DE HABILITACIÓN RESOLUCIÓN 3100/2019 </h1>
             <h5 class="text-center">{{nombre_prestador}}</h5>
             <hr class="my-4">
-            <div class="botones-grid">
-                <button class="btn btn-dark esp btn-xl" title="Todos Servicios" routerLink="/todos-servicios">
-                    TODOS SERVICIOS</button>
-                <button class="btn btn-dark esp btn-xl" title="Consulta Externa" routerLink="/consulta-externa" (click)="enviarIdGrupoConsultaExterna(1)">
-                    GRUPO: CONSULTA EXTERNA</button>
-                <button class="btn btn-dark esp btn-xl" title="Apoyo Diagnostico" routerLink="/apoyo-diagnostico" (click)="enviarIdGrupoApoyoDiagnostico(2)">
-                    GRUPO: APOYO DIAGNOSTICO</button>
-                <button class="btn btn-dark esp btn-xl" title="Internación" routerLink="/internacion" (click)="enviarIdGrupoInternacion(4)">
-                    GRUPO: INTERNACIÓN</button>
-                <button class="btn btn-dark esp btn-xl" title="Quirúrgico" routerLink="/quirurgico" (click)="enviarIdGrupoQuirurgico(5)">
-                    GRUPO: QUIRÚRGICO</button>
-                <button class="btn btn-dark esp btn-xl" title="Atención Inmediata" routerLink="/atencion-inmediata" (click)="enviarIdGrupoAtencionInmediata(3)">
-                    GRUPO: ATENCIÓN INMEDIATA</button>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mb-3 margen-button">
+                    <button class="btn btn-dark esp btn-xl btn-block" title="Todos Servicios"
+                        routerLink="/todos-servicios">
+                        TODOS SERVICIOS</button>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-3 margen-button">
+                    <button class="btn btn-dark esp btn-xl btn-block" title="Consulta Externa"
+                        routerLink="/consulta-externa" (click)="enviarIdGrupoConsultaExterna(1)">
+                        GRUPO: CONSULTA EXTERNA</button>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-3 margen-button">
+                    <button class="btn btn-dark esp btn-xl btn-block" title="Apoyo Diagnostico"
+                        routerLink="/apoyo-diagnostico" (click)="enviarIdGrupoApoyoDiagnostico(2)">
+                        GRUPO: APOYO DIAGNOSTICO</button>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-3 margen-button">
+                    <button class="btn btn-dark esp btn-xl btn-block" title="Internación" routerLink="/internacion"
+                        (click)="enviarIdGrupoInternacion(4)">
+                        GRUPO: INTERNACIÓN</button>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-3 margen-button">
+                    <button class="btn btn-dark esp btn-xl btn-block" title="Quirúrgico" routerLink="/quirurgico"
+                        (click)="enviarIdGrupoQuirurgico(5)">
+                        GRUPO: QUIRÚRGICO</button>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-3 margen-button">
+                    <button class="btn btn-dark esp btn-xl btn-block" title="Atención Inmediata"
+                        routerLink="/atencion-inmediata" (click)="enviarIdGrupoAtencionInmediata(3)">
+                        GRUPO: ATENCIÓN INMEDIATA</button>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
 <!--Fin Div Container-->
 

@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div class="col">
+<div class="col controles-titulo ">
     <div class="row">
         <div class="col-md-1">
             <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso/lista-verificacion">
@@ -21,7 +21,7 @@
 
 <div class="wrapper">
 
-    <div class="container">
+    <div class="contenedor">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -43,36 +43,39 @@
                     <h5>PRESTADOR: <strong class="underlined">{{nombre_prestador}}</strong></h5>
                 </div>
             </div>
-            <table class="table table-wrapper table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Cod</th>
-                        <th scope="col">Nombres</th>
-                        <th scope="col">Apellidos</th>
-                        <th scope="col" style="text-align: center;">Usuario</th>
-                        <th scope="col" style="text-align: center;">Cargo</th>
-                        <th scope="col" style="text-align: center;">Profesional</th>
-                        <th scope="col" style="text-align: center;">Editar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        *ngFor="let usuarios of usuarios_verificadores | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page} let i = index">
-                        <td>{{i+1}}</td>
-                        <td>{{usuarios.usu_nombre}}</td>
-                        <td>{{usuarios.usu_apellido}}</td>
-                        <td>{{usuarios.usu_nombreUsuario}}</td>
-                        <td>{{usuarios.usu_cargo}}</td>
-                        <td>{{usuarios.usu_area_profesional}}</td>
-                        <td>
-                            <button class="btn btn-outline-warning"
-                                (click)="openModalEditar(modalTemplate, usuarios.usu_id)">
-                                <i class="far fa-edit"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <div class="table-responsive">
+                <table class="table table-wrapper table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cod</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col" style="text-align: center;">Usuario</th>
+                            <th scope="col" style="text-align: center;">Cargo</th>
+                            <th scope="col" style="text-align: center;">Profesional</th>
+                            <th scope="col" style="text-align: center;">Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let usuarios of usuarios_verificadores | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page} let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{usuarios.usu_nombre}}</td>
+                            <td>{{usuarios.usu_apellido}}</td>
+                            <td>{{usuarios.usu_nombreUsuario}}</td>
+                            <td>{{usuarios.usu_cargo}}</td>
+                            <td>{{usuarios.usu_area_profesional}}</td>
+                            <td>
+                                <button class="btn btn-outline-warning"
+                                    (click)="openModalEditar(modalTemplate, usuarios.usu_id)">
+                                    <i class="far fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

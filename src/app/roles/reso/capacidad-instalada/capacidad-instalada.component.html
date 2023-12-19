@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-1">
             <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso/lista-verificacion">
@@ -7,7 +7,8 @@
             </button>
         </div>
         <div class="col-md-10">
-            <h1>Resolución 3100 de 2019 - Servicios Verificados y Capacidad Instalada</h1>
+            <h1 class="text-center titulo-seccion">Resolución 3100 de 2019 - Servicios Verificados y Capacidad Instalada
+            </h1>
         </div>
     </div>
     <div>
@@ -15,7 +16,7 @@
 </div>
 
 
-<div class="container">
+<div class="contenedor">
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
@@ -35,35 +36,38 @@
             </div>
         </div>
 
-        <table class="table table-wrapper table-hover">
-            <thead *ngIf="!listaVacia">
-                <th>No.</th>
-                <th>CODIGO</th>
-                <th>GRUPO</th>
-                <th>NOMBRE DE SERVICIO</th>
-                <th>MODALIDAD</th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let servicios of servicios_verificados; let i = index">
-                    <td>{{i+1}}</td>
-                    <td>{{servicios.ser_codigo}}</td>
-                    <td>{{servicios.grup_evaluacion.nombre}}</td>
-                    <td>{{servicios.ser_nombre}}</td>
-                    <!-- DETERMINAR LA MODALIDAD -->
-                    <td>
-                        {{
-                        separarConComas(servicios.ambulatorio === 'SI' ? 'AMBULATORIO' : '') +
-                        separarConComas(servicios.hospitalario === 'SI' ? 'HOSPITALARIO' : '') +
-                        separarConComas(servicios.unidad_movil === 'SI' ? 'UNIDAD MOVIL' : '') +
-                        separarConComas(servicios.domiciliario === 'SI' ? 'DOMICILIARIO' : '') +
-                        separarConComas(servicios.otras_extramural === 'SI' ? 'EXTRAMURAL' : '') +
-                        separarConComas(servicios.centro_referencia === 'SI' ? 'CENTRO DE REFERENCIA' : '') +
-                        separarConComas(servicios.institucion_remisora === 'SI' ? 'INSTITUCIÓN REMISORA' : '')
-                        }}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-wrapper table-hover">
+                <thead *ngIf="!listaVacia">
+                    <th>No.</th>
+                    <th>CODIGO</th>
+                    <th>GRUPO</th>
+                    <th>NOMBRE DE SERVICIO</th>
+                    <th>MODALIDAD</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let servicios of servicios_verificados; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{servicios.ser_codigo}}</td>
+                        <td>{{servicios.grup_evaluacion.nombre}}</td>
+                        <td>{{servicios.ser_nombre}}</td>
+                        <!-- DETERMINAR LA MODALIDAD -->
+                        <td>
+                            {{
+                            separarConComas(servicios.ambulatorio === 'SI' ? 'AMBULATORIO' : '') +
+                            separarConComas(servicios.hospitalario === 'SI' ? 'HOSPITALARIO' : '') +
+                            separarConComas(servicios.unidad_movil === 'SI' ? 'UNIDAD MOVIL' : '') +
+                            separarConComas(servicios.domiciliario === 'SI' ? 'DOMICILIARIO' : '') +
+                            separarConComas(servicios.otras_extramural === 'SI' ? 'EXTRAMURAL' : '') +
+                            separarConComas(servicios.centro_referencia === 'SI' ? 'CENTRO DE REFERENCIA' : '') +
+                            separarConComas(servicios.institucion_remisora === 'SI' ? 'INSTITUCIÓN REMISORA' : '')
+                            }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
 
         <div class="container" *ngIf="listaVacia">
             <div class="p-3 mb-2 bg-dark text-white text-center">
@@ -72,7 +76,7 @@
             <br>
         </div>
 
-
+        <br>
         <div class="table-title">
             <div class="col-sm-12">
                 <h2><b>2. Capacidad Instalada:</b></h2>

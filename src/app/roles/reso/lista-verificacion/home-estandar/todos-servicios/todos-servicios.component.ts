@@ -44,13 +44,39 @@ export class TodosServiciosComponent {
     this.cargarEstandar();
     this.capturarNombrePrestador()
     this.obtenerIdEvaluacion()
+    this.refreshOne()
+  }
+
+
+  //SLIDER FUNCIONAL EN EL COMPONENTE ACTUAL
+  refreshOne() {
+    const hasRefreshed = localStorage.getItem('hasRefreshed');
+
+    if (!hasRefreshed) {
+      // Realizar la lógica que necesitas hacer una vez aquí
+      // Por ejemplo:
+      console.log('El componente se ha refrescado una vez');
+
+      // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
+      localStorage.setItem('hasRefreshed', 'true');
+
+      // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
+      setTimeout(() => {
+        window.location.reload();
+      }, 10);
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Eliminar la variable del almacenamiento al salir del componente
+    localStorage.removeItem('hasRefreshed');
   }
 
   capturarNombrePrestador() {
     this.nombre_prestador = localStorage.getItem('nombre-pres-verificacion')
   }
 
-  obtenerIdEvaluacion(){
+  obtenerIdEvaluacion() {
     this.eva_id = parseInt(localStorage.getItem('id_acta_verificacion'))
   }
 
@@ -109,13 +135,13 @@ export class TodosServiciosComponent {
     console.log('Estado del estándar:', this.selectedStandardState);
   }
 
-    //ESTABLECER LOS COLORES POR CUMPLIMIENTO
-    getClassForCriterio(criterio: any): string {
-      if (this.sharedService.criteriosTodosServiciosGuardados.includes(criterio.crie_id)) {
-        return 'btn-success';
-      }
-      return 'btn-outline-dark';
+  //ESTABLECER LOS COLORES POR CUMPLIMIENTO
+  getClassForCriterio(criterio: any): string {
+    if (this.sharedService.criteriosTodosServiciosGuardados.includes(criterio.crie_id)) {
+      return 'btn-success';
     }
+    return 'btn-outline-dark';
+  }
 
   //ABRIR MODAL PARA ASIGNAR CUMPLIMIENTO
   openModal(modalTemplate: TemplateRef<any>, cris_id: number, eva_id: number) {

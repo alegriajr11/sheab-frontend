@@ -11,3 +11,33 @@
 h5{
     font-size: x-large;
 }
+
+.wrapper{
+    padding-left: 90px
+}
+
+@media (max-width: 770px) {
+    .margen-button {
+        padding-right: 39px;
+    }
+}
+/*RESPOSIVE TITULO*/
+@media (max-width: 620px) {
+    .titulo{
+        font-size: 40px;
+    }
+}
+
+/*RESPOSIVE TITULO*/
+@media (max-width: 480px) {
+    .titulo{
+        font-size: 25px;
+    }
+}
+
+/*RESPOSIVE TITULO*/
+@media (max-width: 360px) {
+    .titulo{
+        font-size: 18px;
+    }
+}

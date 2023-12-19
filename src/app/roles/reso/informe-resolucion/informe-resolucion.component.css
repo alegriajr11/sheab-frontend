@@ -102,22 +102,7 @@ table.table .avatar {
     font-size: 13px;
 }    
 
-.curs{
-    cursor: pointer;
-}
 
-.grid-container {
-    display: grid;
-    grid-template-columns: minmax(0, auto) minmax(0, auto) minmax(0, auto);
-    grid-template-rows: minmax(0, auto);
-    grid-gap: 0 1rem;
-}
-
-.button-container{
-    display: flex;
-    align-items: flex-end;
-
-}
 
 
 label {
@@ -128,19 +113,27 @@ span{
     font-size: xx-large;
 }
 
-/*ELIMINAR LOS SPIN EN EL INPUT DE TIPO NUMBER*/
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+
+
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo {
+    padding-left: 90px
 }
+
+/*CONTENEDOR DE LAS EVALUACIONES*/
+.contenedor{
+    padding-left: 100px;
+    padding-right: 20px
+}
+
 
 /* Estilos adicionales para hacer la tabla responsive */
 @media (max-width: 1080px) {
-    .table-wrapper {
-        overflow-x: auto; /* Agrega una barra de desplazamiento horizontal */
-    }
-    .table-wrapper table {
-        width: 100%; /* Establece el ancho de la tabla al 100% del contenedor */
+
+    /*MEDIA PARA EL TITULO DE LA SECCION*/
+    @media (max-width: 750px) {
+        .titulo-seccion {
+            font-size: xx-large;
+        }
     }
 }

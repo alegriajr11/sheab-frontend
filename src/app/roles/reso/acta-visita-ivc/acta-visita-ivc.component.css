@@ -206,3 +206,18 @@ select[aria-hidden="true"][hidden] {
 
 
 
+.container{
+    padding-left: 90px
+}
+
+/*ESTILOS PARA BOTON VOLVER Y TITLE*/
+.controles-titulo{
+    padding-left: 90px
+}
+
+/*RESPONSIVE TITULO DE LA SECCION*/
+@media (max-width: 600px) {
+    .titulo-seccion {
+        font-size: xx-large;
+    }
+}

@@ -45,9 +45,36 @@ export class ConsultaExternaComponent {
     private modalService: BsModalService,
   ) { }
 
-  ngOnInit(): void{
-    this.id_grupo_consulta_externa =  this.sharedService.id_grupo_consulta_externa
+  ngOnInit(): void {
+    this.id_grupo_consulta_externa = this.sharedService.id_grupo_consulta_externa
     this.capturarNombrePrestador()
+    this.refreshOne()
+  }
+
+
+
+  //SLIDER FUNCIONAL EN EL COMPONENTE ACTUAL
+  refreshOne() {
+    const hasRefreshed = localStorage.getItem('hasRefreshed');
+
+    if (!hasRefreshed) {
+      // Realizar la lógica que necesitas hacer una vez aquí
+      // Por ejemplo:
+      console.log('El componente se ha refrescado una vez');
+
+      // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
+      localStorage.setItem('hasRefreshed', 'true');
+
+      // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
+      setTimeout(() => {
+        window.location.reload();
+      }, 10);
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Eliminar la variable del almacenamiento al salir del componente
+    localStorage.removeItem('hasRefreshed');
   }
 
 
@@ -77,17 +104,17 @@ export class ConsultaExternaComponent {
     return 'btn-outline-dark';
   }
 
-    //ABRIR MODAL PARA ASIGNAR CUMPLIMIENTO
-    openModal(modalTemplate: TemplateRef<any>, cris_id: number, eva_id: number) {
-      // this.sharedService.setIdEvaluacionVerificacion(eva_id)
-      // this.sharedService.setIdCriterioTodosServicios(cris_id)
-      this.modalRef = this.modalService.show(modalTemplate,
-        {
-          class: 'modal-dialogue-centered modal-md',
-          backdrop: true,
-          keyboard: true
-        }
-      );
-    }
+  //ABRIR MODAL PARA ASIGNAR CUMPLIMIENTO
+  openModal(modalTemplate: TemplateRef<any>, cris_id: number, eva_id: number) {
+    // this.sharedService.setIdEvaluacionVerificacion(eva_id)
+    // this.sharedService.setIdCriterioTodosServicios(cris_id)
+    this.modalRef = this.modalService.show(modalTemplate,
+      {
+        class: 'modal-dialogue-centered modal-md',
+        backdrop: true,
+        keyboard: true
+      }
+    );
+  }
 
 }

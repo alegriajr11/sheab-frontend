@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso">
@@ -8,7 +8,7 @@
             </button>
         </div>
         <div class="col-md-8">
-            <h1 class="text-center">Informes Visitas - Resolución 3100</h1>
+            <h1 class="text-center titulo-seccion">Informes Visitas - Resolución 3100</h1>
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@
 
 <div class="wrapper">
 
-    <div class="container">
+    <div class="contenedor">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -63,43 +63,49 @@
 
             </div>
 
+            <div class="table-responsive">
+                <table class="table table-wrapper table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">N°ACTA</th>
+                            <th scope="col">PRESTADOR</th>
+                            <th scope="col">TIPO DE VISITA</th>
+                            <th scope="col">MUNICIPIO</th>
+                            <th scope="col">FECHA</th>
+                            <th scope="col">ESTADO</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let actaVerificacion of actasVerificacion | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}">
+                            <td class="text-center">{{actaVerificacion.act_id}}</td>
+                            <td>{{actaVerificacion.act_prestador}}</td>
+                            <td class="underlined" *ngIf="actaVerificacion.act_visita_previa === 'X' ">Visita Previa
+                            </td>
+                            <td class="underlined" *ngIf="actaVerificacion.act_visita_seguimiento === 'X' ">Visita
+                                Certificación</td>
+                            <td class="underlined" *ngIf="actaVerificacion.act_visita_reactivacion === 'X' ">Visita
+                                Reactivación</td>
+                            <td class="text-center">{{actaVerificacion.act_municipio}}</td>
+                            <td>{{actaVerificacion.act_creado | date: 'dd/MM/yyyy' }}</td>
+                            <td *ngIf="actaVerificacion.act_estado === '1'" style="text-align: center;"><span
+                                    class="fas fa-door-open" style="color: rgb(0, 128, 0);"></span></td>
+                            <td *ngIf="actaVerificacion.act_estado === '0'" style="text-align: center;"><span
+                                    class="fas fa-door-closed" style="color: rgb(204, 0, 0);"></span></td>
+                            <td>
+                                <button class="btn btn-outline-dark"
+                                    (click)="openModal(modalTemplate, actaVerificacion.id, actaVerificacion.act_prestador)">
+                                    <span class="fas fa-clipboard-check"></span>
+                                </button>
 
-            <table class="table table-wrapper table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">N°ACTA</th>
-                        <th scope="col">PRESTADOR</th>
-                        <th scope="col">TIPO DE VISITA</th>
-                        <th scope="col">MUNICIPIO</th>
-                        <th scope="col">FECHA</th>
-                        <th scope="col">ESTADO</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        *ngFor="let actaVerificacion of actasVerificacion | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}">
-                        <td class="text-center">{{actaVerificacion.act_id}}</td>
-                        <td>{{actaVerificacion.act_prestador}}</td>
-                        <td class="underlined" *ngIf="actaVerificacion.act_visita_previa === 'X' ">Visita Previa</td>
-                        <td class="underlined" *ngIf="actaVerificacion.act_visita_seguimiento === 'X' ">Visita Certificación</td>
-                        <td class="underlined" *ngIf="actaVerificacion.act_visita_reactivacion === 'X' ">Visita Reactivación</td>
-                        <td class="text-center">{{actaVerificacion.act_municipio}}</td>
-                        <td>{{actaVerificacion.act_creado | date: 'dd/MM/yyyy' }}</td>
-                        <td *ngIf="actaVerificacion.act_estado === '1'" style="text-align: center;"><span
-                                class="fas fa-door-open" style="color: rgb(0, 128, 0);"></span></td>
-                        <td *ngIf="actaVerificacion.act_estado === '0'" style="text-align: center;"><span
-                                class="fas fa-door-closed" style="color: rgb(204, 0, 0);"></span></td>
-                        <td>
-                            <button class="btn btn-outline-dark" (click)="openModal(modalTemplate, actaVerificacion.id, actaVerificacion.act_prestador)">
-                                <span class="fas fa-clipboard-check"></span>
-                            </button>
+                            </td>
+                        </tr>
 
-                        </td>
-                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                </tbody>
-            </table>
 
             <div class="container" *ngIf="listaVacia">
                 <div class="p-3 mb-2 bg-dark text-white text-center">

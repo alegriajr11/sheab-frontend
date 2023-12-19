@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-1">
             <button class="btn btn-light esp btn-circle btn-xl" routerLink="/home-estandar">
@@ -17,7 +17,7 @@
     <app-modal-cumplimiento-apoyo-diagnostico [dataFromParent]="modalRef"></app-modal-cumplimiento-apoyo-diagnostico>
 </ng-template>
 
-<div class="container">
+<div class="contenedor">
     <div class="table-wrapper">
         <div class="header-section">
             <h5 class="title-header"><b>Prestador:</b></h5>
@@ -46,28 +46,31 @@
         <div *ngIf="selectedStandard">
             <h3 class="underlined">ESTANDAR DE {{ nombre_estadar }}</h3>
 
-            <table class="table table-wrapper table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Cod</th>
-                        <th scope="col">Criterio</th>
-                        <th scope="col">Cumplimiento</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let criterio of criterios_apoyo_diagnostico; let i = index">
-                        <td>{{ criterio.servi_aparto.apa_codigo }}</td>
-                        <td style="text-align: justify;">{{ criterio.cri_apoyo_nombre_criterio }}</td>
-                        <td style="vertical-align: middle; text-align: center;">
-                            <button class="btn" [ngClass]="getClassForCriterio(criterio)"
-                                [disabled]="sharedService.criteriosConsultaExternaGuardados.includes(criterio.cri_apoyo_id)"
-                                (click)="openModal(modalTemplate, criterio.cri_apoyo_id, eva_id)">
-                                <i class="fa fa-check"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-wrapper table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cod</th>
+                            <th scope="col">Criterio</th>
+                            <th scope="col">Cumplimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let criterio of criterios_apoyo_diagnostico; let i = index">
+                            <td>{{ criterio.servi_aparto.apa_codigo }}</td>
+                            <td style="text-align: justify;">{{ criterio.cri_apoyo_nombre_criterio }}</td>
+                            <td style="vertical-align: middle; text-align: center;">
+                                <button class="btn" [ngClass]="getClassForCriterio(criterio)"
+                                    [disabled]="sharedService.criteriosConsultaExternaGuardados.includes(criterio.cri_apoyo_id)"
+                                    (click)="openModal(modalTemplate, criterio.cri_apoyo_id, eva_id)">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <hr>
             <div class="form-group rounded">
                 <h4>Estado del Estandar:</h4>

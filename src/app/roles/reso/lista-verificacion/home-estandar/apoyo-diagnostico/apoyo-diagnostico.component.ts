@@ -21,7 +21,7 @@ export class ApoyoDiagnosticoComponent {
   servicios_apoyo_diagnostico: ServicioApoyoDiagnosticoDto[];
   estandar_apoyo_diagnostico: EstandarApoyoDiagnosticoDto[];
   criterios_apoyo_diagnostico: CriteriosApoyoDiagnosticoDto[];
-  
+
   nombre_estadar: string
 
   nombre_prestador: string
@@ -47,10 +47,39 @@ export class ApoyoDiagnosticoComponent {
     private modalService: BsModalService,
   ) { }
 
-  ngOnInit(): void{
-    this.id_grupo_apoyo_diagnostico =  this.sharedService.id_grupo_apoyo_diagnostico
+  ngOnInit(): void {
+    this.id_grupo_apoyo_diagnostico = this.sharedService.id_grupo_apoyo_diagnostico
     this.capturarNombrePrestador()
+    this.refreshOne()
   }
+
+
+  //SLIDER FUNCIONAL EN EL COMPONENTE ACTUAL
+  refreshOne() {
+    const hasRefreshed = localStorage.getItem('hasRefreshed');
+
+    if (!hasRefreshed) {
+      // Realizar la lógica que necesitas hacer una vez aquí
+      // Por ejemplo:
+      console.log('El componente se ha refrescado una vez');
+
+      // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
+      localStorage.setItem('hasRefreshed', 'true');
+
+      // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
+      setTimeout(() => {
+        window.location.reload();
+      }, 10);
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Eliminar la variable del almacenamiento al salir del componente
+    localStorage.removeItem('hasRefreshed');
+  }
+
+
+
 
   cargarServicios() {
 
@@ -78,17 +107,17 @@ export class ApoyoDiagnosticoComponent {
     return 'btn-outline-dark';
   }
 
-    //ABRIR MODAL PARA ASIGNAR CUMPLIMIENTO
-    openModal(modalTemplate: TemplateRef<any>, cris_id: number, eva_id: number) {
-      // this.sharedService.setIdEvaluacionVerificacion(eva_id)
-      // this.sharedService.setIdCriterioTodosServicios(cris_id)
-      this.modalRef = this.modalService.show(modalTemplate,
-        {
-          class: 'modal-dialogue-centered modal-md',
-          backdrop: true,
-          keyboard: true
-        }
-      );
-    }
+  //ABRIR MODAL PARA ASIGNAR CUMPLIMIENTO
+  openModal(modalTemplate: TemplateRef<any>, cris_id: number, eva_id: number) {
+    // this.sharedService.setIdEvaluacionVerificacion(eva_id)
+    // this.sharedService.setIdCriterioTodosServicios(cris_id)
+    this.modalRef = this.modalService.show(modalTemplate,
+      {
+        class: 'modal-dialogue-centered modal-md',
+        backdrop: true,
+        keyboard: true
+      }
+    );
+  }
 
 }

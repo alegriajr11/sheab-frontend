@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { PrestadorDto } from 'src/app/models/prestador.dto';
 import { Municipio } from 'src/app/models/Prestador/municipio';
 import { Usuario } from 'src/app/models/usuario';
@@ -31,11 +32,13 @@ export class ListaVerificacionComponent implements OnInit {
     private municipioService: MunicipioService,
     private actaVerificacionService: ActaVerificacionService,
     private usuarioService: UsuarioService,
-    private router: Router
+    private router: Router,
+    private ngxLoader: NgxUiLoaderService
   ) { }
 
   ngOnInit(): void {
     this.capturarActa();
+    this.refreshOne();
   }
 
   volver(){
@@ -45,6 +48,29 @@ export class ListaVerificacionComponent implements OnInit {
     localStorage.removeItem('id_acta_verificacion')
     localStorage.removeItem('boton-editar-informe-verificacion')
   }
+
+
+    //FUNCIONALIDAD DEL SLIDER BAR
+    refreshOne() {
+      const hasRefreshed = localStorage.getItem('hasRefreshed');
+  
+      if (!hasRefreshed) {
+        // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
+        localStorage.setItem('hasRefreshed', 'true');
+  
+        // Hacer un refresh manual después de un breve tiempo
+        setTimeout(() => {
+          this.ngxLoader.start(); // Inicia el loader
+          window.location.reload();
+        }, 10);
+      }
+    }
+  
+    ngOnDestroy(): void {
+      // Eliminar la variable del almacenamiento al salir del componente
+      localStorage.removeItem('hasRefreshed');
+    }
+  
 
   capturarActa() {
     this.nombre_prestador = localStorage.getItem('nombre-pres-verificacion')

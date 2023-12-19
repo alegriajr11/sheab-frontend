@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 
-<div class="col">
+<div class="col controles-titulo">
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-light esp btn-circle btn-xl" routerLink="/reso">
@@ -19,7 +19,7 @@
 
 <div class="wrapper">
 
-    <div class="container">
+    <div class="contenedor">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -30,7 +30,6 @@
             </div>
 
             <div class="row">
-
                 <div class="col-md-2">
                     <label for="">No Acta:</label>
                     <input type="number" min="0" class="form-control" id="acta" name="act_id"
@@ -62,36 +61,36 @@
 
             </div>
 
-
-            <table class="table table-wrapper table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">N°ACTA</th>
-                        <th scope="col">PRESTADOR</th>
-                        <th scope="col">TIPO DE VISITA</th>
-                        <th scope="col">MUNICIPIO</th>
-                        <th scope="col">FECHA</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let informe of informes | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}">
-                        <td class="text-center">{{informe.inf_id}}</td>
-                        <td>{{informe.inf_act_id}}</td>
-                        <td>{{informe.inf_prestador}}</td>
-                        <td>{{informe.tipo_visita}}</td>
-                        <td class="text-center">{{informe.inf_municipio}}</td>
-                        <td>{{informe.inf_fecha | date: 'dd/MM/yyyy' }}</td>
-                        <!-- <td>
-                            <button class="btn btn-outline-dark"
-                                (click)="openModal(modalTemplate)">
-                                <span class="fas fa-clipboard-check"></span>
-                            </button>
-                        </td> -->
-                    </tr>
-
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-wrapper table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">N°ACTA</th>
+                            <th scope="col">PRESTADOR</th>
+                            <th scope="col">TIPO DE VISITA</th>
+                            <th scope="col">MUNICIPIO</th>
+                            <th scope="col">FECHA</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let informe of informes | filter:searchText | paginate: { itemsPerPage: 10, currentPage: page}">
+                            <td class="text-center">{{informe.inf_id}}</td>
+                            <td>{{informe.inf_act_id}}</td>
+                            <td>{{informe.inf_prestador}}</td>
+                            <td>{{informe.tipo_visita}}</td>
+                            <td class="text-center">{{informe.inf_municipio}}</td>
+                            <td>{{informe.inf_fecha | date: 'dd/MM/yyyy' }}</td>
+                            <!-- <td>
+                                <button class="btn btn-outline-dark"
+                                    (click)="openModal(modalTemplate)">
+                                    <span class="fas fa-clipboard-check"></span>
+                                </button>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="container" *ngIf="listaVacia">
                 <div class="p-3 mb-2 bg-dark text-white text-center">

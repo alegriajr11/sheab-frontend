@@ -39,7 +39,34 @@ export class EquipoVerificadoresComponent {
   ngOnInit(): void {
     this.capturarActa();
     this.verificadoresAsignados();
+    this.refreshOne();
   }
+
+
+  //SLIDER FUNCIONAL EN EL COMPONENTE ACTUAL
+  refreshOne(){
+    const hasRefreshed = localStorage.getItem('hasRefreshed');
+
+    if (!hasRefreshed) {
+      // Realizar la lógica que necesitas hacer una vez aquí
+      // Por ejemplo:
+      console.log('El componente se ha refrescado una vez');
+
+      // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
+      localStorage.setItem('hasRefreshed', 'true');
+
+      // Hacer un refresh manual después de un breve tiempo (por ejemplo, 1 segundo)
+      setTimeout(() => {
+        window.location.reload();
+      }, 10);
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Eliminar la variable del almacenamiento al salir del componente
+    localStorage.removeItem('hasRefreshed');
+  }
+
 
   capturarActa() {
     this.nombre_prestador = localStorage.getItem('nombre-pres-verificacion')
@@ -68,7 +95,7 @@ export class EquipoVerificadoresComponent {
     )
   }
 
-  openModalEditar(modalTemplate: TemplateRef<any>, id_usuario: number){
+  openModalEditar(modalTemplate: TemplateRef<any>, id_usuario: number) {
     this.sharedService.setIdUsuario(id_usuario)
     this.sharedService.setIdActaVerificacion(this.id_acta_verificacion)
     this.modalRef = this.modalService.show(modalTemplate,

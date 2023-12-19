@@ -1,4 +1,4 @@
-.titulo2{
+.titulo2 {
     text-align: center;
     color: white;
 }
@@ -24,14 +24,15 @@
 }
 
 .button-container label {
-    margin-top: -12px; /* Espacio entre el botón y el label */
+    margin-top: -12px;
+    /* Espacio entre el botón y el label */
 }
 
-.tittle-label{
+.tittle-label {
     font-weight: bold;
 }
 
-.titulo-seccion{
+.titulo-seccion {
     color: white;
 }
 
@@ -49,18 +50,42 @@
     display: none;
 }
 
+
+.grid-container{
+    display: none;
+}
+
 /* Estilos para pantallas menores a 1050px */
 @media (max-width: 1050px) {
     .container {
         max-width: 865px;
         padding-left: 90px
     }
+
+    .abs-center {
+        display: none;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Dos columnas */
+        gap: 20px;
+        /* Espacio entre elementos */
+    }
+    
+    .grid-item {
+        text-align: center;
+        /* Centrar el contenido */
+    }
 }
+
+
 
 @media (max-width: 500px) {
 
     /*DIV BOTONES TAMAÑO SUPERIOR A 400PX*/
-    .abs-center {
+    .grid-container {
         display: none;
     }
 
@@ -79,4 +104,7 @@
         font-size: x-large;
     }
 
+    .titulo {
+        font-size: xx-large;
+    }
 }

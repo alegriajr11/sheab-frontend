@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-conclusiones-recomendaciones',
@@ -11,8 +12,35 @@ export class ConclusionesRecomendacionesComponent {
   nombre_municipio: string
   id_acta_verificacion: number
 
+  constructor(
+    private ngxLoader: NgxUiLoaderService
+  ){}
+
   ngOnInit(): void {
     this.capturarActa();
+    this.refreshOne();
+  }
+
+
+  //FUNCIONALIDAD DEL SLIDER BAR
+  refreshOne() {
+    const hasRefreshed = localStorage.getItem('hasRefreshed');
+
+    if (!hasRefreshed) {
+      // Establecer la bandera en el almacenamiento de sesión para evitar más refrescos
+      localStorage.setItem('hasRefreshed', 'true');
+      
+      // Hacer un refresh manual después de un breve tiempo
+      setTimeout(() => {
+        this.ngxLoader.start(); // Inicia el loader
+        window.location.reload();
+      }, 10);
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Eliminar la variable del almacenamiento al salir del componente
+    localStorage.removeItem('hasRefreshed');
   }
 
   capturarActa() {

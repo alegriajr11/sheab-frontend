@@ -1,5 +1,4 @@
 h1 {
-    font-size: 2.5rem;
     text-align: center;
     color: white;
     
@@ -16,18 +15,6 @@ textarea {
 }
 
 
-.grid-container {
-    display: grid;
-    grid-template-columns: minmax(0, auto) minmax(0, auto) minmax(0, auto);
-    grid-template-rows: minmax(0, auto);
-    grid-gap: 0 1rem;
-}
-
-.button-container{
-    display: flex;
-    align-items: flex-end;
-}
-
 
 label {
     font-weight:  bold;
@@ -38,13 +25,36 @@ span{
     font-weight: bold;
 }
 
+
+.controles-titulo {
+    padding-left: 90px
+}
+
+/*CONTENEDOR DE LAS EVALUACIONES*/
+.contenedor{
+    padding-left: 100px;
+    padding-right: 20px
+}
+
+
 /* Estilos adicionales para hacer la tabla responsive */
 @media (max-width: 1080px) {
-    .table-wrapper {
-        overflow-x: auto; /* Agrega una barra de desplazamiento horizontal */
-    }
-    .table-wrapper table {
-        width: 100%; /* Establece el ancho de la tabla al 100% del contenedor */
-    }
 
+    /*MEDIA PARA EL TITULO DE LA SECCION*/
+    @media (max-width: 750px) {
+        .titulo-seccion {
+            font-size: xx-large;
+        }
+    }
+}
+
+@media (max-width: 530px) {
+    h1 {
+        font-size: 40px;
+    }
+}
+@media (max-width: 4600px) {
+    h1 {
+        font-size: 25px;
+    }
 }
