@@ -39,7 +39,7 @@ a:hover {
     }
 }
 
-@media (max-width: 378px) {
+@media (max-width: 450px) {
     .sm-screen-text{
         font-size: xx-large;
     }

@@ -66,9 +66,6 @@ export class AuthService {
     return this.httpClient.patch<any>(`${this.restablecerContraseña}${id}`, null);
   }
 
-  restablecerPassword(dto: RestablecerPasswordDto) {
-    return this.httpClient.patch<any>(this.authURL + 'reset-password', dto);
-  }
 
   resetPassword(dto: RestablecerPasswordDto) {
     return this.httpClient.patch<any>(this.authURL + 'reset-password', dto)
