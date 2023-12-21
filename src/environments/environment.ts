@@ -90,6 +90,7 @@ export const environment = {
 
   //CONDICIONES DE CAPACIDAD TECNOLOGICA Y CIENTIFICA 
   todos_serviciosURL: 'http://localhost:8080/criterio-servicios/',
+  cumplimiento_todos_serviciosUrl: 'http://localhost:8080/cumplimiento-todos-servicios/',
 
 
   //CUMPLIMIENTO DE REQUISITOS DE LAS CONDICIONES DE HABILITACIÓN 

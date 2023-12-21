@@ -86,6 +86,7 @@ export const environment = {
 
   //CONDICIONES DE CAPACIDAD TECNOLOGICA Y CIENTIFICA 
   todos_serviciosURL: 'https://backend-sehab-84c88c9662e1.herokuapp.com/criterio-servicios/',
+  cumplimiento_todos_serviciosUrl: 'https://backend-sehab-84c88c9662e1.herokuapp.com/cumplimiento-todos-servicios/',
 
 
   //CUMPLIMIENTO DE REQUISITOS DE LAS CONDICIONES DE HABILITACIÓN 

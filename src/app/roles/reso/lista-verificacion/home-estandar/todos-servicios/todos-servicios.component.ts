@@ -42,9 +42,10 @@ export class TodosServiciosComponent {
 
   ngOnInit(): void {
     this.cargarEstandar();
-    this.capturarNombrePrestador()
-    this.obtenerIdEvaluacion()
-    this.refreshOne()
+    this.capturarNombrePrestador();
+    this.obtenerIdEvaluacion();
+    this.refreshOne();
+    this.obtenerCumplimientosAsignados();
   }
 
 
@@ -135,9 +136,24 @@ export class TodosServiciosComponent {
     console.log('Estado del estándar:', this.selectedStandardState);
   }
 
+  obtenerCumplimientosAsignados() {
+    //SOLICITUD AL SERVICIO PARA OBTENER LAS CALIFICACION QUE LE PERTENECEN A LA EVALUACIÓN
+    this.todosServices.getAllCumplimientosTodosServicios(this.eva_id).subscribe(
+      data => {
+        if (data.length === 0) {
+          this.nombre_prestador
+        } else {
+          for (const criterio_id of data) {
+            const cri_id = criterio_id.criterio_servicios.cris_id
+            this.sharedService.criteriosTodosServiciosGuardados.push(cri_id)
+          }
+        }
+      })
+  }
+
   //ESTABLECER LOS COLORES POR CUMPLIMIENTO
   getClassForCriterio(criterio: any): string {
-    if (this.sharedService.criteriosTodosServiciosGuardados.includes(criterio.crie_id)) {
+    if (this.sharedService.criteriosTodosServiciosGuardados.includes(criterio.cris_id)) {
       return 'btn-success';
     }
     return 'btn-outline-dark';

@@ -51,7 +51,6 @@
                             <td style="text-align: justify;">{{ criterio.cris_nombre_criterio }}</td>
                             <td style="vertical-align: middle; text-align: center;">
                                 <button class="btn" [ngClass]="getClassForCriterio(criterio)"
-                                    [disabled]="sharedService.criteriosTodosServiciosGuardados.includes(criterio.cris_id)"
                                     (click)="openModal(modalTemplate, criterio.cris_id, eva_id)">
                                     <i class="fa fa-check"></i>
                                 </button>
@@ -61,27 +60,6 @@
                 </table>
             </div>
             
-            <!-- <div class="criteria-list rounded">
-                <div class="criteria custom-background rounded"
-                    *ngFor="let criterio of criterio_servicios; let i = index">
-                    <h4>{{criterio.todos_servi_aparto.apa_codigo + ')'}} {{ criterio.cris_nombre_criterio }}</h4>
-                    <div class="form-group">
-                        <label for="stateSelect">Estado:</label>
-                        <select id="stateSelect" class="form-control">
-                            <option hidden selected value="">Selecciona el cumplimiento...</option>
-                            <option value="Cumple">Cumple</option>
-                            <option value="No Cumple">No Cumple</option>
-                            <option value="No Aplica">NA</option>
-                            <option value=" "></option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="observationsTextarea">Observaciones:</label>
-                        <textarea id="observationsTextarea" class="form-control"></textarea>
-                    </div>
-                    <button class="btn btn-dark esp btn-circle">Asignar</button>
-                </div>
-            </div> -->
             <hr>
             <div class="form-group rounded">
                 <h4>Estado del Estandar:</h4>

@@ -42,7 +42,7 @@ export class ModalEditarCumplimientoSpIndComponent {
     this.eva_ind_id = this.sharedService.id_evaluacion_sp_ind
     
     setTimeout(() => {
-      //SOLICITUD PARA OBTENER LA CALIFICACIÓN QUE LE PERTENECE A LA EVALUACIÓN Y AL CRITERIO CON SU ID
+    //SOLICITUD PARA OBTENER LA CALIFICACIÓN QUE LE PERTENECE A LA EVALUACIÓN Y AL CRITERIO CON SU ID
     this.calificacionIndService.getCriterioByEvaluacion(this.cri_ind_id, this.eva_ind_id).subscribe(
       async data => {
         this.calificacionInd = data

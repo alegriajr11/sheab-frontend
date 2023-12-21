@@ -65,7 +65,6 @@ import { AgregarcriterioestandarComponent } from './usuario/admin/criteriosic/ag
 import { EditarcriteriosicComponent } from './usuario/admin/criteriosic/editarcriteriosic/editarcriteriosic.component';
 import { ModalsicComponent } from './roles/sic/evaluacion/modalsic/modalsic.component';
 import { Modalsic2Component } from './roles/sic/evaluacion/modalsic2/modalsic2.component';
-import { CapacidadInstaladaComponent } from './roles/reso/capacidad-instalada/capacidad-instalada.component';
 import { TodosServiciosComponent } from './roles/reso/lista-verificacion/home-estandar/todos-servicios/todos-servicios.component';
 import { ConsultaExternaComponent } from './roles/reso/lista-verificacion/home-estandar/consulta-externa/consulta-externa.component';
 import { ApoyoDiagnosticoComponent } from './roles/reso/lista-verificacion/home-estandar/apoyo-diagnostico/apoyo-diagnostico.component';
@@ -143,6 +142,7 @@ import { ModalCumplimientoApoyoDiagnosticoComponent } from './roles/reso/lista-v
 import { ModalCumplimientoAtencionInmediataComponent } from './roles/reso/lista-verificacion/home-estandar/atencion-inmediata/modal-cumplimiento-atencion-inmediata/modal-cumplimiento-atencion-inmediata.component';
 import { Component } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
+import { CapacidadInstaladaComponent } from './roles/reso/capacidad-instalada/capacidad-instalada.component';
 
 @NgModule({
   declarations: [
