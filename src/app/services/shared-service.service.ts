@@ -62,6 +62,8 @@ export class SharedServiceService {
   criteriosTodosServiciosGuardados: any[] = [];
   //ARRAY CRITERIOS CONSULTA EXTERNA
   criteriosConsultaExternaGuardados: any[] = [];
+  //ARRAY CRITERIOS CONSULTA EXTERNA
+  criteriosQuirurgicoGuardados: any[] = [];
 
   //ARRAY CRITERIOS SP-IPS
   criteriosIpsAjusteGuardados: any[] = [];

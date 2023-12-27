@@ -108,7 +108,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NuevoUsuarioRolComponent } from './usuario/nuevo-usuario-rol/nuevo-usuario-rol.component';
 import { ModalFirmaRolComponent } from './usuario/nuevo-usuario-rol/modal-firma-rol/modal-firma-rol.component';
 import { ModalSedesPrestadorComponent } from './prestador/modal-sedes-prestador/modal-sedes-prestador.component';
-import { RichTextEditorComponent } from './rich-text-editor/rich-text-editor.component';
 import { EditarSedesPrestadorComponent } from './prestador/modal-sedes-prestador/editar-sedes-prestador/editar-sedes-prestador.component';
 import { ModalEditarFirmaAcompananteSpIpsComponent } from './roles/sp/sp-ips/evaluaciones-ips/editar-acta-sp-ips/modal-editar-firma-acompanante-sp-ips/modal-editar-firma-acompanante-sp-ips.component';
 import { ContadorComponent } from './roles/reso/contador/contador.component';
@@ -143,6 +142,8 @@ import { ModalCumplimientoAtencionInmediataComponent } from './roles/reso/lista-
 import { Component } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { CapacidadInstaladaComponent } from './roles/reso/capacidad-instalada/capacidad-instalada.component';
+import { ModalCumplimientoQuirurgicoComponent } from './roles/reso/lista-verificacion/home-estandar/quirurgico/modal-cumplimiento-quirurgico/modal-cumplimiento-quirurgico.component';
+import { ModalCumplimientoInternacionComponent } from './roles/reso/lista-verificacion/home-estandar/internacion/modal-cumplimiento-internacion/modal-cumplimiento-internacion.component';
 
 @NgModule({
   declarations: [
@@ -238,7 +239,6 @@ import { CapacidadInstaladaComponent } from './roles/reso/capacidad-instalada/ca
     NuevoUsuarioRolComponent,
     ModalFirmaRolComponent,
     ModalSedesPrestadorComponent,
-    RichTextEditorComponent,
     EditarSedesPrestadorComponent,
     ModalEditarFirmaAcompananteSpIpsComponent,
     ContadorComponent,
@@ -267,7 +267,9 @@ import { CapacidadInstaladaComponent } from './roles/reso/capacidad-instalada/ca
     EditarActaVerificacionComponent,
     EditarEquipoVerificadoresComponent,
     ModalCumplimientoApoyoDiagnosticoComponent,
-    ModalCumplimientoAtencionInmediataComponent
+    ModalCumplimientoAtencionInmediataComponent,
+    ModalCumplimientoQuirurgicoComponent,
+    ModalCumplimientoInternacionComponent
 
   ],
   imports: [

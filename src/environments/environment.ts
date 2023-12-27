@@ -11,6 +11,7 @@ export const environment = {
   usuarioURL: 'http://localhost:8080/usuario/',
   authURL: 'http://localhost:8080/auth/',
   restablecerContraseña: 'http://localhost:8080/auth/request-reset-password/',
+
   prestadorURL: 'http://localhost:8080/prestador/',
   prestadorMunicipioURL: 'http://localhost:8080/prestador/mun/',
   prestadorPamecMunicipioURL: 'http://localhost:8080/prestador/mun/pamec/',
@@ -21,7 +22,7 @@ export const environment = {
   claseURL: 'http://localhost:8080/clase/',
   generarPdfURL: 'http://localhost:8080/generarpdf/usuarios/',
 
-  //SEDES - PRESTAOR
+  //SEDES - PRESTADOR
   sedeURL: 'http://localhost:8080/sede/',
 
 

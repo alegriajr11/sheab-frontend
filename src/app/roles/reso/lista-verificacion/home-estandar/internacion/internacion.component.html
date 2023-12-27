@@ -1,1 +1,89 @@
-<p>internacion works!</p>
+<app-menu></app-menu>
+
+<div class="col controles-titulo">
+    <div class="row">
+        <div class="col-md-1">
+            <button class="btn btn-light esp btn-circle btn-xl" routerLink="/home-estandar">
+                <i class="fa fa-reply fa-lg"></i>
+            </button>
+        </div>
+        <div class="col-md-11 text-center">
+            <h1 style="color: white;">Grupo Internación</h1>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalTemplate>
+    <app-modal-cumplimiento-internacion [dataFromParent]="modalRef"></app-modal-cumplimiento-internacion>
+</ng-template>
+
+<div class="contenedor">
+    <div class="table-wrapper">
+        <div class="header-section">
+            <h5 class="title-header"><b>Prestador:</b></h5>
+            <span id="pre_nombre">{{nombre_prestador}}</span>
+        </div>
+        <div class="form-group">
+            <label for="standardSelect">Selecciona un Servicio:</label>
+            <select name="serv_id" id="serv_id" class="form-control" [(ngModel)]="selectedServicio"
+                (change)="cargarServicios()">
+                <option hidden selected value="">Selecciona el Servicio...</option>
+                <option *ngFor="let servicio of servicios_internacion" [value]="servicio.serv_id">{{
+                    servicio.serv_nombre_servicio }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="standardSelect">Selecciona un Estándar:</label>
+            <select name="ext_id" id="ext_id" class="form-control" [(ngModel)]="selectedStandard"
+                (change)="cargarCriterios(); onStandardChange()">
+                <option hidden selected value="">Selecciona el Estandar...</option>
+                <option *ngFor="let standard of estandar_internacion" [value]="standard.ext_id">{{
+                    standard.ext_nombre_estandar }}</option>
+            </select>
+        </div>
+
+        <div *ngIf="selectedStandard">
+            <h3 class="underlined">ESTANDAR DE {{ nombre_estadar }}</h3>
+
+            <div class="table-responsive">
+                <table class="table table-wrapper table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cod</th>
+                            <th scope="col">Criterio</th>
+                            <th scope="col">Cumplimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let criterio of criterios_internacion; let i = index">
+                            <td>{{ criterio.servi_aparto.apa_codigo }}</td>
+                            <td style="text-align: justify;">{{ criterio.cri_int_nombre_criterio }}</td>
+                            <td style="vertical-align: middle; text-align: center;">
+                                <button class="btn" [ngClass]="getClassForCriterio(criterio)"
+                                    [disabled]="sharedService.criteriosConsultaExternaGuardados.includes(criterio.cri_int_id)"
+                                    (click)="openModal(modalTemplate, criterio.cri_int_id, eva_id)">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr>
+            <div class="form-group rounded">
+                <h4>Estado del Estandar:</h4>
+                <select id="standardStateSelect" class="form-control" [(ngModel)]="selectedStandardState">
+                    <option value="CUMPLE">CUMPLE</option>
+                    <option value="NO CUMPLE">NO CUMPLE</option>
+                </select>
+                <button class="btn btn-dark esp btn-circle">Asignar Estado Estandar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>
